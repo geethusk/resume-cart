@@ -1,8 +1,7 @@
 const Raeez = () => {
     return (
         <div>
-             Raeez mohammed ok
-             done
+             Raeez mohammed 
 
         </div>
     )
