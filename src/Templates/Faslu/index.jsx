@@ -1,7 +1,7 @@
 const Faslu = () => {
     return (
         <div>
-            Faslu
+            Faslul Farisa
         </div>
     )
 }
