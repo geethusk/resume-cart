@@ -4,6 +4,7 @@ import Geethu from './Templates/Geethu';
 import Raeez from './Templates/Raeez';
 import Rajasree from './Templates/Rajasree';
 import './App.css';
+import Vishnu from "./Templates/Vishnu";
 
 
 function App() {
