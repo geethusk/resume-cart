@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto",serif;
+   
+}
+.resume-page{
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    max-width: 827px;
+    margin: auto;
+    border:1px solid black;
+    color: #58585b;
+}
+.left-section{
+    background-color: #f2f4f4;
+    padding: 20px;
+}
+.header-part-section{
+    padding-top:50px ;
+}
+.logo-area{
+    background-color: #58585b;
+    color: #fff;
+    font-size: 2.25em ;
+    border-radius: 50%;
+    width:70px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+}
+.resume-name{
+    font-size: 2.50em;
+    padding: 10px 0;    
+}
+.header-part-address-section{
+    line-height: 1.5;
+    padding-top:15px;
+    font-size: 0.8em;
+}
+.description-section{
+    border-left:5px solid #58585b;
+    margin: 30px 0 30px;
+    padding-left: 10px;
+    font-size: 0.9em;
+}
+.block-section ul{
+    padding: 15px;
+}
+.block-section li{
+    font-size: 0.8em;
+}
+.right-section{
+    padding: 20px;
+}
+.template-block{
+    padding-bottom: 30px;
+}
+.right-first-section{
+    padding: 20px 0;
+}
+.two-side-section{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding-top: 15px;
+}
+.list-section::marker{
+    font-size: 8px;
+}
