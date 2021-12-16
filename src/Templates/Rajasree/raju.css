@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Libre Baskerville",serif;
+}
+.main_body4{
+    height: auto;
+    width: 827px;
+    padding: 20px;
+    border: solid 1px black;
+    margin: auto;
+}
+.logo4{
+    background-color: rgb(222, 133, 53);
+    border-radius: 50%;
+    width: 5.25rem;
+    height: 5.25rem;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-family: "Libre Baskerville",serif;
+    font-weight: bold;
+    font-size: 2em;
+    
+
+}
+.header_section4{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+}
+/* .logo4{
+    margin: 20px;
+} */
+.name4{
+    margin-top: 10px;
+    font-size: 2.25em;
+    font-weight: bold;
+    color: rgb(222, 133, 53);
+}
+.job4{
+    font-size: 1.25rem;
+    color: black;
+    padding-top: 5px;
+}
+.des4{
+   display: grid;
+   justify-content: end;
+}
+.headerdescription4{
+    margin-top: 10px;
+    padding-left: 20px;
+    color: #de8535;;
+
+}
+.firstdes4{
+    padding:20px 0 ;
+}
+.firsthead4{
+    
+    font-size: 20px;
+    color: #de8535;
+    border-bottom: solid 1px #de8535;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.125rem;
+    
+}
+.secondheadwrapper4{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+   
+}
+.secondhead4{
+    font-size: 20px;
+    font-weight: bold;
+}
+.secondsmallhead4{
+    padding-top: 7px;
+    font-size: 12px;
+    
+}
+ul{
+padding-left: 20px;
+}
+
+.licolor::marker{
+    color: #de8535;
+}
+.licolor{
+    color: black;
+    padding-bottom: 10px;
+}
