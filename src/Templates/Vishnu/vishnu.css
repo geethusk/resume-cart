@@ -1,0 +1,94 @@
+.body-container5{
+   max-width:   827px;
+    margin: auto;
+    border: solid 3px black;
+}
+
+.body-container5 input{
+    border: none;
+    outline: none;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 15px 20px;
+}
+.name{
+    font-size: 2.25em;
+    font-weight: bold;
+    color:#5e8e66;   
+}
+.designation{
+    font-size: 1.2rem;
+    padding-top: 8px;
+}
+.address-section{
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size:  .625em;
+    line-height: 185%;
+    color:#5e8e66
+}
+.about{
+    color:#5e8e66;
+    background-color: rgb(240 240 240);
+    padding: 10px 20px 15px 20px;
+}
+.more-about{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.left-section{
+    background-color: #5e8e66;
+    color: white;
+    padding: 0px;
+}
+.education{
+    padding: 10px 20px ;
+}
+.edu-college{
+    font-size: 16px;
+}
+.coll-description{
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 20px;
+}
+.skill-section{
+    border: solid  2px white;
+    border-left: none;
+    border-right: none; 
+    padding-left: 20px; 
+    padding-right: 20px;
+}
+.list-orient {
+    padding: 0 15px;
+    font-size: 14px;
+
+}
+.right-section{
+    display: grid;
+    padding: 10px;
+    padding-left: 30px;
+}
+.right-side-section{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    
+}
+.exp-brief{
+    padding-left: 20px;
+    margin-top: 0;
+}
+.exp-brief > h3{
+    margin-top: 0;
+    font-weight: normal;
+}
+.exp-list{
+    margin-top: 0;
+    padding-left: 13px;
+}
+.right-section > h3{
+    color: #5e8e66;
+}
