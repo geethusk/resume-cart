@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+    font-family: "Libre Baskerville",serif;
+
+}
+.main-body3{
+    height:auto;
+    max-width: 1240px;
+    width: 827px;
+    margin: auto;
+    border: solid 1px black;
+    padding: 20px;
+}
+
+.logo-3{
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(152, 25, 226);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 2.10em;
+    border: none;
+    margin: 20px;
+}
+.header-section-3{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 5px;
+    
+}
+.name-3{
+    margin-top: 20px;
+    font-size: 2.25em;
+    color: rgb(152, 25, 226);
+    font-weight: bold;
+
+}
+.job-3{
+    font-size: 1.25rem;
+    color:black;
+    padding-top: 5px;;
+}
+.headerdiscription-3{
+    margin-top: 30px;
+    color: rgb(152, 25, 226);
+    
+
+}
+.body-des-3{
+    padding-bottom: 15px;;
+}
+.body-container-3{
+    padding: 10px 0;
+    line-height: 20px;
+}
+.firsthead-3{
+    border-bottom: 2px solid rgb(152, 25, 226) ;
+    color:rgb(152, 25, 226);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.125rem;
+    font-size: 25px;
+    padding-top: 10px;
+    font-weight:bold;
+
+
+}
+.secondhead-3{
+    font-size:20px;
+    color:black;
+     font-weight: bold; 
+    line-height: 150%;
+    margin-bottom: 0.225rem;
+
+}
+.second-head-wrapper-3{
+    display: flex;
+    gap: 20px;
+}
+.secondheaddis-3{
+    padding-top: 7px;
+    font-size: 12px
+}
+.licolor-3::marker{
+    color:rgb(152, 25, 226);
+}
+
+li{
+    padding: 5px;
+}
