@@ -5,12 +5,16 @@
 }
 .resume-page{
     display: grid;
-    grid-template-columns: 1.5fr 2.8sfr;
+    grid-template-columns: 1.5fr 3fr;
     max-width: 827px;
     margin: auto;
     border:1px solid black;
     color: #58585b;
     font-size: 0.9em;
+}
+.resume-page input{
+    border: none;
+    outline: none;
 }
 .left-section{
     background-color: #f2f4f4;
@@ -36,6 +40,7 @@
 .header-part-address-section{
     line-height: 1.5;
     padding-top:15px;
+    
 }
 .description-section{
     border-left:5px solid #58585b;

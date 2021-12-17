@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import './style.css'
+import produce from "immer"
+import TextField from "./Components/TextField"
+import TextArea from "./Components/TextArea"
+
 const Faslu = () => {
     const [template,setTemplate] = useState({
-        theme:" #58585b",
+        theme:['#58585b','#fff'],
         logo:"CC",
         name:"Chris Candidate",
         designation:"Sales Associate",
@@ -32,7 +36,7 @@ const Faslu = () => {
             "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
             ]
         }
-    ],
+        ],
         education:[{
             joiningDate:"September 2007",
             endingDate:"May 2011",
@@ -43,6 +47,29 @@ const Faslu = () => {
     });
     const{theme,logo,name,designation,address,bio,skill,exp,education}=template;
     const{street,city,pin,email,phone}=address;
+
+    const changeState =(keys,value) =>{
+        setTemplate(
+            (prev)=>produce(prev,(draft)=>{
+                switch (keys.length){
+                    case 1:
+                        draft[keys[0]] = value;
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]] = value;
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]] = value;
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]] = value;
+                        break;
+                    default:
+                        break;
+                }
+            })
+        )
+    }
     return (
         <div className="resume-page">
             <div className="left-section">
@@ -50,25 +77,62 @@ const Faslu = () => {
                 <div className="logo-area">{logo}
                 </div>
                 <div className="resume-name">
-                    {name}
+                    <input
+                    type="text"
+                    value={name}
+                    onChange={(e)=>changeState(["name"],e.target.value)}></input>
                 </div>
                 <div className="resume-profession">
-                    {designation}
+                    <input
+                    type="text"
+                    value={designation}
+                    onChange={(e)=>changeState(["designation"],e.target.value)}></input>
                 </div>
                 <div className="header-part-address-section"> 
-                    {street}<br/>
-                    {city}{pin}<br/>
-                    {email}<br/>
-                    {phone}<br/>
+                    {/* <input
+                        type="text"
+                        className="header-part-address-section"
+                        value={street}
+                        onChange={(e)=>changeState(["address","street"],e.target.value)}></input><br/> */}
+                    <TextField
+                        onChange={value=>changeState(["address","street"],value)}
+                        value={street}
+                    /><br/>
+                    <TextField
+                        value={city}
+                        onChange={value=>changeState(["address","city"],value)}
+                    /><br/>
+                    <input
+                        type="text"
+                        className="header-part-address-section"
+                        value={pin}
+                        onChange={(e)=>changeState(["address","pin"],e.target.value)}></input><br/>
+                    <input
+                        type="text"
+                        className="header-part-address-section"
+                        value={email}
+                        onChange={(e)=>changeState(["address","email"],e.target.value)}></input><br/>
+                    <input
+                        type="text"
+                        className="header-part-address-section"
+                        value={phone}
+                        onChange={(e)=>changeState(["address","phone"],e.target.value)}></input><br/>
                 </div>
                 </div>
                 <div className="description-section">
-                    {bio}
+                    <TextArea
+                        value={bio}
+                        onChange={value=>changeState(["bio"],value)}
+                    />
                 </div>
                 <div className="block-section">
                     <h3>Key Skills</h3>
                     <ul>
-                        {skill.map((value,i)=><li key={i}>{value}</li>)}   
+                        {skill.map((value,i)=><li key={i}>
+                        <input
+                        type="text"
+                        value={value}
+                        onChange={(e)=>changeState(["skill",i],e.target.value)}></input></li>)}      
                     </ul>
                 </div>
             </div>
@@ -79,8 +143,25 @@ const Faslu = () => {
                     return(
                         <div className="right-section">
                             <div className="heading-section">
-                                <span>{role}</span><br/>
-                                <div>{companyName}|{startingDate}-{endingDate}</div>
+                                <span>
+                                <input
+                                    type="text"
+                                    value={role}
+                                    onChange={(e)=>changeState(["exp",i,"role"],e.target.value)}></input>
+                                </span><br/>
+                                <div>
+                                <input
+                                    type="text"
+                                    value={companyName}
+                                    onChange={(e)=>changeState(["exp",i,"companyName"],e.target.value)}></input>
+                                |<input
+                                    type="text"
+                                    value={startingDate}
+                                    onChange={(e)=>changeState(["exp",i,"startingDate"],e.target.value)}></input>
+                                -<input
+                                    type="text"
+                                    value={endingDate}
+                                    onChange={(e)=>changeState(["exp",i,"endingDate"],e.target.value)}></input></div>
                             </div>
                             <ul>
                                 {detailList.map((value,i)=><li className ="list-section" key={i}>{value}</li>)}
@@ -94,12 +175,27 @@ const Faslu = () => {
                         return(
                             <div className="two-side-section">
                                 <div className="one-side">
-                                    {joiningDate}<br/>
-                                    {endingDate}
+                                    <input
+                                    type="text"
+                                    value={joiningDate}
+                                    onChange={(e)=>changeState(["education",i,"joiningDate"],e.target.value)}></input>
+                                    
+                                    <input
+                                    type="text"
+                                    value={endingDate}
+                                    onChange={(e)=>changeState(["education",i,"endingDate"],e.target.value)}></input>
+                                    <br/> 
                                 </div>
                                 <div className="two-side">
-                                    {course}<br/>
-                                    {collegeName}<br/>
+                                    <input 
+                                    type="text"
+                                    value={course}
+                                    onChange={(e)=>changeState(["education",i,"course"],e.target.value)}></input><br/>
+                                    <input 
+                                    type="text"
+                                    value={collegeName}
+                                    onChange={(e)=>changeState(["education",i,"collegeName"],e.target.value)}></input>
+                                    <br/>
                                     {awards.map((value,i)=><div key={i}>{value}</div>)}
                                 </div>
                             </div>
