@@ -77,15 +77,14 @@ const Faslu = () => {
                     <h3>Professional Experience</h3>
                     {exp.map(({startingDate,endingDate,companyName,role,detailList},i)=>{
                     return(
-                        <div className="right-first-section">
-                        <ul>
-                        <li>{role}<br/>
-                            {companyName}|{startingDate}-{endingDate}
-                        <ul>
-                            {detailList.map((value,i)=><li className ="list-section" key={i}>{value}</li>)}
-                        </ul>
-                        </li>
-                        </ul>
+                        <div className="right-section">
+                            <div className="heading-section">
+                                <span>{role}</span><br/>
+                                <div>{companyName}|{startingDate}-{endingDate}</div>
+                            </div>
+                            <ul>
+                                {detailList.map((value,i)=><li className ="list-section" key={i}>{value}</li>)}
+                            </ul>
                         </div>
                         )})}
                 </div>
