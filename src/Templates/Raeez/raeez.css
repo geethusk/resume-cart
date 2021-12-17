@@ -16,14 +16,14 @@
 .main-body3 input,textarea{
     border: none;
     outline: none;
-
-    
+    color: inherit;
+       
 }
-textarea{
+  textarea{
     resize: none;
     width: 100%;
-    height: 70px;
-}
+   overflow: hidden;
+ }
 
 .logo-3{
     border-radius: 100%;
@@ -51,7 +51,10 @@ textarea{
 
 }
 .name-3 input{
-    font-size:35px;
+    font-size:40px;
+}
+.job-3 input{
+    font-size: 25px;
 }
 .job-3{
     font-size: 1.25rem;
@@ -95,6 +98,11 @@ textarea{
     margin-bottom: 0.225rem;
 
 }
+.secondhead-3 input{
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .second-head-wrapper-3{
     display: flex;
     gap: 20px;
