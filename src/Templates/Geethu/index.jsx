@@ -1,5 +1,8 @@
 import {useState} from "react"
 import produce from "immer"
+import "./Geethu.css"
+import TextField from "./Components/TextField"
+import TextArea from "./Components/TextArea"
 
 
 const Geethu = () => {
@@ -52,11 +55,10 @@ const Geethu = () => {
                     "Academic Awardee of AY 2007-2008"]  
             }],
         skills:[
-                
-                    "Detail oriented",
-                   " Well-versed in Texas employment law",
-                    "Excellent written and oral communication skills",
-                    "Develops positive workplace relationships"
+                 "Detail oriented",
+                 " Well-versed in Texas employment law",
+                 "Excellent written and oral communication skills",
+                 "Develops positive workplace relationships"
                         ] 
 
     })
@@ -69,13 +71,14 @@ const Geethu = () => {
                         draft[keys[0]]=value;
                         break;
                     case 2:
-                        draft[keys[1]][keys[0]]=value;
+                        draft[keys[0]][keys[1]]=value;
                         break;
                     case 3:
                         draft[keys[0]][keys[1]][keys[2]]=value;
                         break;
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]]=value;
+                        break;
                     default:
                         break;
                 }
@@ -91,34 +94,34 @@ const Geethu = () => {
         <div className="main-wrapper">
             <div className="body-wrapper">
                 <div className="left-page-inner">
-                    <div className="name1"><input type="text" value={name} onChange={(e)=>changeState(["name"],e.target.value)}
+                    <div className="name1"><TextField value={name} onChange={value=>changeState(["name"],value)}
                        /><br/>  
                         <h2 className="job1">{designation}</h2>
                     </div>
                     <div className="address-section1">
-                       <input type="text" className="address1"
+                       <TextField className="address1"
                        value={address.street}
-                       onChange={(e)=>changeState(["address","street"],e.target.value)}
+                       onChange={value=>changeState(["address","street"],value)}
                        /><br/>
-                       <input type="text" className="city1"
+                       <TextField className="city1"
                        value={address.city}
-                       onChange={(e)=>changeState(["address","city"],e.target.value)}
+                       onChange={value=>changeState(["address","city"],value)}
                        /><br/>
-                        <input type="text" className="phone"
+                        <TextField className="phone"
                        value={address.phone}
-                       onChange={(e)=>changeState(["address","phone"],e.target.value)}
+                       onChange={value=>changeState(["address","phone"],value)}
                        /><br/>
-                        <input type="text" value={address.email} onChange={(e)=>changeState(["address","email"],e.target.value)}/><br/>
+                        <TextField type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
-                        <textarea  className="bio1"
+                        <TextArea  className="bio1"
                          value={bio}
-                       onChange={(e)=>changeState(["bio"],e.target.value)}
+                       onChange={value=>changeState(["bio"],value)}
                        /><br/>  
                     </div>
                     <div className="key-skills1">Key Skills</div>
                         <ul>
-                           {skills.map((value,i)=><li className="licolor1" key={i}><textarea value={value}onChange={(e)=>changeState(["skills"],e.target.value)}/></li>)}
+                           {skills.map((value,i)=><li className="licolor1" key={i}><TextField value={value} onChange={value=>changeState(["skills",i],value)}/></li>)}
                         </ul>     
                 </div>
             <div className="right-page-inner">
@@ -127,12 +130,12 @@ const Geethu = () => {
                         return(
                             <>
                             <div className="second-head-wrapper1">
-                            <div className="second-head-1"><input type="text" value={job} onChange={(e)=>changeState(["experience",i,"job"],e.target.value)}/></div>
-                            <div className="second-small-head-1"><input type="text" value={company} onChange={(e)=>changeState(["experience",i,"company"],e.target.value)} />| <input type="text" value={startingdate} onChange={(e)=>changeState(["experience",i,"startingdate"],e.target.value)}  />-<input type="text" value={endingdate}onChange={(e)=>changeState(["experience",i,"endingdate"],e.target.value)} />
+                            <div className="second-head-1"><TextField value={job} onChange={value=>changeState(["experience",i,"job"],value)}/></div>
+                            <div className="second-small-head-1"><TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />| <TextField value={startingdate} onChange={value=>changeState(["experience",i,"startingdate"],value)}  />-<TextField value={endingdate}onChange={value=>changeState(["experience",i,"endingdate"],value)} />
                             </div>
                             </div>
                             <ul>
-                                {jobdetails.map((value,i)=><li className="licolor1" key={i}> <textarea value={value} onChange={(e)=>changeState(["experience",i,"jobdetails",i],e.target.value)} /></li>)}    
+                                {jobdetails.map((value,j)=><li className="licolor1" key={j}> <TextArea value={value} onChange={value=>changeState(["experience",i,"jobdetails",j],value)} /></li>)}    
                             </ul> </>
         
                         )
@@ -145,18 +148,18 @@ const Geethu = () => {
                         <>
                             <div className="second-head-wrapper-1">
                             <div className="second-head-1">
-                                <input type="text" value={qualification}  onChange={(e)=>changeState(["education",i,"qualification"],e.target.value)}
+                                <TextField value={qualification}  onChange={value=>changeState(["education",i,"qualification"],value)}
                                 /><br/>
-                                <input type="text" value={college} onChange={(e)=>changeState(["education",i,"college"],e.target.value)}
+                                <TextField value={college} onChange={value=>changeState(["education",i,"college"],value)}
                                 /><br/>
                                 </div>
                             <div className="second-small-head-1">
-                                <input type="text" value={joiningdate} onChange={(e)=> changeState(["education",i,"joiningdate"],e.target.value)}/>| <input type="text"value={graduationdate} onChange={(e)=> changeState(["education",i,"graduationdate"],e.target.value)}/><br/>
+                                <TextField value={joiningdate} onChange={value=> changeState(["education",i,"joiningdate"],value)}/>| <TextField value={graduationdate} onChange={value=> changeState(["education",i,"graduationdate"],value)}/><br/>
                             </div>
                             </div> 
                             <ul>
 
-                                <li className="licolor1"><input type="text" value={academicdetails} onChange={(e)=> changeState(["education",i,"academicdetails"],e.target.value)}/>
+                                <li className="licolor1"><TextField value={academicdetails} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
                             </li>
                 
                             </ul> 
