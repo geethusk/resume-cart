@@ -11,6 +11,18 @@
     margin: auto;
     border: solid 1px black;
     padding: 20px;
+
+}
+.main-body3 input,textarea{
+    border: none;
+    outline: none;
+
+    
+}
+textarea{
+    resize: none;
+    width: 100%;
+    height: 70px;
 }
 
 .logo-3{
@@ -38,17 +50,25 @@
     font-weight: bold;
 
 }
+.name-3 input{
+    font-size:35px;
+}
 .job-3{
     font-size: 1.25rem;
     color:black;
     padding-top: 5px;;
 }
 .headerdiscription-3{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     color: rgb(152, 25, 226);
     
 
 }
+.headerdiscription-3 input{
+    font-size: 16px;
+    display: grid;
+}
+
 .body-des-3{
     padding-bottom: 15px;;
 }
