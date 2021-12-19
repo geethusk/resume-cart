@@ -25,17 +25,17 @@ const Faslu = () => {
             "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
             ]
         },
-        // {
-        //     startingDate:"March 2015 ",
-        //     endingDate:"January 2016",
-        //     companyName:"Jim's Widget Factory, Plano, TX",
-        //     role:"Human Resources Associate",
-        //     detailList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-        //     "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-        //     "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-        //     "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-        //     ]
-        // }
+        {
+            startingDate:"March 2015 ",
+            endingDate:"January 2016",
+            companyName:"Jim's Widget Factory, Plano, TX",
+            role:"Human Resources Associate",
+            detailList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+            "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+            "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+            "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+            ]
+        }
         ],
         education:[{
             joiningDate:"September 2007",
@@ -167,7 +167,7 @@ const Faslu = () => {
                                 {detailList.map((value,i)=><li className ="list-section" key={i}>
                                 <textarea
                                     value={value}
-                                    onChange={(e)=>changeState(["exp",i,"detailList",i],e.target.value)}>
+                                    onChange={(e)=>changeState(["exp",0,"detailList",i],e.target.value)}>
                                 </textarea>
                                 </li>)}
                             </ul>
