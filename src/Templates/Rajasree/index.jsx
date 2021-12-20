@@ -1,5 +1,9 @@
-import { useState } from "react"
 import "./raju.css"
+import { useState } from "react"
+
+import produce from "immer"
+import TextField from "./Components/TextField"
+import TextArea from "./Components/TextArea"
 const Rajasree = () => {
     const[state,setState]=useState({
         theme:['#de8535'],
@@ -10,12 +14,7 @@ const Rajasree = () => {
         city:" Plano, TX, 75071",
         email:"email@youremail.com",
         phone:"(469) 385-2948"},
-        bio:`Human resources generalist with 8 years of experience in HR,
-        including hiring and terminating, 
-        disciplining employees and helping department managers improve employee performance. 
-        Worked with labor unions to negotiate compensation packages for workers.
-       Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards.
-        Worked with OSHA to ensure that all safety regulations are followed.`,
+        bio:`Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed.`,
         experience:[
             {
                 job:"Human Resources Manager",
@@ -59,35 +58,117 @@ const Rajasree = () => {
                         ] 
 
     })
+    const changeState =(keys,value)=>{
+        setState((prev)=>{
+            return produce(prev,(draft)=>{
+                switch(keys.length){
+                    case 1:
+                        draft[keys[0]]=value;
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]]=value;
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]]=value;
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]]=value;
+                        break;
+                        default:
+                            break;
+                }
+            })
+        })
+    }
     const{theme,logo,name,designation,address,bio,experience,education,skills}=state;
     return (
         <div className="main_body4">
             <div className="header_section4">
                 <div className="logo4">{logo}</div>
-                <div className="name4">{name}
-                    <h2 className="job4">{designation}</h2>
+
+                <div className="namesection">
+                <TextField value={name} className="name4"
+                onChange={(value)=>changeState(["name"],value)}/><br/>
+                    {/* <input type="text" value={name} className="name4"
+                    onChange={(e)=>changeState(["name"],e.target.value)}/> */}
+                    {/* <h2 className="job4">{designation}</h2> */}
+                    {/* <input type="text" value={designation} className="job4"
+                    onChange={(e)=>changeState(["designation"],e.target.value)}/> */}
+                    <TextField value={designation} className="job4"
+                onChange={(value)=>changeState(["designation"],value)}/>
+
                 </div>
             <div className="headerdescription4">
-                {address.street}<br/>
-                {address.city}<br/>
-                {address.email}<br/>
-                {address.phone}<br/>
+                <TextField value={address.street}className="headerdescription4"
+                onChange={(value)=>changeState(["address","street"],value)}/>
+                {/* <input type="text" value={address.street}
+                onChange={(e)=>changeState(["address","street"],e.target.value)}/> */}
+                 
+                 <TextField value={address.city}className="headerdescription4"
+                onChange={(value)=>changeState(["address","city"],value)}/>
+                {/* <input type="text" value={address.city}
+                onChange={(e)=>changeState(["address","city"],e.target.value)}/> */}
+                
+                <TextField value={address.email}className="headerdescription4"
+                onChange={(value)=>changeState(["address","email"],value)}/>
+                {/* <input type="text" value={address.email}
+                onChange={(e)=>changeState(["address","email"],e.target.value)}/> */}
+                
+                <TextField value={address.phone}className="headerdescription4"
+                onChange={(value)=>changeState(["address","phone"],value)}/>
+                {/* <input type="text" value={address.phone}
+                onChange={(e)=>changeState(["address","phone"],e.target.value)}/> */}
+                
+                
            </div>
             </div>
             <div className="body_description4">
                 <div className="firstdes4">
-           {bio}
+                    <TextArea value ={bio}
+                    onChange={value=>changeState(["bio"],value)}
+                // <textarea value= {bio}
+                //     onChange={(e)=>changeState(["bio"],e.target.value)}
+                />
             </div>
             <div className="firsthead4">Professional Experience</div>
             {experience.map(({job,company,startingdate,endingdate,jobdetails},i)=>{
                 return(
                     <>
                     <div className="secondheadwrapper4">
-            <div className="secondhead4">{job}</div>
-            <div className="secondsmallhead4">{company} | {startingdate} - {endingdate}
+            <div className="secondhead4">
+                {/* {job} */}
+                <TextField value={job}
+                onChange={(value)=>changeState(["experience",i,"job"],value)}/>
+                {/* <input type="text" value={job}
+                    onChange={(e)=>changeState(["experience",i,"job"],e.target.value)}/> */}
+                </div>
+            <div className="secondsmallhead4">
+            <TextField value={company} className="secondsmallhead4"
+                onChange={(value)=>changeState(["experience",i,"company"],value)}/>
+
+            {/* <input type="text" value={company}
+                    onChange={(e)=>changeState(["experience",i,"company"],e.target.value)}/> */}
+                {/* {company} */}
+                 |
+                 <TextField value={startingdate}
+                onChange={(value)=>changeState(["experience",i,"startingdate"],value)}/>
+                 {/* <input type="text" value={startingdate}
+                    onChange={(e)=>changeState(["experience",i,"startingdate"],e.target.value)}/> */}
+                  {/* {startingdate} */}
+                   - 
+                   <TextField value={endingdate}
+                onChange={(value)=>changeState(["experience",i,"endingdate"],value)}/>
+                   {/* <input type="text" value={endingdate}
+                    onChange={(e)=>changeState(["experience",i,"endingdate"],e.target.value)}/> */}
+                   {/* {endingdate} */}
             </div></div>
             <ul>
-            {jobdetails.map((value,i)=><li className="licolor" key={i}>{value}</li>)}
+            {jobdetails.map((value,j)=><li className="licolor" key={j}>
+            <TextArea value ={value}
+                    onChange={value=>changeState(["experience",i,"jobdetails",j],value)}/>
+            {/* <textarea value={value}
+                    onChange={(e)=>changeState(["experience",i,"jobdetails",j],e.target.value)}/> */}
+            </li>)}
             
                 
                 
@@ -100,11 +181,35 @@ const Rajasree = () => {
                     return(
                         <>
             <div className="secondheadwrapper4">
-                <div className="secondhead4">{qualification}</div>
-                <div className="secondsmallhead4">{joiningdate} | {graduationdate}
+                <div className="secondhead4">
+                    {/* {qualification} */}
+                    <TextField value={qualification}
+                onChange={(value)=>changeState(["education",i,"qualification"],value)}/>
+                    {/* <input type="text" value={qualification}
+                    onChange={(e)=>changeState(["education",i,"qualification"],e.target.value)}/> */}
+
+                    </div>
+                <div className="secondsmallhead4">
+                    {/* {joiningdate}  */}
+                    <TextField value={joiningdate}
+                onChange={(value)=>changeState(["education",i,"joiningdate"],value)}/>
+                    {/* <input type="text" value={joiningdate}
+                    onChange={(e)=>changeState(["education",i,"joiningdate"],e.target.value)}/> */}
+                    |
+                    <TextField value={graduationdate}
+                onChange={(value)=>changeState(["education",i,"graduationdate"],value)}/> 
+                    {/* <input type="text" value={graduationdate}
+                    onChange={(e)=>changeState(["education",i,"graduationdate"],e.target.value)}/> */}
+                    {/* {graduationdate} */}
                </div></div> 
                 <ul>
-                <li className="licolor">{academicdetails}</li>
+                {academicdetails.map((value,j)=><li className="licolor" key={j}>
+                <TextArea value ={value}
+                    onChange={value=>changeState(["education",i,"academicdetails",j],value)}
+            // <textarea value={value}
+            //         onChange={(e)=>changeState(["education",i,"academicdetails",j],e.target.value)}
+                    />
+            </li>)}
                
             </ul> 
             </>
@@ -113,7 +218,14 @@ const Rajasree = () => {
                  ) })}
             <div className="firsthead4">Key Skills</div>
             <ul>
-            {skills.map((value,i)=><li className="licolor" key={i}>{value}</li>)}
+            {skills.map((value,i)=><li className="licolor" key={i}>
+            <TextArea value ={value}
+                    onChange={value=>changeState(["skills,i"],value)}/>
+            
+            {/* <textarea value={value}
+                    onChange={(e)=>changeState(["skills",i],e.target.value)}/> */}
+                {/* {value} */}
+                </li>)}
                 
             </ul> 
             
