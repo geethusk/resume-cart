@@ -19,12 +19,16 @@ const Raeez = () => {
             jobdesignation:"Human Resources Manager",
         
         
-            detailsList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-               "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"]
+            detailsList:[
+            {id:1,value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+            {id:2,value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"},
+            {id:3,value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies"},
+            {id:4,value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"},
 
-        },
+            
+        ],
+    },
+           
         {
             startingdate:"january 2016",
             endingdate:"March 2016",
@@ -32,12 +36,15 @@ const Raeez = () => {
             jobdesignation:"Human Resources Associate",
         
         
-            detailsList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-               "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"]
-
+            detailsList:[
+                {id:1,
+                value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+                {id:2,value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"},
+               {id:3,value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies"},
+               {id:4,value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"},
+            ]
         }
+            
     ],
         Education:[{
             collegeName:"The University of Texas at Dalla",
@@ -69,7 +76,35 @@ const Raeez = () => {
                         case 4:
                             draft[keys[0]][keys[1]][keys[2]][keys[3]]=value;   
                             break;
+                        case 5:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]]=value;  
+                            break;    
 
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
+
+    const addToList=(keys,i,value)=>{
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,0,value);
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,0,value);
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);   
+                            break;
+                       
                         default:
                              break;  
                     }          
@@ -205,14 +240,18 @@ const Raeez = () => {
                </div>
                 
                <ul>
-               {detailsList.map((val,j)=><li className="licolor-3" key={j}>
-                   {/* <TextArea
-                  onChange={value=>changeState(["profexp",i,"detailsList",j],value)}
-                      value={val}/> */}
-                    <textarea 
+               {detailsList.map(({value,id},j)=><li className="licolor-3" key={id}>
+                   <TextArea
+                    value={value}
+                  onChange={value=>changeState(["profexp",i,"detailsList",j,"value"],value)}
+                  addToList={value=>addToList(["profexp",i,"detailsList"],j+1,value)}
+                  length={detailsList.length}/>
+                      
+               
+                    {/* {/* <textarea 
                    value={val}
-                   onChange={(e)=>changeState(["profexp",i,"detailsList",j],e.target.value)}/> 
-                   </li>)}
+                   onChange={(e)=>changeState(["profexp",i,"detailsList",j],e.target.value)}/>  */}
+                   </li>)} 
                 </ul>
                </>
                 )}
