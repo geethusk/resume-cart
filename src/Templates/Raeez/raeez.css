@@ -6,12 +6,26 @@
 }
 .main-body3{
     height:auto;
-    max-width: 1240px;
+    /* max-width: 1240px; */
     width: 827px;
     margin: auto;
     border: solid 1px black;
     padding: 20px;
+
 }
+.main-body3 input,textarea{
+    border: none;
+    outline: none;
+    color: inherit;
+       
+}
+  textarea{
+    resize: none;
+    width: 100%;
+   overflow: hidden;
+   font-size: 15px;
+   
+ }
 
 .logo-3{
     border-radius: 100%;
@@ -31,6 +45,10 @@
     gap: 5px;
     
 }
+.raeez-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .name-3{
     margin-top: 20px;
     font-size: 2.25em;
@@ -38,20 +56,33 @@
     font-weight: bold;
 
 }
+.name-3 input{
+    font-size:40px;
+}
+.job-3 input{
+    font-size: 25px;
+}
 .job-3{
     font-size: 1.25rem;
     color:black;
     padding-top: 5px;;
 }
 .headerdiscription-3{
-    margin-top: 30px;
+     margin-top: 20px; 
     color: rgb(152, 25, 226);
     
 
 }
-.body-des-3{
-    padding-bottom: 15px;;
+.headerdiscription-3 input{
+    font-size: 16px;
+    display: grid;
 }
+
+.body-des-3{
+    padding-bottom: 15px;
+    font-size: 15px;
+}
+
 .body-container-3{
     padding: 10px 0;
     line-height: 20px;
@@ -75,6 +106,11 @@
     margin-bottom: 0.225rem;
 
 }
+.secondhead-3 input{
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .second-head-wrapper-3{
     display: flex;
     gap: 20px;
@@ -85,6 +121,23 @@
 }
 .licolor-3::marker{
     color:rgb(121, 53, 160);
+}
+.licolor-3{
+ position: relative;
+ list-style: none;
+}
+
+.licolor-3::before{
+    width:7px;
+    height: 7px;
+    content: "";
+    background-color: rgb(121, 53, 160);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: -15px;
+    top: 12px ;
+
 }
 
 li{
