@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useRef } from 'react';
 
-const TextArea = ({value,onChange}) => {
+const TextArea = ({value,onChange,className}) => {
     const ref =useRef(null);
     useEffect(() => {
         ref.current.style.height=10+"px"
@@ -13,6 +13,7 @@ const TextArea = ({value,onChange}) => {
         ref={ref}
         value={value}
         onChange={(e)=>onChange(e.target.value)}
+        className={className}
         />
     )        
 }

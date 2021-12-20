@@ -6,7 +6,7 @@
 }
 .main-body3{
     height:auto;
-    max-width: 1240px;
+    /* max-width: 1240px; */
     width: 827px;
     margin: auto;
     border: solid 1px black;
@@ -23,6 +23,8 @@
     resize: none;
     width: 100%;
    overflow: hidden;
+   font-size: 15px;
+   
  }
 
 .logo-3{
@@ -43,6 +45,10 @@
     gap: 5px;
     
 }
+.raeez-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .name-3{
     margin-top: 20px;
     font-size: 2.25em;
@@ -62,7 +68,7 @@
     padding-top: 5px;;
 }
 .headerdiscription-3{
-    /* margin-top: 30px; */
+     margin-top: 20px; 
     color: rgb(152, 25, 226);
     
 
@@ -73,8 +79,10 @@
 }
 
 .body-des-3{
-    padding-bottom: 15px;;
+    padding-bottom: 15px;
+    font-size: 15px;
 }
+
 .body-container-3{
     padding: 10px 0;
     line-height: 20px;
@@ -113,6 +121,23 @@
 }
 .licolor-3::marker{
     color:rgb(121, 53, 160);
+}
+.licolor-3{
+ position: relative;
+ list-style: none;
+}
+
+.licolor-3::before{
+    width:7px;
+    height: 7px;
+    content: "";
+    background-color: rgb(121, 53, 160);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: -15px;
+    top: 12px ;
+
 }
 
 li{
