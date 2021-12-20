@@ -36,9 +36,10 @@ textarea{
     padding-left: 5px;
     margin-top:20px;
 }
-.text-field{
-    /* width:35ch; */
+.textfield .title-name .address-section1 .city1{
+    resize:none;
     outline:none;
+    width:100%;
 }
 li{
     position:relative;

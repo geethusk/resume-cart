@@ -27,21 +27,39 @@ const Geethu = () => {
                 startingdate:"January 2016",
                 endingdate:"Present",
                 jobdetails:[
-                    "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                    "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-                    "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                    "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"]  
-            },
+                    {id: 1,
+                     value: "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                    },
+                    {id: 2,
+                     value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                     },
+                     {id:3,
+                      value: "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                     },
+                    {id:4,
+                     value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met",
+                    }
+                 ]  
+                 },
             {
                 job:"Human Resources Associate",
                 company:"Jim's Widget Factory, Plano, TX",
                 startingdate:"March 2015 ",
                 endingdate:"January 2016 ",
                 jobdetails:[
-                    "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                    "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-                    "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                    ]  
+                   {id: 1,
+                    value: "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                   },
+                   {id: 2,
+                    value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                    },
+                    {id:3,
+                     value: "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                    },
+                    {id:4,
+                        value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met",
+                    }
+                ]  
             }
             
         ],
@@ -62,6 +80,28 @@ const Geethu = () => {
                         ] 
 
     })
+    const addToList=(keys,i,value)=>{
+        tempSetState(
+            (prev)=>produce(prev,(draft)=>{
+                switch(keys.length){
+                    case 1:
+                        draft[keys[0]].splice(i,0,value);
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]].splice(i,0,value);
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
+                        break;
+                    default:
+                        break;
+                }
+            })
+        )
+    }
     const changeState=(keys,value)=>{
         tempSetState(
         (prev)=>{
@@ -78,6 +118,9 @@ const Geethu = () => {
                         break;
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]]=value;
+                        break;
+                    case 5:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]]=value;
                         break;
                     default:
                         break;
@@ -124,14 +167,14 @@ const Geethu = () => {
                            {skills.map((value,i)=><li className="licolor1" key={i}><TextField value={value} onChange={value=>changeState(["skills",i],value)}/></li>)}
                         </ul>     
                 </div>
-            <div className="right-page-inner">
-                <div className="top-heading-1"><h2 className="experience1">Professional Experience</h2> 
-                    {experience.map(({job,company,startingdate,endingdate,jobdetails},i)=>{ 
+                <div className="right-page-inner">
+                    <div className="top-heading-1"><h2 className="experience1">Professional Experience</h2> 
+                        {experience.map(({job,company,startingdate,endingdate,jobdetails},i)=>{ 
                         return(
                             <>
                             <div className="second-head-wrapper1">
                             <div className="second-head-1">
-                            <TextField value={job} onChange={value=>changeState(["experience",i,"job"],value)}/>
+                            <TextField className="textfield" value={job} onChange={value=>changeState(["experience",i,"job"],value)}/>
                             <br/>
                            <TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />
                            <br/>
@@ -143,7 +186,13 @@ const Geethu = () => {
                             </div>
                             </div>
                             <ul>
-                                {jobdetails.map((value,j)=><li className="licolor1" key={j}> <TextArea value={value} onChange={value=>changeState(["experience",i,"jobdetails",j],value)} /></li>)}    
+                                {jobdetails.map(({value,id},j)=><li className="licolor1"
+                                key={id}>
+                                <TextArea value={value} onChange={value=>changeState(["experience",i,"jobdetails",j,"value"],value)}
+                                addToList={(value)=>addToList(["experience",i,"jobdetails"],j+1,value)}
+                                length={jobdetails.length}
+                                />
+                                </li>)}    
                             </ul> </>
         
                         )
@@ -167,22 +216,17 @@ const Geethu = () => {
                             </div> 
                             <ul>
 
-                                <li className="licolor1"><TextArea value={academicdetails} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
+                                <li className="licolor1"><TextArea value={academicdetails[0]} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
                             </li>
                 
                             </ul> 
                         </>
-
-
-                        ) })}
+                        )})}
                 </div>
 
             </div>
-
-            </div>
-
-            
-        </div>
+        </div>            
+    </div>
     )
 }
 
