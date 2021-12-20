@@ -16,6 +16,11 @@
     border: none;
     outline: none;
 }
+textarea{
+    resize: none;
+    width: 100%;
+    overflow: hidden;
+}
 .left-section{
     background-color: #f2f4f4;
     padding: 20px;
@@ -60,8 +65,36 @@
     padding-bottom: 15px;
     line-height: 140%;
 }
-.list-section::marker{
+.sub-heading-section::before{
+    content: "";
+    width:5px;
+    height: 5px;
+    background-color:#58585b;
+    position: absolute;
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    left: -15px;
+    top:13px;
+
+}
+/* .list-section::marker{
     font-size: 10px;
+} */
+li{
+    position: relative;
+    list-style: none;
+}
+li::before{
+    content: "";
+    width:5px;
+    height: 5px;
+    background-color:#58585b;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    left: -15px;
+    top:12px;
 }
 .two-side-section{
     display: grid;

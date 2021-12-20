@@ -70,6 +70,30 @@ const Faslu = () => {
             })
         )
     }
+
+    const addToList = (keys,i,value)=>{
+        setTemplate(
+            (prev)=>produce(prev,(draft)=>{
+                switch (keys.length){
+                    case 1:
+                        draft[keys[0]].splice(i,0,value);
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]].splice(i,0,value);
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
+                        break;
+                    default:
+                        break;
+                }
+            })
+        )
+
+    }
     return (
         <div className="resume-page">
             <div className="left-section">
@@ -101,22 +125,19 @@ const Faslu = () => {
                     <TextField
                         value={city}
                         onChange={value=>changeState(["address","city"],value)}
-                    /><br/>
-                    <input
-                        type="text"
-                        className="header-part-address-section"
+                    />
+                    <TextField
                         value={pin}
-                        onChange={(e)=>changeState(["address","pin"],e.target.value)}></input><br/>
-                    <input
-                        type="text"
-                        className="header-part-address-section"
+                        onChange={value=>changeState(["address","pin"],value)}
+                    /><br/>
+                    <TextField
                         value={email}
-                        onChange={(e)=>changeState(["address","email"],e.target.value)}></input><br/>
-                    <input
-                        type="text"
-                        className="header-part-address-section"
+                        onChange={value=>changeState(["address","email"],value)}
+                    /><br/>
+                    <TextField
                         value={phone}
-                        onChange={(e)=>changeState(["address","phone"],e.target.value)}></input><br/>
+                        onChange={(value)=>changeState(["address","phone"],value)}
+                    /><br/>                        
                 </div>
                 </div>
                 <div className="description-section">
@@ -128,10 +149,11 @@ const Faslu = () => {
                 <div className="block-section">
                     <h3>Key Skills</h3>
                     <ul>
-                        {skill.map((value,i)=><li key={i}>
-                        <textarea
-                        value={value}
-                        onChange={(e)=>changeState(["skill",i],e.target.value)}></textarea></li>)}      
+                        {skill.map((value,i)=><li className="list-section" key={i}>
+                        <TextArea
+                            value={value}
+                            onChange={(value)=>changeState(["skill",i],value)}
+                        /></li>)}      
                     </ul>
                 </div>
             </div>
@@ -142,33 +164,38 @@ const Faslu = () => {
                     return(
                         <div className="right-section">
                             <div className="heading-section">
-                                <span>
-                                <input
-                                    type="text"
-                                    value={role}
-                                    onChange={(e)=>changeState(["exp",i,"role"],e.target.value)}>
-                                </input>
-                                </span><br/>
+                                <span className='sub-heading-section'>
+                                <TextField
+                                value={role}
+                                onChange={(value)=>changeState(["exp",i,"role"],value)}
+                                />
+                                </span>
                                 <div>
-                                <input
+                                {/* <input
                                     type="text"
                                     value={companyName}
-                                    onChange={(e)=>changeState(["exp",i,"companyName"],e.target.value)}></input>
-                                |<input
-                                    type="text"
+                                    onChange={(e)=>changeState(["exp",i,"companyName"],e.target.value)}></input> */}
+                                <TextField
+                                    value={companyName}
+                                    onChange={(value)=>changeState(["exp",i,"companyName"],value)}
+                                />
+                                |<TextField
                                     value={startingDate}
-                                    onChange={(e)=>changeState(["exp",i,"startingDate"],e.target.value)}></input>
-                                -<input
-                                    type="text"
+                                    onChange={(value)=>changeState(["exp",i,"startingDate"],value)}
+                                />
+                                -<TextField
                                     value={endingDate}
-                                    onChange={(e)=>changeState(["exp",i,"endingDate"],e.target.value)}></input></div>
+                                    onChange={(value)=>changeState(["exp",i,"endingDate"],value)}
+                                /></div>
                             </div>
                             <ul>
-                                {detailList.map((value,i)=><li className ="list-section" key={i}>
-                                <textarea
+                                {detailList.map((value,j)=><li className ="list-section" 
+                                key={Math.random()}>
+                                <TextArea
                                     value={value}
-                                    onChange={(e)=>changeState(["exp",0,"detailList",i],e.target.value)}>
-                                </textarea>
+                                    onChange={(value)=>changeState(["exp",i,"detailList",j],value)}
+                                    addToList={(value)=>addToList(["exp",i,"detailList"],j + 1,value)}
+                                />
                                 </li>)}
                             </ul>
                         </div>
@@ -180,16 +207,21 @@ const Faslu = () => {
                         return(
                             <div className="two-side-section">
                                 <div className="one-side">
-                                    <input
+                                    {/* <input
                                     type="text"
                                     value={joiningDate}
                                     onChange={(e)=>changeState(["education",i,"joiningDate"],e.target.value)}></input>
+                                     */}
                                     
-                                    <input
-                                    type="text"
-                                    value={endingDate}
-                                    onChange={(e)=>changeState(["education",i,"endingDate"],e.target.value)}></input>
-                                    <br/> 
+                                    <TextField
+                                        value={joiningDate}
+                                        onChange={(value)=>changeState(["education",i,"joiningDate"],value)}
+                                    />
+                                    <TextField
+                                        value={endingDate}
+                                        onChange={(value)=>changeState(["education",i,"endingDate"],value)}
+                                    />
+                                    
                                 </div>
                                 <div className="two-side">
                                     <input 
