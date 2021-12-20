@@ -12,7 +12,7 @@
     color: #58585b;
     font-size: 0.9em;
 }
-.resume-page input{
+.resume-page input,textarea{
     border: none;
     outline: none;
 }

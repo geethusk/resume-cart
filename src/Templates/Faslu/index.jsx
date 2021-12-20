@@ -19,10 +19,19 @@ const Faslu = () => {
             endingDate:"Present",
             companyName:"Jim's Widget Factory, Plano, TX",
             role:"Human Resources Manager",
-            detailList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-            "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-            "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-            "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+            detailList:[
+                {id:1,
+                 value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                },
+                {id:2,
+                value: "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                },
+                {id:3,
+                value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                },
+                {id:4,
+                value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+                }
             ]
         },
         {
@@ -30,10 +39,19 @@ const Faslu = () => {
             endingDate:"January 2016",
             companyName:"Jim's Widget Factory, Plano, TX",
             role:"Human Resources Associate",
-            detailList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-            "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-            "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-            "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+            detailList:[
+                {id:1,
+                 value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                },
+                {id:2,
+                value: "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                },
+                {id:3,
+                value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                },
+                {id:4,
+                value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+                }
             ]
         }
         ],
@@ -64,6 +82,9 @@ const Faslu = () => {
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]] = value;
                         break;
+                    case 5:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]] = value;
+                        break;
                     default:
                         break;
                 }
@@ -87,6 +108,9 @@ const Faslu = () => {
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
                         break;
+                    case 5:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]][keys[5]].splice(i,0,value);
+                        break;
                     default:
                         break;
                 }
@@ -101,16 +125,20 @@ const Faslu = () => {
                 <div className="logo-area">{logo}
                 </div>
                 <div className="resume-name">
-                    <input
+                    {/* <input
                     type="text"
                     value={name}
-                    onChange={(e)=>changeState(["name"],e.target.value)}></input>
+                    onChange={(e)=>changeState(["name"],e.target.value)}></input> */}
+                    <TextField
+                        value={name}
+                        onChange={value=>changeState(["name"],value)}    
+                    />
                 </div>
                 <div className="resume-profession">
-                    <input
-                    type="text"
-                    value={designation}
-                    onChange={(e)=>changeState(["designation"],e.target.value)}></input>
+                    <TextField
+                        value={designation}
+                        onChange={value=>changeState(["designation"],value)}    
+                    />
                 </div>
                 <div className="header-part-address-section"> 
                     {/* <input
@@ -189,12 +217,13 @@ const Faslu = () => {
                                 /></div>
                             </div>
                             <ul>
-                                {detailList.map((value,j)=><li className ="list-section" 
-                                key={Math.random()}>
+                                {detailList.map(({value,id},j)=><li className ="list-section" 
+                                key={id}>
                                 <TextArea
                                     value={value}
-                                    onChange={(value)=>changeState(["exp",i,"detailList",j],value)}
+                                    onChange={(value)=>changeState(["exp",i,"detailList",j,"value"],value)}
                                     addToList={(value)=>addToList(["exp",i,"detailList"],j + 1,value)}
+                                    length={detailList.length}
                                 />
                                 </li>)}
                             </ul>
@@ -224,20 +253,28 @@ const Faslu = () => {
                                     
                                 </div>
                                 <div className="two-side">
-                                    <input 
-                                    type="text"
-                                    value={course}
-                                    onChange={(e)=>changeState(["education",i,"course"],e.target.value)}></input><br/>
-                                    <input 
+                                    <TextField
+                                        value={course}
+                                        onChange={(value)=>changeState(["education",i,"course"],value)}
+                                    /><br/>
+                                    {/* <input 
                                     type="text"
                                     value={collegeName}
                                     onChange={(e)=>changeState(["education",i,"collegeName"],e.target.value)}></input>
-                                    <br/>
+                                    <br/> */}
+                                    <TextField
+                                        value={collegeName}
+                                        onChange={(value)=>changeState(["education",i,"collegeName"],value)}
+                                    /><br/>
                                     {awards.map((value,i)=><div key={i}>
-                                    <input 
+                                    {/* <input 
                                     type="text"
                                     value={value}
-                                    onChange={(e)=>changeState(["education",i,"awards",i],e.target.value)}></input>
+                                    onChange={(e)=>changeState(["education",i,"awards",i],e.target.value)}></input> */}
+                                    <TextField
+                                        value={value}
+                                        onChange={(value)=>changeState(["education",i,"awards",i],value)}
+                                    /><br/>
                                     </div>)}
                                 </div>
                             </div>

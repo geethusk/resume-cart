@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const TextArea = ({value,onChange,className,addToList=null}) => {
+const TextArea = ({value,onChange,className,addToList=null,length}) => {
 
     const ref = useRef(null);
     useEffect(() => {
@@ -9,8 +9,8 @@ const TextArea = ({value,onChange,className,addToList=null}) => {
         ref.current.style.height = ref.current.scrollHeight + "px";
         if(value.split("\n").length > 1){
             if(addToList !== null){
-                onchange(value.split("\n")[0]);
-                addToList(value.split("\n")[1]);
+                onChange(value.split("\n")[0]);
+                addToList({id:length+1,value:value.split("\n")[1]});
             }
         }
     },[value]);
@@ -20,6 +20,7 @@ const TextArea = ({value,onChange,className,addToList=null}) => {
             value={value}
             onChange={(e)=>onChange(e.target.value)}
             className={className}
+            autoFocus
         />
     )
 }
