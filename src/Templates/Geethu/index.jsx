@@ -94,12 +94,12 @@ const Geethu = () => {
         <div className="main-wrapper">
             <div className="body-wrapper">
                 <div className="left-page-inner">
-                    <div className="name1"><TextField value={name} onChange={value=>changeState(["name"],value)}
+                    <div className="name1"><TextField className="title-name" value={name} onChange={value=>changeState(["name"],value)}
                        /><br/>  
                         <h2 className="job1">{designation}</h2>
                     </div>
                     <div className="address-section1">
-                       <TextField className="address1"
+                       <TextField  className="address1"
                        value={address.street}
                        onChange={value=>changeState(["address","street"],value)}
                        /><br/>
@@ -111,7 +111,7 @@ const Geethu = () => {
                        value={address.phone}
                        onChange={value=>changeState(["address","phone"],value)}
                        /><br/>
-                        <TextField type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                        <TextArea type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
                         <TextArea  className="bio1"
@@ -130,8 +130,16 @@ const Geethu = () => {
                         return(
                             <>
                             <div className="second-head-wrapper1">
-                            <div className="second-head-1"><TextField value={job} onChange={value=>changeState(["experience",i,"job"],value)}/></div>
-                            <div className="second-small-head-1"><TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />| <TextField value={startingdate} onChange={value=>changeState(["experience",i,"startingdate"],value)}  />-<TextField value={endingdate}onChange={value=>changeState(["experience",i,"endingdate"],value)} />
+                            <div className="second-head-1">
+                            <TextField value={job} onChange={value=>changeState(["experience",i,"job"],value)}/>
+                            <br/>
+                           <TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />
+                           <br/>
+                           </div>
+                           <div className="second-small-head-1">
+                            <TextField value={startingdate} onChange={value=>changeState(["experience",i,"startingdate"],value)}  />
+                            -
+                            <TextField value={endingdate}onChange={value=>changeState(["experience",i,"endingdate"],value)} /><br/>
                             </div>
                             </div>
                             <ul>
@@ -148,18 +156,18 @@ const Geethu = () => {
                         <>
                             <div className="second-head-wrapper-1">
                             <div className="second-head-1">
-                                <TextField value={qualification}  onChange={value=>changeState(["education",i,"qualification"],value)}
+                                <TextField value={qualification} onChange={value=>changeState(["education",i,"qualification"],value)}
                                 /><br/>
                                 <TextField value={college} onChange={value=>changeState(["education",i,"college"],value)}
                                 /><br/>
                                 </div>
                             <div className="second-small-head-1">
-                                <TextField value={joiningdate} onChange={value=> changeState(["education",i,"joiningdate"],value)}/>| <TextField value={graduationdate} onChange={value=> changeState(["education",i,"graduationdate"],value)}/><br/>
+                                <TextField value={joiningdate} onChange={value=> changeState(["education",i,"joiningdate"],value)}/>|<TextField value={graduationdate} onChange={value=> changeState(["education",i,"graduationdate"],value)}/><br/>
                             </div>
                             </div> 
                             <ul>
 
-                                <li className="licolor1"><TextField value={academicdetails} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
+                                <li className="licolor1"><TextArea value={academicdetails} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
                             </li>
                 
                             </ul> 
