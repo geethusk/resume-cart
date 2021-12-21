@@ -20,6 +20,7 @@ textarea{
     resize: none;
     width: 100%;
     overflow: hidden;
+    padding: 0;
 }
 .left-section{
     background-color: #f2f4f4;
@@ -78,9 +79,12 @@ textarea{
     top:13px;
 
 }
-/* .list-section::marker{
-    font-size: 10px;
-} */
+.list-section{
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
 li{
     position: relative;
     list-style: none;
@@ -94,8 +98,13 @@ li::before{
     display: block;
     border-radius: 50%;
     left: -15px;
-    top:12px;
+    top:7px;
 }
+.close-button{
+    
+    padding: 5px;
+}
+
 .two-side-section{
     display: grid;
     grid-template-columns: 1fr 3fr;

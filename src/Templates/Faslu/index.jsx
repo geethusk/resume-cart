@@ -12,7 +12,20 @@ const Faslu = () => {
         designation:"Sales Associate",
         address:{street:"4759 Sunnydale Lane" ,city:"Plano, TX,",pin:"75071",email:"email@youremail.com",phone:"(469) 385-2948"},
         bio:"Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed.",
-        skill:["Detail oriented","Well-versed in Texas employment law","Excellent written and oral communication skills","Develops positive workplace relationships"],
+        skill:[
+            {id:1,
+             value:"Detail oriented"
+            },
+            {id:2,
+            value:"Well-versed in Texas employment law"
+            },
+            {id:3,
+            value:"Excellent written and oral communication skills"
+            },
+            {id:4,
+             value:"Develops positive workplace relationships"
+            }
+        ],
         exp:[
             {
             startingDate:"January 2016",
@@ -66,6 +79,18 @@ const Faslu = () => {
     const{theme,logo,name,designation,address,bio,skill,exp,education}=template;
     const{street,city,pin,email,phone}=address;
 
+
+    const getLogo = (name)=>{
+        let nameList =name.split(" ")
+        if (nameList.length < 2 || !nameList[1]){
+            return nameList[0][0]
+        }
+        if(!nameList[nameList.length-1]){
+            return nameList[0][0]+nameList[nameList.length - 2][0];
+        }
+        return nameList[0][0]+nameList[nameList.length -1 ][0];
+
+    }
     const changeState =(keys,value) =>{
         setTemplate(
             (prev)=>produce(prev,(draft)=>{
@@ -148,7 +173,7 @@ const Faslu = () => {
         <div className="resume-page">
             <div className="left-section">
                 <div className="header-part-section">
-                <div className="logo-area">{logo}
+                <div className="logo-area">{getLogo(name)}
                 </div>
                 <div className="resume-name">
                     {/* <input
@@ -203,10 +228,16 @@ const Faslu = () => {
                 <div className="block-section">
                     <h3>Key Skills</h3>
                     <ul>
-                        {skill.map((value,i)=><li className="list-section" key={i}>
+                        {skill.map(({value,id},i)=><li className="list-section" key={id}>
                         <TextArea
                             value={value}
-                            onChange={(value)=>changeState(["skill",i],value)}
+                            length={skill.length}
+                            onChange={(value)=>changeState(["skill",i,"value"],value)}
+                            addToList={
+                                (value)=>{
+                                    addToList(["skill"],i + 1,value)}
+                            }
+                            deleteList={value=>deleteList(["skill"],i,value)}
                         /></li>)}      
                     </ul>
                 </div>
@@ -255,7 +286,9 @@ const Faslu = () => {
                                         deleteList(["exp",i,"detailList"],j,value)
                                     }
                                     length={detailList.length}
+                                   
                                 />
+                                <button className="close-button"onClick={()=>deleteList(['exp',i,'detailList'],j,"")}>X</button>
                                 </li>)}
                             </ul>
                         </div>
@@ -298,16 +331,24 @@ const Faslu = () => {
                                         value={collegeName}
                                         onChange={(value)=>changeState(["education",i,"collegeName"],value)}
                                     /><br/>
-                                    {awards.map((value,i)=><div key={i}>
-                                    {/* <input 
-                                    type="text"
-                                    value={value}
-                                    onChange={(e)=>changeState(["education",i,"awards",i],e.target.value)}></input> */}
-                                    <TextField
+                                    <ul>
+                                        {awards.map((value,i)=><li key={i}>
+                                        {/* <input 
+                                        type="text"
                                         value={value}
-                                        onChange={(value)=>changeState(["education",i,"awards",i],value)}
-                                    /><br/>
-                                    </div>)}
+                                        onChange={(e)=>changeState(["education",i,"awards",i],e.target.value)}></input> */}
+                                            <TextField
+                                            value={value}
+                                            onChange={(value)=>changeState(["education",i,"awards",i],value)}
+                                            // addToList={
+                                                // (value)=>{
+                                                    // addToList(["education",i,"awards"],i + 1,value)}
+                                            // }
+                                            // deleteList={value=>deleteList(["education",i,"awards"],i,value)}
+                                            />
+                                        </li>)}
+                                    </ul>
+                                    
                                 </div>
                             </div>
                         )}    
