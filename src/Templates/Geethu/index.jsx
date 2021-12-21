@@ -14,12 +14,7 @@ const Geethu = () => {
         city:" Plano, TX, 75071",
         email:"email@youremail.com",
         phone:"(469) 385-2948"},
-        bio:`Human resources generalist with 8 years of experience in HR,
-        including hiring and terminating, 
-        disciplining employees and helping department managers improve employee performance. 
-        Worked with labor unions to negotiate compensation packages for workers.
-       Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards.
-        Worked with OSHA to ensure that all safety regulations are followed.`,
+        bio:"Human resources generalist with 8 years of experience in HR,including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers.Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards.Worked with OSHA to ensure that all safety regulations are followed.",
         experience:[
             {
                 job:"Human Resources Manager",
@@ -70,14 +65,31 @@ const Geethu = () => {
                 joiningdate:"September 2007",
                 graduationdate:"May 2011",
                 academicdetails:[
-                    "Academic Awardee of AY 2007-2008"]  
+                    {
+                        id:1,
+                        value:"Academic Awardee of AY 2007-2008", 
+                    }
+                ]
+                    
             }],
         skills:[
-                 "Detail oriented",
-                 " Well-versed in Texas employment law",
-                 "Excellent written and oral communication skills",
-                 "Develops positive workplace relationships"
-                        ] 
+                {
+                    id:1,
+                    value:"Detail oriented",
+                },
+                {
+                    id:2,
+                    value:" Well-versed in Texas employment law",
+                },
+                {
+                    id:3,
+                    value:"Excellent written and oral communication skills",
+                },
+                {
+                    id:4,
+                    value: "Develops positive workplace relationships",
+                }
+         ] 
 
     })
     const addToList=(keys,i,value)=>{
@@ -95,6 +107,34 @@ const Geethu = () => {
                         break;
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
+                        break;
+                    default:
+                        break;
+                }
+            })
+        )
+    }
+
+    const deleteList=(keys,i,value)=>{
+        if(i===0)return
+        tempSetState(
+            (prev)=>produce(prev,(draft)=>{
+                switch(keys.length){
+                    case 1:
+                        draft[keys[0]].splice(i,1);
+                        draft[keys[0]][i-1].value+=value;
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]].splice(i,1);
+                        draft[keys[0]][keys[1]][i-1].value+=value;
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                        draft[keys[0]][keys[1]][keys[2]][i-1].value+=value;
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1);
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value+=value;
                         break;
                     default:
                         break;
@@ -145,16 +185,16 @@ const Geethu = () => {
                        <TextField  className="address1"
                        value={address.street}
                        onChange={value=>changeState(["address","street"],value)}
-                       /><br/>
+                       />
                        <TextField className="city1"
                        value={address.city}
                        onChange={value=>changeState(["address","city"],value)}
-                       /><br/>
+                       />
                         <TextField className="phone"
                        value={address.phone}
                        onChange={value=>changeState(["address","phone"],value)}
-                       /><br/>
-                        <TextArea type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                       />
+                        <TextArea  className="textarea" type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
                         <TextArea  className="bio1"
@@ -164,7 +204,12 @@ const Geethu = () => {
                     </div>
                     <div className="key-skills1">Key Skills</div>
                         <ul>
-                           {skills.map((value,i)=><li className="licolor1" key={i}><TextField value={value} onChange={value=>changeState(["skills",i],value)}/></li>)}
+                           {skills.map(({value,id},i)=><li className="licolor1" key={id}><TextField value={value} 
+                           onChange={value=>changeState(["skills",i],value)}
+                           addToList={value=>addToList(["skills"],i+1,value)}
+                           deleteList={value=>deleteList(["skills"],i,value)}
+                           length={skills.length}
+                           /></li>)}
                         </ul>     
                 </div>
                 <div className="right-page-inner">
@@ -174,29 +219,70 @@ const Geethu = () => {
                             <>
                             <div className="second-head-wrapper1">
                             <div className="second-head-1">
-                            <TextField className="textfield" value={job} onChange={value=>changeState(["experience",i,"job"],value)}/>
+                            
+                            <TextField  value={job} onChange={value=>changeState(["experience",i,"job"],value)}/>
                             <br/>
-                           <TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />
-                           <br/>
-                           </div>
-                           <div className="second-small-head-1">
-                            <TextField value={startingdate} onChange={value=>changeState(["experience",i,"startingdate"],value)}  />
-                            -
-                            <TextField value={endingdate}onChange={value=>changeState(["experience",i,"endingdate"],value)} /><br/>
                             </div>
+                           
+                            
+                            
+                           
+                            <div className="second-head-des-1">
+                           <TextField value={company} onChange={value=>changeState(["experience",i,"company"],value)} />
+                           
+                           
+                           {/* <br/> */}
+                           
+                           
+                            <TextField className="textfield" value={startingdate} onChange={value=>changeState(["experience",i,"startingdate"],value)}  />
+                            -
+                            <TextField className="textfield"  value={endingdate}onChange={value=>changeState(["experience",i,"endingdate"],value)} />
+                            </div>
+                            
+                            
                             </div>
                             <ul>
+                            <button className="delete-button"
+                                   onClick={()=>{
+                                            deleteList(["experience"],i,"")
+                                        }
+                                    }
+                                >X</button>
                                 {jobdetails.map(({value,id},j)=><li className="licolor1"
                                 key={id}>
                                 <TextArea value={value} onChange={value=>changeState(["experience",i,"jobdetails",j,"value"],value)}
                                 addToList={(value)=>addToList(["experience",i,"jobdetails"],j+1,value)}
                                 length={jobdetails.length}
+                                
+                                deleteList={
+                                    (value)=>{
+                                        deleteList(["experience",i,"jobdetails"],j,value)
+                                    }
+                                }
                                 />
+                                {/* <button className="delete-button"
+                                onClick={()=>deleteList(["experience",i,"jobdetails"],j,"")}>
+                                X</button> */}
                                 </li>)}    
                             </ul> </>
         
                         )
                     })}
+                    <button className="add-button"
+                            onClick={()=>{
+                                addToList(["experience"],experience.length,{
+                                    job:"your profession",
+                                    company:"organization",
+                                    startingdate:"starting date",
+                                    endingdate:"ending date",
+                                    jobdetails:[
+                                        {id: 1,
+                                         value: "",
+                                        }
+                                     ]  
+                                     })
+                            }}
+                            >+</button>
                 </div> 
                 <div className="education-section">
                     <h2 className="education1">Education</h2>
@@ -205,19 +291,27 @@ const Geethu = () => {
                         <>
                             <div className="second-head-wrapper-1">
                             <div className="second-head-1">
-                                <TextField value={qualification} onChange={value=>changeState(["education",i,"qualification"],value)}
+                                <TextField className="textfield" value={qualification} onChange={value=>changeState(["education",i,"qualification"],value)}
                                 /><br/>
-                                <TextField value={college} onChange={value=>changeState(["education",i,"college"],value)}
+                                <TextField className="textfield" value={college} onChange={value=>changeState(["education",i,"college"],value)}
                                 /><br/>
                                 </div>
                             <div className="second-small-head-1">
-                                <TextField value={joiningdate} onChange={value=> changeState(["education",i,"joiningdate"],value)}/>|<TextField value={graduationdate} onChange={value=> changeState(["education",i,"graduationdate"],value)}/><br/>
+                                <TextField className="textfield" value={joiningdate} onChange={value=> changeState(["education",i,"joiningdate"],value)}/>|<TextField value={graduationdate} onChange={value=> changeState(["education",i,"graduationdate"],value)}/><br/>
+                                <button className="delete-button"
+                                    onClick={()=>{
+                                        deleteList(["education"],i)}
+                                    }   
+                                >X</button>
+                            
                             </div>
                             </div> 
                             <ul>
 
-                                <li className="licolor1"><TextArea value={academicdetails[0]} onChange={value=> changeState(["education",i,"academicdetails"],value)}/>
-                            </li>
+                                
+                                {academicdetails.map(({value,id},j)=><li className="licolor1" key={j}>
+                                <TextArea value={value} onChange={value=> changeState(["education",i,"academicdetails",j],value)}/>
+                            </li>)}
                 
                             </ul> 
                         </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect,useRef} from "react"
 
-const TextArea = ({onChange,value,className,addToList=null,length}) => {
+const TextArea = ({onChange,value,className,addToList=null,length,deleteList}) => {
     const ref=useRef(null);
 
     useEffect(() => {
@@ -23,6 +23,10 @@ const TextArea = ({onChange,value,className,addToList=null,length}) => {
                 ref={ref}
                 value={value} 
                 onChange={(e)=>onChange(e.target.value)}
+                onKeyDown={e=>{
+                    if(e.code="Backspace" && e.target.selectionStart===0)
+                    deleteList(value);
+                }}
                 autoFocus
             />
         </div>

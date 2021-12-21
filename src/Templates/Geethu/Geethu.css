@@ -1,3 +1,11 @@
+
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+
+
+
 .body-wrapper{
     display:grid;
     grid-template-columns: 1.5fr 3fr;
@@ -5,6 +13,11 @@
     height:100%;
     box-shadow:lightgrey 4px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.body-wrapper input,textarea{
+    outline: none;
+    border:none;
+
 }
 body{
     margin:auto;
@@ -25,18 +38,45 @@ textarea{
     width:100%;
     overflow:hidden;
     outline:none;
+    background: transparent;
+    font-size:17px;
+}
+input{
+    background: transparent;
 }
 
 .left-page-inner{
-    padding-left:2px;
+    padding:20px;
     background-color: lightgrey;
     box-shadow:grey 5px;
+    padding-top: 50px;
+}
+
+.add-button{
+    background-color: green;
+    color:white;
+    margin:10px;
+    display: flex;
+    margin-left: auto;
+    padding: 7px;
+    
+
+    
+
+}
+.delete-button{
+    background-color: red;
+    color:white;
+    display: flex;
+    margin-right: 10px;
+    margin-left: auto;
 }
 .right-page-inner{
     padding-left: 5px;
     margin-top:20px;
+    padding:15px;
 }
-.textfield .title-name .address-section1 .city1{
+.textfield{
     resize:none;
     outline:none;
     width:100%;
@@ -46,12 +86,33 @@ li{
     list-style: none;
 }
 .second-head-wrapper1{
-    display:flex;
+    
     /* padding-top:5px; */
     margin:5px;
+    gap: 5px;
 }
+.second-head-1 {
+    font-weight: bold;
+    
+    
+} 
+.second-head-1 input{
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.second-head-des-1{
+    padding-top: 7px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+
 .second-small-head-1{
-    display:flex;;
+    display:flex;
 }
 
 li::before{
@@ -71,4 +132,14 @@ li::before{
 .key-skills1{
     font-weight: bold;
     margin-top:5px;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.address-section1{
+    display: grid;
+    padding-top: 20px;
+
+}
+.experience1{
+    font-size: 25px;
 }
