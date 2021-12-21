@@ -272,9 +272,35 @@ const Vishnu = () => {
                 </div>
                 <div className="right-section">
                     <h3>Professional Experience</h3>
+                    <button  
+                       onClick={()=>{
+                            console.log();
+                        addToList(["professionalexp"],professionalexp.length,{
+                            ...professionalexp[0],
+                            roleDetails:[{...professionalexp[0].roleDetails[0]}]
+                        }
+                        // {
+                        //     startingDate: "January 2016",
+                        //     endingDate:"present",
+                        //     role:"Human Resources Manager",
+                        //     companyName:"Jim's Widget Factory, Plano, TX",
+                        //     roleDetails:[ 
+                        //                   {id: 1,
+                        //                      value: "Implement effective company policies to ensure that all practices comply with labor and employment regulations"
+                        //                     }]
+                        // }
+                        )
+                            
+                              
+                    }}
+                    
+                    >Addexp</button>  
                     {professionalexp.map(({startingDate,endingDate,role,companyName,roleDetails},i)=>{
                         return(
                           <>
+                            <button
+                                onClick={()=>deleteList(["professionalexp"],i)}
+                            >delete</button>
                             <div className="right-side-section">
                                <div className="time-period">
                                    <TextField  value= {startingDate}
@@ -326,25 +352,12 @@ const Vishnu = () => {
                                         </li>)}                               
                                   </ul>
                                </div>
-                            </div>                          
+                            </div>   
+                                                
                           </>
                         )
                     })}
-                    <div className="right-side-section">
-                        <div className="time-period">
-                            March 2015 - <br/>January 2016
-                        </div>
-                        <div className="exp-brief">
-                            <h3>Human Resources Manager<br/>
-                            <i>Jim's Widget Factory, Plano, TX</i>
-                            </h3>
-                            <ul className="exp-list">
-                                <li>Implement effective company policies to ensure that all practices comply with labor and employment regulations</li>
-                                <li>Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment</li>
-                                <li>Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies</li>  
-                            </ul>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             
