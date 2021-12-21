@@ -113,6 +113,37 @@ const Raeez = () => {
         )
     }
 
+    const deleteList=(keys,i,value)=>{
+        if(i===0) return
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,1);
+                            draft[keys[0]][i-1].value+=value;
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,1);
+                            draft[keys[0]][keys[1]][i-1].value+=value;
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                            draft[keys[0]][keys[1]][keys[2]][i-1].value+=value;
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1); 
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value+=value; 
+
+                            break;
+                       
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
+
     const{theme,logo,name,designation,address,bio,profexp,Education,skills}=template;
     const{street,pincode,gmail,phonenumber,city}=address;
     return (
@@ -245,6 +276,7 @@ const Raeez = () => {
                     value={value}
                   onChange={value=>changeState(["profexp",i,"detailsList",j,"value"],value)}
                   addToList={value=>addToList(["profexp",i,"detailsList"],j+1,value)}
+                  deleteList={ value=>deleteList(["profexp",i,"detailsList"],j,value )}
                   length={detailsList.length}/>
                       
                

@@ -15,7 +15,7 @@
 }
 .main-body3 input,textarea{
     border: none;
-    outline: none;
+    /* outline: none; */
     color: inherit;
        
 }
