@@ -108,8 +108,34 @@ const Faslu = () => {
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
                         break;
-                    case 5:
-                        draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]][keys[5]].splice(i,0,value);
+                    default:
+                        break;
+                }
+            })
+        )
+
+    }
+
+    const deleteList = (keys,i,value)=>{
+        if(i===0)return
+        setTemplate(
+            (prev)=>produce(prev,(draft)=>{
+                switch (keys.length){
+                    case 1:
+                        draft[keys[0]].splice(i,1);
+                        draft[keys[0]][i-1].value += value;
+                        break;
+                    case 2:
+                        draft[keys[0]][keys[1]].splice(i,1);
+                        draft[keys[0]][keys[1]][i-1].value += value;
+                        break;
+                    case 3:
+                        draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                        draft[keys[0]][keys[1]][keys[2]][i-1].value += value;
+                        break;
+                    case 4:
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1);
+                        draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value += value;
                         break;
                     default:
                         break;
@@ -198,6 +224,7 @@ const Faslu = () => {
                                 onChange={(value)=>changeState(["exp",i,"role"],value)}
                                 />
                                 </span>
+                                <button onClick={()=>deleteList(['exp'],i,"")}>REMOVE</button>
                                 <div>
                                 {/* <input
                                     type="text"
@@ -223,25 +250,35 @@ const Faslu = () => {
                                     value={value}
                                     onChange={(value)=>changeState(["exp",i,"detailList",j,"value"],value)}
                                     addToList={(value)=>addToList(["exp",i,"detailList"],j + 1,value)}
+                                    deleteList={value=>
+                                        // console.log(value);
+                                        deleteList(["exp",i,"detailList"],j,value)
+                                    }
                                     length={detailList.length}
                                 />
                                 </li>)}
                             </ul>
                         </div>
                         )})}
-                </div>
+                        <button onClick={()=>addToList(["exp"],exp.length,{ 
+                            startingDate:"March 2015 ",
+                            endingDate:"January 2016",
+                            companyName:"Jim's Widget Factory, Plano, TX",
+                            role:"Human Resources Associate",
+                            detailList:[
+                                {id:1,
+                                value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                                },
+                            ]
+                        })}>ADD</button>
+                        </div>
+                
                 <div className="template-block">
                     <h3>Education</h3>
                     {education.map(({joiningDate,endingDate,course,collegeName,awards},i)=>{
                         return(
                             <div className="two-side-section">
                                 <div className="one-side">
-                                    {/* <input
-                                    type="text"
-                                    value={joiningDate}
-                                    onChange={(e)=>changeState(["education",i,"joiningDate"],e.target.value)}></input>
-                                     */}
-                                    
                                     <TextField
                                         value={joiningDate}
                                         onChange={(value)=>changeState(["education",i,"joiningDate"],value)}
@@ -257,11 +294,6 @@ const Faslu = () => {
                                         value={course}
                                         onChange={(value)=>changeState(["education",i,"course"],value)}
                                     /><br/>
-                                    {/* <input 
-                                    type="text"
-                                    value={collegeName}
-                                    onChange={(e)=>changeState(["education",i,"collegeName"],e.target.value)}></input>
-                                    <br/> */}
                                     <TextField
                                         value={collegeName}
                                         onChange={(value)=>changeState(["education",i,"collegeName"],value)}
@@ -278,9 +310,7 @@ const Faslu = () => {
                                     </div>)}
                                 </div>
                             </div>
-
-                        )}
-                        
+                        )}    
                     )}    
                 </div>
             </div>

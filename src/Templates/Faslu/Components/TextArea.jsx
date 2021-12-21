@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const TextArea = ({value,onChange,className,addToList=null,length}) => {
+const TextArea = ({value,onChange,className,addToList=null,length,deleteList}) => {
 
     const ref = useRef(null);
     useEffect(() => {
@@ -12,6 +12,7 @@ const TextArea = ({value,onChange,className,addToList=null,length}) => {
                 onChange(value.split("\n")[0]);
                 addToList({id:length+1,value:value.split("\n")[1]});
             }
+        
         }
     },[value]);
     return (
@@ -19,6 +20,13 @@ const TextArea = ({value,onChange,className,addToList=null,length}) => {
             ref= {ref}
             value={value}
             onChange={(e)=>onChange(e.target.value)}
+            // onClick={(e)=>onChange(e.target.value)}
+            onKeyDown={e=>{
+                // console.log(e,e.target.selectionStart)
+                if(e.code === "Backspace" && e.target.selectionStart === 0){
+                    deleteList(value)
+                }
+            }}
             className={className}
             autoFocus
         />
