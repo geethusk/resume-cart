@@ -1,5 +1,8 @@
 import { useState } from "react"
 import "./vishnu.css"
+import produce from "immer"
+import TextField from "./Component/TextField"
+import TextArea from "./Component/TextArea"
 const Vishnu = () => {
     const[templateState,settemplateState] = useState({
         theme:["#5e8e66"],
@@ -29,11 +32,20 @@ const Vishnu = () => {
             endingDate:"present",
             role:"Human Resources Manager",
             companyName:"Jim's Widget Factory, Plano, TX",
-            roleDetails:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                         "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-                         "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                        "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-                        ]
+            roleDetails:[ 
+                          {id: 1,
+                             value: "Implement effective company policies to ensure that all practices comply with labor and employment regulations"
+                            },
+                           {id: 2,
+                            value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"
+                            },
+                          {id: 3,
+                            value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies"
+                          },
+                          {id: 4,
+                            value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+                          },
+                          ]
         }]
     })
 
@@ -42,53 +54,175 @@ const Vishnu = () => {
     const{street,city,pincode,email,phone} = address;
     
 
-    const onChange = (action)=>{
-        switch(action.type){
-            case "baseValue":
-                return settemplateState(prev=>({
-                    ...prev,
-                    [action.key] : action.value
-                }))
-        }
-    }
-    
+    // const onChange = (action)=>{
+    //     switch(action.type){
+    //         case "baseValue":
+    //             return settemplateState(prev=>({
+    //                 ...prev,
+    //                 [action.key] : action.value
+    //             }))
+    //     }
+    // }
 
+
+    const addToList = (keys,i,value)=>{
+        settemplateState(
+            (prev)=>{
+                return produce(prev,(draft)=>{
+                    switch (keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,0,value);
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,0,value);
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                            break;
+                       
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);
+                            break;
+                        default:
+                            break;
+                    }
+                })
+            }
+        )
+    }
+
+    const deleteList = (keys,i,value)=>{
+        if(i===0)return
+        settemplateState(
+            (prev)=>{
+                return produce(prev,(draft)=>{
+                    switch (keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,1);
+                            draft[keys[0]][i-1].value += value;
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,1);
+                            draft[keys[0]][keys[1]][i-1].value += value;                        
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                            draft[keys[0]][keys[1]][keys[2]][i-1].value += value;
+                            break;
+                       
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1);
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value += value;
+                            break;
+                        default:
+                            break;
+                    }
+                })
+            }
+        )
+    }
+
+    const changeState = (keys,value)=>{
+        settemplateState(
+            (prev)=>{
+                return produce(prev,(draft)=>{
+                    switch (keys.length){
+                        case 1:
+                            draft[keys[0]] = value;
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]] = value;
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]] = value;
+                            break;
+                       
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]] = value;
+                            break;
+                        case 5:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]] = value;
+                            break;
+                        default:
+                            break;
+                    }
+                })
+            }
+        )
+    }
 
     return (
         <div className="body-container5">
             <header>
                 <div className="name-section">
-                    <input 
-                        className="name" 
+                    <div className="name" >
+                        {/* <input 
+                        
                         value={name} 
-                        text="text"
+                        type="text"
                         onChange={(e)=>{
-                            onChange({
-                                type: "baseValue",
-                                key: "name",
-                                value: e.target.value
-                            })
+                            changeState(["name"],e.target.value)
                         }}
+                        /> */}
+                        <TextField
+                            onChange={value=>changeState(["name"],value)}
+                            value={name}
                         />
-                    <input 
+                    </div>
+                    <div>
+                        {/* <input 
                         className="designation"
                         value={designation}
                         type="text"
-                        onChange={(e)=>settemplateState(prev=>({
-                            ...prev,
-                            designation: e.target.value
-                        }))}
-                    />
+                        onChange={(e)=>{
+                            changeState(["designation"],e.target.value)
+                        }}
+                        /> */}
+                        <TextField
+                            onChange={value=>changeState(["designation"],value)}
+                            value={designation}
+                        />
+                    </div>
                 </div>
                 <div className="address-section">
-                        {street}<br/>
-                        {city},{" "}{pincode}<br/>
-                        {email}<br/>
-                        {phone}
+                        <TextField
+                            onChange={value=>{
+                                changeState(["address","street"],value)
+                            }
+                            }
+                            value={street}
+
+                        /><br/>
+                         <TextField value={city}
+                            onChange={(value)=>{
+                                changeState(["address","city"],value)
+                            }}
+
+                         />,{" "}
+                         
+                         <TextField value={pincode}
+                            onChange={(value)=>{
+                                changeState(["address","pincode"],value)
+                            }}
+                          /><br/>
+                         <TextField value={email}
+                            onChange={(value)=>{
+                                changeState(["address","email"],value)
+                            }}
+                        
+                         /><br/>
+                         <TextField  value={phone}
+                            onChange={(value)=>{
+                                changeState(["address","phone"],value)
+                            }}
+                         />
                 </div>
             </header>
             <div className="about">
-                {bio}
+                <TextArea
+                    onChange={value=>changeState(["bio"],value)}
+                    value={bio}
+                />
             </div>
             <div className="more-about">
                 <div className="left-section">
@@ -97,9 +231,25 @@ const Vishnu = () => {
                             {education.map(({qualification,college,graduationyear},i)=>{
                                 return(
                                     <>
-                                    <div className="edu-college">{qualification}</div>
-                                    <p className="coll-description">{college}{" "} |<br/>
-                                    {graduationyear}</p>
+                                    <div className="edu-college">
+                                       <TextField value={qualification}
+                                            onChange={(value)=>{
+                                                changeState(["education",i,"qualification"],value)
+                                            }}
+                                       />
+                                    </div>
+                                    <div className="coll-description">
+                                        <TextArea value={college}
+                                            onChange={(value)=>{
+                                                changeState(["education",i,"college"],value)
+                                            }}
+                                        />{" "} <br/>
+                                        <TextField value={graduationyear}
+                                           onChange={(value)=>{
+                                            changeState(["education",i,"graduationyear"],value)
+                                        }}
+                                        />
+                                    </div>
                                     </>
                                 )
                                 }
@@ -109,7 +259,14 @@ const Vishnu = () => {
                     <div className="skill-section">
                         <h3 className="skill">Key Skills</h3>
                         <ul className="list-orient">
-                            {skills.map((val,i)=><li key={i}>{val}</li>)}
+                            {skills.map((val,i)=>
+                            <li key={i}>
+                                <TextArea value={val} 
+                                  onChange={(value)=>{
+                                      changeState(["skills",i],value)
+                                  }}
+                                />
+                            </li>)}
                         </ul>
                     </div>
                 </div>
@@ -117,23 +274,60 @@ const Vishnu = () => {
                     <h3>Professional Experience</h3>
                     {professionalexp.map(({startingDate,endingDate,role,companyName,roleDetails},i)=>{
                         return(
-                            <>
+                          <>
                             <div className="right-side-section">
-                        <div className="time-period">
-                          {startingDate} -<br/> {endingDate}
-                        </div>
-                        <div className="exp-brief">
-                            <h3>{role}<br/>
-                            <i>{companyName}</i>
-                            </h3>
-                            <ul className="exp-list">
-                                {roleDetails.map((val,i)=><li key={i}>{val}</li>)}                               
-                            </ul>
-                        </div>
-                    </div>
-                    
-                            
-                            </>
+                               <div className="time-period">
+                                   <TextField  value= {startingDate}
+                                     onChange={(value)=>{
+                                     changeState(["professionalexp",i,"startingDate"],value)
+                                     }}
+                                   /> -<br/> 
+                                   <TextField  value={endingDate}
+                                     onChange={(value)=>{
+                                     changeState(["professionalexp",i,"endingDate"],value)
+                                     }}
+                                   />
+                               </div>
+                               <div className="exp-brief">
+                                  <h3>
+                                    <TextField  value={role}
+                                       onChange={(value)=>{
+                                       changeState(["professionalexp",i,"role"],value)
+                                     }}
+                                    /><br/>
+                                    <i>
+                                      <TextField  value={companyName}
+                                        onChange={(value)=>{
+                                        changeState(["professionalexp",i,"companyName"],value)
+                                      }}  
+                                     />
+                                    </i>
+                                  </h3>
+                                  <ul className="exp-list">
+                                     {roleDetails.map(({value,id},j)=><li key={id}>
+                                          <TextArea value={value}
+                                            onChange={(value)=>{
+                                                console.log(value);
+                                            changeState(["professionalexp",i,"roleDetails",j,"value"],value)
+                                           }}
+                                            addToList={(value)=>addToList(["professionalexp",i,"roleDetails"],j+1,value)}
+                                            
+                                            deleteList={
+                                                (value)=>{
+                                                    console.log(value);
+                                                    deleteList(["professionalexp",i,"roleDetails"],
+                                                    j,
+                                                    value
+                                                    )
+                                                }
+                                            }
+                                            length = {roleDetails.length}
+                                        />
+                                        </li>)}                               
+                                  </ul>
+                               </div>
+                            </div>                          
+                          </>
                         )
                     })}
                     <div className="right-side-section">
@@ -147,8 +341,7 @@ const Vishnu = () => {
                             <ul className="exp-list">
                                 <li>Implement effective company policies to ensure that all practices comply with labor and employment regulations</li>
                                 <li>Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment</li>
-                                <li>Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies</li>
-                                
+                                <li>Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies</li>  
                             </ul>
                         </div>
                     </div>
