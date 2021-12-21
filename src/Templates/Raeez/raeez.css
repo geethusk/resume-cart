@@ -4,6 +4,9 @@
     font-family: "Libre Baskerville",serif;
 
 }
+#root{
+    padding: 10px;
+}
 .main-body3{
     height:auto;
     /* max-width: 1240px; */
@@ -114,10 +117,14 @@
 .second-head-wrapper-3{
     display: flex;
     gap: 20px;
+    padding-top: 10px;
 }
 .secondheaddis-3{
     padding-top: 7px;
-    font-size: 12px
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 .licolor-3::marker{
     color:rgb(121, 53, 160);
@@ -142,4 +149,23 @@
 
 li{
     padding: 5px;
+}
+.button-3{
+   
+    display: flex;
+    justify-content: end;
+
+}
+.button-3 button{
+    background-color: green;
+    color: white;
+    border: none;
+  
+}
+.closebutton-3{
+    background-color: red;
+    margin-left: auto;
+    color: white;
+    border: none;
+   
 }
