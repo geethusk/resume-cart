@@ -309,9 +309,33 @@ const Geethu = () => {
                             <ul>
 
                                 
-                                {academicdetails.map(({value,id},j)=><li className="licolor1" key={j}>
-                                <TextArea value={value} onChange={value=> changeState(["education",i,"academicdetails",j],value)}/>
+                                {academicdetails.map(({value,id},j)=><li className="licolor1" key={id}>
+                                <TextArea value={value} onChange={value=> changeState(["education",i,"academicdetails",j,"value"],value)}
+                                addToList={(value)=>addToList(["education",i,"academicdetails"],j+1,value)}
+                                
+                                deleteList={
+                                    (value)=>{
+                                        deleteList(["education",i,"academicdetails"],j,value)
+                                    }
+                                }
+                                length={academicdetails.length}/>
                             </li>)}
+                            <button className="add-button"
+                            onClick={()=>{
+                                addToList(["education"],education.length,{
+                                    qualification:"Bachelor of Arts in Business",
+                                    college:"The University of Texas at Dallas ",
+                                    joiningdate:"September 2007",
+                                    graduationdate:"May 2011",
+                                    academicdetails:[
+                                    {
+                                        id:1,
+                                        value:"type something...", 
+                                    }
+                                     ]  
+                                     })
+                            }}
+                            >+</button>
                 
                             </ul> 
                         </>
