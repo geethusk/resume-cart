@@ -179,8 +179,8 @@ const Geethu = () => {
                 <div className="left-page-inner">
                     <div className="name1"><TextField className="title-name" value={name} onChange={value=>changeState(["name"],value)}
                        /><br/>  
-                        <h2 className="job1">{designation}</h2>
-                    </div>
+                        <div  className="job1"><TextField className="title-name" value={designation} onChange={value=>changeState(["designation"],value)}/></div>
+                        </div>
                     <div className="address-section1">
                        <TextField  className="address1"
                        value={address.street}
