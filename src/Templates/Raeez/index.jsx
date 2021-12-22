@@ -19,12 +19,16 @@ const Raeez = () => {
             jobdesignation:"Human Resources Manager",
         
         
-            detailsList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-               "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"]
+            detailsList:[
+            {id:1,value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+            {id:2,value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"},
+            {id:3,value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies"},
+            {id:4,value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"},
 
-        },
+            
+        ],
+    },
+           
         {
             startingdate:"january 2016",
             endingdate:"March 2016",
@@ -32,26 +36,55 @@ const Raeez = () => {
             jobdesignation:"Human Resources Associate",
         
         
-            detailsList:["Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-               "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"]
-
+            detailsList:[
+                {id:1,
+                value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+                {id:2,value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"},
+               {id:3,value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies"},
+               {id:4,value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"},
+            ]
         }
+            
     ],
         Education:[{
             collegeName:"The University of Texas at Dalla",
             graduationyear:"September 2007",
            
             course:"Bachelor of Arts in Business",
-            academicawards:["Academic Awardee of AY 2007-2008"]
+            academicawards:[
+                { id:1,
+                   value:"Academic Awardee of AY 2007-2008"}]
         }],
-        skills:["Detail oriented",
-            "Well-versed in Texas employment law",
-            "Excellent written and oral communication skill",
-            "Develops positive workplace relationships"
+        skills:[
+            {
+            id:1,
+            value:"Detail oriented",
+            },
+            {
+            id:2,
+            value:"Well-versed in Texas employment law",
+            },
+            {
+            id:3,
+            value:"Excellent written and oral communication skill",
+            },
+            {
+            id:4,
+            value:"Develops positive workplace relationships"
+            },
         ]
     })
+
+    const getLogo=(name)=>{
+        let nameList=name.split(" ");
+        if(nameList.length <2 || !nameList[1]){      
+            return nameList[0][0];
+        }
+        if(!nameList[nameList.length-1]){
+            return nameList[0][0]+nameList[nameList.length - 2][0];
+        }
+        return nameList[0][0]+nameList[nameList.length-1][0];
+    }
 
     const changeState=(keys,value)=>{
         setTemplate(
@@ -69,7 +102,66 @@ const Raeez = () => {
                         case 4:
                             draft[keys[0]][keys[1]][keys[2]][keys[3]]=value;   
                             break;
+                        case 5:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][keys[4]]=value;  
+                            break;    
 
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
+
+    const addToList=(keys,i,value)=>{
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,0,value);
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,0,value);
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);   
+                            break;
+                       
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
+
+    const deleteList=(keys,i,value)=>{
+        if(i===0) return               //0th index will not close
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,1);
+                            draft[keys[0]][i-1].value+=value;
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,1);
+                            draft[keys[0]][keys[1]][i-1].value+=value;
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                            draft[keys[0]][keys[1]][keys[2]][i-1].value+=value;
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1); 
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value+=value; 
+
+                            break;
+                       
                         default:
                              break;  
                     }          
@@ -83,29 +175,29 @@ const Raeez = () => {
     return (
         <div className="main-body3">
             <div className="header-section-3">
-                <div className="logo-3">{logo}</div>
+                <div className="logo-3">{getLogo(name)}</div>
                 <div className=" name-3" >
                 <TextField
                       onChange={value=>changeState(["name"],value)}
                       value={name}
-                     />
+                />
                     {/* <input type="text"
                     value={name}
                     className=" name-3"
                     onChange={(e)=>changeState(["name"],e.target.value)}/> */}
                   <h2 className="job-3">
-                  <TextField
+                <TextField
                       onChange={value=>changeState(["designation"],value)}
                       value={designation}
-                     />
+                />
                       {/* <input type="text" className="job-3" value={designation}
                    onChange={(e)=>changeState(["designation"],e.target.value)}/> */}
                   </h2></div>
                  <div className="headerdiscription-3">
-                     <TextField
+                <TextField
                       onChange={value=>changeState(["address","street"],value)}
                       value={street}
-                     />
+                />
 
                     {/* <input type="text"
                   value= {street}
@@ -122,20 +214,20 @@ const Raeez = () => {
                    onChange={(e)=>changeState(["address","pincode"],e.target.value)}
                    /> */}
                    <div className="raeez-3">
-                   <TextField
+                <TextField
                       onChange={value=>changeState(["address","city"],value)}
                       value={city}
-                     />
+                />
                      <TextField
                       onChange={value=>changeState(["address","pincode"],value)}
                       value={pincode}
                      />
                      </div>
                    
-                   <TextField
+                <TextField
                       onChange={value=>changeState(["address","gmail"],value)}
                       value={gmail}
-                     />
+                />
                    {/* <input type="text"
                    value={gmail}
                    className="headerdiscription-3"
@@ -145,10 +237,10 @@ const Raeez = () => {
                     value={phonenumber}
                     className="headerdiscription-3"
                     onChange={(e)=>changeState(["address","phonenumber"],e.target.value)}/><br/> */}
-                    <TextField
+                <TextField
                       onChange={value=>changeState(["address","phonenumber"],value)}
                       value={phonenumber}
-                     />
+                />
                 </div>
             </div>
             <div className="body-container-3">
@@ -160,7 +252,8 @@ const Raeez = () => {
                       value={bio}
                       />
                    </div>
-               <div className="firsthead-3">Professional Experience</div>
+               <div className="firsthead-3">Professional Experience </div>
+               
                {profexp.map(({startingdate,endingdate,companyName,jobdesignation,detailsList},i)=>{
                    return(
                        <>
@@ -170,7 +263,8 @@ const Raeez = () => {
                <TextField
                       onChange={value=>changeState(["profexp",i,"jobdesignation"],value)}
                       value={jobdesignation}
-                     />
+                    />
+                     
                    {/* <input type="text"
                     className="secondhead-3"
                     value={jobdesignation}
@@ -197,26 +291,55 @@ const Raeez = () => {
                       onChange={value=>changeState(["profexp",i,"endingdate"],value)}
                       value={endingdate}
                      />
+                     <button onClick={
+                         ()=>
+                         deleteList(["profexp"],i
+                         )
+                     }
+                     className="closebutton-3"> X </button>
                        {/* <input type="text"
                        value={endingdate}
                        onChange={(e)=>changeState(["profexp",i,"endingdate"],e.target.value)}/> */}
-                       </div>
+                    </div>
                
                </div>
                 
                <ul>
-               {detailsList.map((val,j)=><li className="licolor-3" key={j}>
-                   {/* <TextArea
-                  onChange={value=>changeState(["profexp",i,"detailsList",j],value)}
-                      value={val}/> */}
-                    <textarea 
+               {detailsList.map(({value,id},j)=><li className="licolor-3" key={id}>
+                   <TextArea
+                    value={value}
+                  onChange={value=>changeState(["profexp",i,"detailsList",j,"value"],value)}
+                  addToList={value=>addToList(["profexp",i,"detailsList"],j+1,value)}
+                  deleteList={ value=>deleteList(["profexp",i,"detailsList"],j,value )}
+                  length={detailsList.length}/>
+                   
+                      
+               
+                    {/* {/* <textarea 
                    value={val}
-                   onChange={(e)=>changeState(["profexp",i,"detailsList",j],e.target.value)}/> 
-                   </li>)}
+                   onChange={(e)=>changeState(["profexp",i,"detailsList",j],e.target.value)}/>  */}
+                   </li>
+                  )} 
+                 
                 </ul>
-               </>
+                </>
                 )}
+              
                    )}
+                   <div className="button-3">
+                     <button onClick={
+                         ()=>
+                             addToList(["profexp"],profexp.length,{
+                                startingdate: "january 2016",
+                                endingdate:"present",
+                                companyName:"Jim's Widget Factory, Plano, TX",
+                                jobdesignation:"Human Resources Manager",
+                                detailsList:[
+                                    {id:1,
+                                    value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+                                ] 
+                            })
+                        } >Add New</button></div>
                {/* <div className="second-head-wrapper-3">
                <div className="secondhead-3">Human Resources Associate</div>
                   <div className="secondheaddis-3">Jim's Widget Factory, Plano, TX |  | March 2015 - January 2016</div>
@@ -235,35 +358,60 @@ const Raeez = () => {
               
             {Education.map(({ collegeName,graduationyear,course,academicawards},i)=>{
                      return(
-                         <>
+                        <>
                 <div className="second-head-wrapper-3">
                   <div className="secondhead-3">
-                      <input type="text" value={course}  className="secondhead-3"
-                      onChange={(e)=>changeState(["Education",i,"course"],e.target.value)}/>
+                      <TextField value={course}  className="secondhead-3"
+                      onChange={(value)=>changeState(["Education",i,"course"],value)}/>
                       </div>
-                  <div className="secondheaddis-3"><input type="text" value={collegeName} 
-                  onChange={(e)=>changeState(["Education",i,"collegeName"],e.target.value)}/>
-                  | <input type="text" value={graduationyear}  
-                  onChange={(e)=>changeState(["Education",i,"graduationyear"],e.target.value)}/>
+                  <div className="secondheaddis-3"><TextField value={collegeName} 
+                  onChange={(value)=>changeState(["Education",i,"collegeName"],value)}/>
+                  | <TextField value={graduationyear}  
+                  onChange={(value)=>changeState(["Education",i,"graduationyear"],value)}/>
+                  <button onClick={()=>
+                      deleteList(["Education"],i)}
+                      className="closebutton-3">X</button>
                   </div>
                
                 </div>
                <ul>
-                  {academicawards.map((val,j)=><li className="licolor-3" key={j}>
-                      <textarea
-                      value={val}
-                      onChange={(e)=>changeState(["Education",i,"academicawards",j],e.target.value)}/>
+                  {academicawards.map(({value,id},j)=><li className="licolor-3" key={id}>
+                      <TextArea
+                      value={value}
+                      onChange={value=>changeState(["Education",i,"academicawards",j,"value"],value)}
+                      addToList={value=>addToList(["Education",i,"academicawards"],j+1,value)}
+                      deleteList={value=>deleteList(["Education",i,"academicawards"],j,value)}
+                      length={academicawards.length}
+                      />
                     </li>)}
                </ul>
                </>
+               
             )}
             )}
+            <div className="button-3">
+                     <button onClick={
+                         ()=>
+                             addToList(["Education"],Education.length,{                          
+                                    collegeName:"The University of Texas at Dalla",
+                                    graduationyear:"September 2007",
+                                    course:"Bachelor of Arts in Business",
+                                    academicawards:[
+                                    { id:1,
+                                       value:"Academic Awardee of AY 2007-2008"}
+                                    ]
+                             })}
+                        >Add New</button></div>
                
                <div className="firsthead-3">Key Skills</div>
                <ul>
-                   {skills.map((val,i)=><li className="licolor-3" key={i}>
-                   <textarea value={val}  
-                   onChange={(e)=>changeState(["skills",i],e.target.value)}/></li>)}
+                   {skills.map(({value,id},i)=><li className="licolor-3" key={id}>
+                   <TextArea value={value}  
+                   onChange={(value)=>changeState(["skills",i,"value"],value)}
+                   addToList={value=>addToList(["skills"],i+1,value)}
+                   deleteList={value=>deleteList(["skills"],i,value)}
+                   length={skills.length}
+                   /></li>)}
                   
                </ul>
 
