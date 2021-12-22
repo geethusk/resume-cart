@@ -1,0 +1,171 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+    font-family: "Libre Baskerville",serif;
+
+}
+#root{
+    padding: 10px;
+}
+.main-body3{
+    height:auto;
+    /* max-width: 1240px; */
+    width: 827px;
+    margin: auto;
+    border: solid 1px black;
+    padding: 20px;
+
+}
+.main-body3 input,textarea{
+    border: none;
+    /* outline: none; */
+    color: inherit;
+       
+}
+  textarea{
+    resize: none;
+    width: 100%;
+   overflow: hidden;
+   font-size: 15px;
+   
+ }
+
+.logo-3{
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(152, 25, 226);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 2.10em;
+    border: none;
+    margin: 20px;
+}
+.header-section-3{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 5px;
+    
+}
+.raeez-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.name-3{
+    margin-top: 20px;
+    font-size: 2.25em;
+    color: rgb(152, 25, 226);
+    font-weight: bold;
+
+}
+.name-3 input{
+    font-size:40px;
+}
+.job-3 input{
+    font-size: 25px;
+}
+.job-3{
+    font-size: 1.25rem;
+    color:black;
+    padding-top: 5px;;
+}
+.headerdiscription-3{
+     margin-top: 20px; 
+    color: rgb(152, 25, 226);
+    
+
+}
+.headerdiscription-3 input{
+    font-size: 16px;
+    display: grid;
+}
+
+.body-des-3{
+    padding-bottom: 15px;
+    font-size: 15px;
+}
+
+.body-container-3{
+    padding: 10px 0;
+    line-height: 20px;
+}
+.firsthead-3{
+    border-bottom: 2px solid rgb(152, 25, 226) ;
+    color:rgb(152, 25, 226);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.125rem;
+    font-size: 25px;
+    padding-top: 10px;
+    font-weight:bold;
+
+
+}
+.secondhead-3{
+    font-size:20px;
+    color:black;
+     font-weight: bold; 
+    line-height: 150%;
+    margin-bottom: 0.225rem;
+
+}
+.secondhead-3 input{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.second-head-wrapper-3{
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+}
+.secondheaddis-3{
+    padding-top: 7px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.licolor-3::marker{
+    color:rgb(121, 53, 160);
+}
+.licolor-3{
+ position: relative;
+ list-style: none;
+}
+
+.licolor-3::before{
+    width:7px;
+    height: 7px;
+    content: "";
+    background-color: rgb(121, 53, 160);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: -15px;
+    top: 12px ;
+
+}
+
+li{
+    padding: 5px;
+}
+.button-3{
+   
+    display: flex;
+    justify-content: end;
+
+}
+.button-3 button{
+    background-color: green;
+    color: white;
+    border: none;
+  
+}
+.closebutton-3{
+    background-color: red;
+    margin-left: auto;
+    color: white;
+    border: none;
+   
+}

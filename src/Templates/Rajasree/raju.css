@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Libre Baskerville",serif;
+}
+.main_body4{
+    height: auto;
+    width: 827px;
+    padding: 20px;
+    border: solid 1px black;
+    margin: auto;
+}
+.logo4{
+    background-color: rgb(222, 133, 53);
+    border-radius: 50%;
+    width: 5.25rem;
+    height: 5.25rem;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-family: "Libre Baskerville",serif;
+    font-weight: bold;
+    font-size: 2em;
+    
+
+}
+.header_section4{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+}
+/* .logo4{
+    margin: 20px;
+} */
+/* .namesection{
+    display: grid;
+} */
+.name4{
+    /* margin-top: 10px; */
+    font-size: 2.25em;
+    font-weight: bold;
+    color: rgb(222, 133, 53);
+}
+
+.job4{
+    font-size: 1.25rem;
+    color: black;
+    /* padding-top: 5px; */
+}
+.des4{
+   display: grid;
+   justify-content: end;
+}
+.headerdescription4{
+    /* margin-top: 10px; */
+    /* padding-left: 20px; */
+    display: grid;
+    
+
+}
+.headerdescription4 input{
+    
+    color: #de8535;
+
+}
+.main_body4 input, textarea{
+    border: none;
+    /* outline: none; */
+
+}
+textarea{
+    resize: none;
+    width: 100%;
+    overflow: hidden;
+    font-size: 15px;
+    
+     
+}
+.firstdes4{
+    padding:20px 0 ;
+}
+.firsthead4{
+    
+    font-size: 20px;
+    color: #de8535;
+    border-bottom: solid 1px #de8535;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.125rem;
+    
+}
+.secondheadwrapper4{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+   
+}
+.headerdescription4{
+   
+    color: #de8535;
+    font-size: 16px;
+
+
+}
+.secondhead4 input{
+    font-size: 20px;
+    font-weight: bold;
+}
+.secondsmallhead4{
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    font-size: 12px;
+    width: 100%;
+    
+}
+ul{
+padding-left: 20px;
+}
+
+/* .licolor::marker{
+    color: #de8535;
+} */
+.licolor{
+    color: black;
+    padding-bottom: 10px;
+    position: relative;
+    list-style: none;
+}
+.licolor::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color:#de8535 ;
+    position: absolute;
+    top: 12px;
+    left: -15px;
+    border-radius: 50%;
+    display: block;
+    
+}
+.new4 {
+    
+    display: flex;
+    justify-content: end;
+    
+}
+.new4 button{
+    background-color: green;
+    color: white;
+}
+
+
+.close4{
+    background-color:red;
+    color: white;
+    margin-left: auto;
+   
+}
+button{
+    border: none;
+
+}
