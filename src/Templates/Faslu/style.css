@@ -5,12 +5,22 @@
 }
 .resume-page{
     display: grid;
-    grid-template-columns: 1.5fr 2.8sfr;
+    grid-template-columns: 1.5fr 3fr;
     max-width: 827px;
     margin: auto;
     border:1px solid black;
     color: #58585b;
     font-size: 0.9em;
+}
+.resume-page input,textarea{
+    border: none;
+    outline: none;
+}
+textarea{
+    resize: none;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
 }
 .left-section{
     background-color: #f2f4f4;
@@ -36,6 +46,7 @@
 .header-part-address-section{
     line-height: 1.5;
     padding-top:15px;
+    
 }
 .description-section{
     border-left:5px solid #58585b;
@@ -55,9 +66,45 @@
     padding-bottom: 15px;
     line-height: 140%;
 }
-.list-section::marker{
-    font-size: 10px;
+.sub-heading-section::before{
+    content: "";
+    width:5px;
+    height: 5px;
+    background-color:#58585b;
+    position: absolute;
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    left: -15px;
+    top:13px;
+
 }
+.list-section{
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+li{
+    position: relative;
+    list-style: none;
+}
+li::before{
+    content: "";
+    width:5px;
+    height: 5px;
+    background-color:#58585b;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    left: -15px;
+    top:7px;
+}
+.close-button{
+    
+    padding: 5px;
+}
+
 .two-side-section{
     display: grid;
     grid-template-columns: 1fr 3fr;
