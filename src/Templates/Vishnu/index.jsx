@@ -4,8 +4,18 @@ import produce from "immer"
 import TextField from "./Component/TextField"
 import TextArea from "./Component/TextArea"
 const Vishnu = () => {
+
+    const colorThemeList = ["red",
+                            "blue",
+                            "green",
+                            "yellow",
+                            "orange",
+                            "brown"
+                        ]
+
+
     const[templateState,settemplateState] = useState({
-        theme:["#5e8e66"],
+        theme:["red","blue"],
         name: "VISHNU R NAIR",
         designation: "Full_Stack developer",
         address:{
@@ -161,7 +171,28 @@ const Vishnu = () => {
     }
 
     return (
-        <div className="body-container5">
+    <>
+        <div className="theme-selector-list5">
+            {colorThemeList.map((value,i)=>
+                <button 
+               
+                className={`theme-selection theme-selection-${value}`}
+                onClick={
+                    ()=>{
+                        changeState(["theme",0],value)
+                    }
+                }
+                key={i}
+                ></button>
+                
+        
+            )}
+                
+                
+                
+
+        </div>
+        <div className={`body-container5 body-container5-${theme[0]} `}>
             <header>
                 <div className="name-section">
                     <div className="name" >
@@ -402,6 +433,7 @@ const Vishnu = () => {
             </div>
             
         </div>
+    </>
     )
 }
 
