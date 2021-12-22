@@ -6,7 +6,17 @@
 
 .body-container5 input{
     border: none;
-    outline: none;
+    /* outline: none; */
+    color: inherit;
+    font-size: inherit;
+    background-color: transparent;
+}
+.body-container5 textarea{
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    border: none;
+    background:none
 }
 
 header{
@@ -91,4 +101,20 @@ header{
 }
 .right-section > h3{
     color: #5e8e66;
+}
+
+li::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: -15px;
+    top: 12px;
+}
+li{
+    position: relative;
+    list-style: none;
 }
