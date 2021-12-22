@@ -340,10 +340,10 @@ const Faslu = () => {
                                             <TextField
                                             value={value}
                                             onChange={(value)=>changeState(["education",i,"awards",i],value)}
-                                            // addToList={
-                                                // (value)=>{
-                                                    // addToList(["education",i,"awards"],i + 1,value)}
-                                            // }
+                                            addToList={
+                                                (value)=>{
+                                                    addToList(["education",i,"awards"],i + 1,value)}
+                                            }
                                             // deleteList={value=>deleteList(["education",i,"awards"],i,value)}
                                             />
                                         </li>)}
