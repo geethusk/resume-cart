@@ -3,7 +3,21 @@
     margin:0;
     box-sizing: border-box;
 }
-
+.theme-selector-list-1{
+    display:grid;
+    grid-auto-flow: column;
+    height:50px;
+    gap:2px;
+    cursor:pointer;
+}
+:root{
+    --blue:lightgrey;
+    --white:white;
+    --turquoise:turquoise;
+    --violet:violet;
+    --brown:brown;
+    --green:rgb(66, 238, 80);
+}
 
 
 .body-wrapper{
@@ -14,12 +28,50 @@
     box-shadow:lightgrey 4px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border:solid 2px black;
+    color:var(--page-text-color);
 }
+
+.body-wrapper-blue *{
+    --left-page-color:var(--blue);
+}
+.body-wrapper-turquoise *{
+    --left-page-color:var(--turquoise);
+}
+.body-wrapper-violet *{
+    --left-page-color:var(--violet);
+    
+}
+.body-wrapper-brown *{
+    --left-page-color:var(--brown);
+    --left-page-text-color:white;
+}
+.body-wrapper-green *{
+    --left-page-color:var(--green);
+}
+
+.theme-selector-11-blue{
+    background-color: var(--blue);
+}
+
+.theme-selector-11-turquoise{
+    background-color: var(--turquoise);
+}
+.theme-selector-11-violet{
+    background-color: var(--violet);
+}
+.theme-selector-11-brown{
+    background-color: var(--brown);
+}
+.theme-selector-11-green{
+    background-color: var(--green);
+}
+
+
+
+
 .body-wrapper input,textarea{
     outline: none;
     border:none;
-
-
 }
 body{
     margin:auto;
@@ -33,7 +85,7 @@ body{
     font-weight: bold;
 }
 .job1{
-    font-size: 18px;
+    font-size: 12px;
 }
 textarea{
     resize: none;
@@ -47,12 +99,19 @@ input{
     background: transparent;
 }
 
+
 .left-page-inner{
     padding:20px;
-    background-color: lightgrey;
+    background-color:var(--left-page-color);
     box-shadow:grey 5px;
     padding-top: 50px;
 }
+
+.left-page-inner *{
+    color: var(--left-page-text-color);    
+
+}
+
 
 .add-button{
     background-color: green;
@@ -61,10 +120,6 @@ input{
     display: flex;
     margin-left: auto;
     padding: 7px;
-    
-
-    
-
 }
 .delete-button{
     background-color: red;
@@ -94,14 +149,11 @@ li{
     gap: 5px;
 }
 .second-head-1 {
-    font-weight: bold;
-    
-    
+    font-weight: bold;   
 } 
 .second-head-1 input{
     font-size: 18px;
     font-weight: bold;
-
 }
 .second-head-des-1{
     padding-top: 7px;
@@ -145,3 +197,25 @@ li::before{
 .experience1{
     font-size: 25px;
 }
+
+
+
+/* .theme-selector-11{
+    color:white;
+}
+.theme-selector-12{
+    
+    color:white;
+}
+.theme-selector-13{
+   
+    color:black;
+}
+.theme-selector-14{
+  
+    color:white;
+}
+.theme-selector-15{
+  
+    color:white;
+} */

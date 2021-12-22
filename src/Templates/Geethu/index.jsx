@@ -6,8 +6,16 @@ import TextArea from "./Components/TextArea"
 
 
 const Geethu = () => {
+    const colorThemeList=[
+        "blue",
+        "turquoise",
+        "violet",
+        "brown",
+        "green"
+    ]
+    
     const[tempState,tempSetState]=useState({
-        theme:['#58585b'],
+        theme:['#58585b','black'],
         name:"Chris Candidate",
         designation:"Sales Associate",
         address:{street:"4759 Sunnydale Lane",
@@ -174,12 +182,27 @@ const Geethu = () => {
     const{theme,name,designation,address,bio,experience,education,skills}=tempState;
 
     return (
-        <div className="main-wrapper">
-            <div className="body-wrapper">
+        <>
+        <div className="theme-selector-list-1">
+            {colorThemeList.map((value,i)=>
+            <div
+            className={`theme-selector-11-${value}`}
+            onClick={
+                ()=>{
+                    changeState(["theme",0],value)
+                }
+            }
+            key={i}
+            ></div>)}
+            
+        </div>
+            <div className={`body-wrapper body-wrapper-${theme[0]}`}>
                 <div className="left-page-inner">
                     <div className="name1"><TextField className="title-name" value={name} onChange={value=>changeState(["name"],value)}
                        /><br/>  
-                        <div  className="job1"><TextField className="title-name" value={designation} onChange={value=>changeState(["designation"],value)}/></div>
+                        <div  className="job1">
+                            <TextField className="title-name" value={designation} onChange={value=>changeState(["designation"],value)}/>
+                        </div>
                         </div>
                     <div className="address-section1">
                        <TextField  className="address1"
@@ -344,7 +367,7 @@ const Geethu = () => {
 
             </div>
         </div>            
-    </div>
+    </>
     )
 }
 
