@@ -4,8 +4,15 @@ import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 const Raeez = () => {
+    const colorThemeList= [ "violet",
+        "indigo",
+        "blue",
+        "green",
+        "red",
+        "gray",
+        "brown"]
     const[template,setTemplate]=useState({
-        theme:['#17a9e4','red'],
+        theme:['violet','red'],
         logo:"CC",
         name:"Raeez Mohammed",
         designation:"Full Stack developer",
@@ -173,7 +180,21 @@ const Raeez = () => {
     const{theme,logo,name,designation,address,bio,profexp,Education,skills}=template;
     const{street,pincode,gmail,phonenumber,city}=address;
     return (
-        <div className="main-body3">
+        <>
+        <div className="theme-selector-list3">
+            {colorThemeList.map((value,i)=>
+            <div 
+            className={`theme-selector3-${value}`}
+            onClick={
+                ()=>{
+                    changeState(["theme",0],value)
+                }
+            }
+            key={i}
+            ></div>)}
+
+        </div>
+        <div className={`main-body3 main-body3-${theme[0]}`}>
             <div className="header-section-3">
                 <div className="logo-3">{getLogo(name)}</div>
                 <div className=" name-3" >
@@ -339,7 +360,7 @@ const Raeez = () => {
                                     value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
                                 ] 
                             })
-                        } >Add New</button></div>
+                        } >+</button></div>
                {/* <div className="second-head-wrapper-3">
                <div className="secondhead-3">Human Resources Associate</div>
                   <div className="secondheaddis-3">Jim's Widget Factory, Plano, TX |  | March 2015 - January 2016</div>
@@ -401,7 +422,7 @@ const Raeez = () => {
                                        value:"Academic Awardee of AY 2007-2008"}
                                     ]
                              })}
-                        >Add New</button></div>
+                        >+</button></div>
                
                <div className="firsthead-3">Key Skills</div>
                <ul>
@@ -419,6 +440,7 @@ const Raeez = () => {
                
             </div>
         </div>
+        </>
     )
 }
 
