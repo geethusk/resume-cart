@@ -8,7 +8,7 @@ const Faslu = () => {
     const colorThemeList =[ "blue",
                             "gray",
                             "red",
-                            "green",
+                            "AntiqueWhite",
                             "brown",
                             "yellow",
                             ]
@@ -197,7 +197,7 @@ const Faslu = () => {
                 <div className="header-part-section2">
                 <div className="logo-area2">{getLogo(name)}
                 </div>
-                <div className="resume-name">
+                <div className="resume-name2">
                     {/* <input
                     type="text"
                     value={name}
@@ -213,7 +213,7 @@ const Faslu = () => {
                         onChange={value=>changeState(["designation"],value)}    
                     />
                 </div>
-                <div className="header-part-address-section"> 
+                <div className="header-part-address-section2"> 
                     {/* <input
                         type="text"
                         className="header-part-address-section"
@@ -241,13 +241,13 @@ const Faslu = () => {
                     /><br/>                        
                 </div>
                 </div>
-                <div className="description-section">
+                <div className="description-section2">
                     <TextArea
                         value={bio}
                         onChange={value=>changeState(["bio"],value)}
                     />
                 </div>
-                <div className="block-section">
+                <div className="block-section2">
                     <h3>Key Skills</h3>
                     <ul>
                         {skill.map(({value,id},i)=><li className="list-section" key={id}>
@@ -265,19 +265,20 @@ const Faslu = () => {
                 </div>
             </div>
             <div className="right-section">
-                <div className="template-block">
+                <div className="template-block2">
                     <h3>Professional Experience</h3>
                     {exp.map(({startingDate,endingDate,companyName,role,detailList},i)=>{
                     return(
-                        <div className="right-section">
-                            <div className="heading-section">
-                                <span className='sub-heading-section'>
+                        <div className="right-section2">
+                            <div className="heading-section2">
+                                <span className='sub-heading-section2'>
                                 <TextField
                                 value={role}
                                 onChange={(value)=>changeState(["exp",i,"role"],value)}
                                 />
+                                <button classNme="close-button2" onClick={()=>deleteList(['exp'],i,"")}>REMOVE</button>
+
                                 </span>
-                                <button onClick={()=>deleteList(['exp'],i,"")}>REMOVE</button>
                                 <div>
                                 {/* <input
                                     type="text"
@@ -297,7 +298,7 @@ const Faslu = () => {
                                 /></div>
                             </div>
                             <ul>
-                                {detailList.map(({value,id},j)=><li className ="list-section" 
+                                {detailList.map(({value,id},j)=><li className ="list-section2" 
                                 key={id}>
                                 <TextArea
                                     value={value}
@@ -310,7 +311,7 @@ const Faslu = () => {
                                     length={detailList.length}
                                    
                                 />
-                                <button className="close-button"onClick={()=>deleteList(['exp',i,'detailList'],j,"")}>X</button>
+                                <button className="close-button2"onClick={()=>deleteList(['exp',i,'detailList'],j,"")}>X</button>
                                 </li>)}
                             </ul>
                         </div>
@@ -326,9 +327,8 @@ const Faslu = () => {
                                 },
                             ]
                         })}>ADD</button>
-                        </div>
-                
-                <div className="template-block">
+                </div>
+                <div className="template-block2">
                     <h3>Education</h3>
                     {education.map(({joiningDate,endingDate,course,collegeName,awards},i)=>{
                         return(
@@ -371,11 +371,27 @@ const Faslu = () => {
                                             />
                                         </li>)}
                                     </ul>
+                                    <button onClick={()=>deleteList(["education"],i,"")}>REMOVE</button>  
                                     
                                 </div>
+                               
                             </div>
-                        )}    
+                             
+                        )} 
+                        
                     )}    
+                    
+                    <button onClick={()=>addToList(["education"],education.length,{ 
+                            joiningDate:"September 2007",
+                            endingDate:"May 2011",
+                            course:"Bachelor of Arts in Business",
+                            collegeName:"The University of Texas at Dallas",
+                            awards:[
+                                {id:1,
+                                value:"Academic Awardee of AY 2007-2008",
+                                },
+                            ]
+                        })}>ADD</button>
                 </div>
             </div>
            </div>
