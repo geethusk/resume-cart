@@ -22,10 +22,19 @@ const Vishnu = () => {
             college:"College of engineering Trikarippur",
             graduationyear:"May 2011"
         }],        
-        skills:["Detail oriented",
-                "Well-versed in Texas employment law",
-                "Excellent written and oral",
-                "Develops positive workplace relationships"
+        skills:[{id: 1,
+                    value:"Detail oriented"
+                 },
+                 {id: 2,
+                    value:"Well-versed in Texas employment law"
+                 }, 
+                 {id: 3,
+                    value:"Excellent written and oral"
+                 }, 
+                 {id: 4,
+                    value:"Develops positive workplace relationships"
+                 }    
+               
             ],
         professionalexp:[{
             startingDate: "January 2016",
@@ -228,9 +237,28 @@ const Vishnu = () => {
                 <div className="left-section">
                     <div className="education">
                             <h3 className="edu">Education</h3>
+                            <button
+
+ 
+
+
+                             onClick={()=>{
+                            console.log();
+                        addToList(["education"],education.length,{
+                            ...education[0],
+                            
+                        })
+                    }}
+                
+                            
+                            >add edu</button>
                             {education.map(({qualification,college,graduationyear},i)=>{
                                 return(
                                     <>
+                                    <button
+                                    
+                                       onClick={()=>deleteList(["education"],i)}
+                                    >Delete</button>
                                     <div className="edu-college">
                                        <TextField value={qualification}
                                             onChange={(value)=>{
@@ -259,12 +287,24 @@ const Vishnu = () => {
                     <div className="skill-section">
                         <h3 className="skill">Key Skills</h3>
                         <ul className="list-orient">
-                            {skills.map((val,i)=>
-                            <li key={i}>
-                                <TextArea value={val} 
+                            {skills.map(({value,id},i)=><li key={id}>
+                                <TextArea value={value} 
                                   onChange={(value)=>{
-                                      changeState(["skills",i],value)
+                                      changeState(["skills",i,"value"],value)
                                   }}
+                                  addToList={(value)=>addToList(["skills"],i+1,value)}
+
+                                  deleteList={
+                                    (value)=>{
+                                        console.log(value);
+                                        deleteList(["skills"],
+                                        i,
+                                        value
+                                        )
+                                    }
+                                }
+                                length = {skills.length}
+
                                 />
                             </li>)}
                         </ul>
