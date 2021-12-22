@@ -13,16 +13,18 @@
     height:100%;
     box-shadow:lightgrey 4px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border:solid 2px black;
 }
 .body-wrapper input,textarea{
     outline: none;
     border:none;
 
+
 }
 body{
     margin:auto;
     max-width:850px;
-    border:solid 2px black;
+   
 }
 .title-name{
     /* width: 37ch; */
