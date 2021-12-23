@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+
+.container-1-left-box{
+    margin:auto;
+    padding:10px;
+}
+.summary-section{
+    padding: 10px 20px;
+}
+
+.container-parent-1{
+    display:flex;
+    border:solid 2px black;
+    width: 100%;
+    height:100%;
+}
+h1 h2{
+    font-style: normal;
+    font-family:sans-serif;
+}
+.sub-container-1{
+/* .complete-work-container-1{ */
+
+display:grid;
+grid-template-columns: 1fr auto;
+gap:50px;
+padding:10px;
+}
+
+.heading {
+    color:darkblue;
+    border-top: 2px solid grey;
+    border-bottom:2px solid grey;
+    padding:10px;
+    display: flex;
+    gap:2px;
+   
+}
+.address-field,.skill-set{
+    padding:20px;
+}
+/* .education-section{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:50px;
+    padding:10px;
+} */
+.date-section{
+margin:10px 5px;
+}
+
+.name-sec{
+    font-size:20px;
+    font-weight:bold;
+}
+.image-1{
+    width:30px;
+    height:30px;
+    margin:2px
+}
+.container-1-right-box{
+    background-color: rgb(23, 160, 206);
+    width:60%;
+    padding:10px;
+    margin:1px;
+}
+.sub-1{
+    font-size:18px;
+    padding:15px 0
+}
+.image-11{
+    margin-left:12px;
+    width:15px;
+    height:30px;
+    margin-top:10px
+}
+
+.heading-1{
+background-color: darkblue;
+display: flex;
+gap:2px;
+
+
+}
+.title-section-1{
+    color:white;
+    padding:5px;
+
+}
