@@ -6,7 +6,7 @@ const TextField = ({onChange,value,className}) => {
     useEffect(()=>{
         ref.current.style.width=15+"px"
         ref.current.style.width=ref.current.scrollWidth+"px";
-        console.log(ref.current.scrollWidth);
+        // console.log(ref.current.scrollWidth);
     },[value])
     return (
         <div>

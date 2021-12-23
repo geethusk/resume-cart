@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect,useRef} from "react"
 
-const TextArea = ({onChange,value,className,addToList=null,length,deleteList}) => {
+const TextArea = ({onChange,value,className,addToList=null,length,deleteList=()=>{}}) => {
     const ref=useRef(null);
 
     useEffect(() => {
