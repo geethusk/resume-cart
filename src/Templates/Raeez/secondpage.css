@@ -58,6 +58,7 @@ p{
 }
 .company-name-header1-3{
     padding-bottom: 10px;
+    display:flex;
 
 }
 .company-name-header2-3{
@@ -68,7 +69,12 @@ p{
     padding: 30px;
     background-color: brown;
     color: white;
+    
 
+}
+.right-section-3 input{
+    color:white;
+    
 }
 .profilepic-3{
     width: 150px;
@@ -80,18 +86,21 @@ p{
     object-fit: cover;
     object-position: top;
 }
-.contact-description-3{
+.contact-description-3 {
     padding-top: 15px;
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
     color: white;
 }
+
+
 .contact-head-3{
     background-color: white;
     padding: 10px;
     color:black;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 .skill-header-3{
 font-weight: bold;
@@ -127,6 +136,15 @@ ul{
     padding-bottom: 5px;
    
 }
-.education-discription-3{
+/* .education-discription-3 input{
     color:white;
+} */
+
+.closebuttons-3{
+    background-color: red;
+    margin-left: auto;
+    color: white;
+    border: none;
+   
+
 }

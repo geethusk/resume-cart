@@ -80,6 +80,61 @@ const SecondPage = () => {
                 })
         )
     }
+    const addToList=(keys,i,value)=>{
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,0,value);
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,0,value);
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,0,value);
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,0,value);   
+                            break;
+                       
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
+
+    const deleteList=(keys,i,value)=>{
+        if(i===0) return               //0th index will not close
+        setTemplate(
+            (prev)=> produce(prev,(draft)=>{
+                    switch(keys.length){
+                        case 1:
+                            draft[keys[0]].splice(i,1);
+                            draft[keys[0]][i-1].value+=value;
+                            break;
+                        case 2:
+                            draft[keys[0]][keys[1]].splice(i,1);
+                            draft[keys[0]][keys[1]][i-1].value+=value;
+                            break;
+                        case 3:
+                            draft[keys[0]][keys[1]][keys[2]].splice(i,1);
+                            draft[keys[0]][keys[1]][keys[2]][i-1].value+=value;
+                            break;
+                        case 4:
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1); 
+                            draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value+=value; 
+
+                            break;
+                       
+                        default:
+                             break;  
+                    }          
+                    
+                })
+        )
+    }
     const{theme,name,profilebio,jobdesignation,workexp,contact,Education,skills}=template;
     const{place,phone,gmail}=contact;
     return (
@@ -129,6 +184,13 @@ const SecondPage = () => {
                       onChange={value=>changeState(["workexp",i,"endingdate"],value)}
                       value={endingdate}
                      /> 
+                      <button onClick={
+                         ()=>
+                         deleteList(["workexp"],i
+                         )
+                     }
+                     className="closebuttons-3"> X </button>
+                     
                     </div>
                     {/* <textarea value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aliquid blanditiis culpa ratione harum fugiat deleniti accusamus iure eius itaque"/> */}
                     <ul>
@@ -136,6 +198,9 @@ const SecondPage = () => {
                    <TextArea
                     value={value}
                   onChange={value=>changeState(["workexp",i,"detailsList",j,"value"],value)}
+                  addToList={value=>addToList(["workexp",i,"detailsList"],j+1,value)}
+                  deleteList={ value=>deleteList(["workexp",i,"detailsList"],j,value )}
+                  length={detailsList.length}
                   />
 
                 {/* //     <li className="licolors-3"  >Implement effective company policies to ensure that all practices comply with labor and employment regulations</li>
@@ -146,13 +211,31 @@ const SecondPage = () => {
                 </>
                 )}
                     )}
+                     <div className="button-3">
+                     <button onClick={
+                         ()=>
+                             addToList(["workexp"],workexp.length,{
+                                startingdate: "january 2016",
+                                endingdate:"present",
+                                companyName:"IONAUGHT TECHNOLOGIES",
+                                jobdesignation:"REACT DEVELOPER",
+                                detailsList:[
+                                    {id:1,
+                                    value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations"},
+                                 {id:2,
+                                    value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment"
+
+                                }]
+                            })
+                        } >+</button></div>
             </div>
             <div className="right-section-3">
           
                 <img className='profilepic-3' src= {profilepic}/>
                 
-                <div className="contact-description-3">
+                
                     <div className='contact-head-3'>CONTACT</div>
+                    <div className="contact-description-3">
                      <div><img  src={Location}/>
                      <TextField
                       onChange={value=>changeState(["contact","place"],value)}
@@ -161,13 +244,13 @@ const SecondPage = () => {
                     </div>
                     <div><img  src={Phone}/>
                     <TextField
-                      onChange={value=>changeState(["workexp","phone"],value)}
+                      onChange={value=>changeState(["contact","phone"],value)}
                       value={phone}
                      /> 
                      </div>
                     <div><img src={Gmail}/>
                     <TextField
-                      onChange={value=>changeState(["workexp","gmail"],value)}
+                      onChange={value=>changeState(["contact","gmail"],value)}
                       value={gmail}
                      /> 
                    </div>
@@ -177,6 +260,9 @@ const SecondPage = () => {
                 {skills.map(({value,id},i)=><li className="li-colors-3" key={id}>
                    <TextArea value={value}  
                    onChange={(value)=>changeState(["skills",i,"value"],value)}
+                   addToList={value=>addToList(["skills"],i+1,value)}
+                   deleteList={value=>deleteList(["skills"],i,value)}
+                   length={skills.length}
                    /></li>)}
                 </ul>
                 <div className="education-header-3">Education</div>
@@ -202,8 +288,11 @@ const SecondPage = () => {
                           <TextField
                             onChange={value=>changeState(["Education",i,"graduationyear"],value)}
                             value={graduationyear}
-                            /> 
-                            </div><br/>
+                         
+                         /> 
+                            
+
+                            </div>
                           {/* <div className="education-qualification-3"> Masters degree</div>
                           <div> University edication</div>
                           <div>2014</div> */}
