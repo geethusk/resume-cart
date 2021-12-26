@@ -266,40 +266,38 @@ const SecondPage = () => {
                    /></li>)}
                 </ul>
                 <div className="education-header-3">Education</div>
-
+                       
                 <div className="education-discription-3">
-                {Education.map(({ collegeName,graduationyear,course},i)=>{
+                   {Education.map(({ collegeName,graduationyear,course},i)=>{
                      return(
                         <>
 
-                        <div className="education-qualification-3"> 
-                            <TextField
+                         <div className="education-qualification-3"> 
+                           <TextField
                             onChange={value=>changeState(["Education",i,"course"],value)}
                             value={course}
                             /> 
                         </div>
-                          <div>
+                        <div>
                           <TextField
                             onChange={value=>changeState(["Education",i,"collegeName"],value)}
                             value={collegeName}
                             /> 
-                          </div>
-                          <div>
+                        </div>
+                           <div>
                           <TextField
                             onChange={value=>changeState(["Education",i,"graduationyear"],value)}
                             value={graduationyear}
                          
                          /> 
-                            
-
-                            </div>
+                        </div>
                           {/* <div className="education-qualification-3"> Masters degree</div>
                           <div> University edication</div>
                           <div>2014</div> */}
                         </>
                      
-                    )}
-                )}
+                        )}
+                     )}
 
                 </div>
                 
