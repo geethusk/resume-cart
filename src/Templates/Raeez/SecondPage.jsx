@@ -166,14 +166,17 @@ const SecondPage = () => {
                     <TextField
                       onChange={value=>changeState(["workexp",i,"jobdesignation"],value)}
                       value={jobdesignation}
+                      className="job-header-3"
                      />
                     </div>
                       
                     <div className='company-name-header1-3'>
+                       
                     <TextField
                       onChange={value=>changeState(["workexp",i,"companyName"],value)}
                       value={companyName}
                      />
+                        
                      |
                      <TextField
                       onChange={value=>changeState(["workexp",i,"startingdate"],value)}
