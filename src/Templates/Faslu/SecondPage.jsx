@@ -1,9 +1,11 @@
 import React from 'react'
-
+import './SecondPage.css'
 const SecondPage = () => {
     return (
         <div>
-            <h1>Hello</h1>
+            <div className='header-section-2'></div>
+            <div className='nav-section-2'></div>
+            <div className='content-section-2'></div>
         </div>
     )
 }
