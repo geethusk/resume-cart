@@ -101,8 +101,6 @@ textarea{
 input{
     background: transparent;
 }
-
-
 .left-page-inner{
     padding:20px;
     background-color:var(--left-page-color);
@@ -166,9 +164,6 @@ li{
     align-items: center;
     width: 100%;
 }
-
-
-
 .second-small-head-1{
     display:flex;
 }
