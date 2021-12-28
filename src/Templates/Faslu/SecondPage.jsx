@@ -7,16 +7,19 @@ import location from "./icons/map-marker-alt-solid.svg"
 import linkedin from "./icons/linkedin-in-brands.svg"
 import skype from "./icons/skype-brands.svg"
 import produce from 'immer'
+import FileUpload from './Components/FileUpload'
+import TextField from './Components/TextField'
+
 const SecondPage = () => {
     const [template,setTemplate]=useState({
         name:"John Doe",
         designation:"Business Development Manager",
-        bio:"Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed.",
+        bio:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aspernatur minus praesentium repellat! Tenetur dolor iusto, eos consectetur dolorem libero molestiae velit optio quibusdam adipisci explicabo ipsum odit omnis fuga!",
         profileImage:profilePic,
         exp:[
             {
-            role:"Human Resources Manager",
-            companyName:"Jim's Widget Factory, Plano, TX",
+            role:"Business Development Manager",
+            companyName:"AirState Solutions",
             startingDate:"January 2016",
             endingDate:"Present",
             detailList:[
@@ -33,10 +36,30 @@ const SecondPage = () => {
                 value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
                 }
             ]
-        },
-        {   
-            role:"Human Resources Associate",
-            companyName:"Jim's Widget Factory, Plano, TX",
+            },
+            {
+                role:"Business Development Manager",
+                companyName:"AirState Solutions",
+                startingDate:"January 2016",
+                endingDate:"Present",
+                detailList:[
+                    // {id:1,
+                     "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                    // },
+                    // {id:2,
+                    "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                    // },
+                    // {id:3,
+                    "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                    // },
+                    // {id:4,
+                    "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+                    // }
+                ]
+                },
+            {   
+            role:"Business Development Assistant",
+            companyName:"AirState Solutions",
             startingDate:"March 2015 ",
             endingDate:"January 2016",
             detailList:[
@@ -53,7 +76,7 @@ const SecondPage = () => {
                 value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
                 }
             ]
-        }
+            }
         ],
         skill:[
             {id:1,
@@ -100,13 +123,26 @@ const SecondPage = () => {
         <div className="second_page_container">
             <div className="header-section2">
                 <div className="header-left-sec2">
-                    <h1>John Doe</h1>
-                    <div className="profession2">Business Development Manager</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aspernatur minus praesentium repellat! Tenetur dolor iusto, eos consectetur dolorem libero molestiae velit optio quibusdam adipisci explicabo ipsum odit omnis fuga!</p>
+                    <div className="name2">
+                        <TextField
+                            value={name}
+                        />
+                    </div>
+                    <div className="profession2">
+                        <TextField
+                            value={designation}
+                        />
+                    </div>
+                    <p>
+                        {bio}
+                    </p>
                 </div>
-                <div className="header-right-sec2">
-                    <img src={profilePic}/>
-                </div>  
+               
+                <FileUpload
+                image={profileImage}
+                onChange={value=>changeState (["profileImage"],value)}
+                
+                />
             </div>
             <div className="nav-section2">
                 <div><img src={gmail}/>john.doe@gmail.com</div>
@@ -120,34 +156,26 @@ const SecondPage = () => {
                     <div className="heading-section-2">
                         <h4>WORK EXPERIENCE</h4>
                     </div>
-                        <div className="sub-section-2">
-                        <h4>Business Development Manager</h4>
-                        <div className="sub-heading-section">
-                            AirState Solutions
-                        </div>
-                        <ul>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos sapiente cupiditate doloremque quisquam blanditiis, illo consectetur architecto! Corrupti, impedit reprehenderit. Quas sit saepe animi facilis recusandae magnam eum cum officia.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos sapiente cupiditate doloremque quisquam blanditiis, illo consectetur architecto! Corrupti, impedit reprehenderit. Quas sit saepe animi facilis recusandae magnam eum cum officia.
-                            </li>
-                        </ul>
-                        </div>
-                        <div className="sub-section-2">
-                        <h4>Business Development Assistant</h4>
-                        <div className="sub-heading-section">
-                            AirState Solutions
-                        </div>
-                        <ul>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos sapiente cupiditate doloremque quisquam blanditiis, illo consectetur architecto! Corrupti, impedit reprehenderit. Quas sit saepe animi facilis recusandae magnam eum cum officia.
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos sapiente cupiditate doloremque quisquam blanditiis, illo consectetur architecto! Corrupti, impedit reprehenderit. Quas sit saepe animi facilis recusandae magnam eum cum officia.
-                            </li>
-                        </ul>
-                        </div>
+                        {exp.map(({startingDate,endingDate,companyName,role,detailList},i)=>{
+                        return(
+                            <div>
+                                <div className="sub-section-2">
+                                <h4>{role}</h4>
+                                <div className="sub-heading-section">
+                                {companyName}
+                                </div>
+                                <div>{startingDate}-{endingDate}</div>
+                                <ul>
+                                    {detailList.map((value,i)=><li key={i}>
+                                        <textarea
+                                            value={value}
+                                        />
+                                    </li> 
+                                    )}
+                                </ul>
+                                </div>
+                            </div>
+                        )})}
                     <div className="heading-section-2">
                         <h4>EDUCATION</h4>
                     </div>
