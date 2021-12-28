@@ -1,0 +1,163 @@
+
+.main-section-3{
+display: grid;
+grid-template-columns:  2.5fr 1.5fr;
+max-width: 827px;
+margin: auto;
+border:2px solid brown;
+}
+.left-section-3{
+    padding: 30px;
+}
+.left-section-name-3{
+    font-weight: bold;
+    font-size:70px;
+}
+.left-section-name-3 input{ 
+     font-size: 35px;
+     font-weight: bold;
+  
+}
+
+.position-header-3{
+    font-size: 30px;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.left-header-3{
+    font-size: 20px;
+    background-color: grey;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+p{
+    font-size: 20px;
+    font-family:serif;
+}
+.left-section-workexp-3{
+    font-size: 20px;
+    background-color: grey;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+.contact-description-3 img{
+    width: 16px;
+    margin-right: 10px;
+
+}
+.job-header-3{
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 10px;
+} 
+.job-header-3 input{
+    font-size: 18px;
+    font-weight: bold;
+   
+}
+.company-name-header1-3{
+    padding-bottom: 10px;
+    display:flex;
+
+}
+.company-name-header2-3{
+    padding-bottom: 10px;
+}
+/* .company-names-3 input{
+    font-size: 15px;
+    font-weight: bold;
+
+} */
+
+.right-section-3{
+    padding: 30px;
+    background-color: brown;
+    color: white;
+    
+
+}
+.right-section-3 input{
+    color:white;
+
+    
+}
+.profilepic-3{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    border: 2px solid white;
+    object-fit: cover;
+    object-position: top;
+}
+.contact-description-3 {
+    padding-top: 15px;
+    /* padding-bottom: 15px; */
+    color: white;
+}
+
+
+.contact-head-3{
+    background-color: white;
+    padding: 10px;
+    color:black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.skill-header-3{
+font-weight: bold;
+font-size: 20px;
+background-color: white;
+padding:10px;
+margin-bottom: 15px;
+margin-top: 15px;
+color: black;
+
+}
+.education-header-3{
+background-color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    color: black;
+}    
+.li-colors-3::before{
+    background-color:white;
+}
+ul{
+    
+   
+    font-size: 15px;
+
+}
+.education-qualification-3{
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 5px;
+   
+} 
+/* .education-discription-3 input{
+    font-weight: bold;
+}  */
+
+.closebuttons-3{
+    background-color: red;
+    margin-left: auto;
+    color:white;
+    border: none;
+    padding: 3px;
+    width: 20px;
+    height: 20px;
+  
+   
+
+}
