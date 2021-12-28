@@ -90,8 +90,8 @@ textarea{
     display: grid;
     place-items: center;
 }
-.resume-name{
-    font-size: 2.50em;
+.resume-name-2 input{
+    font-size: 20px;
     padding: 10px 0;    
 }
 .header-part-address-section{

@@ -197,7 +197,7 @@ const Faslu = () => {
                 <div className="header-part-section2">
                 <div className="logo-area2">{getLogo(name)}
                 </div>
-                <div className="resume-name">
+                <div className="resume-name-2">
                     {/* <input
                     type="text"
                     value={name}
@@ -378,7 +378,7 @@ const Faslu = () => {
                     )}    
                 </div>
             </div>
-           </div>
+            </div>
         </div>
         
     )
