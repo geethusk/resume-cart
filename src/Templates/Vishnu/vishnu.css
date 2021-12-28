@@ -1,7 +1,37 @@
+
+.body-container5 *{
+    --colorprimary:#5e8e66;
+}
 .body-container5{
    max-width:   827px;
     margin: auto;
     border: solid 3px black;
+}
+:root{
+    --red: red;
+    --blue: blue;
+    --green: green;
+    --yellow: yellow;
+    --orange: orange;
+    --brown: brown;
+}
+.body-container5-red *{
+    --primary-color: var(--red);
+}
+.body-container5-blue *{
+    --primary-color: var(--blue);
+}
+.body-container5-green *{
+    --primary-color: var(--green);
+}
+.body-container5-yellow *{
+    --primary-color: var(--yellow);
+}
+.body-container5-orange *{
+    --primary-color: var(--orange);
+}
+.body-container5-brown *{
+    --primary-color: var(--brown);
 }
 
 .body-container5 input{
@@ -11,6 +41,44 @@
     font-size: inherit;
     background-color: transparent;
 }
+.theme-selector-list5{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.theme-selection{
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.theme-selection-red{
+    background-color: var(--red);
+    
+}
+.theme-selection-blue{
+    background-color: var(--blue);
+}
+
+.theme-selection-green{
+    background-color: var(--green);
+}
+
+.theme-selection-yellow{
+    background-color: var(--yellow);
+}
+
+.theme-selection-orange{
+    background-color: var(--orange);
+}
+
+.theme-selection-brown{
+    background-color: var(--brown);
+}
+
+
+
 .body-container5 textarea{
     width: 100%;
     resize: none;
@@ -25,9 +93,10 @@ header{
     padding: 15px 20px;
 }
 .name{
+    
     font-size: 2.25em;
     font-weight: bold;
-    color:#5e8e66;   
+    color: var( --primary-color);   
 }
 .designation{
     font-size: 1.2rem;
@@ -50,7 +119,7 @@ header{
     grid-template-columns: auto 1fr;
 }
 .left-section{
-    background-color: #5e8e66;
+    background-color: var( --primary-color);
     color: white;
     padding: 0px;
 }
@@ -100,7 +169,7 @@ header{
     padding-left: 13px;
 }
 .right-section > h3{
-    color: #5e8e66;
+    color: var( --primary-color);
 }
 
 li::before{
