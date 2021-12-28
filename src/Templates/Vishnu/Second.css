@@ -1,0 +1,90 @@
+input{
+    border: none;
+}
+.main-container-51{
+    max-width:   827px;
+    margin: auto;
+    border: solid 3px black;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.left-section-51{
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.basic-info51{
+    padding: 35px;
+    padding-right: 0;
+    /* padding-left: 50px; */
+    display: grid;
+}
+.image{
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: dashed 2px grey;
+    padding: 5px;
+    object-fit: cover;
+    margin: auto;
+}
+.basic-profile{
+    margin-top: 30px;
+}
+.intro{
+    color: grey;
+}
+.first-name{
+    font-weight: 700;
+    color: rgb(212, 177, 136);
+    font-size: 30px;
+}
+.second-name{
+    font-weight: 700;
+    color: black;
+    font-size: 30px;
+}
+.designation{
+    color: grey;
+}
+.second-section-51{
+    background-color: black;
+    color: white;
+    padding:35px 45px;
+    padding-top: 50px;    
+}
+.my-profile{
+    padding-bottom: 35px;
+    border-bottom: solid 2px white;
+}
+.profile-heading{
+    color: rgb(212, 177, 136);
+}
+.description{
+    margin-top: 20px;
+    font-weight: 400;
+}
+.award-area{
+    padding-top: 30px;
+}
+.award-heading{
+    color: rgb(212, 177, 136);
+}
+.awards li::before{
+    background-color: white;
+}
+.awards{
+    margin-top: 25px;
+}
+.right-section-52{
+    /* padding: 50px; */
+}
+.contact-section{
+    background-color: black;
+    color: white;
+    display: grid;
+    justify-items: center;
+}
+ #contact{
+     color: white;
+     font-size: 15px;
+ }
