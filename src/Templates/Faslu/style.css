@@ -3,7 +3,57 @@
     box-sizing: border-box;
     font-family: "Roboto",serif;  
 }
-.resume-page{
+:root{
+    --blue:#5446d8;
+    --gray:rgb(78, 75, 75);
+    --red:rgb(138, 4, 4);
+    --green:rgb(6, 167, 68);
+    --brown:rgb(29, 20, 22);
+    --yellow:rgb(154, 211, 22);
+}
+.resume-page2-blue *{
+    --primary-color2:var(--blue);
+}
+.resume-page2-gray *{
+    --primary-color2:var(--gray);
+}
+.resume-page2-red *{
+    --primary-color2:var(--red);
+}
+.resume-page2-green *{
+    --primary-color2:var(--green);
+}
+.resume-page2-brown *{
+    --primary-color2:var(--brown);
+}
+.resume-page2-yellow *{
+    --primary-color2:var(--yellow);
+}
+.theme-selector-2{
+    display: grid;
+    grid-auto-flow: column;
+    height: 50px;
+}
+.theme-selector-2-blue{
+    background-color: var(--blue);
+}
+.theme-selector-2-gray{
+    background-color: var(--gray);
+}
+.theme-selector-2-red{
+    background-color: var(--red);
+}
+.theme-selector-2-green{
+    background-color: var(--green);
+}
+.theme-selector-2-brown{
+    background-color: var(--brown);
+}
+.theme-selector-2-yellow{
+    background-color: var(--yellow);
+}
+.resume-page2{
+    --primary-color2:#58585b;
     display: grid;
     grid-template-columns: 1.5fr 3fr;
     max-width: 827px;
@@ -12,7 +62,7 @@
     color: #58585b;
     font-size: 0.9em;
 }
-.resume-page input,textarea{
+.resume-page2 input,textarea{
     border: none;
     outline: none;
 }
@@ -22,15 +72,16 @@ textarea{
     overflow: hidden;
     padding: 0;
 }
-.left-section{
+.left-section2{
     background-color: #f2f4f4;
     padding: 20px;
 }
-.header-part-section{
+.header-part-section2{
     padding-top:50px ;
 }
-.logo-area{
-    background-color: #58585b;
+.logo-area2{
+    background-color:var(--primary-color2) ;
+    /* #58585b; */
     color: #fff;
     font-size: 2.25em ;
     border-radius: 50%;
@@ -49,7 +100,7 @@ textarea{
     
 }
 .description-section{
-    border-left:5px solid #58585b;
+    border-left:5px solid var(--primary-color2) ;
     margin: 30px 0 30px;
     padding-left: 10px;
 }
@@ -70,7 +121,7 @@ textarea{
     content: "";
     width:5px;
     height: 5px;
-    background-color:#58585b;
+    background-color: #58585b;
     position: absolute;
     position: relative;
     display: block;
@@ -93,7 +144,7 @@ li::before{
     content: "";
     width:5px;
     height: 5px;
-    background-color:#58585b;
+    background-color:#58585b ;
     position: absolute;
     display: block;
     border-radius: 50%;
@@ -101,7 +152,6 @@ li::before{
     top:7px;
 }
 .close-button{
-    
     padding: 5px;
 }
 
