@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './second_page.css'
 import profilePic from './images/photo.jpg'
 import gmail from "./icons/envelope-solid.svg"
@@ -6,12 +6,13 @@ import mobileImage from "./icons/mobile-alt-solid.svg"
 import location from "./icons/map-marker-alt-solid.svg"
 import linkedin from "./icons/linkedin-in-brands.svg"
 import skype from "./icons/skype-brands.svg"
+import produce from 'immer'
 const SecondPage = () => {
     const [template,setTemplate]=useState({
         name:"John Doe",
         designation:"Business Development Manager",
         bio:"Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed.",
-        profileImage:ProfilePic,
+        profileImage:profilePic,
         exp:[
             {
             role:"Human Resources Manager",
