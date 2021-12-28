@@ -6,7 +6,7 @@ max-width: 827px;
 margin: auto;
 border:2px solid brown;
 }
-.main-section-3  *{
+.main-section-3  input{
     padding: 0;
 }
  /* .theme-selectors-lists3{

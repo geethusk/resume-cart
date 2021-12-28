@@ -44,6 +44,7 @@ const SecondPage = () => {
             ]
             }
         ],
+        profileImage:profilepic,
         contact:{place:"LONDON,UNITED KINGDOM",phone:" 123-456-789-00",gmail:"raeezmohammed97@gmail.com"},
         skills:[
                            
@@ -144,7 +145,7 @@ const SecondPage = () => {
                 })
         )
     }
-    const{theme,name,profilebio,jobdesignation,workexp,contact,Education,skills}=template;
+    const{theme,name,profilebio,profileImage,jobdesignation,workexp,contact,Education,skills}=template;
     const{place,phone,gmail}=contact;
     return (
         <>
@@ -256,7 +257,9 @@ const SecondPage = () => {
                         } >+</button></div>
             </div>
             <div className="right-section-3">
-                <FileUpload profilepic={profilepic}/>
+                <FileUpload image={profileImage}
+                onChange={value=>changeState(["profileImage"],value)}/>
+              
           
                 {/* <img className='profilepic-3' src= {profilepic}/> */}
                 

@@ -3,9 +3,9 @@ import { useRef } from 'react';
 import camera from "../icons/camera.svg"
 import { useState } from 'react';
 
-const FileUpload = ({profilepic}) => {
+const FileUpload = ({onChange,image}) => {
     const imageRef=useRef(null);
-    const[image,setImage]=useState(profilepic);
+    // const[image,setImage]=useState(profilepic);
 
     return (
         <div className="profile-image-container-3">
@@ -23,7 +23,7 @@ const FileUpload = ({profilepic}) => {
              type="file"
              style={{display:"none"}}
              onChange={(e)=>{
-                 setImage(URL.createObjectURL(e.target.files[0]))
+                 onChange(URL.createObjectURL(e.target.files[0]))
              }}/>
          </div>    
              
