@@ -5,11 +5,13 @@ import Raeez from './Templates/Raeez';
 import Rajasree from './Templates/Rajasree';
 import './App.css';
 import Vishnu from "./Templates/Vishnu";
+import Index from "./Routes/Index";
 
 
 function App() {
   return (
     <Routes>
+      <Route path="/*" element={<Index/>}/>
       <Route path="faslu/*" element={<Faslu/>}/>
       <Route path="geethu/*" element={<Geethu/>}/>
       <Route path="raeez/*" element={<Raeez/>}/>
