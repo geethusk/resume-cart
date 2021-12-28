@@ -1,5 +1,5 @@
 import { useEffect,useRef } from "react";
-const TextArea = ({value,onChange,className,addToList=null,length,deleteList}) => {
+const TextArea = ({value,onChange,className,addToList=null,length,deleteList=()=>{}}) => {
     const ref=useRef(null);
     useEffect(() => {
         ref.current.style.height = 10+"px"

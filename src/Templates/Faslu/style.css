@@ -92,6 +92,7 @@ h3{
     display: grid;
     place-items: center;
 }
+<<<<<<< HEAD
 .resume-name2 input{
     padding: 10px 0; 
     color:var(--primary-color2); 
@@ -99,6 +100,11 @@ h3{
 }
 .resume-profession input{
     font-size: 1.3em;
+=======
+.resume-name-2 input{
+    font-size: 20px;
+    padding: 10px 0;    
+>>>>>>> 8282e7b3751b60a4940dd7c8beddfb84895a5911
 }
 .header-part-address-section2{
     line-height: 1.5;
