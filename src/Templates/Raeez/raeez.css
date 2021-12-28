@@ -2,8 +2,72 @@
     margin:0;
     box-sizing: border-box;
     font-family: "Libre Baskerville",serif;
+   padding: 0;
+   border: none;
 
 }
+.theme-selector-list3{
+    display: grid;
+    grid-auto-flow: column;
+    height: 25px;
+    cursor: pointer;
+
+}
+:root{
+    --violet:violet;
+   --indigo:indigo;
+    --blue:blue;
+    --green:green;
+   
+    --red:red;
+    --gray:gray;
+    --brown:brown;
+           
+} 
+.theme-selector3-violet{
+    background-color: var(--violet);
+}
+.theme-selector3-indigo{
+    background-color: var(--indigo);
+}
+.theme-selector3-blue{
+    background-color: var(--blue);
+}
+.theme-selector3-green{
+    background-color: var(--green);
+}
+.theme-selector3-red{
+    background-color: var(--red);
+}
+.theme-selector3-gray{
+    background-color: var(--gray);
+}
+.theme-selector3-brown{
+    background-color: var(--brown);
+}
+
+
+.main-body3-violet *{
+    --primary-color3:var(--violet);
+}.main-body3-indigo *{
+    --primary-color3:var(--indigo);
+}
+.main-body3-blue *{
+    --primary-color3:var(--blue);
+}
+.main-body3-green *{
+    --primary-color3:var(--green);
+}
+.main-body3-red *{
+    --primary-color3:var(--red);
+}
+.main-body3-gray *{
+    --primary-color3:var(--gray);
+}
+.main-body3-brown *{
+    --primary-color3:var(--brown);
+}
+
 #root{
     padding: 10px;
 }
@@ -22,6 +86,10 @@
     color: inherit;
        
 }
+/* .main-body3 *{
+    --primary-color3: rgb(152, 25, 226);  this is for setting sepearte color while selecting    */   
+
+
   textarea{
     resize: none;
     width: 100%;
@@ -31,10 +99,11 @@
  }
 
 .logo-3{
+   
     border-radius: 100%;
     width: 80px;
     height: 80px;
-    background-color: rgb(152, 25, 226);
+    background-color: var(--primary-color3);
     color: white;
     display: grid;
     place-items: center;
@@ -55,7 +124,7 @@
 .name-3{
     margin-top: 20px;
     font-size: 2.25em;
-    color: rgb(152, 25, 226);
+    color: var(--primary-color3);
     font-weight: bold;
 
 }
@@ -72,7 +141,7 @@
 }
 .headerdiscription-3{
      margin-top: 20px; 
-    color: rgb(152, 25, 226);
+    color:var(--primary-color3);
     
 
 }
@@ -91,8 +160,8 @@
     line-height: 20px;
 }
 .firsthead-3{
-    border-bottom: 2px solid rgb(152, 25, 226) ;
-    color:rgb(152, 25, 226);
+    border-bottom: 2px solid var(--primary-color3);
+    color:var(--primary-color3);
     margin-bottom: 0.75rem;
     padding-bottom: 0.125rem;
     font-size: 25px;
@@ -127,7 +196,7 @@
     width: 100%;
 }
 .licolor-3::marker{
-    color:rgb(121, 53, 160);
+    color:var(--primary-color3);
 }
 .licolor-3{
  position: relative;
@@ -138,7 +207,7 @@
     width:7px;
     height: 7px;
     content: "";
-    background-color: rgb(121, 53, 160);
+    background-color:var(--primary-color3);
     display: block;
     position: absolute;
     border-radius: 50%;
@@ -160,6 +229,9 @@ li{
     background-color: green;
     color: white;
     border: none;
+    padding: 3px;
+    width: 20px;
+    height: 20px;
   
 }
 .closebutton-3{
@@ -167,5 +239,8 @@ li{
     margin-left: auto;
     color: white;
     border: none;
+    padding: 3px;
+    width: 20px;
+    height: 20px;
    
 }
