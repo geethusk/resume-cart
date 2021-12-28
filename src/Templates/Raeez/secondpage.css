@@ -6,6 +6,63 @@ max-width: 827px;
 margin: auto;
 border:2px solid brown;
 }
+.main-section-3  *{
+    padding: 0;
+}
+ /* .theme-selectors-lists3{
+    display: grid;
+    grid-auto-flow: column;
+    height: 25px;
+    cursor: pointer;
+}
+
+.theme-selectors3-darkcyan{
+    background-color: var(--darkcyan);
+}
+.theme-selectors3-indigo{
+    background-color: var(--indigo);
+}
+.theme-selectors3-blue{
+    background-color: var(--blue);
+}
+.theme-selectors3-green{
+    background-color: var(--green);
+}
+.theme-selectors3-red{
+    background-color: var(--red);
+}
+.theme-selectors3-gray{
+    background-color: var(--gray);
+}
+.theme-selectors3-brown{
+    background-color: var(--brown);
+} */
+ 
+.main-section-3-darkcyan *{
+    --primary-color3:var(--darkcyan);
+}    
+ .main-section-3-violet *{
+    --primary-color3:var(--violet);
+}.main-section-3-indigo *{
+    --primary-color3:var(--indigo);
+}
+.main-section-3-blue *{
+    --primary-color3:var(--blue);
+}
+.main-section-3-green *{
+    --primary-color3:var(--green);
+}
+.main-section-3-red *{
+    --primary-color3:var(--red);
+}
+.main-section-3-gray *{
+    --primary-color3:var(--gray);
+}
+.main-section-3-brown *{
+    --primary-color3:var(--brown);
+}
+
+
 .left-section-3{
     padding: 30px;
 }
@@ -67,21 +124,22 @@ p{
 .company-name-header2-3{
     padding-bottom: 10px;
 }
-/* .company-names-3 input{
+ .company-names-3 input{
     font-size: 15px;
     font-weight: bold;
 
-} */
+}
 
 .right-section-3{
     padding: 30px;
-    background-color: brown;
+    background-color: var(--primary-color3);
     color: white;
     
 
 }
 .right-section-3 input{
-    color:white;
+     color:white; 
+   
 
     
 }
@@ -99,7 +157,7 @@ p{
     padding-top: 15px;
     /* padding-bottom: 15px; */
     color: white;
-}
+} 
 
 
 .contact-head-3{
@@ -158,6 +216,16 @@ ul{
     width: 20px;
     height: 20px;
   
-   
-
+}
+.profile-image-container-3{
+    width:150px;
+    margin: auto;
+    position: relative;
+}
+.change-image-button-3{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 25px;
+    cursor: pointer;
 }
