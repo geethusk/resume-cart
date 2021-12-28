@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import './second_page.css'
 import profilePic from './images/photo.jpg'
@@ -7,15 +6,6 @@ import mobileImage from "./icons/mobile-alt-solid.svg"
 import location from "./icons/map-marker-alt-solid.svg"
 import linkedin from "./icons/linkedin-in-brands.svg"
 import skype from "./icons/skype-brands.svg"
-=======
-import React, { useState } from 'react'
-import TextArea from './Components/TextArea';
-import TextField from './Components/TextField'
-import './SecondPage.css'
-import ProfilePic from './images/jordan-2c43ff762e625d49ea58424e3e74188a.jpg';
-import FileUpload from './Components/FileUpload';
-import produce from 'immer';
->>>>>>> 8282e7b3751b60a4940dd7c8beddfb84895a5911
 const SecondPage = () => {
     const [template,setTemplate]=useState({
         name:"John Doe",
@@ -106,7 +96,6 @@ const SecondPage = () => {
         )
     }
     return (
-<<<<<<< HEAD
         <div className="second_page_container">
             <div className="header-section2">
                 <div className="header-left-sec2">
@@ -324,66 +313,6 @@ const SecondPage = () => {
                 </div>
             </div>
         </div>
-=======
-        <div className='container-2'>
-            <div className='header-section-2'>
-                <div className='header-left-section-2'>
-                    <div className="resume-name2">
-                        <TextField 
-                            value={name}
-                        />
-                    </div>
-                    <div className="resume-designation-2">
-                        <TextField 
-                            value={designation}
-                        />
-                    </div>
-                    <div className='detail-section-2'>
-                        <TextArea
-                            value={bio}
-                        />
-                    </div>   
-                </div>
-                <FileUpload 
-                image={profileImage}
-                onChange={value=>changeState(["profileImage"],value)}/>  
-            </div>
-            <div className='nav-section-2'></div>
-            <div className='content-section-2'>
-                <div className="left-section-2">
-                    <h3>Work Experience</h3>
-                    {exp.map(({role,companyName,startingDate,endingDate,detailList},i) =>{
-                return(
-                    <div>
-                        <TextField 
-                            value={role}
-                        /><br/>
-                        <TextField 
-                           value={companyName}
-                        /><br/>
-                        <TextField 
-                           value={startingDate}
-                        />-
-                        <TextField 
-                           value={endingDate}
-                        />    
-                            {detailList.map(({value,id},i)=><li key={id}>
-                            <TextArea
-                            value={value}
-                            />
-                            </li>
-
-                            )}
-                    </div>
-                    )})}
-                </div>
-                <div className="right-section-2">
-                    <h3>SKILLS</h3>
-
-                </div>        
-            </div>
-        </div> 
->>>>>>> 8282e7b3751b60a4940dd7c8beddfb84895a5911
     )
 }
 

@@ -197,11 +197,7 @@ const Faslu = () => {
                 <div className="header-part-section2">
                 <div className="logo-area2">{getLogo(name)}
                 </div>
-<<<<<<< HEAD
                 <div className="resume-name2">
-=======
-                <div className="resume-name-2">
->>>>>>> 8282e7b3751b60a4940dd7c8beddfb84895a5911
                     {/* <input
                     type="text"
                     value={name}
