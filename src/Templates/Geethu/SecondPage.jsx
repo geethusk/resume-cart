@@ -10,6 +10,14 @@ import key from "./assets/icons/thumbtack-solid.svg"
 import produce from "immer"
 
 const SecondPage = () => {
+    const colorThemeList=[
+        "blue",
+        "turquoise",
+        "violet",
+        "brown",
+        "green"
+    ]
+
     const [templateState,setTemplateState]=useState({
         theme:["#000","#fff"],
         bio:"Human resources generalist with 8 years of experience in HR,including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers.Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards.Worked with OSHA to ensure that all safety regulations are followed.",
@@ -181,7 +189,20 @@ const SecondPage = () => {
 
     return (
         <>
-        <div className='container-parent-1'>
+        <div className="theme-selector-list-1">
+            {colorThemeList.map((value,i)=>
+            <div
+            className={`theme-selector-11-${value}`}
+            onClick={
+                ()=>{
+                    changeState(["theme",0],value)
+                }
+            }
+            key={i}
+            ></div>)}
+        </div>
+        <div className={`container-parent-1 container-parent-1-${theme[0]}`}>
+        
             <div className="container-1-left-box">
                 <div className="summary-section">
                 <TextArea  className="bio1"
@@ -253,7 +274,7 @@ const SecondPage = () => {
             <div className="heading">
                 <img className="image-1" src={edu} /><h1 className="title-section-11">Education</h1>
             </div>
-                <div className="complete-work-container-1">
+            <div className="complete-work-container-1">
                 {education.map(({qualification,college,joiningdate,graduationdate,academicdetails},i)=>{
                 return(
                     <>
@@ -310,22 +331,26 @@ const SecondPage = () => {
                         )})}
                 </div>
             </div>
+           
             <div className="container-1-right-box">
-                <div className='name-sec'><TextField className="name-folder" value={name}/>
-                   <TextField  value={designation} className='sub-1'/>
+                <div className='name-sec'>
+                   <TextField className="name-folder" value={name} onChange={value=>changeState(["name"],value)}/>
+                   <TextField  value={designation} className='sub-1' onChange={value=>changeState(['designation'],value)}/>
                 </div>
                 <div className="heading-1">
                 <img className="image-11" src={phone}/><h1 className="title-section-1">contacts</h1>
                 </div>
                 <div className='address-field'>
                 <TextField  className="address1"
-                    value={address.street}/><br/>
+                    value={address.street}  onChange={value=>changeState(["address","street"],value)}/><br/>
                 <TextField className="city1"
-                    value={address.city}/><br/>
-                <TextField className="city1"
-                    value={address.email}/><br/>
-                <TextField className="city1"
-                    value={address.phone}/><br/>
+                    value={address.city} onChange={value=>changeState(["address","city"],value)}
+                    /><br/>
+                <TextField className="email1"
+                    value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                <TextField className="address1"
+                    value={address.phone}  onChange={value=>changeState(["address","phone"],value)}
+                    /><br/>
                 </div>
                 <div className="heading-1">
                 <img className="image-11" src={key}/><h1 className="title-section-1">Skills</h1>

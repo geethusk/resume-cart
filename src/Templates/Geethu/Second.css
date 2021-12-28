@@ -1,10 +1,72 @@
-*{
+/* .container-parent-1 *{
     margin:0;
     box-sizing: border-box;
+} */
+    .theme-selector-list-1{
+        display:grid;
+        grid-auto-flow: column;
+        margin-bottom:2px;
+        height:50px;
+        gap:2px;
+        cursor:pointer;
+    }
+    :root{
+        --blue:blue;
+        --white:white;
+        --turquoise:turquoise;
+        --violet:violet;
+        --brown:brown;
+        --green:rgb(66, 238, 80);
+    }
+    .container-parent-1-blue *{
+        --left-page-color:var(--blue);
+    }
+    .container-parent-1-turquoise *{
+        --left-page-color:var(--turquoise);
+    }
+    .container-parent-1-violet *{
+        --left-page-color:var(--violet);
+        
+    }
+    .container-parent-1-brown *{
+        --left-page-color:var(--brown);
+        
+    }
+    .container-parent-1-green *{
+        --left-page-color:var(--green);
+    }
+    
+    .theme-selector-11-blue{
+        background-color: var(--blue);
+    }
+    
+    .theme-selector-11-turquoise{
+        background-color: var(--turquoise);
+    }
+    .theme-selector-11-violet{
+        background-color: var(--violet);
+    }
+    .theme-selector-11-brown{
+        background-color: var(--brown);
+    }
+    .theme-selector-11-green{
+        background-color: var(--green);
+    }   
+
+    .container-1-right-box{
+        background-color:var(--left-page-color);
+        width:60%;
+        padding:10px;
+        margin:1px;
+        width:100%;
+    }
+.name-folder{
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .container-1-left-box{
-    margin:auto;
+    /* margin:auto; */
     padding:10px;
 }
 .summary-section{
@@ -12,23 +74,22 @@
 }
 
 .container-parent-1{
-    display:flex;
+    display:grid;
+    grid-template-columns: 1fr auto;
     border:solid 2px black;
     width: 100%;
     height:100%;
+    gap:20px;
+    padding:2px 5px;
 }
 h1 h2{
     font-style: normal;
     font-family:sans-serif;
 }
-.sub-container-1{
-/* .complete-work-container-1{ */
+/* .container-parent-1{
 
-display:grid;
-grid-template-columns: 1fr auto;
-gap:50px;
-padding:10px;
-}
+
+} */
 
 .heading {
     color:darkblue;
@@ -61,12 +122,7 @@ margin:10px 5px;
     height:30px;
     margin:2px
 }
-.container-1-right-box{
-    background-color: rgb(23, 160, 206);
-    width:60%;
-    padding:10px;
-    margin:1px;
-}
+
 .sub-1{
     font-size:18px;
     padding:15px 0
