@@ -11,11 +11,11 @@ const TextArea = ({value,onChange,className,addToList=null,length,deleteList=()=
         if(value.split("\n").length>1){
             if(addToList!==null){
 
+
                 onChange(value.split("\n")[0]);
                 addToList({id:length+1,value:value.split("\n")[1]}); 
             }
                //adding data in list
-        
         }
 
     }, [value]);
