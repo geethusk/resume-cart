@@ -2,6 +2,8 @@
 *{
     margin:0;
     box-sizing: border-box;
+    padding:0;
+    border: none;
 }
 .theme-selector-list-1{
     display:grid;
@@ -128,6 +130,7 @@ input{
     display: flex;
     margin-right: 10px;
     margin-left: auto;
+    padding:5px
 }
 .right-page-inner{
     padding-left: 5px;

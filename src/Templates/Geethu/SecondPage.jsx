@@ -10,6 +10,14 @@ import key from "./assets/icons/thumbtack-solid.svg"
 import produce from "immer"
 
 const SecondPage = () => {
+    const colorThemeList=[
+        "blue",
+        "turquoise",
+        "violet",
+        "brown",
+        "green"
+    ]
+
     const [templateState,setTemplateState]=useState({
         theme:["#000","#fff"],
         bio:"Human resources generalist with 8 years of experience in HR,including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers.Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards.Worked with OSHA to ensure that all safety regulations are followed.",
@@ -253,7 +261,7 @@ const SecondPage = () => {
             <div className="heading">
                 <img className="image-1" src={edu} /><h1 className="title-section-11">Education</h1>
             </div>
-                <div className="complete-work-container-1">
+            <div className="complete-work-container-1">
                 {education.map(({qualification,college,joiningdate,graduationdate,academicdetails},i)=>{
                 return(
                     <>
@@ -310,8 +318,22 @@ const SecondPage = () => {
                         )})}
                 </div>
             </div>
-            <div className="container-1-right-box">
-                <div className='name-sec'><TextField className="name-folder" value={name}/>
+            <div className="theme-selector-list-1">
+            {colorThemeList.map((value,i)=>
+            <div
+            className={`theme-selector-11-${value}`}
+            onClick={
+                ()=>{
+                    changeState(["theme",0],value)
+                }
+            }
+            key={i}
+            ></div>)}
+            
+        </div>
+            <div className={`container-1-right-box-${theme[0]}`}>
+                <div className='name-sec'>
+                   <TextField className="name-folder" value={name}/>
                    <TextField  value={designation} className='sub-1'/>
                 </div>
                 <div className="heading-1">
