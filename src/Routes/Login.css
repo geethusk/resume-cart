@@ -1,14 +1,17 @@
 .login-container{
     height: 100%;
-    padding: 0 250px;
+    padding: 0 150px;
     display: grid;
-    align-items: center;
+    place-items: center;
     background-color: #d8deec;
+   
 }
 .login-card{
     background-color: white;
     padding:50px;
     border-radius: 20px;
+    max-width: 800px;
+    width: 100%;  
 }
 .login-heading{
     font-size: 35px;
@@ -19,17 +22,24 @@
     padding-top: 35px;
 }
 .login-section{
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     position: relative;
 }
 .login-label{
     position: absolute;
-    top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
     left: 8px;
+    background-color: white;
 }
 .login-input{
-    width:235px;
+    width:100%;
+    max-width: 400px;
     height: 40px;
+}
+.login-input:focus~.login-label{
+    top:0;
 }
 .login-button-section{
     display: flex;
