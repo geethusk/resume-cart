@@ -26,6 +26,18 @@ input{
     padding: 5px;
     object-fit: cover;
     margin: auto;
+    
+}
+.profile-pic{
+    position: relative;
+}
+.image-upload{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 200px;
+    bottom: 25px;
+    cursor: pointer;
 }
 .basic-profile{
     margin-top: 30px;
@@ -88,3 +100,4 @@ input{
      color: white;
      font-size: 15px;
  }
+ 
