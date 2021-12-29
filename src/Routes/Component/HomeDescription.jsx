@@ -3,11 +3,10 @@ import "../HomeStyle.css"
 
 const HomeDescription = () => {
     return (
-        <div>
-           <h1>Resume Definition,<br/>Information and<br/> Professional Help</h1>
+        <div >
+           <h1>Showcase your potential,<br/>Cut down on writing and<br/>Store your resume online</h1>
             <div className="home-description-section">
-                A well-written resume job description can offer hiring managers important indications regarding<br/>the type of employee you are and the potential value you can bring to an organization.<br/>
-                Regardless of your qualifications, showing that you have a history of using your knowledge<br/>and skills for other companies should increase your odds of being considered for the position.
+                Easily build a professional-looking resume that showcases your goals and qualifications. Just pick a template and fill in the blanks. No formatting is needed!
             </div> 
         </div>
     )
