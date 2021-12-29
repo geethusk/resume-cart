@@ -24,4 +24,12 @@ body,html,#root,.home-container,.home-description-image-section{
     background-image: url("https://its.unc.edu/files/2020/03/laptop-on-coffee-table.jpeg");
     background-repeat: no-repeat;
 }
+.demo_home img{
+    height: 400px;
+    width: 350px;
+}
+.demo_home{
+    display: flex;
+    gap: 30px;
+}
 
