@@ -34,6 +34,7 @@ body,html,#root,.home-container,.home-description-image-section{
     width: 100%;
     border-radius: 25px;
     box-shadow: 6px 2px 11px 1px #4b4b4b5e;
+    cursor: pointer;
     
    
 }
