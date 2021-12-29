@@ -9,6 +9,7 @@ import skype from "./icons/skype-brands.svg"
 import produce from 'immer'
 import FileUpload from './Components/FileUpload'
 import TextField from './Components/TextField'
+import TextArea from "./Components/TextArea"
 
 const SecondPage = () => {
     const [template,setTemplate]=useState({
@@ -56,7 +57,7 @@ const SecondPage = () => {
                     "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
                     // }
                 ]
-                },
+            },
             {   
             role:"Business Development Assistant",
             companyName:"AirState Solutions",
@@ -76,7 +77,7 @@ const SecondPage = () => {
                 value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
                 }
             ]
-            }
+            },
         ],
         skill:[
             {id:1,
@@ -134,14 +135,14 @@ const SecondPage = () => {
                         />
                     </div>
                     <p>
-                        {bio}
+                        <TextArea
+                            value={bio}
+                        />
                     </p>
                 </div>
-               
                 <FileUpload
                 image={profileImage}
                 onChange={value=>changeState (["profileImage"],value)}
-                
                 />
             </div>
             <div className="nav-section2">
@@ -167,7 +168,7 @@ const SecondPage = () => {
                                 <div>{startingDate}-{endingDate}</div>
                                 <ul>
                                     {detailList.map((value,i)=><li key={i}>
-                                        <textarea
+                                        <TextArea
                                             value={value}
                                         />
                                     </li> 
