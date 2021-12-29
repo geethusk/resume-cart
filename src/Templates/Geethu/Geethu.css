@@ -1,5 +1,5 @@
 
-*{
+.body-wrapper *{
     margin:0;
     box-sizing: border-box;
     padding:0;
@@ -76,11 +76,11 @@
     outline: none;
     border:none;
 }
-body{
+/* body{
     margin:auto;
     max-width:850px;
    
-}
+} */
 .title-name{
     /* width: 37ch; */
     margin:10px;
@@ -98,9 +98,9 @@ textarea{
     background: transparent;
     font-size:17px;
 }
-input{
+/* input{
     background: transparent;
-}
+} */
 .left-page-inner{
     padding:20px;
     background-color:var(--left-page-color);
