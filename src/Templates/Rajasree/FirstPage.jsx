@@ -17,7 +17,7 @@ const Rajasree = () => {
             "black4"
     ]
     const[state,setState]=useState({
-        theme:['#de8535'],
+        theme:['black4'],
         logo:"CC",
         name:"Chris Candidate",
         designation:"Sales Associate",

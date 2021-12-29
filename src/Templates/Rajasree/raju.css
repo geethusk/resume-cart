@@ -22,6 +22,11 @@
             --black4:black;
             
 }
+.theme_selector_list4{
+    width: 827px;
+    margin: auto;
+
+}
 .main_body4-indigo4 *{
     --primary-color4:var(--indigo4);
 }

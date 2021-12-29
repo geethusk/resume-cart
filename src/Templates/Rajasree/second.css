@@ -33,6 +33,7 @@
 .main_body4_1 input{
     color: white;
     border: none;
+    background-color: transparent;
 }
 .head4_1{
     display: grid;
