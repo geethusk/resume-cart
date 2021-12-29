@@ -6,10 +6,22 @@ import { useState } from "react"
 import produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
+import FileUpload from './Components/FileUpload';
 const SecondPage = () => {
+    const colorThemeList4_1=[
+        "indigo4",
+        "darkviolet4",
+        "blue4",
+        
+        
+        "orange4",
+        
+        "brown4",
+        "black4"
+    ]
     const[state,setState]=useState({
-        theme:['#de8535'],
-        image:Profile4,
+        theme:['black4'],
+        profileImage:Profile4,
         name1:"Patrick",
         name2:"Marz",
         designation:"Illustrator",
@@ -141,63 +153,76 @@ const SecondPage = () => {
             })
         })
     }
-    const{theme,image,name1,name2,designation,details,profile,experience,education}=state;
+    const{theme,profileImage,name1,name2,designation,details,profile,experience,education}=state;
     return (
-        <div className="main_body4_1">
+        <>
+        <div className="theme_selector_list4">
+            {colorThemeList4_1.map((value,i)=>
+            
+            
+            <div className={`theme_selector4-${value}`}
+            onClick={()=>{
+                changeState(["theme",0],value)
+
+            }}key={i}
+            ></div>)}
+            
+        </div>
+        <div className={`main_body4_1 main_body4_1-${theme[0]}`}>
             <div className="main_container4_1">
                 <div className="head4_1">
-                <div className='firstname_4_1'>
-                <TextField value={name1} className='firstname_4_1'
-                onChange={(value)=>changeState(["name1"],value)}/>
-                <br/>
-                <TextField value={name2} className='firstname_4_1'
-                onChange={(value)=>changeState(["name2"],value)}/>
-                <TextField value={designation} className="job4_1"
-                onChange={(value)=>changeState(["designation"],value)}/>
+                    <div className='firstname_4_1'>
+                        <TextField value={name1} className='firstname_4_1'
+                        onChange={(value)=>changeState(["name1"],value)}/>
+                        <br/>
+                        <TextField value={name2} className='firstname_4_1'
+                        onChange={(value)=>changeState(["name2"],value)}/>
+                        <TextField value={designation} className="job4_1"
+                        onChange={(value)=>changeState(["designation"],value)}/>
+                    </div>
+                    <div className="contacts4_1">
+                        ✆<TextField value={details.call}
+                        onChange={(value)=>changeState(["details","call"],value)}/><br/>
+                        ✉<TextField value={details.email}
+                        onChange={(value)=>changeState(["details","email"],value)}/><br/>
+                        📍<TextField value={details.location}
+                        onChange={(value)=>changeState(["details","location"],value)}/><br/>
+                    </div>
                 </div>
-                <div className="contacts4_1">
-                ✆<TextField value={details.call}
-                onChange={(value)=>changeState(["details","call"],value)}/><br/>
-                ✉<TextField value={details.email}
-                onChange={(value)=>changeState(["details","email"],value)}/><br/>
-                📍<TextField value={details.location}
-                onChange={(value)=>changeState(["details","location"],value)}/><br/>
-            </div></div>
                 <div className="bottom4_1">
-                <div className="bottomleft4_1">
-                <div className="image4_1">
-                <img src={Profile4}></img></div>
-                <div className="profile4_1">Profile</div>
-                <div className="description4_1">
-                <TextArea value ={profile}
-                    onChange={value=>changeState(["profile"],value)}/>
+                    <div className="bottomleft4_1">   
+                        <FileUpload image={profileImage}
+                        onChange={value=>changeState(["profileImage"],value)}/>
+                        
+                        <div className="profile4_1">Profile</div>
+                        <div className="description4_1">
+                            <TextArea value ={profile}
+                            onChange={value=>changeState(["profile"],value)}/>
+                        </div>
+                    <div className="profile4_1">Skills</div>
+                    <div className="circlesection4_1">
+                        <div className="uppercircle4_1">
+                            <div className="circle4_1"><CircularProgressbar value={30} text="PS"/></div>
+                            <div className="circlename4_1">Photo Shop</div>
+                            <div className="circle4_1"><CircularProgressbar value={30}text="PS"/></div>
+                            <div className="circlename4_1">Photo Shop</div>
+                        </div>
+                        <div className="lowercircle4_1">
+                            <div className="circle4_1" ><CircularProgressbar value={75} text="AE"/></div>
+                            <div className="circlename4_1">After Effects</div>
+                            <div className="circle4_1"><CircularProgressbar value={75}text="AE"/></div>
+                            <div className="circlename4_1">After Effects</div>
                 
-                </div>
-            
-                
-                <div className="profile4_1">skills</div>
-                <div className="circlesection4_1">
-                <div className="uppercircle4_1">
-                <div className="circle4_1"><CircularProgressbar value={30} text="PS"/></div>
-                <div className="circlename4_1">Photo Shop</div>
-                <div className="circle4_1"><CircularProgressbar value={30}text="PS"/></div>
-                <div className="circlename4_1">Photo Shop</div>
-                </div>
-                <div className="lowercircle4_1">
-                <div className="circle4_1" ><CircularProgressbar value={75} text="AE"/></div>
-                <div className="circlename4_1">After Effects</div>
-                <div className="circle4_1"><CircularProgressbar value={75}text="AE"/></div>
-                <div className="circlename4_1">After Effects</div>
-                
-                </div>
-                <div className="middle4_1">
-                <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
-                <div className="circlename4_1">LightRoom</div>
-                <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
-                <div className="circlename4_1">LightRoom</div>
-                
-                </div>
-                </div> </div>
+                        </div>
+                    <div className="middle4_1">
+                        <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
+                        <div className="circlename4_1">LightRoom</div>
+                        <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
+                        <div className="circlename4_1">LightRoom</div>
+                    
+                    </div>
+                </div> 
+        </div>
                 <div className="bottomright4_1">
                 <div className="profile4_1">Education</div>
                 {education.map(({college,startingdate,endingdate,collegedetails},i)=>{
@@ -273,13 +298,10 @@ const SecondPage = () => {
             >Add new</button></div>   
                 
                 </div>
-                </div>
-                
-
-
+            </div>       
         </div>   
         </div>
-           
+        </>   
        
     )
 }
