@@ -1,3 +1,6 @@
+body,html,#root,.home-container,.home-description-image-section{
+    height:100%;
+}
 .header_home{
     display: grid;
     grid-auto-flow: column;
@@ -12,5 +15,12 @@
 .home_icon{
     width: 40px;
     
+}
+.home-heading, .home-description-section{
+    color:white;
+    padding:10px;
+}
+.home-description-image-section{
+    background-image: url("https://its.unc.edu/files/2020/03/laptop-on-coffee-table.jpeg");
 }
 
