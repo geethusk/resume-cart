@@ -1,11 +1,11 @@
 import React from 'react'
-import HomeComponent from './HomeComponent'
+import HomeComponent from './Component/HomeComponent'
 
 const Home = () => {
     return (
         <div>
             <HomeComponent/>
-            
+
         </div>
     )
 }
