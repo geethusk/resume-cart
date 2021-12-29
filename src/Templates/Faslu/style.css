@@ -4,12 +4,12 @@
     font-family: "Roboto",serif;  
 }
 :root{
-    --blue:#5446d8;
-    --gray:rgb(78, 75, 75);
+    --blue:#165252;
+    --gray:#58585b;
     --red:rgb(138, 4, 4);
-    --green:rgb(6, 167, 68);
-    --brown:rgb(29, 20, 22);
-    --yellow:rgb(154, 211, 22);
+    --AntiqueWhite:#9c5d0a;
+    --brown:rgb(22, 6, 9);
+    --yellow:rgb(52, 73, 3);
 }
 .resume-page2-blue *{
     --primary-color2:var(--blue);
@@ -20,8 +20,8 @@
 .resume-page2-red *{
     --primary-color2:var(--red);
 }
-.resume-page2-green *{
-    --primary-color2:var(--green);
+.resume-page2-AntiqueWhite *{
+    --primary-color2:var(--AntiqueWhite);
 }
 .resume-page2-brown *{
     --primary-color2:var(--brown);
@@ -43,8 +43,8 @@
 .theme-selector-2-red{
     background-color: var(--red);
 }
-.theme-selector-2-green{
-    background-color: var(--green);
+.theme-selector-2-AntiqueWhite{
+    background-color: var(--AntiqueWhite);
 }
 .theme-selector-2-brown{
     background-color: var(--brown);
@@ -59,7 +59,6 @@
     max-width: 827px;
     margin: auto;
     border:1px solid black;
-    color: #58585b;
     font-size: 0.9em;
 }
 .resume-page2 input,textarea{
@@ -71,6 +70,9 @@ textarea{
     width: 100%;
     overflow: hidden;
     padding: 0;
+}
+h3{
+    color:var(--primary-color2) ;
 }
 .left-section2{
     background-color: #f2f4f4;
@@ -90,38 +92,44 @@ textarea{
     display: grid;
     place-items: center;
 }
-.resume-name{
-    font-size: 2.50em;
-    padding: 10px 0;    
+.resume-name2 input{
+    padding: 10px 0; 
+    color:var(--primary-color2); 
+    font-size: 2.30em;
 }
-.header-part-address-section{
+.resume-profession input{
+    font-size: 1.3em;
+}
+.header-part-address-section2{
     line-height: 1.5;
     padding-top:15px;
     
 }
-.description-section{
+.description-section2{
     border-left:5px solid var(--primary-color2) ;
     margin: 30px 0 30px;
     padding-left: 10px;
 }
-.block-section ul{
+.block-section2 ul{
     padding: 15px;
 }
-.template-block{
+.template-block2{
     padding-bottom: 10px;
 }
-.right-section{
+.right-section2{
     padding: 20px 0 20px 20px;
 }
-.heading-section{
+.heading-section2{
     padding-bottom: 15px;
     line-height: 140%;
 }
-.sub-heading-section::before{
+.sub-heading-section2::before{  
+    display: flex;
     content: "";
-    width:5px;
-    height: 5px;
-    background-color: #58585b;
+    width:7px;
+    height: 7px;
+    /* background-color: #58585b; */
+    background-color:var(--primary-color2) ;
     position: absolute;
     position: relative;
     display: block;
@@ -130,7 +138,7 @@ textarea{
     top:13px;
 
 }
-.list-section{
+.list-section2{
     display: flex;
     padding: 0 10px;
     align-items: center;
@@ -151,7 +159,7 @@ li::before{
     left: -15px;
     top:7px;
 }
-.close-button{
+.close-button2{
     padding: 5px;
 }
 

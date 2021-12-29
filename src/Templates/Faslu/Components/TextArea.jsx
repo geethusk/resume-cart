@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 const TextArea = ({value,onChange,className,addToList=null,length,deleteList=()=>{}}) => {
+    console.log(value);
     const ref = useRef(null);
     useEffect(() => {
         // console.log(ref.current.clientHeight);
