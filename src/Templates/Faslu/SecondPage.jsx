@@ -19,43 +19,23 @@ const SecondPage = () => {
         profileImage:profilePic,
         exp:[
             {
-            role:"Business Development Manager",
-            companyName:"AirState Solutions",
-            startingDate:"January 2016",
-            endingDate:"Present",
-            detailList:[
-                {id:1,
-                 value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                },
-                {id:2,
-                value: "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-                },
-                {id:3,
-                value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                },
-                {id:4,
-                value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-                }
-            ]
-            },
-            {
                 role:"Business Development Manager",
                 companyName:"AirState Solutions",
                 startingDate:"January 2016",
                 endingDate:"Present",
                 detailList:[
-                    // {id:1,
-                     "Implement effective company policies to ensure that all practices comply with labor and employment regulations",
-                    // },
-                    // {id:2,
-                    "Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
-                    // },
-                    // {id:3,
-                    "Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
-                    // },
-                    // {id:4,
-                    "Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-                    // }
+                    {id:1,
+                     value:"Implement effective company policies to ensure that all practices comply with labor and employment regulations",
+                    },
+                    {id:2,
+                        value:"Increased employee retention rates by managing workplace satisfaction to an over 90% success rate by creating and maintaining a positive work environment",
+                    },
+                    {id:3,
+                        value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
+                    },
+                    {id:4,
+                        value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
+                    }
                 ]
             },
             {   
@@ -167,7 +147,7 @@ const SecondPage = () => {
                                 </div>
                                 <div>{startingDate}-{endingDate}</div>
                                 <ul>
-                                    {detailList.map((value,i)=><li key={i}>
+                                    {detailList.map(({value},i)=><li key={i}>
                                         <TextArea
                                             value={value}
                                         />
