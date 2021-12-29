@@ -1,13 +1,15 @@
 import React from 'react'
+import FileUpload from './FileUpload'
 import profilepic from "./images/s.webp"
 import "./Second.css"
+
 
 const SecondPage = () => {
     return (
         <div className='main-container-51'>
             <div className="left-section-51">
                 <div className="basic-info51">
-                    <img className="image" src={profilepic} alt="imagehere" />
+                    <FileUpload profilepic={profilepic}/>
                     <div className="basic-profile">
                         <div className='intro'>
                             H E L LO I 'M                          

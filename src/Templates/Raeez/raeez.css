@@ -2,8 +2,8 @@
     margin:0;
     box-sizing: border-box;
     font-family: "Libre Baskerville",serif;
-   padding: 0;
-   border: none;
+   /* padding: 0;
+   border: none; */
 
 }
 .theme-selector-list3{
@@ -14,6 +14,7 @@
 
 }
 :root{
+    --darkcyan:darkcyan;
     --violet:violet;
    --indigo:indigo;
     --blue:blue;
