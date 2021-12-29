@@ -4,9 +4,30 @@
     padding: 20px;
     border: solid 1px black;
     margin: auto;
-    background-color: black;
+    background-color: var(--primary-color4);
     color: white;
     
+}
+.main_body4_1-indigo4, .main_body4_1-indigo4 *{
+    --primary-color4:var(--indigo4);
+}
+.main_body4_1-darkviolet4, .main_body4_1-darkviolet4 *{
+    --primary-color4:var(--darkviolet4);
+}
+.main_body4_1-blue4, .main_body4_1-blue4  *{
+    --primary-color4:var(--blue4);
+}
+
+
+.main_body4_1-orange4,.main_body4_1-orange4 *{
+    --primary-color4:var(--orange4);
+}
+
+.main_body4_1-brown4,.main_body4_1-brown4 *{
+    --primary-color4:var(--brown4);
+}
+.main_body4_1-black4,.main_body4_1-black4 *{
+    --primary-color4:var(--black4);
 }
 
 .main_body4_1 input{
@@ -77,11 +98,12 @@
 }
 .image4_1{
     padding: 20px 0;
-    
-    
+    position: relative;
+    width: 200px;
+    margin: auto;
 }
 
-.image4_1 img{
+.image4_1 .profilepic4{
     width: 200px;
     height: 200px;
     border: solid 5px white;
@@ -90,6 +112,14 @@
     margin: auto;
     object-fit: cover; 
     object-position: left top;
+    
+}
+.changing_image4{
+    position: absolute;
+    right: 10px;
+    bottom: 50px;
+    width: 25px;
+    cursor: pointer;
 }
     
     
@@ -122,3 +152,4 @@
     padding: 10px;
     
 }
+

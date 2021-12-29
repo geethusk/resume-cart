@@ -1,0 +1,7 @@
+.header_home{
+    display: grid;
+    grid-auto-flow: column;
+    padding-left: 20px;
+    
+    
+}
