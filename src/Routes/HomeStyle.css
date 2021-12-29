@@ -1,7 +1,16 @@
 .header_home{
     display: grid;
     grid-auto-flow: column;
-    padding-left: 20px;
-    
+   
+    background-color: orangered;
+   color: white;
+   height: 70px;
+   padding: 20px; 
+   font-size: 20px;
     
 }
+.home_icon{
+    width: 40px;
+    
+}
+

@@ -1,15 +1,14 @@
 import React from 'react'
+import Home from"../Component/home1.svg"
 
 const HomeComponent = () => {
     return (
         <div className='mainContainer_home'>
             <div className='header_home'>
                 <div className='home_icon'>
-                    HOME
+                    <img src={Home} alt="" />
                 </div>
-                <div className='resume_home'>
-                    RESUMES
-                </div>
+                
                 <div className='working_home'>
                     HOW IT WORKS
                 </div>
