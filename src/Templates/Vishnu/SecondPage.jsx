@@ -60,14 +60,14 @@ const SecondPage = () => {
             <div className="right-section-52">
                 <div className="contact-section">
                     <div className="email" >
-                        <input type="text" value="hello@reallygreatsite.com" id='input' id='contact'/>
+                        <input type="text" value="hello@reallygreatsite.com"  id='contact'/>
 
                     </div>
                     <div className='number' >
-                        <input type="text" value="9061352517" id='contact' id='input'/>
+                        <input type="text" value="9061352517" id='contact' />
                     </div>
                     <div className="place" >
-                        <input type="type" value="washington DC" id='contact' id='input'/>
+                        <input type="type" value="washington DC" id='contact' />
                     </div>
                 </div>
                 <div className="experience-section">

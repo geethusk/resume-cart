@@ -1,5 +1,6 @@
 #input{
     border: none;
+   
 }
 .main-container-51{
     max-width:   827px;
@@ -99,5 +100,7 @@
  #contact{
      color: white;
      font-size: 15px;
+     background: none;
+     border: none;
  }
  
