@@ -16,9 +16,9 @@ const HomeDescription = () => {
             </div> 
             <div className="home-sort-section">
                 <select className="select-sort">
-                    <option value="">Type</option>
-                    <option value="fresher">Fresher</option>
-                    <option value="experienced">Experienced</option>
+                    <option className="home-option" value="">You Are ...</option>
+                    <option className="home-option" value="fresher">Fresher</option>
+                    <option className="home-option" value="experienced">Expert</option>
                 </select>
             </div>
             <div className='demo_home'>
