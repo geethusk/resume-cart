@@ -1,0 +1,43 @@
+.sign-up-container{
+    height: 100%;
+    padding: 0 250px;
+    display: grid;
+    background-color: #d8deec;
+    align-items: center;
+}
+.card-container{
+    background-color: white;
+    padding: 50px;
+    border-radius: 25px;
+}
+.signup{
+    font-size: 35px;
+    font-weight: 700;
+}
+.sign-up-form{
+    padding-top: 40px;
+}
+.label{
+    position: relative;
+    margin-top: 30px;
+}
+.sign-up-label{
+    position: absolute;
+    top: 10px;
+    left: 8px;
+
+}
+.sign-up-input{
+    width: 235px;
+    height: 40px;
+}
+.sign-up-button{
+    margin-top: 20px;
+    height: 40px;
+    width: 50px;
+    background-color: red;
+    margin-left: 182px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+}
