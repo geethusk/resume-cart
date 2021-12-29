@@ -1,5 +1,5 @@
 
-*{
+.body-wrapper *{
     margin:0;
     box-sizing: border-box;
     padding:0;
@@ -76,11 +76,11 @@
     outline: none;
     border:none;
 }
-body{
+/* body{
     margin:auto;
     max-width:850px;
    
-}
+} */
 .title-name{
     /* width: 37ch; */
     margin:10px;
