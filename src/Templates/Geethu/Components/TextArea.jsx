@@ -6,7 +6,7 @@ const TextArea = ({onChange,value,className,addToList=null,length,deleteList=()=
 
     useEffect(() => {
         ref.current.style.height=10+"px";
-        ref.current.style.height=ref.current.scrollHeight+"px";
+       ref.current.style.height=ref.current.scrollHeight+"px";
         
         if(value.split("\n").length>1){
             if(addToList!==null){
@@ -16,8 +16,13 @@ const TextArea = ({onChange,value,className,addToList=null,length,deleteList=()=
         }
 
     }, [value])
+    useEffect(() => {
+       setTimeout(()=>{
+        ref.current.style.height=10+"px";   
+        ref.current.style.height=ref.current.scrollHeight+"px"},100);
+
+    }, [])
     return (
-        <div>
             <textarea 
                 className={className}
                 ref={ref}
@@ -29,7 +34,6 @@ const TextArea = ({onChange,value,className,addToList=null,length,deleteList=()=
                 }}
                 autoFocus
             />
-        </div>
     )
 }
 
