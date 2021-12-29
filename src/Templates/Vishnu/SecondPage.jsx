@@ -15,15 +15,15 @@ const SecondPage = () => {
                             H E L LO I 'M                          
                         </div>
                         <div>
-                            <input type="text" className="first-name"
+                            <input type="text" className="first-name" id='input'
                                value="Jacqueline"/>
                         </div>
                         <div>
-                            <input type="text" className="second-name"
+                            <input type="text" className="second-name" id='input'
                               value="Thompson"/>
                         </div>
                         <div>
-                           <input type="text" className="designation"
+                           <input type="text" className="designation" id='input'
                                 value=" WEB D E V E LOPERS"/>
                         </div>
                     </div>
@@ -60,14 +60,14 @@ const SecondPage = () => {
             <div className="right-section-52">
                 <div className="contact-section">
                     <div className="email" >
-                        <input type="text" value="hello@reallygreatsite.com" id='contact'/>
+                        <input type="text" value="hello@reallygreatsite.com" id='input' id='contact'/>
 
                     </div>
                     <div className='number' >
-                        <input type="text" value="9061352517" id='contact'/>
+                        <input type="text" value="9061352517" id='contact' id='input'/>
                     </div>
                     <div className="place" >
-                        <input type="type" value="washington DC" id='contact'/>
+                        <input type="type" value="washington DC" id='contact' id='input'/>
                     </div>
                 </div>
                 <div className="experience-section">
@@ -76,14 +76,14 @@ const SecondPage = () => {
                     </div>
                     <div className="experience-details">
                         <div className="duration">
-                            <input type="text" value="2019"/>-
-                            <input type="text" value="present"/>
+                            <input id='input' type="text" value="2019"/>-
+                            <input id='input' type="text" value="present"/>
                         </div>
                         <div >
-                            <input type="text" className='role' value="WEB DEVELOPER"/>
+                            <input type="text" id='input' className='role' value="WEB DEVELOPER"/>
                         </div>
                         <div className='company'>
-                            <input type="text" value="Salford Unlimited"/>
+                            <input id='input' type="text" value="Salford Unlimited"/>
                         </div>
                         <div className="role-details">
                             <ul>
@@ -96,14 +96,14 @@ const SecondPage = () => {
                     </div>
                     <div className="experience-details">
                         <div className="duration">
-                            <input type="text" value="2017"/>-
-                            <input type="text" value="2019"/>
+                            <input id='input' type="text" value="2017"/>-
+                            <input id='input' type="text" value="2019"/>
                         </div>
                         <div >
-                            <input type="text" className='role' value=" DEVELOPER"/>
+                            <input id='input' type="text" className='role' value=" DEVELOPER"/>
                         </div>
                         <div className='company'>
-                            <input type="text" value="TCS AmsterDam"/>
+                            <input id='input' type="text" value="TCS AmsterDam"/>
                         </div>
                         <div className="role-details">
                             <ul>
@@ -121,14 +121,14 @@ const SecondPage = () => {
                     </div>
                     <div className="education-details">
                         <div className="duration">
-                            <input type="text" value="2017"/>-
-                            <input type="text" value="2019"/>
+                            <input id='input' type="text" value="2017"/>-
+                            <input id='input' type="text" value="2019"/>
                         </div>
                         <div >
-                            <input type="text" className='degree' value="BACHELOR OF INFORMATION SYSTEM "/>
+                            <input type="text" id='input' className='degree' value="BACHELOR OF INFORMATION SYSTEM "/>
                         </div>
                         <div className='college'>
-                            <input type="text" value="University Of Hanover"/>
+                            <input id='input' type="text" value="University Of Hanover"/>
                         </div>
                         <div className="specialization-details">
                             <ul>
@@ -140,14 +140,14 @@ const SecondPage = () => {
                     </div>
                     <div className="education-details">
                         <div className="duration">
-                            <input type="text" value="2017"/>-
-                            <input type="text" value="2019"/>
+                            <input id='input' type="text" value="2017"/>-
+                            <input id='input' type="text" value="2019"/>
                         </div>
                         <div >
-                            <input type="text" className='degree' value="BACHELOR OF INFORMATION SYSTEM "/>
+                            <input type="text" id='input' className='degree' value="BACHELOR OF INFORMATION SYSTEM "/>
                         </div>
                         <div className='college'>
-                            <input type="text" value="University Of Hanover"/>
+                            <input id='input'  type="text" value="University Of Hanover"/>
                         </div>
                         <div className="specialization-details">
                             <ul>
