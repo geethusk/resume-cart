@@ -14,6 +14,13 @@ const HomeDescription = () => {
             <div className="home-description-section">
                 Easily build a professional-looking resume that showcases your goals and qualifications. Just pick a<br/>template and fill in the blanks. No formatting is needed!
             </div> 
+            <div className="home-sort-section">
+                <select className="select-sort">
+                    <option value="">Type</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="experienced">Experienced</option>
+                </select>
+            </div>
             <div className='demo_home'>
                 <img src={First} alt="" />
                 <img src={Second} alt="" />
