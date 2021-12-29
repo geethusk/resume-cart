@@ -22,5 +22,6 @@ body,html,#root,.home-container,.home-description-image-section{
 }
 .home-description-image-section{
     background-image: url("https://its.unc.edu/files/2020/03/laptop-on-coffee-table.jpeg");
+    background-repeat: no-repeat;
 }
 
