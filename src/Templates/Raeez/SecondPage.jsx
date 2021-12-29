@@ -4,17 +4,26 @@ import { useState } from 'react'
 import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
-import profilepic from "./images/resumepic.jpg"
+import profilepic from "./images/Raeez.jpg"
 import Location from "./icons/location.png"
 import Phone from "./icons/phone.png"
 import Gmail from "./icons/gmail.png"
+import FileUpload from './Components/FileUpload'
 
 
 
 const SecondPage = () => {
+    const colorThemeList= [
+    "violet",
+    "indigo",
+    "blue",
+    "green",
+    "red",
+    "gray",
+    "brown"]
     const[template,setTemplate]=useState({
-        theme:['violet','red'],
-        name:"JESSICA COOPER",
+        theme:['darkcyan'],
+        name:"RAEEZ MOHAMMED",
         profilebio:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aliquam at non illo ipsum. Fuga iusto, maiores distinctio aut expedita consectetur? Amet laudantium fugiat in temporibus odit aliquam ipsa possimus!",
    
         workexp:[
@@ -35,6 +44,7 @@ const SecondPage = () => {
             ]
             }
         ],
+        profileImage:profilepic,
         contact:{place:"LONDON,UNITED KINGDOM",phone:" 123-456-789-00",gmail:"raeezmohammed97@gmail.com"},
         skills:[
                            
@@ -135,10 +145,24 @@ const SecondPage = () => {
                 })
         )
     }
-    const{theme,name,profilebio,jobdesignation,workexp,contact,Education,skills}=template;
+    const{theme,name,profilebio,profileImage,jobdesignation,workexp,contact,Education,skills}=template;
     const{place,phone,gmail}=contact;
     return (
-        <div className="main-section-3">
+        <>
+        <div className="theme-selector-list3">
+            {colorThemeList.map((value,i)=>
+            <div 
+            className={`theme-selector3-${value}`}
+            onClick={
+                ()=>{
+                    changeState(["theme",0],value)
+                }
+            }
+            key={i}
+            ></div>)}
+
+        </div>
+        <div className={`main-section-3 main-section-3-${theme[0]}`}>
             
             <div className="left-section-3">
                 <div className='left-section-name-3'>
@@ -233,8 +257,11 @@ const SecondPage = () => {
                         } >+</button></div>
             </div>
             <div className="right-section-3">
+                <FileUpload image={profileImage}
+                onChange={value=>changeState(["profileImage"],value)}/>
+              
           
-                <img className='profilepic-3' src= {profilepic}/>
+                {/* <img className='profilepic-3' src= {profilepic}/> */}
                 
                 
                     <div className='contact-head-3'>CONTACT</div>
@@ -311,6 +338,7 @@ const SecondPage = () => {
             
             </div>
         </div>
+        </>
     )
 }
 
