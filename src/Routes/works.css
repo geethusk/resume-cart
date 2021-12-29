@@ -1,4 +1,6 @@
-
+.working-container3{
+    padding: 20px;
+}
 .working-pagehead3{
     text-align: center;
     
@@ -13,5 +15,10 @@
 .main-title-description-3{
     font-size: 15px;
     font-weight: lighter;
-    font-style: italic;
+  
+}
+.procedure-title-3{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
 }

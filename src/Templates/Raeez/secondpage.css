@@ -8,6 +8,7 @@ border:2px solid brown;
 }
 .main-section-3  input{
     padding: 0;
+    border: none;
 }
  /* .theme-selectors-lists3{
     display: grid;
@@ -139,6 +140,8 @@ p{
 }
 .right-section-3 input{
      color:white; 
+     background-color: transparent;
+     border: none;
    
 
     
