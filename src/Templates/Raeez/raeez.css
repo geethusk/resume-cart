@@ -11,6 +11,8 @@
     grid-auto-flow: column;
     height: 25px;
     cursor: pointer;
+    max-width: 827px;
+    margin: auto;
 
 }
 :root{
@@ -69,9 +71,9 @@
     --primary-color3:var(--brown);
 }
 
-#root{
+/* #root{
     padding: 10px;
-}
+} */
 .main-body3{
     height:auto;
     /* max-width: 1240px; */
@@ -81,6 +83,7 @@
     padding: 20px;
 
 }
+
 .main-body3 input,textarea{
     border: none;
     /* outline: none; */
