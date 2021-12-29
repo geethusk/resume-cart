@@ -9,7 +9,6 @@ const Raeez = () => {
         <Routes>
         <Route path="/" element={<FirstPage/>}/>
         <Route path="Second" element={<SecondPage/>}/>
-
         </Routes>
 
     )
