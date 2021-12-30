@@ -5,12 +5,14 @@ body,html,#root,.home-container,.home-description-image-section{
     display: grid;
     grid-auto-flow: column;
    
-    background-color: orangered;
+    background-color: black;
    color: white;
    height: 70px;
    padding: 20px; 
    font-size: 20px;
     cursor: pointer;
+    position: fixed;
+    width: 100%;
 }
 .home_icon{
     width: 40px;
@@ -23,13 +25,46 @@ body,html,#root,.home-container,.home-description-image-section{
 .home-description-image-section{
     background-image: url("https://its.unc.edu/files/2020/03/laptop-on-coffee-table.jpeg");
     background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
 }
 .demo_home img{
-    height: 400px;
-    width: 350px;
+    margin: auto;
+    
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 6px 2px 11px 1px #4b4b4b5e;
+    cursor: pointer;
+    
+   
 }
 .demo_home{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4,auto);
     gap: 30px;
+    padding: 20px;
+}
+.home-heading{
+    padding-top: 80px;
+    text-align: center;
+}
+.home-description-section{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.select-sort{
+    background: transparent;
+    border-radius: 10px;
+    border: solid 5px black;
+    color: white;
+    width: 25%;
+    margin-left: 25%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.home-option{
+    background-color: black
+     
 }
 
