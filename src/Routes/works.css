@@ -1,24 +1,66 @@
 .working-container3{
     padding: 20px;
+    background: rgba(255, 255, 255, 0.397);
+    height: 100%;
+    position: relative;
+    
+
+}
+.working-container3::after{
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: url("https://netstorage-legit.akamaized.net/images/6332ee25eeed942d.jpg?imwidth=900");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    
 }
 .working-pagehead3{
     text-align: center;
     
     
 }
+
 .main-title3{
     font-size: 50px;
     font-weight: bold;
     padding: 5px;
   
+  
 }
 .main-title-description-3{
     font-size: 15px;
-    font-weight: lighter;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: italic;
   
 }
 .procedure-title-3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom:  15px;
+}
+.step-title-3{
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  
+}
+.step-info{
+    margin: 15px 0;
+
+}
+.home-image-3{
+    width: 600px;
+    height: 300px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+
 }

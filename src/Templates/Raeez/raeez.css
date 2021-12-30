@@ -12,7 +12,7 @@
     height: 25px;
     cursor: pointer;
     max-width: 827px;
-    margin: auto;
+    margin: 10px auto 0;
 
 }
 :root{
@@ -81,6 +81,7 @@
     margin: auto;
     border: solid 1px black;
     padding: 20px;
+    margin-bottom: 10px;
 
 }
 
