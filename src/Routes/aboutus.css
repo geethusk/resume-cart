@@ -1,6 +1,6 @@
 .aboutus-container{
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.397);
+    /* padding: 20px; */
+    background: rgba(255, 255, 255, 0.288);
     height: 100%;
     position: relative;
    
@@ -11,7 +11,7 @@
     height: 100%;
     position: fixed;
     width: 100%;
-    background-image: url("https://netstorage-legit.akamaized.net/images/6332ee25eeed942d.jpg?imwidth=900");
+    background-image: url("https://c8.alamy.com/comp/MAYK14/white-wood-texture-background-use-us-clean-wooden-background-for-backdrop-design-MAYK14.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
@@ -19,3 +19,48 @@
     left: 0;
     opacity: 0.5;
 }
+.about-head{
+    padding: 40px;
+    background-color: #008b8b75;
+    color: white;
+    text-align: center;
+  
+    
+}
+.about-main-head{
+    font-size: 45px;
+    font-weight: bold;
+    padding: 5px;
+    font-family: system-ui;
+
+}
+.about-details{
+    font-size: 20px;
+    padding: 35px;
+    background-color: #2f4f4f30;
+    color: #121212;
+}
+.details-description{
+    font-family: system-ui;
+    font-size: 20px;
+}
+.about-footer-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* padding: 8px; */
+    padding-top: 20px;
+    background-color:#80808073;
+    color: #0c0b0b;
+}
+.about-image-section{
+    width: 500px;
+    height: 300px;
+}
+.about-image-description{
+    font-size: 20px;
+    font-family: system-ui;
+    padding:10px;
+}
+
+
+
