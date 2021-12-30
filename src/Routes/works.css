@@ -11,7 +11,8 @@
     display: block;
     height: 100%;
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     background-image: url("https://netstorage-legit.akamaized.net/images/6332ee25eeed942d.jpg?imwidth=900");
     background-repeat: no-repeat;
     background-size: cover;
@@ -54,13 +55,28 @@
 }
 .step-info{
     margin: 15px 0;
+    font-family: system-ui;
 
 }
-.home-image-3{
+.hiw-image-3{
     width: 600px;
     height: 300px;
-    padding-bottom: 10px;
     border-radius: 15px;
-    border: 1px solid black;
+    display: block;
+    border: 1px solid black
+    /* border: 1px solid black; */
 
+}
+Link{
+    font-size: 15px;
+}
+.linking-pages{
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+  
+}
+.link-3:hover{
+color: red;
+text-decoration: none;
 }
