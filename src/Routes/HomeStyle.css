@@ -78,4 +78,10 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     margin: 20px;
     gap: 20px;
 }
+.demo_home{
+    transition: transform 0.2s ease-in-out;
+}
+.demo_home :hover{
+    transform:scale(1.09) ;
+}
 
