@@ -1,0 +1,21 @@
+.aboutus-container{
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.397);
+    height: 100%;
+    position: relative;
+   
+}
+.aboutus-container::after{
+    content: "";
+    display: block;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    background-image: url("https://netstorage-legit.akamaized.net/images/6332ee25eeed942d.jpg?imwidth=900");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
