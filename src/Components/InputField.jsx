@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const InputField = () => {
+const InputField = ({value,onChange,label,type,error}) => {
+    const[isBlur,setIsBlur]=useState(false)
     return (
-        
-            <div className="label">
+            <div className="input-area">
                         <input type="text" className='sign-up-input'
-                            value={fullName}     
-                            onChange={(e)=>{
-                                onChange("fullname",e.target.value)
-                            }}
-                             
+                            type={type}
+                            value={value}     
+                            onChange={(e)=>{onChange(e.target.value)}}   
+                            onBlur={()=>{
+                                setIsBlur(true)
+                            }}  
                         />
-                        <div className='sign-up-label' >Full Name</div>
-                    </div>
+                        <div className={`label ${value? "filled-label":""}`}>{label}</div>
+                        {error && (isBlur) &&
+                        <div className='error-field'>{error}</div>
+                        }
+                     
+            </div>
         
     )
 }

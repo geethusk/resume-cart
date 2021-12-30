@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import InputField from '../Components/InputField';
+import { isPassword, isValidEmail } from '../utility/validate';
 import './Login.css'
 const Login = () => {
     const [formData,setFormData] = useState({
@@ -17,30 +19,62 @@ const Login = () => {
         passwordError:"",
     })
     const{emailError,passwordError}=formErrorData
+    const onError = (key,value)=>{
+        setFormErrorData(prev=>({
+            ...prev,
+            [key]:value
+        }))
+    }
+    const formValidate = ()=>{
+        if(!email){
+            onError("emailError","Cannot be Empty")
+        }
+        else{
+            if(!isValidEmail(email)){
+                onError("emailError","Enter Valid Email")
+            }
+            else{
+                onError("emailError","")
+            }
+        }
+        if(!password){
+            onError("passwordError","Cannot be Empty")
+        }
+        else{
+            if(!isPassword(password)){
+                onError("passwordError","Enter Valid Email")
+            }
+            else{
+                onError("passwordError","")
+            }
+        }
+    }
+    const loginCall=()=>{
+        if (formValidate()){
+            console.log("login success")
+        }
+    }
     return (
         <div className="login-container">
             <div className="login-card">
                 <div className="login-heading">
                     Login
                 </div>
-                <form onSubmit="submit" className='login-form'>
-                    <div className="login-section">
-                        <input type="text" className='login-input'
-                            value={email}
-                            onChange={(e) =>onChange("email",e.target.value)}
-                            error={emailError}
-                        />
-                        <div className="login-label">Email</div>
-                    </div>
-                    <div className="login-section">
-                        <input type="text" className='login-input' 
-                            value={password}
-                            onChange={(e) =>onChange("password",e.target.value)}
-                            error={passwordError}
-                        />
-                        <div className="login-label">Password</div>
-                        
-                    </div>
+                <form onSubmit={loginCall} className='login-form'>
+                    <InputField
+                        label="Email"
+                        value={email}
+                        type="email"
+                        onChange={(value) =>onChange("email",value)}
+                        error={emailError}
+                    />
+                    <InputField
+                        label="Password"
+                        value={password}
+                        type="password"
+                        onChange={(value) =>onChange("password",value)}
+                        error={passwordError}
+                    />
                     <div className='login-button-section'>
                         <div>Forget Password?</div>
                         <button type="submit" className='login-button'>Login</button>
