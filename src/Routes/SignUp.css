@@ -9,6 +9,7 @@
     background-color: white;
     padding: 50px;
     border-radius: 25px;
+    background-image: url("../assets/background/Asset\ 1.svg");
 }
 .signup{
     font-size: 35px;
@@ -22,13 +23,23 @@
     margin-top: 30px;
 }
 .sign-up-label{
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     position: absolute;
-    top: 10px;
-    left: 8px;
-
+    /* top: 10px; */
+    /* left: 8px; */
+    transition: .5s ease-in-out;
+    background-color: white;
+}
+.label :focus ~ .sign-up-label{
+    top:0;
+    font-size :14px;
+    left: 5px;
 }
 .sign-up-input{
-    width: 235px;
+    max-width: 400px;
+    width: 100%;
     height: 40px;
 }
 .sign-up-button{
