@@ -5,6 +5,7 @@ grid-template-columns:  2.5fr 1.5fr;
 max-width: 827px;
 margin: auto;
 border:2px solid brown;
+margin-bottom: 10px;
 }
 .main-section-3  input{
     padding: 0;
