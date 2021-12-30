@@ -7,7 +7,6 @@ import HomeDescription from './Component/HomeDescription'
 const Home = () => {
     return (
         <div className="home-container">
-            <HomeComponent/>
             <HomeDescription/>
         </div>
     )
