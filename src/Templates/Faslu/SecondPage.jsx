@@ -33,9 +33,6 @@ const SecondPage = () => {
                     {id:3,
                         value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
                     },
-                    {id:4,
-                        value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-                    }
                 ]
             },
             {   
@@ -53,9 +50,6 @@ const SecondPage = () => {
                 {id:3,
                 value:"Develop targeted outreach practices to increase minority recruitment and ensure compliance with affirmative action policies",
                 },
-                {id:4,
-                value:"Monitor scheduled in and out times as well as employee breaks to ensure that proper employment laws are met"
-                }
             ]
             },
         ],
