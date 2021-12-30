@@ -1,18 +1,25 @@
 import React from 'react'
 
-const InputField = () => {
+const InputField = ({value,onChange,label,type="text",error}) => {
     return (
         
-            <div className="label">
+            <div className="input-area">
                         <input type="text" className='sign-up-input'
-                            value={fullName}     
+                            type={type}
+                            value={value}     
                             onChange={(e)=>{
-                                onChange("fullname",e.target.value)
+                                onChange(e.target.value)
+                                console.log(e);
                             }}
                              
                         />
-                        <div className='sign-up-label' >Full Name</div>
-                    </div>
+
+                        {/* to make the label stay on top */}
+                        <div className={` label ${value ?  "filled-label": "" } `}>
+                            {label}
+                        </div>
+                        <div className="error-field">{error}</div>
+            </div>
         
     )
 }
