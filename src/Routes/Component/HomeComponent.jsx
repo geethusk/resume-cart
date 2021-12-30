@@ -21,12 +21,12 @@ const HomeComponent = () => {
                     HOW IT WORKS
                 </div>
                 <div
-                    onClick={()=>{navigate("/")}} 
+                    onClick={()=>{navigate("/about")}} 
                 className='about_home'>
                     ABOUT US
                 </div>
                 <div
-                    onClick={()=>{navigate("/")}} 
+                    onClick={()=>{navigate("/feedback")}} 
                 className='feedback_home'>
                     FEEDBACK
                 </div>
