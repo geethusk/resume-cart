@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./SignUp.css"
 import { isPassword, isValidEmail } from "../utility/validate";
+// import InputField from '../../components/InputField';
 
 
 const SignUp = () => {
@@ -79,7 +80,7 @@ const SignUp = () => {
                     Sign Up
                 </div>
                 <form onSubmit="submit" className='sign-up-form'>
-                    <div className="label">
+                    <div className="input-area">
                         <input type="text" className='sign-up-input'
                             value={fullName}     
                             onChange={(e)=>{
@@ -87,34 +88,34 @@ const SignUp = () => {
                             }}
                              
                         />
-                        <div className='sign-up-label' >Full Name</div>
+                        <div className='label' >Full Name</div>
                     </div>
-                    <div className="label">
+                    <div className="input-area">
                         <input type="email" className='sign-up-input'
                             value={email}
                             onChange={(e)=>{
                                 onChange("email",e.target.value)
                         }}
                         />
-                        <div className='sign-up-label'>Email</div>
+                        <div className='label'>Email</div>
                     </div>
-                    <div className="label">
+                    <div className="input-area">
                         <input type="password" className='sign-up-input'
                             value={password}     
                             onChange={(e)=>{
                                 onChange("password",e.target.value)
                             }}
                         />
-                        <div className='sign-up-label'>Password</div>
+                        <div className='label'>Password</div>
                     </div>
-                    <div className="label">
+                    <div className="input-area">
                         <input type="password" className='sign-up-input'
                          value={confirmPassword}     
                          onChange={(e)=>{
                              onChange("confirmPassword",e.target.value)
                          }}
                         />
-                        <div className='sign-up-label'>Confirm Password</div>
+                        <div className='label'>Confirm Password</div>
                     </div>
                     <button className='sign-up-button' type="submit">Submit</button>
                     <div className="excisting-user">
