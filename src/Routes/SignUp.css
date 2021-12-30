@@ -10,6 +10,9 @@
     padding: 50px;
     border-radius: 25px;
     background-image: url("../assets/background/Asset\ 1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25%;
 }
 .signup{
     font-size: 35px;
@@ -18,11 +21,11 @@
 .sign-up-form{
     padding-top: 40px;
 }
-.label{
+.input-area{
     position: relative;
     margin-top: 30px;
 }
-.sign-up-label{
+.label{
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
@@ -32,7 +35,7 @@
     transition: .5s ease-in-out;
     background-color: white;
 }
-.label :focus ~ .sign-up-label{
+.input-area :focus ~ .label{
     top:0;
     font-size :14px;
     left: 5px;
