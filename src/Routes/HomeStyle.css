@@ -1,4 +1,4 @@
-body,html,#root,.home-container,.home-description-image-section{
+body,html,#root,.home-container,.home-description-image-section,.mainContainer_home{
     height:100%;
 }
 .header_home{
@@ -66,6 +66,11 @@ body,html,#root,.home-container,.home-description-image-section{
 .home-option{
     background-color: black
      
+}
+.body-container {
+    overflow:auto;
+    padding-top:70px;
+    height:100%;
 }
 .home-sort-section{
     display: flex;
