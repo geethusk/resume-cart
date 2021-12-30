@@ -69,8 +69,8 @@ const totalTemplateList=[
 const HomeDescription = () => {
     const navigate=useNavigate();
     const[template,setTemplate]=useState(totalTemplateList);
-    const[type,setType]=useState(totalTemplateList);
-    const[status,setStatus]=useState(totalTemplateList);
+    const[type,setType]=useState("all");
+    const[status,setStatus]=useState("all");
     
     const sort=(value)=>{
             setTemplate(totalTemplateList.filter(({type})=>type===value))
@@ -85,26 +85,32 @@ const HomeDescription = () => {
                 Easily build a professional-looking resume that showcases your goals and qualifications. Just pick a<br/>template and fill in the blanks. No formatting is needed!
             </div> 
             <div className="home-sort-section">
-                <select 
+                <select value={status}
                     onChange={(e)=>{
-                        sort(e.target.value);
+                        setStatus(e.target.value);
                         }}
                 className="select-sort">
-                    <option className="home-option" value="">You Are ...</option>
+                    <option className="home-option" value="all">You Are ...</option>
                     <option className="home-option" value="fresher">Fresher</option>
                     <option className="home-option" value="expert">Expert</option>
                 </select>
-                <select
+                <select value={type}
                     onChange={(e)=>{
-                        sort(e.target.value);
+                        setType(e.target.value);
+                       
                         }}
                 className="select-sort">
+                     <option className="home-option" value="all">I need...</option>
                     <option className="home-option" value="premium">Premium</option>
                     <option className="home-option" value="free">Free</option>
                 </select>
             </div>
             <div className='demo_home'>
-                {template.map(({id,image,url})=>
+
+                {template.filter((value)=>{
+                    return (type==="all"|| value.type===type)&&(status==="all"||value.status===status)
+                })
+                .map(({id,image,url})=>
                     <img
                     onClick={()=>{
                         navigate(url)

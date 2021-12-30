@@ -41,7 +41,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 }
 .demo_home{
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(4,1fr);
     gap: 30px;
     padding: 20px;
 }
