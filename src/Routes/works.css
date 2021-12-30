@@ -49,6 +49,18 @@
 .step-title-3{
     font-size: 1.2rem;
     font-weight: 700;
-    margin-top: 20px;
+    margin-bottom: 15px;
+  
+}
+.step-info{
+    margin: 15px 0;
+
+}
+.home-image-3{
+    width: 600px;
+    height: 300px;
     padding-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+
 }
