@@ -1,5 +1,6 @@
 import React from 'react'
 import "../HomeStyle.css"
+import {Outlet,useNavigate} from 'react-router-dom'
 import First from "../Component/1.png"
 import Second from "../Component/2.png"
 import Third from "../Component/3.png"
@@ -8,7 +9,10 @@ import Fifth from "../Component/5.png"
 import Sixth from "../Component/6.png"
 
 const HomeDescription = () => {
+    const navigate=useNavigate();
+
     return (
+
         <div className="home-description-image-section">
            <h1 className="home-heading">Showcase your potential,Cut down on writing and,Store your resume online</h1>
             <div className="home-description-section">
@@ -26,17 +30,42 @@ const HomeDescription = () => {
                 </select>
             </div>
             <div className='demo_home'>
-                <img src={First} alt="" />
-                <img src={Second} alt="" />
-                <img src={Third} alt="" />
-                <img src={Sixth} alt="" />
-                <img src={Forth} alt="" />
-                <img src={Fifth} alt="" />
+                <img
+                    onClick={()=>{
+                        navigate("/rajasree/second")
+                    }}
+                src={First} alt="" />
+                <img
+                    onClick={()=>{
+                        navigate("/geethu")
+                    }}
+                src={Second} alt="" />
+                <img 
+                    onClick={()=>{
+                        navigate("/geethu/second")
+                    }}
+                src={Third} alt="" />
+                <img 
+                    onClick={()=>{
+                        navigate("/raeez/second")
+                    }}
+                src={Sixth} alt="" />
+                <img 
+                    onClick={()=>{
+                        navigate("/rajasree")
+                    }}
+                src={Forth} alt="" />
+                <img 
+                    onClick={()=>{
+                        navigate("/raeez")
+                    }}
+                src={Fifth} alt="" />
                 
 
 
 
             </div>
+            
 
         </div>
     )
