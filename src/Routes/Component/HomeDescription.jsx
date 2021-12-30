@@ -20,6 +20,10 @@ const HomeDescription = () => {
                     <option className="home-option" value="fresher">Fresher</option>
                     <option className="home-option" value="experienced">Expert</option>
                 </select>
+                <select className="select-sort">
+                    <option className="home-option" value="premium">Premium</option>
+                    <option className="home-option" value="free">Free</option>
+                </select>
             </div>
             <div className='demo_home'>
                 <img src={First} alt="" />
