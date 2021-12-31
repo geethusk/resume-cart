@@ -27,6 +27,7 @@ const HowItWorks = () => {
             <div className='step-conatiner'>
                 <div className='step-title-3'>Step 2:- About US</div>
                 <img className='hiw-image-3' src={aboutUs}/>
+                <div className='linking-pages'><Link className='link-3' to="/about">Click here to go to about page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>
             <div className='step-conatiner'>
