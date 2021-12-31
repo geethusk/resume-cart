@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
+import {Link} from 'react-router-dom'
 import './Login.css'
 const Login = () => {
+    // const navigate=useNavigate();
     const [formData,setFormData] = useState({
         email:"",
         password:"",
@@ -49,6 +51,9 @@ const Login = () => {
             }
         }
     }
+    useEffect(()=>{
+        formValidate();
+    },[formData])
     const loginCall=(e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
@@ -57,6 +62,7 @@ const Login = () => {
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
+   
     return (
         <div className="login-container">
             <div className="login-card">
@@ -83,8 +89,9 @@ const Login = () => {
                     <div className='login-button-section'>
                         <div>Forget Password?</div>
                         <button type="submit" className='login-button'>Login</button>
+                        
                     </div>
-                    <div className='sign-up-page-link'>Not a member?<span className='sign-up-link'> SignUp </span>now</div>
+                    <div className='sign-up-page-link'>Not a member?<Link className='sign-up-link' to="/sign-up"> SignUp </Link>now</div>
                 </form>
             </div> 
         </div>

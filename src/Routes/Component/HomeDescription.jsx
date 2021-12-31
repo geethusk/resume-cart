@@ -8,6 +8,9 @@ import Third from "../Component/3.png"
 import Forth from "../Component/4.png"
 import Fifth from "../Component/5.png"
 import Sixth from "../Component/6.png"
+import star from "../../assets/icons/star-regular.svg"
+import solid from "../../assets/icons/star-solid.svg"
+
 
 const totalTemplateList=[
     {
@@ -16,7 +19,8 @@ const totalTemplateList=[
         type:"premium",
         status:"expert",
         image:First,
-        url:"/rajasree/second"
+        url:"/rajasree/second",
+        isLiked:false,
     },
 
     {
@@ -25,7 +29,8 @@ const totalTemplateList=[
         type:"free",
         status:"expert",
         image:Second,
-        url:"/geethu"
+        url:"/geethu",
+        isLiked:false,
     },
 
     {
@@ -34,7 +39,8 @@ const totalTemplateList=[
         type:"free",
         status:"fresher",
         image:Third,
-        url:"/geethu/second"
+        url:"/geethu/second",
+        isLiked:false,
     },
 
     {
@@ -43,7 +49,8 @@ const totalTemplateList=[
         type:"premium",
         status:"fresher",
         image:Sixth,
-        url:"/raeez/second"
+        url:"/raeez/second",
+        isLiked:false,
     },
 
     {
@@ -52,7 +59,8 @@ const totalTemplateList=[
         type:"premium",
         status:"expert",
         image:Forth,
-        url:"/rajasree"
+        url:"/rajasree",
+        isLiked:false,
     },
 
     {
@@ -61,20 +69,22 @@ const totalTemplateList=[
         type:"premium",
         status:"fresher",
         image:Fifth,
-        url:"/raeez"
+        url:"/raeez",
+        isLiked:false,
     },
 
 ]
 
 const HomeDescription = () => {
     const navigate=useNavigate();
+    const [isLiked,setIsLiked]=useState(false);
     const[template,setTemplate]=useState(totalTemplateList);
     const[type,setType]=useState("all");
     const[status,setStatus]=useState("all");
     
-    const sort=(value)=>{
-            setTemplate(totalTemplateList.filter(({type})=>type===value))
-        }
+    // const sort=(value)=>{
+    //         setTemplate(totalTemplateList.filter(({type})=>type===value))
+    //     }
     
 
     return (
@@ -105,17 +115,33 @@ const HomeDescription = () => {
                     <option className="home-option" value="free">Free</option>
                 </select>
             </div>
-            <div className='demo_home'>
-
-                {template.filter((value)=>{
+            <div className="demo_home">
+               {template.filter((value)=>{
                     return (type==="all"|| value.type===type)&&(status==="all"||value.status===status)
                 })
-                .map(({id,image,url})=>
-                    <img
+                .map(({id,image,url,isLiked},i)=>
+                    <div className="demo_images">
+                        <img className="like_button"src={isLiked?solid:star}
+                            onClick={
+                            ()=>{
+                                setTemplate(prev=>{
+                                    let newList=[...prev];
+                                    let newLike={...newList[i]};
+                                    newLike.isLiked=!newLike.isLiked;
+                                    newList[i]=newLike;
+                                    return newList;
+                                })
+                            }
+                            }
+                        />
+                    <img className='demos'
                     onClick={()=>{
                         navigate(url)
                     }}
-                src={image}  key={id} alt="" />
+                src={image} key={id} alt="" />
+                </div>
+
+                
                 )}
                 
                 
