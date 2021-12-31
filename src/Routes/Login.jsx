@@ -28,12 +28,18 @@ const Login = () => {
         }))
     }
     const formValidate = ()=>{
+        let isValidForm = true;
+        console.log(isValidForm)
         if(!email){
             onError("emailError","Cannot be Empty")
+            isValidForm = false;
+            console.log(isValidForm)
+
         }
         else{
             if(!isValidEmail(email)){
                 onError("emailError","Enter Valid Email")
+                isValidForm = false;
             }
             else{
                 onError("emailError","")
@@ -41,15 +47,18 @@ const Login = () => {
         }
         if(!password){
             onError("passwordError","Cannot be Empty")
+            isValidForm = false;
         }
         else{
             if(!isPassword(password)){
                 onError("passwordError","Enter Valid Password")
+                isValidForm = false;
             }
             else{
                 onError("passwordError","")
             }
         }
+        return isValidForm
     }
     useEffect(()=>{
         formValidate();

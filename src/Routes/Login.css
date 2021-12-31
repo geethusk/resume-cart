@@ -48,7 +48,6 @@
     border: none;
     background:#5f5e5e61;
     border-radius:10px
-
 }
 .login-input:focus~.label,.filled-label{
     top:0;
@@ -76,11 +75,13 @@
 }
 .sign-up-page-link{
     color: white;
+    padding-top: 10px;
 }
 .sign-up-link{
     color:#9a2fa0;
     cursor: pointer;
     text-decoration: none;
+    
 }
 @media screen and (max-width:416px){
     .login-container{
