@@ -29,7 +29,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     background-size: cover;
     height: auto;
 }
-.demo_home img{
+.demos{
     margin: auto;
     
     width: 100%;
@@ -79,11 +79,22 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     margin: 20px;
     gap: 20px;
 }
-.demo_home img{
+.demo_images{
     transition: transform 0.2s ease-in-out;
 }
-.demo_home img:hover{
+.demo_images:hover{
     transform:scale(1.09) ;
+} 
+.demo_images{
+    position: relative;
+}
+.like_button{
+    position: absolute;
+    transform: translate(50%);
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    
 }
 @media screen and (max-width:630px){
     .demo_home{
@@ -114,6 +125,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     }
     .home-heading{
         padding-top: 60px;
+        font-size: 30px;
         
     }
     .body-container {
@@ -121,7 +133,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
         padding-top:10px;
         
     }
-    .demo_home img{
+    .demos{
         
        
         border-radius: 15px;
@@ -141,7 +153,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 @media screen and (max-width: 555px){
     .header_home{
         font-size: 10px;
-        height: 25px;
+        height: 50px;
     }    
     .select-sort{
        
@@ -158,6 +170,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 
     .home_icon{
         width: 20px;
+       ;
         
     }
     .home-heading{
@@ -170,4 +183,10 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
        
     }
 
+}
+@media screen and (max-width:283px){
+    .header_home{
+        font-size: 6px;
+        
+    }
 }
