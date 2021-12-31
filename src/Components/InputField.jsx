@@ -13,13 +13,15 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
                                 setBlured(true)
                             }  
                         />
-                        <div className={`label ${value? "filled-label":""}`}>{label}</div>
-                     
-            </div>
-            {error && (blured || isFormSubmitted )&&
-            <div className='text-field-error-text'>{error}</div>
-            }
-        </>
+
+                        <div className={` label ${value ?  "filled-label": "" } `}>{label}</div>
+                        
+             </div>
+             {error && (blured || isFormSubmitted) && 
+             <div className="text-field-error-text">{error}</div>
+             }
+           </>
+
     )
 }
 
