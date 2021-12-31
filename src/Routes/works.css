@@ -66,10 +66,19 @@
     height: 300px;
     border-radius: 15px;
     display: block;
-    border: 1px solid black
+    border: 2px solid black;
+    transition: transform 0.2s ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
     /* border: 1px solid black; */
 
-}
+
+.hiw-image-3:hover{
+     transform:scale(1.09) ; 
+} 
 Link{
     font-size: 15px;
 }
@@ -83,3 +92,18 @@ Link{
 color: red;
 text-decoration: none;
 }
+@media  screen and (max-width:639px) {
+    .main-title3{
+    font-size: 25px;
+    }
+    .hiw-image-3{
+        width: 240px;
+        height: 150px;
+        
+    }
+    .main-title-description-3{
+        font-size: 6px;
+    }
+}
+
+
