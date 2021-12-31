@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const InputField = ({value,onChange,label,type="text",error}) => {
+const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=false}) => {
+    const [blured,setBlured] = useState(false)
     return (
         
             <div className="input-area">
@@ -11,6 +12,7 @@ const InputField = ({value,onChange,label,type="text",error}) => {
                                 onChange(e.target.value)
                                 console.log(e);
                             }}
+                            onBlur={()=>setBlured(true)}
                              
                         />
 
@@ -18,7 +20,9 @@ const InputField = ({value,onChange,label,type="text",error}) => {
                         <div className={` label ${value ?  "filled-label": "" } `}>
                             {label}
                         </div>
-                        <div className="error-field">{error}</div>
+                        {error && (blured || isFormSubmitted) && <div className="text-field-error-text">
+                                 {error}
+                           </div>}
             </div>
         
     )
