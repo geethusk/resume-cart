@@ -17,7 +17,7 @@
     z-index: -1;
     top: 0;
     left: 0;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 .about-head{
     padding: 40px;
@@ -43,6 +43,7 @@
 .details-description{
     font-family: system-ui;
     font-size: 20px;
+    padding: 5px;
 }
 .about-footer-section{
     display: grid;

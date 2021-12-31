@@ -83,3 +83,18 @@ Link{
 color: red;
 text-decoration: none;
 }
+@media  screen and (max-width:639px) {
+    .main-title3{
+    font-size: 25px;
+    }
+    .hiw-image-3{
+        width: 240px;
+        height: 150px;
+        
+    }
+    .main-title-description-3{
+        font-size: 6px;
+    }
+}
+
+
