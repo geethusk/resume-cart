@@ -3,6 +3,7 @@
     padding: 0 150px;
     display: grid;
     place-items: center; 
+    background-color: #d8deec;
    
 }
 .login-card{
@@ -58,7 +59,7 @@
     margin-top: 20px;
     color: white;
     max-width: 400px;
-
+    align-items: center;
 }
 .login-button{
     background-color:#9a2fa0;
@@ -68,11 +69,10 @@
     border: none;
     border-radius: 15px;
     color: white;
-
-  }
+}
 .text-field-error-text{
     color:#fd2d2d ;
-    padding-left:7px ;
+    padding-left:8px ;
 }
 .sign-up-page-link{
     color: white;
@@ -81,5 +81,17 @@
     color:#9a2fa0;
     cursor: pointer;
     text-decoration: none;
+}
+@media screen and (max-width:416px){
+    .login-container{
+        padding: 10px;
+    }
+    
+}
+@media screen and (max-width:583px){
+    .login-card{
+        padding:50px 10px;
+    }
+    
 }
 

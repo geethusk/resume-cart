@@ -87,7 +87,7 @@ const Login = () => {
                         isFormSubmitted={isFormSubmitted}
                     />
                     <div className='login-button-section'>
-                        <div>Forget Password?</div>
+                        <div className='password-head'>Forget Password?</div>
                         <button type="submit" className='login-button'>Login</button>
                         
                     </div>

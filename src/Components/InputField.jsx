@@ -16,7 +16,7 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
                         <div className={`label ${value? "filled-label":""}`}>{label}</div>
                      
             </div>
-            {error && (blured || isFormSubmitted )&&
+            {error && (blured || isFormSubmitted ) &&
             <div className='text-field-error-text'>{error}</div>
             }
         </>
