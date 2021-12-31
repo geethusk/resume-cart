@@ -6,6 +6,8 @@ import Login from "./Login"
 import View from "./View"
 import HowItWorks from "./HowItWorks"
 import HomeComponent from './Component/HomeComponent'
+import About from './About'
+import Feedback from './Feedback'
 
 
 const Index = () => {
@@ -17,6 +19,8 @@ const Index = () => {
                     <Route path="login" element={<Login/>}/>
                     <Route path="view" element={<View/>}/>
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
+                    <Route path="about" element={<About/>}/>
+                    <Route path="feedback" element={<Feedback/>}/>
                 </Route>
             </Routes>
     )
