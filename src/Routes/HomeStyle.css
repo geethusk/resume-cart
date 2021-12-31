@@ -4,7 +4,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 .header_home{
     display: grid;
     grid-auto-flow: column;
-   
+   gap: 20px;
     background-color: black;
    color: white;
    height: 70px;
@@ -85,4 +85,89 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 .demo_home img:hover{
     transform:scale(1.09) ;
 }
+@media screen and (max-width:630px){
+    .demo_home{
+        
+        grid-template-columns: repeat(3,1fr);
+       
+    }
+}
+@media screen and (max-width: 570px){
+    .header_home{
+        font-size: 15px;
+        height: 50px;
+    }    
+    .select-sort{
+       
+        border-radius: 8px;
+        border: solid 1px black;
+        
+        width: 25%;
+       
+        padding: 3px;
+        font-size: 15px;
+        
+    } 
+    .home_icon{
+        width: 30px;
+        
+    }
+    .home-heading{
+        padding-top: 60px;
+        
+    }
+    .body-container {
+        
+        padding-top:10px;
+        
+    }
+    .demo_home img{
+        
+       
+        border-radius: 15px;
+      
+        
+       
+    }
+    .demo_home{
+        
+        grid-template-columns: repeat(2,1fr);
+       
+    }
+    
 
+
+}
+@media screen and (max-width: 555px){
+    .header_home{
+        font-size: 10px;
+        height: 25px;
+    }    
+    .select-sort{
+       
+        border-radius: 8px;
+        border: solid 1px black;
+        
+        width: 25%;
+       
+        padding: 0;
+        font-size: 10px;
+        padding: 5px 0 5px 0;
+        
+    }
+
+    .home_icon{
+        width: 20px;
+        
+    }
+    .home-heading{
+        padding-top: 35px;
+     
+    } 
+    .demo_home{
+        
+        grid-template-columns: repeat(1,1fr);
+       
+    }
+
+}
