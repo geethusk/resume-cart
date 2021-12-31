@@ -1,52 +1,73 @@
 .login-container{
     height: 100%;
-    padding: 0 250px;
+    padding: 0 150px;
     display: grid;
-    align-items: center;
+    place-items: center;
     background-color: #d8deec;
+    
+   
 }
 .login-card{
     background-color: white;
     padding:50px;
     border-radius: 20px;
+    max-width: 800px;
+    width: 100%;  
+    background-image: url('../assets/background/Asset 1.svg');
+    background-size: cover;
+    background-position: 22%;
+   
 }
 .login-heading{
     font-size: 35px;
     font-weight: 700;
-    color: #281766;
+    color:white;
 }
 .login-form{
     padding-top: 35px;
 }
-.login-section{
-    padding-bottom: 20px;
+.input-area{
+    margin-top: 30px;
     position: relative;
 }
-.login-label{
+.label{
     position: absolute;
-    top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
     left: 8px;
+    background:none;
+    color: white;
 }
 .login-input{
-    width:235px;
+    width:100%;
+    max-width: 400px;
     height: 40px;
+}
+.login-input:focus~.label,.filled-label{
+    top:0;
 }
 .login-button-section{
     display: flex;
     padding-bottom: 10px;
+    color: white;
 }
 .login-button{
     background-color: #fb4c53;
     height: 40px;
     width: 50px;
-    margin-left: 72px;
+    margin-left: 231px;
     border: none;
     border-radius: 15px;
 }
 .sign-up-page-link{
-    /* padding-left: 30px; */
+    color: white;
 }
 .sign-up-link{
     color:#fb4c53;
+    cursor: pointer;
+}
+.error-field{
+    color: red;
 }
 

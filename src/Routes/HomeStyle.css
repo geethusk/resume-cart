@@ -1,10 +1,10 @@
-body,html,#root,.home-container,.home-description-image-section{
+body,html,#root,.home-container,.home-description-image-section,.mainContainer_home{
     height:100%;
 }
 .header_home{
     display: grid;
     grid-auto-flow: column;
-   
+   gap: 20px;
     background-color: black;
    color: white;
    height: 70px;
@@ -13,6 +13,7 @@ body,html,#root,.home-container,.home-description-image-section{
     cursor: pointer;
     position: fixed;
     width: 100%;
+    z-index: 5;
 }
 .home_icon{
     width: 40px;
@@ -33,13 +34,14 @@ body,html,#root,.home-container,.home-description-image-section{
     
     width: 100%;
     border-radius: 25px;
-    box-shadow: 8px 0px 13px 7px #4b3535;
+    box-shadow: 6px 2px 11px 1px #4b4b4b5e;
+    cursor: pointer;
     
    
 }
 .demo_home{
     display: grid;
-    grid-template-columns: repeat(4,auto);
+    grid-template-columns: repeat(4,1fr);
     gap: 30px;
     padding: 20px;
 }
@@ -51,4 +53,121 @@ body,html,#root,.home-container,.home-description-image-section{
     text-align: center;
     padding-bottom: 10px;
 }
+.select-sort{
+    background: transparent;
+    border-radius: 10px;
+    border: solid 5px black;
+    color: white;
+    width: 25%;
+    /* margin-left: 25%; */
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.home-option{
+    background-color: black
+     
+}
+.body-container {
+    overflow:auto;
+    padding-top:70px;
+    height:100%;
+}
+.home-sort-section{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    gap: 20px;
+}
+.demo_home img{
+    transition: transform 0.2s ease-in-out;
+}
+.demo_home img:hover{
+    transform:scale(1.09) ;
+}
+@media screen and (max-width:630px){
+    .demo_home{
+        
+        grid-template-columns: repeat(3,1fr);
+       
+    }
+}
+@media screen and (max-width: 570px){
+    .header_home{
+        font-size: 15px;
+        height: 50px;
+    }    
+    .select-sort{
+       
+        border-radius: 8px;
+        border: solid 1px black;
+        
+        width: 25%;
+       
+        padding: 3px;
+        font-size: 15px;
+        
+    } 
+    .home_icon{
+        width: 30px;
+        
+    }
+    .home-heading{
+        padding-top: 60px;
+        
+    }
+    .body-container {
+        
+        padding-top:10px;
+        
+    }
+    .demo_home img{
+        
+       
+        border-radius: 15px;
+      
+        
+       
+    }
+    .demo_home{
+        
+        grid-template-columns: repeat(2,1fr);
+       
+    }
+    
 
+
+}
+@media screen and (max-width: 555px){
+    .header_home{
+        font-size: 10px;
+        height: 25px;
+    }    
+    .select-sort{
+       
+        border-radius: 8px;
+        border: solid 1px black;
+        
+        width: 25%;
+       
+        padding: 0;
+        font-size: 10px;
+        padding: 5px 0 5px 0;
+        
+    }
+
+    .home_icon{
+        width: 20px;
+        
+    }
+    .home-heading{
+        padding-top: 35px;
+     
+    } 
+    .demo_home{
+        
+        grid-template-columns: repeat(1,1fr);
+       
+    }
+
+}

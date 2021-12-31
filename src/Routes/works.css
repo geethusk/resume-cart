@@ -1,24 +1,85 @@
 .working-container3{
     padding: 20px;
+    background: rgba(255, 255, 255, 0.397);
+    height: 100%;
+    position: relative;
+    
+
+}
+.working-container3::after{
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
+    position: fixed;
+    background-image: url("https://netstorage-legit.akamaized.net/images/6332ee25eeed942d.jpg?imwidth=900");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    
 }
 .working-pagehead3{
     text-align: center;
+    background-color: #8080801a;
+    padding: 20px;
     
     
 }
+
 .main-title3{
     font-size: 50px;
     font-weight: bold;
     padding: 5px;
+   font-family: fantasy;
+  
   
 }
 .main-title-description-3{
-    font-size: 15px;
-    font-weight: lighter;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-style: italic;
   
 }
 .procedure-title-3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom:  15px;
+}
+.step-title-3{
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  
+}
+.step-info{
+    margin: 15px 0;
+    font-family: system-ui;
+
+}
+.hiw-image-3{
+    width: 600px;
+    height: 300px;
+    border-radius: 15px;
+    display: block;
+    border: 1px solid black
+    /* border: 1px solid black; */
+
+}
+Link{
+    font-size: 15px;
+}
+.linking-pages{
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+  
+}
+.link-3:hover{
+color: red;
+text-decoration: none;
 }
