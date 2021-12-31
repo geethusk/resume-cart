@@ -35,7 +35,7 @@
     transition: .5s ease-in-out;
     background-color: white;
 }
-.input-area :focus ~ .label{
+.input-area :focus ~ .label,.filled-label{
     top:0;
     font-size :14px;
     left: 5px;
@@ -55,3 +55,4 @@
     border-radius: 15px;
     color: white;
 }
+
