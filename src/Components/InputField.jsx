@@ -13,6 +13,7 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
                                 setBlured(true)
                             }  
                         />
+
                         <div className={` label ${value ?  "filled-label": "" } `}>{label}</div>
                         
              </div>
@@ -20,6 +21,7 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
              <div className="text-field-error-text">{error}</div>
              }
            </>
+
     )
 }
 
