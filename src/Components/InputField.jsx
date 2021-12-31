@@ -5,7 +5,7 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
     return (
         <>
             <div className="input-area">
-                        <input type="text" className='sign-up-input'
+                        <input type="text" className='sign-up-login-input'
                             type={type}
                             value={value}     
                             onChange={(e)=>{onChange(e.target.value)}}   
@@ -13,13 +13,15 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
                                 setBlured(true)
                             }  
                         />
-                        <div className={`label ${value? "filled-label":""}`}>{label}</div>
-                     
-            </div>
-            {error && (blured || isFormSubmitted )&&
-            <div className='error-field'>{error}</div>
-            }
-        </>
+
+                        <div className={` label ${value ?  "filled-label": "" } `}>{label}</div>
+                        
+             </div>
+             {error && (blured || isFormSubmitted) && 
+             <div className="text-field-error-text">{error}</div>
+             }
+           </>
+
     )
 }
 

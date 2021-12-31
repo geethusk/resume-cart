@@ -2,9 +2,10 @@ import React, { useEffect,useState } from 'react'
 import "./SignUp.css"
 import { isPassword, isValidEmail } from "../utility/validate";
 import InputField from '../Components/InputField';
-
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+   
 
     const[formData, setFormData] = useState({
         fullName: "",
@@ -132,9 +133,9 @@ const SignUp = () => {
                         isFormSubmitted={isFormSubmitted}
                     
                     />
-                    <button className='sign-up-button' type="submit">Submit</button>
+                    <div className="signup-button"><button className='sign-up-button' type="submit">Submit</button></div>
                     <div className="excisting-user">
-                        Already have account? Login
+                        Already have account? <Link className="link-to-login"to="/login">Login</Link>
                     </div>
                 </form>
             </div>
