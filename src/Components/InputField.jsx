@@ -21,7 +21,6 @@ const InputField = ({value,onChange,label,type="text",error,isFormSubmitted=fals
              <div className="text-field-error-text">{error}</div>
              }
            </>
-
     )
 }
 
