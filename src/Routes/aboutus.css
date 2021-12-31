@@ -56,7 +56,12 @@
 .about-image-section{
     width: 500px;
     height: 300px;
+    transition: transform 0.2s ease-in-out;
 }
+.about-image-section:hover{
+    transform:scale(1.09) ; 
+} 
+
 .about-image-description{
     font-size: 20px;
     font-family: system-ui;
