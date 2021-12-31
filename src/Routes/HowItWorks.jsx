@@ -1,6 +1,9 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import "./works.css"
 import home from "../Routes/hiw-images/home.png"
+import login from "../Routes/hiw-images/login.png"
+import aboutUs from "../Routes/hiw-images/aboutus.jpg"
 
 
 const HowItWorks = () => {
@@ -17,19 +20,24 @@ const HowItWorks = () => {
             </div>
             <div className='step-conatiner'>
                 <div className='step-title-3'>Step 1:- Navigate to Home page</div>
-                <img className='home-image-3' src={home} alt="home-page"/>
+                <img className='hiw-image-3' src={home} alt="home-page"/>
+                <div className='linking-pages'><Link className='link-3' to="/">Click here to view home page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aspernatur provident laboriosam perspiciatis eveniet fugit quibusdam deleniti consectetur totam autem voluptatum voluptatem fugiat, possimus quasi cum voluptates porro ullam deserunt?</div>
             </div>
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 2:-About US</div>
+                <div className='step-title-3'>Step 2:- About US</div>
+                <img className='hiw-image-3' src={aboutUs}/>
+                <div className='linking-pages'><Link className='link-3' to="/about">Click here to go to about page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 2:-Feedback</div>
+                <div className='step-title-3'>Step 2:- Feedback</div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div> 
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 2:-Login</div>
+                <div className='step-title-3'>Step 4:- Login</div>
+                <img className='hiw-image-3' src={login}/>
+                <div className='linking-pages'><Link className='link-3' to="/login">Click here to go to Login page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>   
             
