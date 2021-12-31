@@ -42,18 +42,21 @@ const Login = () => {
         }
         else{
             if(!isPassword(password)){
-                onError("passwordError","Enter Valid Email")
+                onError("passwordError","Enter Valid Password")
             }
             else{
                 onError("passwordError","")
             }
         }
     }
-    const loginCall=()=>{
+    const loginCall=(e)=>{
+        e.preventDefault();
+        setIsFormSubmitted(true)
         if (formValidate()){
             console.log("login success")
         }
     }
+    const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
     return (
         <div className="login-container">
             <div className="login-card">
@@ -64,9 +67,10 @@ const Login = () => {
                     <InputField
                         label="Email"
                         value={email}
-                        type="email"
+                        // type="email"
                         onChange={(value) =>onChange("email",value)}
                         error={emailError}
+                        isFormSubmitted={isFormSubmitted}
                     />
                     <InputField
                         label="Password"
@@ -74,6 +78,7 @@ const Login = () => {
                         type="password"
                         onChange={(value) =>onChange("password",value)}
                         error={passwordError}
+                        isFormSubmitted={isFormSubmitted}
                     />
                     <div className='login-button-section'>
                         <div>Forget Password?</div>
