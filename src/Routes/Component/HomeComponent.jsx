@@ -99,7 +99,9 @@ const HomeComponent = () => {
                 >
                     LOGIN
                 </div> 
+                
                 </div>}
+
             </div>
             <div className="body-container"
                onClick={()=>{
