@@ -1,90 +1,24 @@
 import React from 'react'
 import "../HomeStyle.css"
 import {Outlet,useNavigate} from 'react-router-dom'
-import { useState } from 'react'
-import First from "../Component/1.png"
-import Second from "../Component/2.png"
-import Third from "../Component/3.png"
-import Forth from "../Component/4.png"
-import Fifth from "../Component/5.png"
-import Sixth from "../Component/6.png"
+import { useState,useContext } from 'react'
 import star from "../../assets/icons/star-regular.svg"
 import solid from "../../assets/icons/star-solid.svg"
+import { TemplateContext } from '../../Context/TemplateList'
 
-const totalTemplateList=[
-    {
-        id:0,
-        title:"",
-        type:"premium",
-        status:"expert",
-        image:First,
-        url:"/rajasree/second",
-        isLiked:false,
-    },
 
-    {
-        id:1,
-        title:"",
-        type:"free",
-        status:"expert",
-        image:Second,
-        url:"/geethu",
-        isLiked:false,
-    },
-
-    {
-        id:2,
-        title:"",
-        type:"free",
-        status:"fresher",
-        image:Third,
-        url:"/geethu/second",
-        isLiked:false,
-    },
-
-    {
-        id:3,
-        title:"",
-        type:"premium",
-        status:"fresher",
-        image:Sixth,
-        url:"/raeez/second",
-        isLiked:false,
-    },
-
-    {
-        id:4,
-        title:"",
-        type:"premium",
-        status:"expert",
-        image:Forth,
-        url:"/rajasree",
-        isLiked:false,
-    },
-
-    {
-        id:5,
-        title:"",
-        type:"premium",
-        status:"fresher",
-        image:Fifth,
-        url:"/raeez",
-        isLiked:false,
-    },
-
-]
 
 const HomeDescription = () => {
+    const {template,setTemplate}=useContext(TemplateContext)    
     const navigate=useNavigate();
-    const [isLiked,setIsLiked]=useState(false);
-    const[template,setTemplate]=useState(totalTemplateList);
+    // const [isLiked,setIsLiked]=useState(false);
     const[type,setType]=useState("all");
     const[status,setStatus]=useState("all");
     
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
-    
+    console.log(template);
 
     return (
 
