@@ -1,7 +1,8 @@
 import React from 'react'
 import Home from"../Component/home1.svg"
 import {Outlet,useNavigate} from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
+import { UserContext } from '../../Context/UserContext'
 
 
 import burger from "../../assets/icons/bars-solid.svg"
@@ -9,6 +10,7 @@ const HomeComponent = () => {
     const navigate=useNavigate();
     const[isHeader,setIsHeader]=useState(false);
     const[isLoggedIn,setisLoggedIn]=useState(false);
+    const{userData,setUserData}=useContext(UserContext)
     
     // const ref=useRef(null);
 
@@ -49,7 +51,7 @@ const HomeComponent = () => {
                     LOGIN
                 </div>}
                 {isLoggedIn && <div className='display-user-id'>
-                     User_id   
+                     {userData.fullname}  
                     <div class="dropdown-content">
                         <a href="#"
                         onClick={()=>{navigate("/")
