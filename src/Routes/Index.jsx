@@ -23,6 +23,7 @@ import Fifth from "../Routes/Component/5.png"
 import Sixth from "../Routes/Component/6.png"
 
 import { TemplateContext } from '../Context/TemplateList'
+import { UserContext } from '../Context/UserContext'
 
 const totalTemplateList=[
     {
@@ -88,11 +89,17 @@ const totalTemplateList=[
 ]
 
 
+
 const Index = () => {
     const[template,setTemplate]=useState(totalTemplateList);
+    const[userData,setUserData]=useState({
+        fullname:"faslu",
+        email:""
+    })
 
     return (
             <TemplateContext.Provider value={{template,setTemplate}}>
+            <UserContext.Provider value={{userData,setUserData}}>
             <Routes>
                 <Route path="" element={<HomeComponent/>}>
                     <Route path="/" element={<Home/>}/>
@@ -109,6 +116,7 @@ const Index = () => {
                     <Route path="network-error" element={<Network/>}/>
                     <Route path="/*" element={<Error/>}/>
             </Routes>
+            </UserContext.Provider>
             </TemplateContext.Provider>
     )
 }
