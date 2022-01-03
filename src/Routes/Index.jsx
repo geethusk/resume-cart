@@ -19,20 +19,18 @@ const Index = () => {
             <Routes>
                 <Route path="" element={<HomeComponent/>}>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="sign-up" element={<SignUp/>}/>
                     <Route path="login" element={<Login/>}/>
+                    <Route path="sign-up" element={<SignUp/>}/>
                     <Route path="view" element={<View/>}/>
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
                     <Route path="favorite" element={<FavoriteList/>}/>
+                </Route>
                     <Route path="loading-error" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
-                    <Route path="404-error" element={<Error/>}/>
-
-
-                </Route>
+                    <Route path="/*" element={<Error/>}/>
             </Routes>
     )
 }
