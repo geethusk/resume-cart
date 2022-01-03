@@ -1,0 +1,39 @@
+.dashboard-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 20px;
+}
+.dashboard-left-section{
+    /* padding: 10px; */
+    margin-top: 15px;
+    margin-left: 30px;
+}
+.dashboard-left-section img{
+    width:150px;
+    height:150px;
+    border:4px solid grey;
+}
+.dashboard-name{
+    font-size: 30px;
+    padding: 20px 0;
+}
+.dashboard-contents{
+    font-size: 20px;
+    padding: 10px 0;
+}
+.dashboard-right-section{
+    padding: 50px;
+    max-width: 500px;
+}
+.dashboard-section{
+    display: flex;
+    padding: 10px;
+}
+.dashboard-input{
+    margin-left: auto;
+}
+.dashboard-button{
+    margin: 20px 0;
+}
+
+

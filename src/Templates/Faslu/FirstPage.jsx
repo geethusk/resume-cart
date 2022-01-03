@@ -5,13 +5,13 @@ import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 
 const Faslu = () => {
-    const colorThemeList =[ "blue",
+    const colorThemeList = [ "blue",
                             "gray",
                             "red",
                             "AntiqueWhite",
                             "brown",
                             "yellow",
-                            ]
+                           ]
     const [template,setTemplate] = useState({
         theme:['#58585b','#fff'],
         logo:"CC",
@@ -86,7 +86,6 @@ const Faslu = () => {
     });
     const{theme,logo,name,designation,address,bio,skill,exp,education}=template;
     const{street,city,pin,email,phone}=address;
-
 
     const getLogo = (name)=>{
         let nameList =name.split(" ")
@@ -276,7 +275,7 @@ const Faslu = () => {
                                 value={role}
                                 onChange={(value)=>changeState(["exp",i,"role"],value)}
                                 />
-                                <button classNme="close-button2" onClick={()=>deleteList(['exp'],i,"")}>REMOVE</button>
+                                <button className="close-button2" onClick={()=>deleteList(['exp'],i,"")}> DELETE </button>
 
                                 </span>
                                 <div>
@@ -311,12 +310,12 @@ const Faslu = () => {
                                     length={detailList.length}
                                    
                                 />
-                                <button className="close-button2"onClick={()=>deleteList(['exp',i,'detailList'],j,"")}>X</button>
+                                <button className="close-button2" onClick={()=>deleteList(['exp',i,'detailList'],j,"")}>X</button>
                                 </li>)}
                             </ul>
                         </div>
                         )})}
-                        <button onClick={()=>addToList(["exp"],exp.length,{ 
+                        <button className="close-button2" onClick={()=>addToList(["exp"],exp.length,{ 
                             startingDate:"March 2015 ",
                             endingDate:"January 2016",
                             companyName:"Jim's Widget Factory, Plano, TX",
@@ -371,7 +370,7 @@ const Faslu = () => {
                                             />
                                         </li>)}
                                     </ul>
-                                    <button onClick={()=>deleteList(["education"],i,"")}>REMOVE</button>  
+                                    <button className="close-button2" onClick={()=>deleteList(["education"],i,"")}>DELETE</button>  
                                     
                                 </div>
                                
