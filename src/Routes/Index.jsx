@@ -8,6 +8,7 @@ import HowItWorks from "./HowItWorks"
 import HomeComponent from './Component/HomeComponent'
 import About from './About'
 import Feedback from './Feedback'
+import LoadingError from './LoadingError'
 
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
+                    <Route path="*" element={<LoadingError/>}/>
                 </Route>
             </Routes>
     )

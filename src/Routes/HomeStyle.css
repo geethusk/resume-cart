@@ -4,12 +4,12 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 .header_home{
     display: grid;
     grid-auto-flow: column;
-   gap: 20px;
+    gap: 20px;
     background-color: black;
-   color: white;
-   height: 70px;
-   padding: 20px; 
-   font-size: 20px;
+    color: white;
+    height: 70px;
+    padding: 20px; 
+    font-size: 20px;
     cursor: pointer;
     position: fixed;
     width: 100%;
@@ -96,6 +96,23 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     width: 20px;
     
 }
+.burger_button{
+    width: 20px;
+    display: none;
+}
+.vertical-header{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: 0;
+    background-color: black;    
+    display: none;
+    padding: 20px;
+}
+
+.vertical-header div{
+    padding: 10px 0;
+}
 @media screen and (max-width:630px){
     .demo_home{
         
@@ -103,7 +120,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
        
     }
 }
-@media screen and (max-width: 570px){
+@media screen and (max-width: 580px){
     .header_home{
         font-size: 15px;
         height: 50px;
@@ -184,9 +201,23 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     }
 
 }
-@media screen and (max-width:283px){
+@media screen and (max-width:385px){
     .header_home{
-        font-size: 6px;
+        font-size: 16px;
         
+    }
+    .burger_button{
+        
+        display: block;
+    }
+    .displaybar{
+        display: none;
+    }
+    .header_home{
+        display: grid;
+        justify-content: space-between;
+    }
+    .vertical-header{
+      display: block;
     }
 }

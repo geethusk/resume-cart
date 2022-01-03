@@ -17,7 +17,7 @@
     z-index: -1;
     top: 0;
     left: 0;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 .about-head{
     padding: 40px;
@@ -43,6 +43,7 @@
 .details-description{
     font-family: system-ui;
     font-size: 20px;
+    padding: 5px;
 }
 .about-footer-section{
     display: grid;
@@ -55,12 +56,46 @@
 .about-image-section{
     width: 500px;
     height: 300px;
+    transition: transform 0.2s ease-in-out;
 }
+.about-image-section:hover{
+    transform:scale(1.09) ; 
+} 
+
 .about-image-description{
     font-size: 20px;
     font-family: system-ui;
     padding:10px;
 }
+@media screen and (max-width: 646px) {
+    .about-footer-section{
+         grid-template-columns: 1fr ;
+      
+    }
+   
+
+}
+@media screen and (max-width: 494px) {
+    .about-image-description{
+          font-size:17px;
+    }
+    
+}
+@media screen and (max-width: 483px) {
+    .about-image-section{
+        
+      width: 250px;
+      height: 150px;
+    }
+    .about-details{
+        font-size: 13px;
+        
+        padding: 5px;
+    }
+  
+
+}
+
 
 
 

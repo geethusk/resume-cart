@@ -11,7 +11,6 @@ import Sixth from "../Component/6.png"
 import star from "../../assets/icons/star-regular.svg"
 import solid from "../../assets/icons/star-solid.svg"
 
-
 const totalTemplateList=[
     {
         id:0,

@@ -4,6 +4,7 @@ import "./works.css"
 import home from "../Routes/hiw-images/home.png"
 import login from "../Routes/hiw-images/login.png"
 import aboutUs from "../Routes/hiw-images/aboutus.jpg"
+import signup from  "../Routes/hiw-images/signup.png"
 
 
 const HowItWorks = () => {
@@ -27,7 +28,7 @@ const HowItWorks = () => {
             <div className='step-conatiner'>
                 <div className='step-title-3'>Step 2:- About US</div>
                 <img className='hiw-image-3' src={aboutUs}/>
-                <div className='linking-pages'><Link className='link-3' to="/about">Click here to go to about page</Link></div>
+                <div className='linking-pages'><Link className='link-3' to="/about">Click here to go to about Us page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>
             <div className='step-conatiner'>
@@ -39,7 +40,13 @@ const HowItWorks = () => {
                 <img className='hiw-image-3' src={login}/>
                 <div className='linking-pages'><Link className='link-3' to="/login">Click here to go to Login page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
-            </div>   
+            </div> 
+            <div className='step-conatiner'>
+                <div className='step-title-3'>Step 4:- Navigates to Sign Up Page</div>
+                <img className='hiw-image-3' src={signup}/>
+                <div className='linking-pages'><Link className='link-3' to="/sign-up">Click here to go to SignUp page</Link></div>
+                <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
+            </div>    
             
         </div>
     )
