@@ -82,7 +82,6 @@ const Login = () => {
                     <InputField
                         label="Email"
                         value={email}
-                        // type="email"
                         onChange={(value) =>onChange("email",value)}
                         error={emailError}
                         isFormSubmitted={isFormSubmitted}
