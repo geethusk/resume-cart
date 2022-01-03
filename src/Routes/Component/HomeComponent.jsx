@@ -8,6 +8,8 @@ import burger from "../../assets/icons/bars-solid.svg"
 const HomeComponent = () => {
     const navigate=useNavigate();
     const[isHeader,setIsHeader]=useState(false);
+    const[isLoggedIn,setisLoggedIn]=useState(false);
+    
     // const ref=useRef(null);
 
     // const handle=(e)=>{
@@ -39,43 +41,72 @@ const HomeComponent = () => {
                 >
                     FEEDBACK
                 </div>
-                <div className="displaybar login_home"
-                    onClick={()=>{navigate("/login")}} 
+                {!isLoggedIn && <div className="displaybar login_home"
+                    onClick={()=>{navigate("/login")
+                         setisLoggedIn(true)
+                    }} 
                 >
                     LOGIN
-                </div>
+                </div>}
+                {isLoggedIn && <div className='display-user-id'>
+                     User_id   
+                    <div class="dropdown-content">
+                        <a href="#"
+                        onClick={()=>{navigate("/")
+                            setisLoggedIn(false);
+                        }}
+                        >Logout</a>
+                        
+                    </div>
+                </div>}
                 <div className='burger_button' 
                     onClick={()=>{
                         setIsHeader(!isHeader);
+                        
                     }}
                 >
                     <img src={burger} alt="" />
                 </div>
-                {isHeader &&  <div className="vertical-header" >
+                { isHeader &&  <div className="vertical-header" 
+                        
+                >
                 <div className="vertical_lists"
-                    onClick={()=>{navigate("/How-It-Works")}} 
+                    onClick={()=>{
+                        navigate("/How-It-Works")
+                        setIsHeader(!isHeader);
+                    }} 
                 >
                     HOW IT WORKS
                 </div>
                 <div className="vertical_lists"
-                    onClick={()=>{navigate("/about")}} 
+                    onClick={()=>{navigate("/about")
+                    setIsHeader(!isHeader);
+                }} 
                 >
                     ABOUT US
                 </div>
                 <div className="vertical_lists"
-                    onClick={()=>{navigate("/feedback")}} 
+                    onClick={()=>{navigate("/feedback")
+                    setIsHeader(!isHeader);
+                }} 
                 >
                     FEEDBACK
                 </div>
                 <div className="vertical_lists"
-                    onClick={()=>{navigate("/login")}} 
+                    onClick={()=>{navigate("/login")
+                    setIsHeader(!isHeader);
+                }} 
                 >
                     LOGIN
                 </div> 
                 </div>}
             </div>
-            <div className="body-container">
-                <Outlet/>
+            <div className="body-container"
+               onClick={()=>{
+                    setIsHeader(!isHeader);
+                 }}
+               >
+                <Outlet />
             </div>
             
         </div>

@@ -10,22 +10,27 @@ import About from './About'
 import Feedback from './Feedback'
 import LoadingError from './LoadingError'
 import Dashboard from './Dashboard'
-
+import Error from './Error'
+import Network from './Network'
+import FavoriteList from './FavoriteList'
 
 const Index = () => {
     return (
             <Routes>
                 <Route path="" element={<HomeComponent/>}>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="sign-up" element={<SignUp/>}/>
                     <Route path="login" element={<Login/>}/>
+                    <Route path="sign-up" element={<SignUp/>}/>
                     <Route path="view" element={<View/>}/>
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
-                    <Route path="*" element={<LoadingError/>}/>
+                    <Route path="favorite" element={<FavoriteList/>}/>
                 </Route>
+                    <Route path="loading-error" element={<LoadingError/>}/>
+                    <Route path="network-error" element={<Network/>}/>
+                    <Route path="/*" element={<Error/>}/>
             </Routes>
     )
 }
