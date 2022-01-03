@@ -90,6 +90,16 @@
 .sub-section-2{
     padding: 10px 0;
 }
+.sub-section-2 i{
+    color:#cc4d46;
+    font-size: 13px;
+}
+.sub-sec-2{
+    padding-bottom: 10px;
+}
+.skill-section-2{
+    padding: 5px 0 10px 0;
+}
 .skill-main-section{
     display: grid;
     grid-template-columns: 150px auto;

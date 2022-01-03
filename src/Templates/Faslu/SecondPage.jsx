@@ -65,10 +65,13 @@ const SecondPage = () => {
             },
             {id:4,
              value:"Decision Making"
+            },
+            {id:5,
+            value:"Email Marketing"
             }
         ],
     });
-    const{name,designation,bio, profileImage,exp,skill}=template;
+    const{name,designation,bio, profileImage,exp, skill}=template;
     const changeState =(keys,value) =>{
         setTemplate(
             (prev)=>produce(prev,(draft)=>{
@@ -131,16 +134,16 @@ const SecondPage = () => {
                     <div className="heading-section-2">
                         <h4>WORK EXPERIENCE</h4>
                     </div>
-                        {exp.map(({startingDate,endingDate,companyName,role,detailList},i)=>{
+                    {exp.map(({startingDate,endingDate,companyName,role,detailList},i)=>{
                         return(
                             <div>
                                 <div className="sub-section-2">
-                                <h4>{role}</h4>
-                                <div className="sub-heading-section">
-                                {companyName}
-                                </div>
-                                <div>{startingDate}-{endingDate}</div>
-                                <ul>
+                                    <h4>{role}</h4>
+                                    <div className="sub-heading-section">
+                                    {companyName}
+                                    </div>
+                                    <i>{startingDate}-{endingDate}</i>
+                                    <ul>
                                     {detailList.map(({value},i)=><li key={i}>
                                         <TextArea
                                             value={value}
@@ -150,16 +153,17 @@ const SecondPage = () => {
                                 </ul>
                                 </div>
                             </div>
-                        )})}
+                    )})}
                     <div className="heading-section-2">
                         <h4>EDUCATION</h4>
                     </div>
-                        <div className="sub-section-2">
+                    <div className="sub-section-2">
                         <h4>MSc in Economics and Business <br/>Administration</h4>
                         <div className="sub-heading-section">
                             The University of Chicago
                         </div>
-                        </div>  
+                        {/* <i>{startingDate}-{endingDate}</i> */}
+                    </div>  
                     <div className="heading-section-2">
                         <h4>LANGUAGES</h4>
                     </div>
@@ -186,12 +190,11 @@ const SecondPage = () => {
                 </div>
                 <div className="right-section-2">
                     <div className="heading-section-2">
-                        <h4>SKILLS</h4>
+                        <h4>SKILLS</h4> 
                     </div> 
-                    <div className="skill-main-section">
+                        <div className="skill-section-2"><div className="skill-main-section">
                         <div className="skill-heading">SEO</div>
                         <div className="skill-option-section">
-
                         <div className="skill-section2">
                             <div className="skill-sub-section">
                             </div>
@@ -212,9 +215,10 @@ const SecondPage = () => {
                             <div className="skill-sub-section">
                             </div>
                         </div> 
+
+                        </div>  
                         </div>
-                    </div>
-                    <div className="skill-main-section">
+                        <div className="skill-main-section">
                         <div className="skill-heading">Public Speaking</div>
                         <div className="skill-option-section">
                         <div className="skill-section2">
@@ -239,8 +243,8 @@ const SecondPage = () => {
                         </div> 
 
                         </div>  
-                    </div>
-                    <div className="skill-main-section">
+                        </div>
+                        <div className="skill-main-section">
                         <div className="skill-heading">Team Work</div>
                         <div className="skill-option-section">
                         <div className="skill-section2">
@@ -265,8 +269,8 @@ const SecondPage = () => {
                         </div> 
 
                         </div>  
-                    </div>
-                    <div className="skill-main-section">
+                        </div>
+                        <div className="skill-main-section">
                         <div className="skill-heading">Decision Making</div>
                         <div className="skill-option-section">
                         <div className="skill-section2">
@@ -291,30 +295,63 @@ const SecondPage = () => {
                         </div> 
 
                         </div>  
-                    </div>
+                        </div>
+                        <div className="skill-main-section">
+                        <div className="skill-heading">Email Marketing</div>
+                        <div className="skill-option-section">
+                        <div className="skill-section2">
+                            <div className="skill-sub-section">
+                            </div>
+                        </div>   
+                        <div className="skill-section2">
+                            <div className="skill-sub-section">
+                            </div>
+                        </div> 
+                        <div className="skill-section2">
+                            <div className="skill-sub-section">
+                            </div>
+                        </div> 
+                        <div className="skill-section2">
+                            <div className="skill-sub-section">
+                            </div>
+                        </div> 
+                        <div className="skill-section2">
+                            <div className="skill-sub-section">
+                            </div>
+                        </div> 
+
+                        </div>  
+                        </div>
+
+
+                        </div>
+
+                        
+                
                     <div className="heading-section-2">
                         <h4>ORGANIZATIONS</h4>
                     </div>
-                        <div className="sub-section-2">
-                            <div>American Management Association<br/>
+                    <div className="sub-section-2">
+                            <div className='sub-sec-2'>American Management Association<br/>
                                  (2015-Present)
                             </div>
-                            <div>Association of Private Enterprise Education<br/>
+                            <div className='sub-sec-2'>Association of Private Enterprise Education<br/>
                                  (2014-Present)
                             </div>
-                            <div>eBusiness Association(eBA)(2013-Present)</div>   
-                        </div>
+                            <div className='sub-sec-2'>eBusiness Association(eBA)(2013-Present)</div>   
+                    </div>
                     <div className="heading-section-2">
                         <h4>HONOURS AND AWARDS</h4>
                     </div>
                     <div className="sub-section-2">
-                        <div>Jury Member Venture Cup Entrepreneurship<br/>
+                        <div className='sub-sec-2'>Jury Member Venture Cup Entrepreneurship<br/>
                         Competition(2016)</div>
-                        <div>Sales Individual & Business Development Award(2015)</div>
-                        <div>Excellence in Customer Partnering Award</div>
+                        <div className='sub-sec-2'>Sales Individual & Business Development Award(2015)</div>
+                        <div className='sub-sec-2'>Excellence in Customer Partnering Award</div>
                     </div>
 
                 </div>
+        
             </div>
         </div>
     )
