@@ -1,0 +1,44 @@
+.error-page-container{
+    height: 100%;
+    padding: 0 150px;
+    display: grid;
+    place-items: center;
+     background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%)); 
+    /* background-color: #d8deec; */
+}
+.error-page-sub-container{
+    /* max-width: 800px; */
+    border:2px solid black;
+    height: 350px;
+    width: 800px;
+    margin: 20px;
+    padding: 40px;
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 1px 5px 0px;
+   
+}
+.error-head{
+    font-size: 5rem;
+    color: #6d18c9cc;
+    font-weight: bold;
+}
+.error-head-2{
+    font-size: 40px;
+    font-weight: bold;
+    font-family: system-ui;
+}
+.error-description{
+    font-size: 20px;
+    font-family: system-ui;
+    padding: 15px;
+}
+.error-button{
+    background-color: #6d18c9cc;
+    border: none;
+    color: white;
+    width: 86px;
+    height: 25px;
+    border-radius: 10px;
+}
