@@ -12,11 +12,7 @@ import LoadingError from './LoadingError'
 import Dashboard from './Dashboard'
 import Error from './Error'
 import Network from './Network'
-import FavoriteList from './favoriteList'
-
-
-
-
+import FavoriteList from './FavoriteList'
 
 const Index = () => {
     return (
