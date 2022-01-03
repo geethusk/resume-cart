@@ -9,6 +9,7 @@ import HomeComponent from './Component/HomeComponent'
 import About from './About'
 import Feedback from './Feedback'
 import LoadingError from './LoadingError'
+import Dashboard from './Dashboard'
 
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
+                    <Route path="dashboard" element={<Dashboard/>}/>
                     <Route path="*" element={<LoadingError/>}/>
                 </Route>
             </Routes>
