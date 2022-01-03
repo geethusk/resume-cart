@@ -51,7 +51,11 @@ const HomeComponent = () => {
                 {isLoggedIn && <div className='display-user-id'>
                      User_id   
                     <div class="dropdown-content">
-                        <a href="#">log_out</a>
+                        <a href="#"
+                        onClick={()=>{navigate("/")
+                            setisLoggedIn(false);
+                        }}
+                        >Logout</a>
                         
                     </div>
                 </div>}
