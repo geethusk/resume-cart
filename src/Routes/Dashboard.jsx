@@ -27,7 +27,9 @@ const Dashboard = () => {
                  <div className="dashboard-input">
                      <input type="text"/><br/></div>
             </div>
+            <div>
             <button className='dashboard-button'>UPDATE</button>
+            </div>
         </div>
     </div>
       
