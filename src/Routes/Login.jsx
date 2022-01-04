@@ -74,7 +74,7 @@ const Login = () => {
             const response = await postData('/login',formData)
             console.log(response)
             if(!response.status){
-                console.log(response.message);
+                alert(response.message);
                 return
             }
             setUserData((prev)=>{
