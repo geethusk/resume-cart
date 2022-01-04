@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: 1.2fr 2.8fr;
     padding: 20px;
+    background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%)); 
+
 }
 .dashboard-left-section{
     padding: 20px;
