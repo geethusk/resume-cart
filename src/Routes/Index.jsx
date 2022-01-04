@@ -122,9 +122,9 @@ const Index = () => {
                     <Route path="raeez/*" element={<Raeez/>}/>
                     <Route path="rajasree/*" element={<Rajasree/>}/>
                     <Route path="vishnu/*" element={<Vishnu/>}/>
+                </Route>
                     <Route path="loading-error" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
-                </Route>
                     <Route path="/*" element={<Error/>}/>
             </Routes>
             </UserContext.Provider>
