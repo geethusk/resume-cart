@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react'
 import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
 import postData from '../services/postdata';
 
 const Login = () => {
-    // const navigate=useNavigate();
+    const navigate=useNavigate();
     const [formData,setFormData] = useState({
         email:"",
         password:"",
@@ -73,6 +73,9 @@ const Login = () => {
             console.log(response)
             if(response.status){
                 console.log("Login success")
+                {
+                    navigate("/dashboard")
+                }
             }
             else{
                 console.log("Login failed")
