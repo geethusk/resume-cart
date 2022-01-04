@@ -1,12 +1,14 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
 import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
 import postData from '../services/postdata';
+import { UserContext } from '../Context/UserContext';
 
 const Login = () => {
     const navigate=useNavigate();
+    const { userData, setUserData } = useContext(UserContext);
     const [formData,setFormData] = useState({
         email:"",
         password:"",
@@ -71,15 +73,18 @@ const Login = () => {
         if (formValidate()){
             const response = await postData('/login',formData)
             console.log(response)
-            if(response.status){
-                console.log("Login success")
-                {
-                    navigate("/dashboard")
-                }
+            if(!response.status){
+                console.log(response.message);
+                return
             }
-            else{
-                console.log("Login failed")
-            }        
+            setUserData((prev)=>{
+                return{
+                    ...prev,
+                    fullname: response.fullname,
+                    email
+                }
+            })
+            navigate('/dashboard');
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
