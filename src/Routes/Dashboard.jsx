@@ -8,7 +8,7 @@ const Dashboard = () => {
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
             <img src={profilePic}/>
-            <div className='dashboard-name'>Faslul Farisa</div>
+            <div className='dashboard-name'> {userData.fullname}</div>
             <div className="dashboard-contents">Profile</div>
             <div className="dashboard-contents">Email: {userData.email}</div>
             <div className="dashboard-contents">Password<button className='dashboard-reset-button'>RESET</button></div>
