@@ -5,6 +5,7 @@
 }
 .dashboard-left-section{
     padding: 20px;
+    margin: 25px;
 }
 .dashboard-left-section img{
     width:150px;
@@ -12,7 +13,7 @@
     border:4px solid grey;
 }
 .dashboard-name{
-    font-size: 30px;
+    font-size: 28px;
     padding: 20px 0;
 }
 .dashboard-contents{
@@ -20,7 +21,7 @@
     padding: 10px 0;
 }
 .dashboard-reset-button{
-    margin: 20px;
+    margin: 15px;
 }
 .dashboard-right-section{
     padding: 50px;
