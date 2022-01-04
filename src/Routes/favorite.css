@@ -8,11 +8,23 @@
     background-color: #808080d1;
     height: 100%;
 }
-/* .demos{
+.close_container{
     position: relative;
-} */
+}
+
 .close_button{
-    width: 10px;
+    width: 30px;
     color: red;
-position: absolute;
+    cursor: pointer;
+    height: 30px;
+    font-weight: bold;
+    background-color:white;
+    border-radius: 50%;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    
+    
+    
+
 }

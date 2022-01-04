@@ -19,7 +19,9 @@ const FavoriteList = () => {
             {favList.map(({id,image,url},i)=>{
                 return(
                 <>
-                <div className='close_button'
+                <div className="close_container">
+
+                <button className='close_button'
                     onClick={()=>{
                         setTemplate(prev=>{
                             let newList = [...prev];
@@ -30,12 +32,13 @@ const FavoriteList = () => {
                             return newList;
                         })
                     }}
-                >X</div>
+                >X</button>
                     <img className='demos'
                         onClick={()=>{
                             navigate(url)
                         }}
                     src={image} key={id} alt=""  />
+                    </div>
                 </>
                 )
             })}
