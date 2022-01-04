@@ -1,0 +1,42 @@
+.network-error{
+    height: 100%;
+    padding: 0 150px;
+    display: grid;
+    place-items: center;
+     background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%)); 
+}
+.network-error-sub{
+    /* max-width: 800px; */
+    border:2px solid black;
+    height: 500px;
+    width: 800px;
+    margin: 20px;
+    /* padding: 40px; */
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: -4px 5px 10px 0px;
+}
+.networkerror-image{
+    height: 250px;
+    width: 400px;
+    object-fit: cover;
+
+}
+.network-head{
+    font-size: 50px;
+    font-family: system-ui;
+    font-weight: bold;
+    padding: 10px;
+}
+.network-head2{
+    font-family: system-ui;
+    font-size: 25px;
+}
+.network-error-description{
+    font-family: system-ui;
+    font-size: 25px;
+    padding: 10px;
+}
+
