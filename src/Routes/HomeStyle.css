@@ -1,5 +1,6 @@
 body,html,#root,.home-container,.home-description-image-section,.mainContainer_home{
     height:100%;
+   
 }
 .header_home{
     display: grid;
@@ -221,7 +222,7 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     }
 
 }
-@media screen and (max-width:385px){
+@media screen and (max-width:435px){
     .header_home{
         font-size: 16px;
         

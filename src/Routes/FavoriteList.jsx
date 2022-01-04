@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TemplateContext } from '../Context/TemplateList'
 import "./favorite.css"
@@ -6,21 +6,41 @@ import "./HomeStyle.css"
 
 const FavoriteList = () => {
     const navigate=useNavigate();
-    const {template}=useContext(TemplateContext)
+    const {template,setTemplate}=useContext(TemplateContext)
     const favList=template.filter(value => value.isLiked===true)
+    // const [isClosed,setIsClosed]=useState(favList)
+
     // console.log(favList);
     // console.log(template);
     return (
         <div className='favor_head'>
             MY WISHLIST...♥
+            <div className='demo_home'>
             {favList.map(({id,image,url},i)=>{
                 return(
-                <img className='demos'
+                <>
+                <div className='close_button'
                     onClick={()=>{
-                        navigate(url)
+                        setTemplate(prev=>{
+                            let newList = [...prev];
+                            newList[id] = {
+                                ...newList[id],
+                                isLiked: false
+                            }
+                            return newList;
+                        })
                     }}
-                src={image} key={id} alt="" />)
+                >X</div>
+                    <img className='demos'
+                        onClick={()=>{
+                            navigate(url)
+                        }}
+                    src={image} key={id} alt=""  />
+                </>
+                )
             })}
+            </div>
+            
         </div>
     )
 }
