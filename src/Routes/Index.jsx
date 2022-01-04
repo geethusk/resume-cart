@@ -100,7 +100,8 @@ const Index = () => {
     const[template,setTemplate]=useState(totalTemplateList);
     const[userData,setUserData]=useState({
         fullname:"",
-        email:""
+        email:"",
+        isLoggedIn: false
     })
 
     return (

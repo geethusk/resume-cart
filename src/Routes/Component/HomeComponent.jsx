@@ -9,7 +9,7 @@ import burger from "../../assets/icons/bars-solid.svg"
 const HomeComponent = () => {
     const navigate=useNavigate();
     const[isHeader,setIsHeader]=useState(false);
-    const[isLoggedIn,setisLoggedIn]=useState(false);
+    
     const{userData,setUserData}=useContext(UserContext)
     
     // const ref=useRef(null);
@@ -52,19 +52,26 @@ const HomeComponent = () => {
                 >
                     FEEDBACK
                 </div>
-                {!isLoggedIn && <div className="displaybar login_home"
+                {!userData.isLoggedIn && <div className="displaybar login_home"
                     onClick={()=>{navigate("/login")
-                         setisLoggedIn(true)
+                         
                     }} 
                 >
                     LOGIN
                 </div>}
-                {isLoggedIn && <div className='display-user-id'>
+                {userData.isLoggedIn && <div className='display-user-id'>
                      {userData.fullname}  
                     <div class="dropdown-content">
                         <a href="#"
-                        onClick={()=>{navigate("/")
-                            setisLoggedIn(false);
+                        onClick={()=>{
+                            
+                            setUserData({
+                                fullname:"",
+                                email:"",
+                                isLoggedIn:false
+                            })
+                            navigate("/")
+                            
                         }}
                         >Logout</a>
                         
