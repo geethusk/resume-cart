@@ -23,7 +23,11 @@ const HomeComponent = () => {
         <div className='mainContainer_home'>
             <div className='header_home'>
                 <div 
-                    onClick={()=>{navigate("/")}}                
+                    onClick={()=>{navigate("/")
+                    setIsHeader(!isHeader);
+                }
+                    
+                }                
                 className='home_icon'>
                     <img src={Home} alt="" />
                 </div>
@@ -84,6 +88,13 @@ const HomeComponent = () => {
                     }} 
                 >
                     HOW IT WORKS
+                </div>
+                <div className="vertical_lists"
+                    onClick={()=>{navigate("/favorite")
+                    setIsHeader(!isHeader);
+                }} 
+                >
+                    MY WISHLIST
                 </div>
                 <div className="vertical_lists"
                     onClick={()=>{navigate("/about")

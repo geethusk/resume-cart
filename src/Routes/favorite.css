@@ -1,8 +1,18 @@
 .favor_head{
     text-align: center;
     font-size: 30px;
-    color: red;
-    padding-top: 30px;
+    color: #4b4b4b;
+    padding-top: 50px;
     font-family: sans-serif;
     font-weight: bold;
+    background-color: #808080d1;
+    height: 100%;
+}
+/* .demos{
+    position: relative;
+} */
+.close_button{
+    width: 10px;
+    color: red;
+position: absolute;
 }
