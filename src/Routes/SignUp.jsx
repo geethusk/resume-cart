@@ -2,13 +2,14 @@ import React, { useEffect,useState } from 'react'
 import "./SignUp.css"
 import { isPassword, isValidEmail } from "../utility/validate";
 import InputField from '../Components/InputField';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import postData from '../services/postdata';
+
 
 const SignUp = () => {
 
-
-    
+    const navigate=useNavigate();
+    const{}
     
     const[formData, setFormData] = useState({
         fullName: "",
@@ -36,7 +37,7 @@ const SignUp = () => {
     const{fullNameError,emailError,passwordError,confirmPasswordError}=formDataError
 
 
-
+    
     
 
     const   onChange=(key,value)=>{
@@ -93,6 +94,10 @@ const SignUp = () => {
             console.log("signup success")
             const response = await postData('/signup',formData)
                 console.log(response);
+                if(response.status)
+                {
+                    navigate("/login")
+                }
                 // .then(formData => {
                 //     console.log(formData); 
                 //   });
