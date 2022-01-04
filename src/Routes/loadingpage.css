@@ -1,0 +1,26 @@
+.loadingpage-container{
+    height: 100%;
+    padding: 0 150px;
+    display: grid;
+    place-items: center;
+   
+   
+}
+
+.loadingpage-sub-container{
+    border:2px solid black;
+    height: 350px;
+    width: 800px;
+    margin: 20px;
+    padding: 40px;
+    background-color: white;
+    /* background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%));  */
+    text-align: center;
+    border-radius: 20px;
+    /* box-shadow: 0px 1px 5px 0px; */
+    box-shadow: -4px 5px 10px 0px;
+}
+.loadingpage-head{
+    font-family: system-ui;
+    font-size: 60px;
+}  

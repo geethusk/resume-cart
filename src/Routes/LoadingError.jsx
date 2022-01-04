@@ -1,9 +1,14 @@
 import React from 'react'
+import "./loadingpage.css"
+import loadingpageimage from  "../Routes/hiw-images/loadingpage.png"
 
 const LoadingError = () => {
     return (
-        <div>
-            Loading Error
+        <div className='loadingpage-container'>
+            <div className='loadingpage-sub-container'>
+            <div className='loadingpage-head'>Loading...</div>
+            <img src ={ loadingpageimage }/>
+            </div>
         </div>
     )
 }
