@@ -3,9 +3,12 @@ import "./SignUp.css"
 import { isPassword, isValidEmail } from "../utility/validate";
 import InputField from '../Components/InputField';
 import { Link } from 'react-router-dom';
+import postData from '../services/postdata';
 
 const SignUp = () => {
-   
+
+
+    
     
     const[formData, setFormData] = useState({
         fullName: "",
@@ -26,7 +29,8 @@ const SignUp = () => {
     
     useEffect(()=>{console.log(formData);
         formValidate()},[formData])
-
+    
+      
 
     const{fullName,email,password,confirmPassword}=formData
     const{fullNameError,emailError,passwordError,confirmPasswordError}=formDataError
@@ -82,11 +86,17 @@ const SignUp = () => {
     }
     
 
-    const signUpCall = (e)=>{
+    const signUpCall = async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true);
         if(formValidate()){
             console.log("signup success")
+            const response = await postData('/signup',formData)
+                console.log(response);
+                // .then(formData => {
+                //     console.log(formData); 
+                //   });
+      
         }
 
     }
