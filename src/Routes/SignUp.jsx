@@ -91,13 +91,18 @@ const SignUp = () => {
         e.preventDefault();
         setIsFormSubmitted(true);
         if(formValidate()){
-            console.log("signup success")
+            
             const response = await postData('/signup',formData)
                 console.log(response);
-                if(response.status)
-                {
-                    navigate("/login")
+                if(!response.status){
+                    alert(response.message)
+                    return
                 }
+                
+                
+                    navigate("/login")
+                
+
                 // .then(formData => {
                 //     console.log(formData); 
                 //   });
