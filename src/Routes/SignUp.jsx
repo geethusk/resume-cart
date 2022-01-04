@@ -9,7 +9,7 @@ import postData from '../services/postdata';
 const SignUp = () => {
 
     const navigate=useNavigate();
-    const{}
+    
     
     const[formData, setFormData] = useState({
         fullName: "",
