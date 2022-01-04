@@ -81,7 +81,8 @@ const Login = () => {
                 return{
                     ...prev,
                     fullname: response.fullname,
-                    email
+                    email,
+                    isLoggedIn:true
                 }
             })
             navigate('/dashboard');
