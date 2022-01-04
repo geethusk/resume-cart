@@ -22,6 +22,13 @@ import Forth from "../Routes/Component/4.png"
 import Fifth from "../Routes/Component/5.png"
 import Sixth from "../Routes/Component/6.png"
 
+import Faslu from '../Templates/Faslu';
+import Geethu from '../Templates/Geethu';
+import Raeez from '../Templates/Raeez';
+import Rajasree from '../Templates/Rajasree';
+
+import Vishnu from "../Templates/Vishnu";
+
 import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
 
@@ -110,6 +117,11 @@ const Index = () => {
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
                     <Route path="favorite" element={<FavoriteList/>}/>
+                    <Route path="faslu/*" element={<Faslu/>}/>
+                    <Route path="geethu/*" element={<Geethu/>}/>
+                    <Route path="raeez/*" element={<Raeez/>}/>
+                    <Route path="rajasree/*" element={<Rajasree/>}/>
+                    <Route path="vishnu/*" element={<Vishnu/>}/>
                 </Route>
                     <Route path="loading-error" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
