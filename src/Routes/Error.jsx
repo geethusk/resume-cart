@@ -12,9 +12,9 @@ const Error = () => {
                  <div className='error-head'>404 </div>
                  <div className='error-head-2'>Oops! Page Not Found</div>
                  <div className='error-description' >Oops! The Page you are looking for does not exist.It might have been moved or deleted</div>
-                 <button  className='error-button'
-                  onClick={()=>{navigate("/")}}
-                 >Home</button>
+                   <button  className='error-button'
+                   onClick={()=>{navigate("/")}}
+                   >Home</button>
                 
              
             </div>
