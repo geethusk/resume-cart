@@ -23,4 +23,23 @@
 .loadingpage-head{
     font-family: system-ui;
     font-size: 60px;
-}  
+} 
+
+.loadingpage-image {
+    animation: rotation 2s infinite linear;
+}
+
+.loadingpage-image{
+    width: 150px;
+    margin-top: 25px;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
