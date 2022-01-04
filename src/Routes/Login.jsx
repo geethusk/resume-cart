@@ -3,6 +3,8 @@ import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
 import {Link} from 'react-router-dom'
 import './Login.css'
+import postData from '../services/postdata';
+
 const Login = () => {
     // const navigate=useNavigate();
     const [formData,setFormData] = useState({
@@ -63,11 +65,18 @@ const Login = () => {
     useEffect(()=>{
         formValidate();
     },[formData])
-    const loginCall=(e)=>{
+    const loginCall= async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
         if (formValidate()){
-            console.log("login success")
+            const response = await postData('/login',formData)
+            console.log(response)
+            if(response.status){
+                console.log("Login success")
+            }
+            else{
+                console.log("Login failed")
+            }        
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
