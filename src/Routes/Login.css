@@ -47,7 +47,8 @@
     outline: none;
     border: none;
     background:#5f5e5e61;
-    border-radius:10px
+    border-radius:10px;
+    color: #9b9191;
 }
 .login-input:focus~.label,.filled-label{
     top:0;
