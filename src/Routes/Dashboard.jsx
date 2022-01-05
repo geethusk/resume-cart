@@ -11,9 +11,11 @@ const Dashboard = () => {
     const[password,setPassword] = useState({
         oldPassword:"",
         newPassword:"",
-        confirmPassword:""
+        confirmPassword:"",
+        otp:""
+        
     })
-    const{oldPassword,newPassword,confirmPassword}=password
+    const{oldPassword,newPassword,confirmPassword,otp}=password
     const[formErrorData,setFormErrorData]=useState({
         passwordError: "",
         confirmPasswordError: ""
@@ -31,7 +33,7 @@ const Dashboard = () => {
             [key]:value
         }))
     }
-    
+    console.log(password.otp);
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
             ...prev,
@@ -79,6 +81,10 @@ const Dashboard = () => {
             console.log(response);
         } 
     }
+    const submitOtp = async ()=>{
+        const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
+        console.log(response);
+    }
     return (
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
@@ -96,7 +102,7 @@ const Dashboard = () => {
                      <input type="text" 
                         // value={oldpassword}
                         onChange={
-                            (e)=>{onChange("oldpassword",e.target.value)}
+                            (e)=>{onChange("oldPassword",e.target.value)}
                         }  
 
                      /><br/></div>
@@ -139,8 +145,15 @@ const Dashboard = () => {
                 }className='dashboard-button' >GET OTP</button>
                 {isOtpButton && <div className="dashboard-input">
                     <input type="text"
+                       onChange={
+                        (e)=>{onChange("otp",e.target.value)}
+                    } 
                     />
-                <button className='dashboard-button'>SUBMIT</button>
+                <div className='dashboard-button'
+                  onClick={()=>{
+                    submitOtp()
+                  }}
+                >SUBMIT</div>
                 </div>
                 }
                 </div>
