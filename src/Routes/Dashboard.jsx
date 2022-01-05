@@ -22,7 +22,6 @@ const Dashboard = () => {
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
 
 
-
     useEffect(()=>{
         formValidate()},[])
 
@@ -71,6 +70,7 @@ const Dashboard = () => {
     }
 
     const { userData} = useContext(UserContext)
+
     const getOtp = async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
@@ -145,8 +145,6 @@ const Dashboard = () => {
                 }
                 </div>
             </form>
-            
-           
         </div>
     </div>
       
