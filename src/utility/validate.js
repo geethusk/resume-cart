@@ -10,3 +10,4 @@ export const isPassword = (inputPassword)=>{
     if(inputPassword.length >= 6) return true
     return false
 }
+
