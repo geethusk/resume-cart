@@ -49,9 +49,9 @@ const HowItWorks = () => {
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 6:- User can also view favourite lists </div>
+                <div className='step-title-3'>Step 6:- User can also view favourite lists/ </div>
                 <img className='hiw-image-3' src={wishlist}/>
-                <div className='linking-pages'><Link className='link-3' to="/favorite">Click here to go to wishlist page</Link></div>
+                <div className='linking-pages'><Link className='link-3' to="/favorite">Click here to go to  wishlist page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>     
             

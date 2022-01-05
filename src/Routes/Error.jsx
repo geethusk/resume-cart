@@ -15,6 +15,8 @@ const Error = () => {
                    <button  className='error-button'
                    onClick={()=>{navigate("/")}}
                    >Home</button>
+
+
                 
              
             </div>
