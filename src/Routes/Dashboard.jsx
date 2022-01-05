@@ -8,6 +8,8 @@ import {isPassword} from '../utility/validate';
 
 const Dashboard = () => {
     const[isOtpButton,setOtpButton]=useState(false)
+    const[isResetButton,setResetButton]=useState(false)
+
     const[password,setPassword] = useState({
         oldPassword:"",
         newPassword:"",
@@ -92,9 +94,16 @@ const Dashboard = () => {
             <div className='dashboard-name'>{userData.fullname}</div>
             <div className="dashboard-contents">Profile</div>
             <div className="dashboard-contents">{userData.email}</div>
-            <div className="dashboard-contents">Password<button className='dashboard-reset-button'>RESET</button></div>
+            <div className="dashboard-contents">Password
+            <button 
+                onClick={()=>{
+                    setResetButton(true)
+                }
+                }
+            className='dashboard-reset-button'>RESET</button></div>
         </div>
         <div className="dashboard-right-section">
+            {isResetButton &&
             <form onSubmit={getOtp}>
                 <div className="dashboard-section">
                  <label for ="dashboard-password">Old Password</label>
@@ -121,6 +130,7 @@ const Dashboard = () => {
                  {isFormSubmitted&&<div className="error-region">
                     {passwordError}
                 </div>}
+
                 <div className="dashboard-section">
                  <label for ="dashboard-password">Confirm New Password</label>
                  <div className="dashboard-input">
@@ -132,32 +142,36 @@ const Dashboard = () => {
 
                      /><br/></div>
                 </div>
-                {isFormSubmitted&&<div className="error-region">
+                {isFormSubmitted && <div className="error-region">
                     {confirmPasswordError}
                 </div>}
+
                 <div className="dashboard-section">
-                <button 
-                type='submit'
-                onClick={()=>{
-                    setOtpButton(true)
-                    // getOtp()
-                }
-                }className='dashboard-button' >GET OTP</button>
-                {isOtpButton && <div className="dashboard-input">
+                    <button 
+                        type='submit'
+                        onClick={()=>{
+                        setOtpButton(true)
+                        }
+                       }
+                       className='dashboard-button' >
+                           GET OTP
+                    </button>
+                    {isOtpButton && <div className="dashboard-input">
                     <input type="text"
-                       onChange={
-                        (e)=>{onChange("otp",e.target.value)}
-                    } 
+                            onChange={
+                            (e)=>{onChange("otp",e.target.value)}
+                            } 
                     />
-                <div className='dashboard-button'
-                  onClick={()=>{
-                    submitOtp()
-                  }}
-                >SUBMIT</div>
+                    <div className='dashboard-submit-button'
+                            onClick={()=>{
+                                submitOtp()
+                            }} >
+                      SUBMIT
+                    </div>
                 </div>
                 }
                 </div>
-            </form>
+            </form>}
         </div>
     </div>
       
