@@ -118,6 +118,7 @@ const Login = () => {
                         
                     </div>
                     <div className='sign-up-page-link'>Not a member?<Link className='sign-up-link' to="/sign-up"> SignUp </Link>now</div>
+                    <div className='sign-up-page-link'>I am <Link className='sign-up-link' to="/admin">Admin</Link></div>
                 </form>
             </div> 
         </div>
