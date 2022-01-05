@@ -5,6 +5,7 @@ import home from "../Routes/hiw-images/home.png"
 import login from "../Routes/hiw-images/login.png"
 import aboutUs from "../Routes/hiw-images/aboutus.jpg"
 import signup from  "../Routes/hiw-images/signup.png"
+import wishlist from "../Routes/hiw-images/wishlist.png"
 
 
 const HowItWorks = () => {
@@ -32,21 +33,27 @@ const HowItWorks = () => {
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div>
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 2:- Feedback</div>
+                <div className='step-title-3'>Step 3:- Feedback</div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
             </div> 
             <div className='step-conatiner'>
-                <div className='step-title-3'>Step 4:- Login</div>
-                <img className='hiw-image-3' src={login}/>
-                <div className='linking-pages'><Link className='link-3' to="/login">Click here to go to Login page</Link></div>
-                <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
-            </div> 
-            <div className='step-conatiner'>
-                <div className='step-title-3'>Step 4:- Navigates to Sign Up Page</div>
+                <div className='step-title-3'>Step 4:- Navigates to SignUp Page</div>
                 <img className='hiw-image-3' src={signup}/>
-                <div className='linking-pages'><Link className='link-3' to="/sign-up">Click here to go to SignUp page</Link></div>
+                <div className='linking-pages'><Link className='link-3' to="/sign-up">Click here to go to Signup page</Link></div>
                 <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
-            </div>    
+            </div> 
+            <div className='step-conatiner'>
+                <div className='step-title-3'>Step 5:- Once signup done,next step to  Login</div>
+                <img className='hiw-image-3' src={login}/>
+                <div className='linking-pages'><Link className='link-3' to="/login">Click here to go to login page</Link></div>
+                <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
+            </div>
+            <div className='step-conatiner'>
+                <div className='step-title-3'>Step 6:- User can also view favourite lists </div>
+                <img className='hiw-image-3' src={wishlist}/>
+                <div className='linking-pages'><Link className='link-3' to="/favorite">Click here to go to wishlist page</Link></div>
+                <div className='step-info'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias vero saepe architecto voluptas obcaecati odio! Asperiores sequi reiciendis incidunt sunt temporibus, vitae amet ut deserunt magni, repellendus, quos officia dicta?</div>
+            </div>     
             
         </div>
     )
