@@ -1,3 +1,4 @@
+
 import React, { useState,useEffect, useContext } from 'react'
 import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
@@ -6,7 +7,7 @@ import './Login.css'
 import postData from '../services/postdata';
 import { UserContext } from '../Context/UserContext';
 
-const Login = () => {
+const Admin = () => {
     const navigate=useNavigate();
     const { userData, setUserData } = useContext(UserContext);
     const [formData,setFormData] = useState({
@@ -111,18 +112,13 @@ const Login = () => {
                         onChange={(value) =>onChange("password",value)}
                         error={passwordError}
                         isFormSubmitted={isFormSubmitted}
-                    />
-                    <div className='login-button-section'>
-                        <div className='password-head'>Forget Password?</div>
+                    /><br/>
                         <button type="submit" className='login-button'>Login</button>
                         
-                    </div>
-                    <div className='sign-up-page-link'>Not a member?<Link className='sign-up-link' to="/sign-up"> SignUp </Link>now</div>
-                    <div className='sign-up-page-link'>I am <Link className='sign-up-link' to="/admin">Admin</Link></div>
                 </form>
-            </div> 
+            </div>
         </div>
     )
 }
 
-export default Login
+export default Admin

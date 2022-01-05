@@ -31,6 +31,7 @@ import Vishnu from "../Templates/Vishnu";
 
 import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
+import Admin from './Admin'
 
 const totalTemplateList=[
     {
@@ -111,6 +112,7 @@ const Index = () => {
                 <Route path="" element={<HomeComponent/>}>
                     <Route path="/" element={<Home/>}/>
                     <Route path="login" element={<Login/>}/>
+                    <Route path="/admin" element={<Admin/>}/>
                     <Route path="sign-up" element={<SignUp/>}/>
                     <Route path="view" element={<View/>}/>
                     <Route path="How-It-Works" element={<HowItWorks/>}/>
