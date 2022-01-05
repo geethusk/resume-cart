@@ -2,7 +2,9 @@ import { useContext} from 'react'
 import './Dashboard.css'
 import profilePic from '../Templates/Faslu/images/photo.jpg'
 import { UserContext } from '../Context/UserContext'
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
+import postData from '../services/postdata';
+
 
 const Dashboard = () => {
     const[isOtpButton,setOtpButton]=useState(false)
@@ -19,9 +21,14 @@ const Dashboard = () => {
             [key]:value
         }))
     }
+    
     // console.log(oldpassword);
 
     const { userData} = useContext(UserContext)
+    const getOtp = async ()=>{
+        const response = await postData('/get-otp',{email:userData.email})
+        console.log(response);
+    }
     return (
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
@@ -64,9 +71,10 @@ const Dashboard = () => {
                      /><br/></div>
             </div>
             <div className="dashboard-section">
-                <button onClick={()=>
+                <button onClick={()=>{
                     setOtpButton(true)
-                }className='dashboard-button'>GET OTP</button>
+                    getOtp()}
+                }className='dashboard-button' >GET OTP</button>
                 {isOtpButton && <div className="dashboard-input">
                     <input type="text"
                     />
