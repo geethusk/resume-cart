@@ -2,19 +2,20 @@
 import React, { useState,useEffect, useContext } from 'react'
 import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import postData from '../services/postdata';
 import { UserContext } from '../Context/UserContext';
 
 const Admin = () => {
-    const navigate=useNavigate();
-    const { userData, setUserData } = useContext(UserContext);
+     const navigate=useNavigate();
+    const[isOtpButton,setOtpButton]=useState(false)
     const [formData,setFormData] = useState({
         email:"",
-        password:"",
+        otp:"",
     });
-    const{email,password}=formData;
+    const {userData, setUserData } = useContext(UserContext)
+    const{email,otp}=formData;
     const onChange = (key,value)=>{
         setFormData(prev=>({
             ...prev,
@@ -23,23 +24,22 @@ const Admin = () => {
     }
     const[formErrorData,setFormErrorData]=useState({
         emailError:"",
-        passwordError:"",
+        otpError:"",
     })
-    const{emailError,passwordError}=formErrorData
+    const{emailError,otpError}=formErrorData
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
             ...prev,
             [key]:value
         }))
     }
+    
     const formValidate = ()=>{
         let isValidForm = true;
-        console.log(isValidForm)
+        
         if(!email){
             onError("emailError","Cannot be Empty")
             isValidForm = false;
-            console.log(isValidForm)
-
         }
         else{
             if(!isValidEmail(email)){
@@ -50,47 +50,41 @@ const Admin = () => {
                 onError("emailError","")
             }
         }
-        if(!password){
-            onError("passwordError","Cannot be Empty")
-            isValidForm = false;
-        }
-        else{
-            if(!isPassword(password)){
-                onError("passwordError","Enter Valid Password")
-                isValidForm = false;
-            }
-            else{
-                onError("passwordError","")
-            }
-        }
+        // if(!otp){
+        //     onError("otpError","Cannot be Empty")
+        //     isValidForm = false;
+        // }
         return isValidForm
     }
     useEffect(()=>{
         formValidate();
     },[formData])
-    const loginCall= async (e)=>{
-        e.preventDefault();
-        setIsFormSubmitted(true)
-        if (formValidate()){
-            const response = await postData('/login',formData)
-            console.log(response)
-            if(!response.status){
-                alert(response.message);
-                return
-            }
-            setUserData((prev)=>{
-                return{
-                    ...prev,
-                    fullname: response.fullname,
-                    email,
-                    isLoggedIn:true
-                }
-            })
-            navigate('/dashboard');
-        }
-    }
+   
+
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
    
+    const getOtp = async ()=>{
+        const response = await postData('/get-admin-otp',{email})
+        console.log(response);
+    }
+    const adminNavigate=()=>{
+        if(userData.isAdmin===true){
+            navigate("/adminhome")
+        }else
+        return
+    }
+    const loginCall = async (e) =>{
+        e.preventDefault();
+        const response = await postData('/admin-login', {otp})
+        console.log(response);
+        if(response.status){
+            setUserData((prev)=>{
+                return{
+                ...prev,
+                isAdmin: true
+            }})
+        }
+    }
     return (
         <div className="login-container">
             <div className="login-card">
@@ -105,16 +99,25 @@ const Admin = () => {
                         error={emailError}
                         isFormSubmitted={isFormSubmitted}
                     />
+                    <br/>
+                    <div onClick={()=>{
+                         setOtpButton(true)
+                        getOtp()}
+                    } className='login-button'>Get OTP</div>
+                    <br/>
                     <InputField
-                        label="Password"
-                        value={password}
-                        type="password"
-                        onChange={(value) =>onChange("password",value)}
-                        error={passwordError}
+                        label="OTP"
+                        value={otp}
+                        onChange={(value) =>onChange("otp",value)}
+                        error={otpError}
                         isFormSubmitted={isFormSubmitted}
-                    /><br/>
-                        <button type="submit" className='login-button'>Login</button>
-                        
+                    />
+                    <br/>
+                    <button 
+                    onClick={()=>{
+                        adminNavigate()
+                    }}
+                     type="submit" className='login-button'>Login</button>
                 </form>
             </div>
         </div>

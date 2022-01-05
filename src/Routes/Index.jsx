@@ -32,6 +32,7 @@ import Vishnu from "../Templates/Vishnu";
 import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
 import Admin from './Admin'
+import AdminHome from './AdminHome'
 
 const totalTemplateList=[
     {
@@ -102,7 +103,8 @@ const Index = () => {
     const[userData,setUserData]=useState({
         fullname:"",
         email:"",
-        isLoggedIn: false
+        isLoggedIn: false,
+        isAdmin: false
     })
 
     return (
@@ -120,6 +122,8 @@ const Index = () => {
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
                     <Route path="favorite" element={<FavoriteList/>}/>
+                    <Route path="adminhome" element={<AdminHome/>}/>
+                    
                     <Route path="faslu/*" element={<Faslu/>}/>
                     <Route path="geethu/*" element={<Geethu/>}/>
                     <Route path="raeez/*" element={<Raeez/>}/>
