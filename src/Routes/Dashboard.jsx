@@ -5,12 +5,14 @@ import { UserContext } from '../Context/UserContext'
 import { useState } from 'react/cjs/react.development';
 
 const Dashboard = () => {
+    const[isOtpButton,setOtpButton]=useState(false)
     const[password,setPassword] = useState({
         oldpassword:"",
         newpassword:"",
         confirmpassword:""
     })
     const{oldpassword,newpassword,confirmpassword}=password
+
     const onChange = (key,value)=>{
         setPassword(prev=>({
             ...prev,
@@ -61,9 +63,18 @@ const Dashboard = () => {
 
                      /><br/></div>
             </div>
-            <div>
-            <button className='dashboard-button'>UPDATE</button>
+            <div className="dashboard-section">
+                <button onClick={()=>
+                    setOtpButton(true)
+                }className='dashboard-button'>GET OTP</button>
+                {isOtpButton && <div className="dashboard-input">
+                    <input type="text"
+                    />
+                <button className='dashboard-button'>SUBMIT</button>
+                </div>
+                }
             </div>
+           
         </div>
     </div>
       
