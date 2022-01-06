@@ -37,11 +37,12 @@ const HomeComponent = () => {
                 >
                     HOW IT WORKS
                 </div>
+                {!userData.isAdmin &&
                 <div className="displaybar working_home"
                     onClick={()=>{navigate("/favorite")}} 
                 >
                     MY WISHLIST
-                </div>
+                </div>}
                 <div className="displaybar about_home"
                     onClick={()=>{navigate("/about")}} 
                 >
@@ -96,6 +97,7 @@ const HomeComponent = () => {
                 >
                     HOW IT WORKS
                 </div>
+
                 <div className="vertical_lists"
                     onClick={()=>{navigate("/favorite")
                     setIsHeader(!isHeader);

@@ -32,7 +32,6 @@ import Vishnu from "../Templates/Vishnu";
 import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
 import Admin from './Admin'
-import AdminHome from './AdminHome'
 
 const totalTemplateList=[
     {
@@ -121,9 +120,7 @@ const Index = () => {
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
-                    <Route path="favorite" element={<FavoriteList/>}/>
-                    <Route path="adminhome" element={<AdminHome/>}/>
-                    
+                    <Route path="favorite" element={<FavoriteList/>}/>                    
                     <Route path="faslu/*" element={<Faslu/>}/>
                     <Route path="geethu/*" element={<Geethu/>}/>
                     <Route path="raeez/*" element={<Raeez/>}/>

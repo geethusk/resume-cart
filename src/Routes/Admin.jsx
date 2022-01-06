@@ -69,7 +69,7 @@ const Admin = () => {
     }
     const adminNavigate=()=>{
         if(userData.isAdmin===true){
-            navigate("/adminhome")
+            navigate("/")
         }else
         return
     }
@@ -89,7 +89,7 @@ const Admin = () => {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-heading">
-                    Login
+                   Admin Login
                 </div>
                 <form onSubmit={loginCall} className='login-form'>
                     <InputField
