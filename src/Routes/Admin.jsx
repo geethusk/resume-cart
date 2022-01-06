@@ -81,7 +81,8 @@ const Admin = () => {
             setUserData((prev)=>{
                 return{
                 ...prev,
-                isAdmin: true
+                isAdmin: true,
+                email:response.email
             }})
         }
     }
@@ -102,6 +103,7 @@ const Admin = () => {
                     <br/>
                     <div onClick={()=>{
                          setOtpButton(true)
+                         alert("otp sent successfully")
                         getOtp()}
                     } className='login-button'>Get OTP</div>
                     <br/>
@@ -116,6 +118,7 @@ const Admin = () => {
                     <button 
                     onClick={()=>{
                         adminNavigate()
+                        alert("login successfully")
                     }}
                      type="submit" className='login-button'>Login</button>
                 </form>

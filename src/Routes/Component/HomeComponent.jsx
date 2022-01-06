@@ -60,16 +60,18 @@ const HomeComponent = () => {
                 >
                     LOGIN
                 </div>}
-                {userData.isLoggedIn && <div className='display-user-id'>
+                {userData.isAdmin && userData.isLoggedIn && <div className='display-user-id'>
                      {userData.fullname}  
+                     {userData.email}
                     <div class="dropdown-content">
                         <a href="#"
                         onClick={()=>{
-                            
+                           localStorage.removeItem('token') 
                             setUserData({
                                 fullname:"",
                                 email:"",
-                                isLoggedIn:false
+                                isLoggedIn:false,
+                                isAdmin:false
                             })
                             navigate("/")
                             
