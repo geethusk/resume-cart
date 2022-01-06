@@ -37,11 +37,12 @@ const HomeComponent = () => {
                 >
                     HOW IT WORKS
                 </div>
+                {!userData.isAdmin &&
                 <div className="displaybar working_home"
                     onClick={()=>{navigate("/favorite")}} 
                 >
                     MY WISHLIST
-                </div>
+                </div>}
                 <div className="displaybar about_home"
                     onClick={()=>{navigate("/about")}} 
                 >
@@ -59,16 +60,20 @@ const HomeComponent = () => {
                 >
                     LOGIN
                 </div>}
-                {userData.isLoggedIn && <div className='display-user-id'>
-                     {userData.fullname}  
+
+
+                { (userData.isAdmin || userData.isLoggedIn) && <div className='display-user-id'>
+                    {userData.fullname}  
+                     
                     <div class="dropdown-content">
                         <a href="#"
                         onClick={()=>{
-                            
+                           localStorage.removeItem('token') 
                             setUserData({
                                 fullname:"",
                                 email:"",
-                                isLoggedIn:false
+                                isLoggedIn:false,
+                                isAdmin:false
                             })
                             navigate("/")
                             
@@ -77,6 +82,8 @@ const HomeComponent = () => {
                         
                     </div>
                 </div>}
+
+                
                 <div className='burger_button' 
                     onClick={()=>{
                         setIsHeader(!isHeader);
@@ -96,6 +103,7 @@ const HomeComponent = () => {
                 >
                     HOW IT WORKS
                 </div>
+
                 <div className="vertical_lists"
                     onClick={()=>{navigate("/favorite")
                     setIsHeader(!isHeader);
