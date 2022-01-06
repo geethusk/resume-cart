@@ -5,6 +5,8 @@ import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
 import postData from '../services/postdata';
 import { UserContext } from '../Context/UserContext';
+import GetPassword from '../Components/GetPassword';
+
 
 const Login = () => {
     const navigate=useNavigate();
@@ -24,6 +26,7 @@ const Login = () => {
         emailError:"",
         passwordError:"",
     })
+    const[forgetPassword,setForgetPassword]=useState(false)
     const{emailError,passwordError}=formErrorData
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
@@ -114,7 +117,12 @@ const Login = () => {
                         isFormSubmitted={isFormSubmitted}
                     />
                     <div className='login-button-section'>
-                        <div className='password-head'>Forget Password?</div>
+                        {!forgetPassword && <div 
+                            onClick={()=>{
+                                setForgetPassword(true)
+                        }}
+                        className='password-header'>Forget Password?</div>}
+                        {forgetPassword && <GetPassword/>}
                         <button type="submit" className='login-button'>Login</button>
                         
                     </div>
