@@ -60,9 +60,11 @@ const HomeComponent = () => {
                 >
                     LOGIN
                 </div>}
-                {userData.isAdmin && userData.isLoggedIn && <div className='display-user-id'>
-                     {userData.fullname}  
-                     {userData.email}
+
+
+                { (userData.isAdmin || userData.isLoggedIn) && <div className='display-user-id'>
+                    {userData.fullname}  
+                     
                     <div class="dropdown-content">
                         <a href="#"
                         onClick={()=>{
@@ -80,6 +82,8 @@ const HomeComponent = () => {
                         
                     </div>
                 </div>}
+
+                
                 <div className='burger_button' 
                     onClick={()=>{
                         setIsHeader(!isHeader);

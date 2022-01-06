@@ -81,8 +81,10 @@ const Admin = () => {
             setUserData((prev)=>{
                 return{
                 ...prev,
+                email:"geethukallada1@gmail.com",
                 isAdmin: true,
-                email:response.email
+                fullname:"Admin",
+                
             }})
         }
     }
