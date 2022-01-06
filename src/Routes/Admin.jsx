@@ -69,7 +69,7 @@ const Admin = () => {
     }
     const adminNavigate=()=>{
         if(userData.isAdmin===true){
-            navigate("/adminhome")
+            navigate("/")
         }else
         return
     }
@@ -81,7 +81,10 @@ const Admin = () => {
             setUserData((prev)=>{
                 return{
                 ...prev,
-                isAdmin: true
+                email:"geethukallada1@gmail.com",
+                isAdmin: true,
+                fullname:"Admin",
+                
             }})
         }
     }
@@ -89,7 +92,7 @@ const Admin = () => {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-heading">
-                    Login
+                   Admin Login
                 </div>
                 <form onSubmit={loginCall} className='login-form'>
                     <InputField
@@ -102,6 +105,7 @@ const Admin = () => {
                     <br/>
                     <div onClick={()=>{
                          setOtpButton(true)
+                         alert("otp sent successfully")
                         getOtp()}
                     } className='login-button'>Get OTP</div>
                     <br/>
@@ -116,6 +120,7 @@ const Admin = () => {
                     <button 
                     onClick={()=>{
                         adminNavigate()
+                        alert("login successfully")
                     }}
                      type="submit" className='login-button'>Login</button>
                 </form>
