@@ -60,15 +60,16 @@
     color: white;
     max-width: 400px;
     align-items: center;
+    justify-content: space-between;
 }
 .login-button{
     background-color:#9a2fa0;
     padding: 10px 15px;
     font-size: 1rem;
-    margin-left: auto;
     border: none;
     border-radius: 15px;
     color: white;
+    width: 100px;
 }
 .text-field-error-text{
     color:#fd2d2d ;
