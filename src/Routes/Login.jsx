@@ -77,6 +77,7 @@ const Login = () => {
                 alert(response.message);
                 return
             }
+            localStorage.setItem('token',response.token)
             setUserData((prev)=>{
                 return{
                     ...prev,

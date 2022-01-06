@@ -33,6 +33,8 @@ import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
 import Admin from './Admin'
 import AdminHome from './AdminHome'
+import { useEffect } from 'react'
+import postData from '../services/postdata'
 
 const totalTemplateList=[
     {
@@ -106,6 +108,25 @@ const Index = () => {
         isLoggedIn: false,
         isAdmin: false
     })
+    useEffect(()=>{
+        fetch('http://192.168.1.66:5000/api/v1/user/', {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setUserData(prev=>{
+                return{
+                     fullname:data.data.fullname,
+                     email:data.data.email,
+                     isLoggedIn: true,}
+             })
+        }
+            )
+    },[])
+
 
     return (
             <TemplateContext.Provider value={{template,setTemplate}}>
