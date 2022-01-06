@@ -12,7 +12,9 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
     const[isOtpButton,setOtpButton]=useState(false)
     const[isResetButton,setResetButton]=useState(false)
-
+    const[image,setImage]=useState({
+        profileImage:profilePic
+    })
     const[password,setPassword] = useState({
         oldPassword:"",
         newPassword:"",
@@ -34,7 +36,13 @@ const Dashboard = () => {
         formValidate()
         !userData.isLoggedIn && navigate("/")
     },[])
-
+    
+    const changeImage = (key,value)=>{
+        setImage(prev=>({
+            ...prev,
+            [key]:value
+        }))
+    }
     const onChange = (key,value)=>{
         setPassword(prev=>({
             ...prev,
@@ -97,7 +105,10 @@ const Dashboard = () => {
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
             <FileUpload
-                image={profilePic}
+                image={image.profileImage}
+                onChange={(value)=>{
+                    changeImage("profileImage",value)
+                }}
             // <img src={profilePic}/>
             />
             <div className='dashboard-name'>{userData.fullname}</div>
