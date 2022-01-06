@@ -11,6 +11,7 @@ import Form from './Form'
 
 
 
+
 const HomeDescription = () => {
     const [formVisibility, setFormVisibility ] = useState(false);
     const {template,setTemplate}=useContext(TemplateContext) 
@@ -88,13 +89,9 @@ const HomeDescription = () => {
                 {userData.isAdmin &&
                 <button className='admin_add'
                 onClick={()=>{
-                    navigate("/form")
+                    setFormVisibility(true)
                 }}
                 >+</button>}
-                
-
-
-
             </div>
             
             {formVisibility && <Form setFormVisibility={setFormVisibility} />}

@@ -2,6 +2,7 @@ import React from 'react'
 import "../Component/form.css"
 const Form = ({setFormVisibility}) => {
     return (
+        <div className='form_home_container'>
         <div className='form_home'>
             <form action="submit">
             <h1 className='newTemp'>UPLOAD NEW TEMPLATES</h1>
@@ -35,6 +36,7 @@ const Form = ({setFormVisibility}) => {
 
             </form>
             <div className='form-close-button' onClick={()=>setFormVisibility(false)}>X</div>
+        </div>
         </div>
     )
 }

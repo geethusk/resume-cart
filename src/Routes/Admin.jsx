@@ -85,7 +85,6 @@ const Admin = () => {
                 email:"geethukallada1@gmail.com",
                 isAdmin: true,
                 fullname:"Admin",
-                
             }})
         }
     }

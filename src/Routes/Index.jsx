@@ -122,14 +122,22 @@ const Index = () => {
         .then(response => response.json())
         .then(data => {
             if(!data.status) return navigate('/')
+            if(data.data.fullname === 'Admin'){
+                setUserData(prev =>{
+                    return{
+                        fullname:data.data.fullname,
+                        email:data.data.email,
+                        isAdmin:true
+                    }
+                })
+            }else {
             setUserData(prev=>{
                 return{
                      fullname:data.data.fullname,
                      email:data.data.email,
-                     isLoggedIn: true,}
-             })
-        }
-            )
+                     isLoggedIn: true}
+             })}
+        })
     },[])
 
 
