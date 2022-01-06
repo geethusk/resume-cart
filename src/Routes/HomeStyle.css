@@ -134,6 +134,11 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
 .display-user-id:hover .dropdown-content {
   display: block;
 }
+.admin_add{
+    background-color: #ffffff5c;
+    font-size: 50px;
+    border: solid 5px black;
+}
 @media screen and (max-width:630px){
     .demo_home{
         
