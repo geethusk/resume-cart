@@ -118,7 +118,7 @@ const SecondPage = () => {
                     </p>
                 </div>
                 <FileUpload
-                image={profileImage}
+                image={profileImage} 
                 onChange={value=>changeState (["profileImage"],value)}
                 />
             </div>
