@@ -6,11 +6,13 @@ import star from "../../assets/icons/star-regular.svg"
 import solid from "../../assets/icons/star-solid.svg"
 import { TemplateContext } from '../../Context/TemplateList'
 import { UserContext } from '../../Context/UserContext'
+import Form from './Form'
 
 
 
 
 const HomeDescription = () => {
+    const [formVisibility, setFormVisibility ] = useState(false);
     const {template,setTemplate}=useContext(TemplateContext) 
     const {userData, setUserData } = useContext(UserContext)
     
@@ -84,14 +86,18 @@ const HomeDescription = () => {
                 
                 )}
                 {userData.isAdmin &&
-                <button className='admin_add'>+</button>}
+                <button className='admin_add'
+                onClick={()=>{
+                    navigate("/form")
+                }}
+                >+</button>}
                 
 
 
 
             </div>
             
-
+            {formVisibility && <Form setFormVisibility={setFormVisibility} />}
         </div>
     )
 }

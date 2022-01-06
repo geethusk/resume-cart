@@ -36,6 +36,7 @@ import Admin from './Admin'
 
 import { useEffect } from 'react'
 import postData from '../services/postdata'
+import Form from './Component/Form'
 
 
 const totalTemplateList=[
@@ -153,6 +154,7 @@ const Index = () => {
                     <Route path="rajasree/*" element={<Rajasree/>}/>
                     <Route path="vishnu/*" element={<Vishnu/>}/>
                 </Route>
+                    <Route path="/form" element={<Form/>}/>
                     <Route path="loading" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
                     <Route path="/*" element={<Error/>}/>

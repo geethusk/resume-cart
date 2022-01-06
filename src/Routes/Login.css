@@ -70,6 +70,7 @@
     border-radius: 15px;
     color: white;
     width: 100px;
+    cursor: pointer;
 }
 .text-field-error-text{
     color:#fd2d2d ;

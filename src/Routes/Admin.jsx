@@ -78,6 +78,7 @@ const Admin = () => {
         const response = await postData('/admin-login', {otp})
         console.log(response);
         if(response.status){
+            localStorage.setItem('token',response.token)
             setUserData((prev)=>{
                 return{
                 ...prev,
@@ -120,7 +121,6 @@ const Admin = () => {
                     <button 
                     onClick={()=>{
                         adminNavigate()
-                        alert("login successfully")
                         // localStorage.getItem()
                     }}
                      type="submit" className='login-button'>Login</button>

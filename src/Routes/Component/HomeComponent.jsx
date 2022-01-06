@@ -53,7 +53,7 @@ const HomeComponent = () => {
                 >
                     FEEDBACK
                 </div>
-                {!userData.isLoggedIn && <div className="displaybar login_home"
+                {!userData.isLoggedIn && !userData.isAdmin && <div className="displaybar login_home"
                     onClick={()=>{navigate("/login")
                          
                     }} 
