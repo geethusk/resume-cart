@@ -15,7 +15,7 @@ const FileUpload = ({onChange,image}) => {
                 type="file"
                 style={{display:"none"}}
                 onChange={(e)=>{
-                onChange(URL.createObjectURL(e.target.files[0]))
+                onChange(URL.createObjectURL(e.target.files[0])) 
             }}
         />
         </div>

@@ -5,6 +5,9 @@ import { UserContext } from '../Context/UserContext'
 import { useState } from 'react';
 import postData from '../services/postdata';
 import {isPassword} from '../utility/validate';
+import FileUpload from '../Templates/Faslu/Components/FileUpload'
+import { useNavigate } from 'react-router-dom';
+
 
 const Dashboard = () => {
     const[isOtpButton,setOtpButton]=useState(false)
@@ -24,10 +27,13 @@ const Dashboard = () => {
     })
     const{passwordError,confirmPasswordError}=formErrorData
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
+    const navigate=useNavigate()
 
-
+    const { userData} = useContext(UserContext)
     useEffect(()=>{
-        formValidate()},[])
+        formValidate()
+        !userData.isLoggedIn && navigate("/")
+    },[])
 
     const onChange = (key,value)=>{
         setPassword(prev=>({
@@ -73,7 +79,7 @@ const Dashboard = () => {
         return isValidForm
     }
 
-    const { userData} = useContext(UserContext)
+   
 
     const getOtp = async (e)=>{
         e.preventDefault();
@@ -90,7 +96,10 @@ const Dashboard = () => {
     return (
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
-            <img src={profilePic}/>
+            <FileUpload
+                image={profilePic}
+            // <img src={profilePic}/>
+            />
             <div className='dashboard-name'>{userData.fullname}</div>
             <div className="dashboard-contents">Profile</div>
             <div className="dashboard-contents">{userData.email}</div>
