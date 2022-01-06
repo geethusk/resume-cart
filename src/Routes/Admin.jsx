@@ -121,6 +121,7 @@ const Admin = () => {
                     onClick={()=>{
                         adminNavigate()
                         alert("login successfully")
+                        // localStorage.getItem()
                     }}
                      type="submit" className='login-button'>Login</button>
                 </form>

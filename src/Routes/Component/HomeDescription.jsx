@@ -1,6 +1,6 @@
 import React from 'react'
 import "../HomeStyle.css"
-import {Outlet,useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { useState,useContext } from 'react'
 import star from "../../assets/icons/star-regular.svg"
 import solid from "../../assets/icons/star-solid.svg"
