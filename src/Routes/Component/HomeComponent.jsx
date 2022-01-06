@@ -62,7 +62,12 @@ const HomeComponent = () => {
                 </div>}
 
 
-                { (userData.isAdmin || userData.isLoggedIn) && <div className='display-user-id'>
+                { (userData.isAdmin || userData.isLoggedIn) && <div className='display-user-id'
+                      onClick={()=>{
+                          navigate("/dashboard")
+                      }}
+                
+                   >
                     {userData.fullname}  
                      
                     <div class="dropdown-content">
