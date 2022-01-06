@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes,Route} from "react-router-dom"
+import {Routes,Route, useNavigate} from "react-router-dom"
 import Home from "./Home"
 import SignUp from "./SignUp"
 import Login from "./Login"
@@ -110,6 +110,7 @@ const Index = () => {
         isLoggedIn: false,
         isAdmin: false
     })
+    const navigate = useNavigate();
     useEffect(()=>{
         fetch('http://192.168.1.66:5000/api/v1/user/', {
             headers: {
@@ -119,6 +120,7 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
+            if(!data.status) return navigate('/')
             setUserData(prev=>{
                 return{
                      fullname:data.data.fullname,
