@@ -49,7 +49,7 @@ const Form = ({setFormVisibility}) => {
             <h1 className='newTemp'>UPLOAD NEW TEMPLATES</h1>
             <div className='template_demand'>
             <label  className="input_form_label" htmlFor="">Set Demand</label>
-                <select name="" id=""
+                <select className='admin-sort' name="" id=""
                     onChange={(e)=>onChange('type', e.target.value)}
 
                 >
@@ -61,7 +61,7 @@ const Form = ({setFormVisibility}) => {
                 </div>
                 <div className='template_demand'>   
                 <label className="input_form_label" htmlFor="">Set Status</label>
-                <select name="" id=""
+                <select className='admin-sort' name="" id=""
                      onChange={(e)=>onChange('status', e.target.value)}
                 >
                     <option value="status">For</option>
@@ -77,7 +77,7 @@ const Form = ({setFormVisibility}) => {
                 </div>
                 <div className='template_demand'>
                 <label className="input_form_label" htmlFor="">Image Url</label>
-                <input type="text" placeholder="Url"
+                <input className='image-input' type="text" placeholder="Url"
                     onChange={(e)=>onChange('url',e.target.value)}
                 />
                 </div>

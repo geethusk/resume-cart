@@ -65,20 +65,21 @@ const Admin = () => {
    
     const getOtp = async ()=>{
         const response = await postData('/get-admin-otp',{email})
-        alert("otp sent successfully")
+       
         console.log(response);
-    }
-    const adminNavigate=()=>{
-        if(userData.isAdmin===true){
-            navigate("/")
-        }else
-        return
+        if(!response.status){
+            alert('Some Error Occured')
+        }else {
+            alert(response.message)
+        }
     }
     const loginCall = async (e) =>{
         e.preventDefault();
         const response = await postData('/admin-login', {otp})
         console.log(response);
-        if(response.status){
+        if(!response.status){
+            alert(response.message)
+        }else{
             localStorage.setItem('token',response.token)
             setUserData((prev)=>{
                 return{
@@ -87,6 +88,7 @@ const Admin = () => {
                 isAdmin: true,
                 fullname:"ADMIN",
             }})
+            navigate('/')
         }
     }
     return (
@@ -105,6 +107,7 @@ const Admin = () => {
                     />
                     <br/>
                     <div onClick={()=>{
+
                          setOtpButton(true)
                          
                         getOtp()
@@ -122,11 +125,7 @@ const Admin = () => {
                         isFormSubmitted={isFormSubmitted}
                     />
                     <br/>
-                    <button 
-                    onClick={()=>{
-                        adminNavigate()
-                        // localStorage.getItem()
-                    }}
+                    <button
                      type="submit" className='login-button'>Login</button>
                 </form>
             </div>
