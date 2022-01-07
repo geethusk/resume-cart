@@ -14,6 +14,7 @@ const Dashboard = () => {
         profileImage:profilePic
     })
     const[isOtpButton,setOtpButton]=useState(false)
+    const[isChangeButton,setChangeButton]=useState(false)
     const[isResetButton,setResetButton]=useState(false)
     
     const[password,setPassword] = useState({
@@ -113,7 +114,12 @@ const Dashboard = () => {
                 dashboard={true}
             />
             <div className='dashboard-name'>{userData.fullname}</div>
-            <div className="dashboard-contents">{userData.email}</div>
+            <div className="dashboard-contents">{userData.email}
+            <button 
+                onClick={()=>{
+                    setChangeButton(true)
+                }}className='dashboard-reset-button'>CHANGE</button>
+            </div>
             <div className="dashboard-contents">Password
             <button 
                 onClick={()=>{
@@ -128,7 +134,7 @@ const Dashboard = () => {
                 <div className="dashboard-section">
                  <label for ="dashboard-password">Old Password</label>
                  <div className="dashboard-input">
-                     <input type="text" 
+                     <input type="password" 
                         // value={oldpassword}
                         onChange={
                             (e)=>{onChange("oldPassword",e.target.value)}
@@ -140,7 +146,7 @@ const Dashboard = () => {
                  <div className="dashboard-section">
                       <label for ="dashboard-password">New Password</label>
                       <div className="dashboard-input">
-                        <input type="text"
+                        <input type="password"
                             // value={newpassword}
                             onChange={
                                 (e)=>{onChange("newPassword",e.target.value)}
@@ -154,7 +160,7 @@ const Dashboard = () => {
                 <div className="dashboard-section">
                  <label for ="dashboard-password">Confirm New Password</label>
                  <div className="dashboard-input">
-                     <input type="text"
+                     <input type="password"
                         // value={confirmpassword}
                         onChange={
                             (e)=>{onChange("confirmPassword",e.target.value)}
@@ -190,6 +196,24 @@ const Dashboard = () => {
                     </div>
                 </div>
                 }
+                </div>
+            </form>}
+            {isChangeButton &&
+            <form>
+                <div className="dashboard-section">
+                    <label>New Email</label>
+                    <div className="dashboard-input"> 
+                        <input type="email"/>
+                    </div>
+                </div>
+                <div className="dashboard-section">
+                    <label>Password</label>
+                    <div className="dashboard-input">
+                        <input type="password"/>
+                    </div>
+                </div>
+                <div className="dashboard-section">
+                    <button  className='dashboard-button'>SUBMIT</button>
                 </div>
             </form>}
         </div>

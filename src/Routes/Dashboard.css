@@ -7,6 +7,7 @@
 .dashboard-left-section{
     padding: 20px;
     margin: 25px;
+    width: 120%;
 }
 .profile-dashboard{
     width:150px;
@@ -37,7 +38,7 @@
 .dashboard-input{
     margin-left: auto;
 }
-.dashboard-button,.dashboard-submit-button{
+.dashboard-button,.dashboard-submit-button,.dashboard-reset-button{
     color:#ffff;
     background-color:#f44336;
     padding:5px;
