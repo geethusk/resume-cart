@@ -65,6 +65,7 @@ const Admin = () => {
    
     const getOtp = async ()=>{
         const response = await postData('/get-admin-otp',{email})
+        alert("otp sent successfully")
         console.log(response);
     }
     const adminNavigate=()=>{
@@ -107,7 +108,7 @@ const Admin = () => {
                          setOtpButton(true)
                          
                         getOtp()
-                        alert("otp sent successfully")
+                     
                        
                     }
                     } 
