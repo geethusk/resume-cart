@@ -109,7 +109,7 @@ const Index = () => {
         fullname:"",
         email:"",
         isLoggedIn: false,
-        isAdmin: false
+        isAdmin: true
     })
     const navigate = useNavigate();
     useEffect(()=>{
@@ -121,12 +121,13 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(data.data.fullname === 'Admin'){
+            if(data.data.fullname === 'ADMIN'){
                 setUserData(prev =>{
                     return{
                         fullname:data.data.fullname,
                         email:data.data.email,
-                        isAdmin:true
+                        isAdmin:true,
+                        isLoggedIn:false,
                     }
                 })
             }else {
@@ -134,7 +135,8 @@ const Index = () => {
                 return{
                      fullname:data.data.fullname,
                      email:data.data.email,
-                     isLoggedIn: true}
+                     isLoggedIn: true,
+                    isAdmin:false}
              })}
         })
     },[])
