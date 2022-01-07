@@ -82,6 +82,8 @@ const Form = ({setFormVisibility}) => {
                 />
                 </div>
                 <button type="submit">OK</button>
+                <div className='admin-formsubmit'>
+                <button className='admin-submitbutton' onClick={()=>{}}>OK</button></div>
             </form>
             <div className='form-close-button' onClick={()=>setFormVisibility(false)}>X</div>
         </div>
