@@ -1,7 +1,7 @@
 
 import React, { useState,useEffect, useContext } from 'react'
 import InputField from '../Components/InputField';
-import { isPassword, isValidEmail } from '../utility/validate';
+import { isValidEmail } from '../utility/validate';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import postData from '../services/postdata';
@@ -84,7 +84,7 @@ const Admin = () => {
                 ...prev,
                 email:"geethukallada1@gmail.com",
                 isAdmin: true,
-                fullname:"Admin",
+                fullname:"ADMIN",
             }})
         }
     }
