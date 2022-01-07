@@ -116,19 +116,28 @@
     display: grid;
     padding-left: 15%;
 }
-.otp-button{
-    padding-top: 10px;
-}
-.otp-section{
-    margin-top: 15px;
-}
+
 .reset-password-section{
     max-width: 350px;
+    margin-top: 20px
 }
 .password-section{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 5px 0;
 }
-.reset-password-section{
-    margin-top: 20px
+.otp-section{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.forget-password-button{
+    background-color:#9a2fa0;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
 }

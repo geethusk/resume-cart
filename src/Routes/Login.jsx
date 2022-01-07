@@ -104,7 +104,6 @@ const Login = () => {
                 </div>
                 <form onSubmit={loginCall} className='login-form'>
                     <InputField
-
                         label="Email"
                         value={email}
                         onChange={(value) =>onChange("email",value)}
@@ -124,6 +123,7 @@ const Login = () => {
                             onClick={()=>{
                                 setForgetPassword(true)
                         }}
+                        
                         className='password-header'>Forget Password?</div>}
                         {forgetPassword && 
                         <GetPassword />}

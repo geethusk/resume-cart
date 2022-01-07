@@ -21,7 +21,9 @@ const Dashboard = () => {
         oldPassword:"",
         newPassword:"",
         confirmPassword:"",
-        otp:""
+        otp:"",
+        newEmail:"",
+        password:""
         
     })
     const{oldPassword,newPassword,confirmPassword,otp}=password
@@ -101,6 +103,12 @@ const Dashboard = () => {
     const submitOtp = async ()=>{
         const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
         console.log(response);
+    }
+
+    const changeEmail = async()=>{
+        // e.preventDefault();
+        const response = await postData('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
+        console.log(response)
     }
 
     return (
@@ -198,24 +206,39 @@ const Dashboard = () => {
                 }
                 </div>
             </form>}
+
             {isChangeButton &&
-            <form>
+            <div>
                 <div className="dashboard-section">
                     <label>New Email</label>
                     <div className="dashboard-input"> 
-                        <input type="email"/>
+                        <input type="email"
+                            onChange={(e)=>{
+                                onChange("newEmail",e.target.value)
+                            }}
+                        />
                     </div>
                 </div>
+
                 <div className="dashboard-section">
                     <label>Password</label>
                     <div className="dashboard-input">
-                        <input type="password"/>
+                        <input type="password"
+                            onChange={(e)=>{
+                                onChange("password",e.target.value)
+                            }}
+                        />
                     </div>
                 </div>
+
                 <div className="dashboard-section">
-                    <button  className='dashboard-button'>SUBMIT</button>
+                    <button 
+                    onClick={()=>{
+                        changeEmail()
+                    }}
+                    className='dashboard-button'>SUBMIT</button>
                 </div>
-            </form>}
+            </div>}
         </div>
     </div>
       
