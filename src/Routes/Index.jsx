@@ -112,33 +112,33 @@ const Index = () => {
         isAdmin: false
     })
     const navigate = useNavigate();
-    // useEffect(()=>{
-    //     fetch('http://192.168.1.66:5000/api/v1/user/', {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
-    //         }
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         if(!data.status) return navigate('/')
-    //         if(data.data.fullname === 'Admin'){
-    //             setUserData(prev =>{
-    //                 return{
-    //                     fullname:data.data.fullname,
-    //                     email:data.data.email,
-    //                     isAdmin:true
-    //                 }
-    //             })
-    //         }else {
-    //         setUserData(prev=>{
-    //             return{
-    //                  fullname:data.data.fullname,
-    //                  email:data.data.email,
-    //                  isLoggedIn: true}
-    //          })}
-    //     })
-    // },[])
+    useEffect(()=>{
+        fetch('http://192.168.1.66:5000/api/v1/user/', {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(!data.status) return navigate('/')
+            if(data.data.fullname === 'Admin'){
+                setUserData(prev =>{
+                    return{
+                        fullname:data.data.fullname,
+                        email:data.data.email,
+                        isAdmin:true
+                    }
+                })
+            }else {
+            setUserData(prev=>{
+                return{
+                     fullname:data.data.fullname,
+                     email:data.data.email,
+                     isLoggedIn: true}
+             })}
+        })
+    },[])
 
 
     return (
