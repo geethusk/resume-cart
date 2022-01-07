@@ -121,7 +121,6 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(!data.status) return navigate('/')
             if(data.data.fullname === 'Admin'){
                 setUserData(prev =>{
                     return{
