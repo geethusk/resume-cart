@@ -81,7 +81,6 @@ const Form = ({setFormVisibility}) => {
                     onChange={(e)=>onChange('url',e.target.value)}
                 />
                 </div>
-                <button type="submit">OK</button>
                 <div className='admin-formsubmit'>
                 <button className='admin-submitbutton' onClick={()=>{}}>OK</button></div>
             </form>
