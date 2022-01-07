@@ -36,6 +36,7 @@ import Admin from './Admin'
 
 import { useEffect } from 'react'
 import postData from '../services/postdata'
+import Form from './Component/Form'
 
 
 const totalTemplateList=[
@@ -121,14 +122,22 @@ const Index = () => {
         .then(response => response.json())
         .then(data => {
             if(!data.status) return navigate('/')
+            if(data.data.fullname === 'Admin'){
+                setUserData(prev =>{
+                    return{
+                        fullname:data.data.fullname,
+                        email:data.data.email,
+                        isAdmin:true
+                    }
+                })
+            }else {
             setUserData(prev=>{
                 return{
                      fullname:data.data.fullname,
                      email:data.data.email,
-                     isLoggedIn: true,}
-             })
-        }
-            )
+                     isLoggedIn: true}
+             })}
+        })
     },[])
 
 
@@ -153,6 +162,7 @@ const Index = () => {
                     <Route path="rajasree/*" element={<Rajasree/>}/>
                     <Route path="vishnu/*" element={<Vishnu/>}/>
                 </Route>
+                    <Route path="/form" element={<Form/>}/>
                     <Route path="loading" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
                     <Route path="/*" element={<Error/>}/>

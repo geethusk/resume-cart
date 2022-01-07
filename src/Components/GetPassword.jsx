@@ -4,19 +4,23 @@ const GetPassword = () => {
     return (
         <div className='forget-password-section'>
             <form className='forget-password-form'>
-                <label>Email:</label>
-                <input type="email"/>
-                <div><button>GET OTP</button></div>
-                <input type="text"/>
-                <button>OK</button>
+                <div className="email-container">
+                    <label>Email:</label>
+                    <input type="email"/>
+                </div>
+                <div className='otp-button'><button>GET OTP</button></div>
+                <div className="otp-section">
+                    <input type="text"/>
+                    <button >OK</button>
+                </div>
                 <div className='reset-password-section'>
-                    <div>
+                    <div className='password-section'>
                         <label>New Password:</label>
-                        <input type="text"/>
+                        <div className='new-password'><input  type="text"/></div>
                     </div>
-                    <div>
+                    <div className="password-section">
                         <label>Confirm Password:</label>
-                        <input type="text"/>
+                        <div className="confirm-password"><input type="text"/></div>
                     </div>
                     <button>SUBMIT</button>
                 </div>
