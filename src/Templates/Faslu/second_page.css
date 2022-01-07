@@ -34,7 +34,8 @@
 }
 
 .header-right-sec2 {
-    position: relative; 
+    position: relative;
+    width: 150px;
 }
 .profile-image{
     width:150px;

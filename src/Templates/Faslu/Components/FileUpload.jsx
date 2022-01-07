@@ -1,11 +1,11 @@
 import { useRef} from 'react'
 import camera from '../icons/camera-solid.svg'
 
-const FileUpload = ({onChange,image}) => {
+const FileUpload = ({onChange,image, dashboard=false}) => {
     const inputRef = useRef(null); 
     return (
         <div className="header-right-sec2">
-            <img className='profile-image'src={image}/>
+            <img className={dashboard ? 'profile-dashboard' : 'profile-image'}src={image}/>
             <img className='change-image-button-2'src={camera} alt="camera icon"
             onClick={()=>{
                 inputRef.current.click()

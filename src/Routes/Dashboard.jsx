@@ -110,6 +110,7 @@ const Dashboard = () => {
                 onChange={(value)=>{
                     changeImage("profileImage",value)
                 }}
+                dashboard={true}
             />
             <div className='dashboard-name'>{userData.fullname}</div>
             <div className="dashboard-contents">{userData.email}</div>
