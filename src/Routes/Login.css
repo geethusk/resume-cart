@@ -113,5 +113,22 @@
 }
 .forget-password-form{
     padding: 50px 70px;
+    display: grid;
+    padding-left: 15%;
 }
-
+.otp-button{
+    padding-top: 10px;
+}
+.otp-section{
+    margin-top: 15px;
+}
+.reset-password-section{
+    max-width: 350px;
+}
+.password-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.reset-password-section{
+    margin-top: 20px
+}
