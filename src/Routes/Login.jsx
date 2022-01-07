@@ -15,6 +15,7 @@ const Login = () => {
         email:"",
         password:"",
     });
+  
     const{email,password}=formData;
     const onChange = (key,value)=>{
         setFormData(prev=>({
@@ -22,6 +23,7 @@ const Login = () => {
             [key]:value
         }))
     }
+   
     const[formErrorData,setFormErrorData]=useState({
         emailError:"",
         passwordError:"",
@@ -102,6 +104,7 @@ const Login = () => {
                 </div>
                 <form onSubmit={loginCall} className='login-form'>
                     <InputField
+
                         label="Email"
                         value={email}
                         onChange={(value) =>onChange("email",value)}
@@ -122,7 +125,8 @@ const Login = () => {
                                 setForgetPassword(true)
                         }}
                         className='password-header'>Forget Password?</div>}
-                        {forgetPassword && <GetPassword/>}
+                        {forgetPassword && 
+                        <GetPassword />}
                         <button type="submit" className='login-button'>Login</button>
                         
                     </div>

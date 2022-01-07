@@ -78,13 +78,13 @@ const Admin = () => {
         const response = await postData('/admin-login', {otp})
         console.log(response);
         if(response.status){
+            localStorage.setItem('token',response.token)
             setUserData((prev)=>{
                 return{
                 ...prev,
                 email:"geethukallada1@gmail.com",
                 isAdmin: true,
                 fullname:"Admin",
-                
             }})
         }
     }
@@ -105,9 +105,13 @@ const Admin = () => {
                     <br/>
                     <div onClick={()=>{
                          setOtpButton(true)
-                         alert("otp sent successfully")
-                        getOtp()}
-                    } className='login-button'>Get OTP</div>
+                         
+                        getOtp()
+                        alert("otp sent successfully")
+                       
+                    }
+                    } 
+                    className='login-button'>Get OTP</div>
                     <br/>
                     <InputField
                         label="OTP"
@@ -120,7 +124,6 @@ const Admin = () => {
                     <button 
                     onClick={()=>{
                         adminNavigate()
-                        alert("login successfully")
                         // localStorage.getItem()
                     }}
                      type="submit" className='login-button'>Login</button>
