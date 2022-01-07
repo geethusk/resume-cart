@@ -1,15 +1,31 @@
+import { type } from '@testing-library/user-event/dist/type'
 import React, { useState } from 'react'
 import postData from '../../services/postdata'
 import "../Component/form.css"
 const Form = ({setFormVisibility}) => {
-    const [image,setImage]=useState(null)
-    const [upload,setUpload]=useState(false)
-    console.log(image);
+    const [adminForm,setAdminForm]=useState(
+        {
+            type:"",
+            status:"",
+            url:"",
+        }
+    )
+    const{type,status,url}=adminForm;
+    const onChange = (key,value)=>{
+        setAdminForm(prev=>({
+            ...prev,
+            [key]:value
+        }))
+    }
 
-    const uploadTemplate = async ()=>{ 
+    
+    const [image,setImage]=useState(null)
+
+    const uploadTemplate =()=>{ 
+        console.log('called');
         const data = new FormData();
         data.append('file', image)
-        
+        data.append('body', JSON.stringify(adminForm))
             fetch('http://192.168.1.66:5000/api/v1/template-upload', {
             method: 'POST',
             headers: {
@@ -20,15 +36,23 @@ const Form = ({setFormVisibility}) => {
         .then(response => response.json())
         .then(data => console.log(data))
         }
+
+        const formSubmit =(e) =>{
+            e.preventDefault();
+            uploadTemplate();
+        }
          
     return (
         <div className='form_home_container'>
         <div className='form_home'>
-            <form action="submit">
+            <form onSubmit={formSubmit}>
             <h1 className='newTemp'>UPLOAD NEW TEMPLATES</h1>
             <div className='template_demand'>
             <label  className="input_form_label" htmlFor="">Set Demand</label>
-                <select name="" id="">
+                <select name="" id=""
+                    onChange={(e)=>onChange('type', e.target.value)}
+
+                >
                     <option value="type">It's</option> 
                     <option value="Premium">Premium</option>
                     <option value="Free">Free</option>
@@ -37,7 +61,9 @@ const Form = ({setFormVisibility}) => {
                 </div>
                 <div className='template_demand'>   
                 <label className="input_form_label" htmlFor="">Set Status</label>
-                <select name="" id="">
+                <select name="" id=""
+                     onChange={(e)=>onChange('status', e.target.value)}
+                >
                     <option value="status">For</option>
                     <option value="fresher">Fresher</option>
                     <option value="expert">Expert</option>
@@ -46,17 +72,16 @@ const Form = ({setFormVisibility}) => {
                 </div>
                 <div className='template_demand'>
                 <label className="input_form_label" htmlFor="">Demo</label>
-                {!upload && 
-                <input type="file" id="template_image" onChange={(e)=>{setImage(e.target.files[0])
-                setUpload(true)}
-                }/>}
-                {upload && <div className="backend-upload" onClick={()=>{uploadTemplate(); setUpload(false)}}>DONE</div>}
+                <input type="file" id="template_image"  onChange={(e)=>{setImage(e.target.files[0])}
+                }/>
                 </div>
                 <div className='template_demand'>
                 <label className="input_form_label" htmlFor="">Image Url</label>
-                <input type="text" placeholder="Url"/>
+                <input type="text" placeholder="Url"
+                    onChange={(e)=>onChange('url',e.target.value)}
+                />
                 </div>
-                <button onClick={()=>{}}>OK</button>
+                <button type="submit">OK</button>
             </form>
             <div className='form-close-button' onClick={()=>setFormVisibility(false)}>X</div>
         </div>
