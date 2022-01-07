@@ -121,7 +121,7 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(data.data.fullname === 'Admin'){
+            if(data.data.fullname === 'ADMIN'){
                 setUserData(prev =>{
                     return{
                         fullname:data.data.fullname,
