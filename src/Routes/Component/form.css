@@ -39,3 +39,6 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+.backend-upload{
+    cursor:pointer;
+}
