@@ -42,3 +42,17 @@
 .backend-upload{
     cursor:pointer;
 }
+.admin-formsubmit{
+display: flex;
+justify-content: flex-end;
+margin-top: 15px;
+}
+.admin-submitbutton{
+    padding: 5px;
+    width: 60px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: green;
+    color: white;
+}  

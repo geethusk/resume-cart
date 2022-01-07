@@ -56,7 +56,8 @@ const Form = ({setFormVisibility}) => {
                 <label className="input_form_label" htmlFor="">Image Url</label>
                 <input type="text" placeholder="Url"/>
                 </div>
-                <button onClick={()=>{}}>OK</button>
+                <div className='admin-formsubmit'>
+                <button className='admin-submitbutton' onClick={()=>{}}>OK</button></div>
             </form>
             <div className='form-close-button' onClick={()=>setFormVisibility(false)}>X</div>
         </div>
