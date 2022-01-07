@@ -10,11 +10,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
-    const[isOtpButton,setOtpButton]=useState(false)
-    const[isResetButton,setResetButton]=useState(false)
     const[image,setImage]=useState({
         profileImage:profilePic
     })
+    const[isOtpButton,setOtpButton]=useState(false)
+    const[isResetButton,setResetButton]=useState(false)
+    
     const[password,setPassword] = useState({
         oldPassword:"",
         newPassword:"",
@@ -87,8 +88,6 @@ const Dashboard = () => {
         return isValidForm
     }
 
-   
-
     const getOtp = async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
@@ -97,10 +96,12 @@ const Dashboard = () => {
             console.log(response);
         } 
     }
+
     const submitOtp = async ()=>{
         const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
         console.log(response);
     }
+
     return (
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
@@ -109,10 +110,8 @@ const Dashboard = () => {
                 onChange={(value)=>{
                     changeImage("profileImage",value)
                 }}
-            // <img src={profilePic}/>
             />
             <div className='dashboard-name'>{userData.fullname}</div>
-            <div className="dashboard-contents">Profile</div>
             <div className="dashboard-contents">{userData.email}</div>
             <div className="dashboard-contents">Password
             <button 

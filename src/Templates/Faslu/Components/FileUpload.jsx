@@ -2,7 +2,7 @@ import { useRef} from 'react'
 import camera from '../icons/camera-solid.svg'
 
 const FileUpload = ({onChange,image}) => {
-    const inputRef = useRef(null);
+    const inputRef = useRef(null); 
     return (
         <div className="header-right-sec2">
             <img className='profile-image'src={image}/>
