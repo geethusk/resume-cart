@@ -105,9 +105,13 @@ const Admin = () => {
                     <br/>
                     <div onClick={()=>{
                          setOtpButton(true)
-                         alert("otp sent successfully")
-                        getOtp()}
-                    } className='login-button'>Get OTP</div>
+                         
+                        getOtp()
+                        alert("otp sent successfully")
+                       
+                    }
+                    } 
+                    className='login-button'>Get OTP</div>
                     <br/>
                     <InputField
                         label="OTP"
