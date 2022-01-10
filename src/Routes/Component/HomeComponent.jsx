@@ -37,7 +37,7 @@ const HomeComponent = () => {
                 >
                     HOW IT WORKS
                 </div>
-                {!userData.isAdmin &&
+                {!userData.isAdmin && userData.isLoggedIn &&
                 <div className="displaybar working_home"
                     onClick={()=>{navigate("/favorite")}} 
                 >
