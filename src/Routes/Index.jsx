@@ -121,6 +121,16 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
+            if(!data.status){
+                setUserData(prev=>{
+                    return{
+                        fullname:"",
+                        email:"",
+                        isAdmin:false,
+                        isLoggedIn:false,
+                    }
+                })
+            }
             if(data.data.fullname === 'ADMIN'){
                 setUserData(prev =>{
                     return{
