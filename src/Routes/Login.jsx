@@ -82,11 +82,11 @@ const Login = () => {
                 const response = await api.post('/login',formData)
                 console.log(response)
 
-                localStorage.setItem('token',response.token)
+                localStorage.setItem('token',response.data.token)
                 setUserData((prev)=>{
                         return{
                             ...prev,
-                            fullname: response.fullname,
+                            fullname: response.data.fullname,
                             email,
                             isLoggedIn:true
                         }
