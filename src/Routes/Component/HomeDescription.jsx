@@ -34,7 +34,7 @@ const HomeDescription = () => {
             <div className="home-description-section">
                 Easily build a professional-looking resume that showcases your goals and qualifications. Just pick a<br/>template and fill in the blanks. No formatting is needed!
             </div> 
-            {!userData.isAdmin && 
+            {!userData.isAdmin &&                    //if useradminlogged in avoid viewing this section
             <div className="home-sort-section">
                 <select value={status}
                     onChange={(e)=>{
