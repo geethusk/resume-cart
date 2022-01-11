@@ -139,6 +139,7 @@ const Index = () => {
                 }
             } catch (error) {
                 console.log(error);
+                localStorage.removeItem('token')
                 setUserData(prev => {
                     return {
                         fullname: "",
