@@ -111,8 +111,13 @@ const Dashboard = () => {
     }
 
     const changeEmail = async()=>{
-        const response = await postData('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
-        console.log(response)
+        try{
+            const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
+            console.log(response)
+        }
+        catch(error){
+            console.log(error)
+        }  
     }
 
     return (
