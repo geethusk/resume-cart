@@ -63,10 +63,15 @@ const HomeDescription = () => {
                 })
                 .map(({id,image,url,isLiked},i)=>
                     <div className="demo_images">
-                        {!userData.isAdmin &&
-                        <img className="like_button"src={isLiked?solid:star}
-                            onClick={
-                            ()=>{
+                        {!userData.isAdmin && 
+                        <img className="like_button"src={ isLiked?solid:star}
+                        onClick={
+                            ()=>
+                            {
+                                if(userData. isLoggedIn===false){
+                                    navigate("/login")
+                                }
+                                else{
                                 setTemplate(prev=>{
                                     let newList=[...prev];
                                     let newLike={...newList[i]};
@@ -74,8 +79,9 @@ const HomeDescription = () => {
                                     newList[i]=newLike;
                                     return newList;
                                 })
-                            }
-                            }
+                            }}
+                        }
+                           
                         />}
                     <img className='demos'
                     onClick={()=>{
