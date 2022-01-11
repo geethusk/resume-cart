@@ -1,5 +1,6 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React, { useState } from 'react'
+import axios from "axios"
 import postData from '../../services/postdata'
 import "../Component/form.css"
 const Form = ({setFormVisibility}) => {
@@ -21,22 +22,33 @@ const Form = ({setFormVisibility}) => {
     
     const [image,setImage]=useState(null)
 
-    const uploadTemplate =()=>{ 
-        console.log('called');
+    const uploadTemplate = async()=>{
         const data = new FormData();
         data.append('file', image)
         data.append('body', JSON.stringify(adminForm))
-            fetch('http://192.168.1.66:5000/api/v1/template-upload', {
-            method: 'POST',
-            headers: {
-                'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
-              },
-              body: data
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
+            // fetch('http://192.168.1.66:5000/api/v1/template-upload', 
+        //     method: 'POST',
+        //     headers: {
+        //         'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+        //       },
+        //       body: data
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log(data))
+        // }
+        try {
+            const response = await axios.post('http://192.168.1.66:5000/api/v1/template-upload', data, {
+                headers:{
+                    'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+                },
+            })
+            console.log(response);
+        } catch (error) {
+            console.log(error);
         }
+        
 
+    }
         const formSubmit =(e) =>{
             e.preventDefault();
             uploadTemplate();
