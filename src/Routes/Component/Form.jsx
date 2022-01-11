@@ -1,7 +1,5 @@
-import { type } from '@testing-library/user-event/dist/type'
 import React, { useState } from 'react'
 import axios from "axios"
-import postData from '../../services/postdata'
 import "../Component/form.css"
 import ErrorHandler from './ErrorHandler'
 
