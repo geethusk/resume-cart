@@ -1,6 +1,7 @@
 .dashboard-container{
     display: grid;
     grid-template-columns: 1.2fr 2.8fr;
+    height: 100%;
     padding: 20px;
     background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%)); 
 }
@@ -35,6 +36,9 @@
     display: flex;
     padding: 10px;
 }
+.error-region{
+    color: red;
+}
 .dashboard-input{
     margin-left: auto;
 }
@@ -43,6 +47,12 @@
     background-color:#f44336;
     padding:5px;
     font-size: 12px;
+    margin-top: 10px;
+
+}
+.dashboard-submit-button{
+    width: 65px;
+    border:1px solid black
 }
 
 

@@ -7,7 +7,7 @@ import postData from '../services/postdata';
 import {isPassword} from '../utility/validate';
 import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
-
+import api from '../services/api'
 
 const Dashboard = () => {
     const[image,setImage]=useState({
@@ -36,6 +36,7 @@ const Dashboard = () => {
     const navigate=useNavigate()
 
     const { userData} = useContext(UserContext)
+
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
@@ -47,12 +48,14 @@ const Dashboard = () => {
             [key]:value
         }))
     }
+
     const onChange = (key,value)=>{
         setPassword(prev=>({
             ...prev,
             [key]:value
         }))
     }
+
     console.log(password.otp);
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
@@ -95,20 +98,35 @@ const Dashboard = () => {
         e.preventDefault();
         setIsFormSubmitted(true)
         if (formValidate()){
-            const response = await postData('/get-otp',{email:userData.email})
-            console.log(response);
+            try{
+                const response = await api.post('/get-otp',{email:userData.email})
+                console.log(response);
+            }
+            catch(error){
+                console.log(error);
+            }
+            
         } 
     }
 
     const submitOtp = async ()=>{
-        const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
-        console.log(response);
+        try{
+            const response = await api.post('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
+            console.log(response);
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
     const changeEmail = async()=>{
-        // e.preventDefault();
-        const response = await postData('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
-        console.log(response)
+        try{
+            const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
+            console.log(response)
+        }
+        catch(error){
+            console.log(error)
+        }  
     }
 
     return (
