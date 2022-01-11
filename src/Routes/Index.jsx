@@ -117,11 +117,12 @@ const Index = () => {
         const getuser = async ()=>{
             try {
                 const response = await api.get('/user/')
-                if(response.data.fullname === 'ADMIN'){
+                console.log(response);
+                if(response.data.data.fullname === 'ADMIN'){
                     setUserData(prev =>{
                         return{
-                            fullname:response.data.fullname,
-                            email:response.data.email,
+                            fullname:response.data.data.fullname,
+                            email:response.data.data.email,
                             isAdmin:true,
                             isLoggedIn:false,
                         }
@@ -130,8 +131,8 @@ const Index = () => {
                 else {
                     setUserData(prev => {
                         return {
-                            fullname: response.data.fullname,
-                            email: response.data.email,
+                            fullname: response.data.data.fullname,
+                            email: response.data.data.email,
                             isLoggedIn: true,
                             isAdmin: false
                         }
