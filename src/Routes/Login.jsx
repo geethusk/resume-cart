@@ -6,6 +6,7 @@ import './Login.css'
 import postData from '../services/postdata';
 import { UserContext } from '../Context/UserContext';
 import GetPassword from '../Components/GetPassword';
+import api from '../services/api';
 
 
 const Login = () => {
@@ -72,26 +73,29 @@ const Login = () => {
     useEffect(()=>{
         formValidate();
     },[formData])
+
     const loginCall= async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
         if (formValidate()){
-            const response = await postData('/login',formData)
-            console.log(response)
-            if(!response.status){
-                alert(response.message);
-                return
+            try{
+                const response = await api.post('/login',formData)
+                console.log(response)
+
+                localStorage.setItem('token',response.token)
+                setUserData((prev)=>{
+                        return{
+                            ...prev,
+                            fullname: response.fullname,
+                            email,
+                            isLoggedIn:true
+                        }
+                    })
+                navigate('/dashboard');
             }
-            localStorage.setItem('token',response.token)
-            setUserData((prev)=>{
-                return{
-                    ...prev,
-                    fullname: response.fullname,
-                    email,
-                    isLoggedIn:true
-                }
-            })
-            navigate('/dashboard');
+            catch(error){
+                alert(error.response.data.message)
+            }    
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)

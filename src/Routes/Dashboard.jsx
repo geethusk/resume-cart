@@ -36,6 +36,7 @@ const Dashboard = () => {
     const navigate=useNavigate()
 
     const { userData} = useContext(UserContext)
+
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
@@ -47,12 +48,14 @@ const Dashboard = () => {
             [key]:value
         }))
     }
+
     const onChange = (key,value)=>{
         setPassword(prev=>({
             ...prev,
             [key]:value
         }))
     }
+
     console.log(password.otp);
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
@@ -95,8 +98,14 @@ const Dashboard = () => {
         e.preventDefault();
         setIsFormSubmitted(true)
         if (formValidate()){
-            const response = await postData('/get-otp',{email:userData.email})
-            console.log(response);
+            try{
+                const response = await api.post('/get-otp',{email:userData.email})
+                console.log(response);
+            }
+            catch(error){
+                console.log(error);
+            }
+            
         } 
     }
 
