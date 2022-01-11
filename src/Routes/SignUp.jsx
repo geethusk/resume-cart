@@ -4,6 +4,7 @@ import { isPassword, isValidEmail } from "../utility/validate";
 import InputField from '../Components/InputField';
 import { Link, useNavigate } from 'react-router-dom';
 import postData from '../services/postdata';
+import api from '../services/api';
 
 
 const SignUp = () => {
@@ -91,22 +92,15 @@ const SignUp = () => {
         e.preventDefault();
         setIsFormSubmitted(true);
         if(formValidate()){
-            
-            const response = await postData('/signup',formData)
+            try{
+            const response = await api.post('/signup',formData)
                 console.log(response);
-                if(!response.status){
-                    alert(response.message)
-                    return
-                }
+                navigate("/login")
+            }
+            catch(error){
+               alert(error.response.data.message);
+            }
                 
-                
-                    navigate("/login")
-                
-
-                // .then(formData => {
-                //     console.log(formData); 
-                //   });
-      
         }
 
     }
