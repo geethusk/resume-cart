@@ -39,6 +39,7 @@ import postData from '../services/postdata'
 import Form from './Component/Form'
 
 
+
 const totalTemplateList=[
     {
         id:0,
@@ -121,7 +122,7 @@ const Index = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(!data.status){
+            if(!data.status || !data){
                 setUserData(prev=>{
                     return{
                         fullname:"",
