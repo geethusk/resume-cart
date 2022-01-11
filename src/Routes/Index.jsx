@@ -37,7 +37,7 @@ import Admin from './Admin'
 import { useEffect } from 'react'
 import postData from '../services/postdata'
 import Form from './Component/Form'
-
+import api from '../services/api'
 
 
 const totalTemplateList=[
@@ -114,42 +114,44 @@ const Index = () => {
     })
     const navigate = useNavigate();
     useEffect(()=>{
-        fetch('http://192.168.1.66:5000/api/v1/user/', {
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(!data.status || !data){
-                setUserData(prev=>{
-                    return{
-                        fullname:"",
-                        email:"",
-                        isAdmin:false,
-                        isLoggedIn:false,
+        const getuser = async ()=>{
+            try {
+                const response = await api.get('/user/')
+                if(response.data.fullname === 'ADMIN'){
+                    setUserData(prev =>{
+                        return{
+                            fullname:response.data.fullname,
+                            email:response.data.email,
+                            isAdmin:true,
+                            isLoggedIn:false,
+                        }
+                    })
+                }
+                else {
+                    setUserData(prev => {
+                        return {
+                            fullname: response.data.fullname,
+                            email: response.data.email,
+                            isLoggedIn: true,
+                            isAdmin: false
+                        }
+                    })
+                }
+            } catch (error) {
+                console.log(error);
+                setUserData(prev => {
+                    return {
+                        fullname: "",
+                        email: "",
+                        isAdmin: false,
+                        isLoggedIn: false,
                     }
                 })
             }
-            if(data.data.fullname === 'ADMIN'){
-                setUserData(prev =>{
-                    return{
-                        fullname:data.data.fullname,
-                        email:data.data.email,
-                        isAdmin:true,
-                        isLoggedIn:false,
-                    }
-                })
-            }else {
-            setUserData(prev=>{
-                return{
-                     fullname:data.data.fullname,
-                     email:data.data.email,
-                     isLoggedIn: true,
-                    isAdmin:false}
-             })}
-        })
+        }
+        getuser();
+
+       
     },[])
 
 
