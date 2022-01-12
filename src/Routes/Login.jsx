@@ -3,27 +3,27 @@ import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
 import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
-import postData from '../services/postdata';
-import { UserContext } from '../Context/UserContext';
+
 import GetPassword from '../Components/GetPassword';
 import api from '../services/api';
+import { useStoreState,useStoreActions } from 'easy-peasy';
 
 
 const Login = () => {
     const navigate=useNavigate();
-    // const { userData, setUserData } = useContext(UserContext);
+    
     const userData = useStoreState((state) => state.userData);
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
-    const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+    // const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
 
     const [formData,setFormData] = useState({
         email:"",
         password:"",
     });
-  
     const{email,password}=formData;
+
     const onChange = (key,value)=>{
         setFormData(prev=>({
             ...prev,
@@ -35,7 +35,9 @@ const Login = () => {
         emailError:"",
         passwordError:"",
     })
+
     const[forgetPassword,setForgetPassword]=useState(false)
+
     const{emailError,passwordError}=formErrorData
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
@@ -43,14 +45,12 @@ const Login = () => {
             [key]:value
         }))
     }
+
     const formValidate = ()=>{
         let isValidForm = true;
-        
         if(!email){
             onError("emailError","Cannot be Empty")
             isValidForm = false;
-            
-
         }
         else{
             if(!isValidEmail(email)){
@@ -76,6 +76,7 @@ const Login = () => {
         }
         return isValidForm
     }
+
     useEffect(()=>{
         formValidate();
     },[formData])
@@ -83,42 +84,17 @@ const Login = () => {
     const loginCall= async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
-        // setUserData({
-        //     fullname: "vishnu",
-        //     email:"raeez123@gmail.com",
-        //     isLoggedIn:true
-        // })
         if (formValidate()){
-            const response = await api.post('/login',formData)
-            
-            if(!response.status){
-                alert(response.message);
-                return
-            }
-            localStorage.setItem('token',response.token)
-            
-             setUserData((prev)=>{
-                 return{
-                     ...prev,
-                     fullname: response.fullname,
-                     email,
-                     isLoggedIn:true
-                }
-            })
-            navigate('/dashboard');
           try{
                 const response = await api.post('/login',formData)
                 console.log(response)
 
                 localStorage.setItem('token',response.data.token)
-                setUserData((prev)=>{
-                        return{
-                            ...prev,
-                            fullname: response.data.fullname,
-                            email,
-                            isLoggedIn:true
-                        }
-                    })
+
+                changeEmail(email)
+                changeFullName(response.data.data.fullname)
+                toggleIsLoggedIn(true)
+                
                 navigate('/dashboard');
             }
             catch(error){
