@@ -4,17 +4,22 @@ import InputField from '../Components/InputField';
 import { isValidEmail } from '../utility/validate';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
-import postData from '../services/postdata';
-import { UserContext } from '../Context/UserContext';
+import api from "../services/api"
+import { useStoreState,useStoreActions } from 'easy-peasy';
 
 const Admin = () => {
+
+    const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+
      const navigate=useNavigate();
     const[isOtpButton,setOtpButton]=useState(false)
     const [formData,setFormData] = useState({
         email:"",
         otp:"",
     });
-    const {userData, setUserData } = useContext(UserContext)
     const{email,otp}=formData;
     const onChange = (key,value)=>{
         setFormData(prev=>({
@@ -50,10 +55,6 @@ const Admin = () => {
                 onError("emailError","")
             }
         }
-        // if(!otp){
-        //     onError("otpError","Cannot be Empty")
-        //     isValidForm = false;
-        // }
         return isValidForm
     }
     useEffect(()=>{
@@ -63,9 +64,9 @@ const Admin = () => {
 
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
    
-    const getOtp = async ()=>{
-        const response = await postData('/get-admin-otp',{email})
-       
+    const getOtp = async ()=>{        
+        const response = await api.post('/get-admin-otp',{email})
+
         if(!response.status){
             alert('Some Error Occured')
         }else {
@@ -74,19 +75,17 @@ const Admin = () => {
     }
     const loginCall = async (e) =>{
         e.preventDefault();
-        const response = await postData('/admin-login', {otp})
-        if(!response.status){
-            alert(response.message)
-        }else{
-            localStorage.setItem('token',response.token)
-            setUserData((prev)=>{
-                return{
-                ...prev,
-                email:"geethukallada1@gmail.com",
-                isAdmin: true,
-                fullname:"ADMIN",
-            }})
+        try{
+            const response = await api.post('/admin-login', {otp})
+            localStorage.setItem('token',response.data.token)
+            changeEmail("geethukallada1@gmail.com")
+            changeFullName("ADMIN")
+            toggleIsAdmin(true)
+            toggleIsLoggedIn(false)
             navigate('/')
+        }
+        catch(error){
+            alert(error.response.data.message)
         }
     }
     return (
