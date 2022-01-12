@@ -3,7 +3,6 @@ import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
 import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
-
 import GetPassword from '../Components/GetPassword';
 import api from '../services/api';
 import { useStoreState,useStoreActions } from 'easy-peasy';
@@ -16,12 +15,12 @@ const Login = () => {
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
-    // const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
 
     const [formData,setFormData] = useState({
         email:"",
         password:"",
     });
+
     const{email,password}=formData;
 
     const onChange = (key,value)=>{

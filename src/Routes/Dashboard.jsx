@@ -1,9 +1,9 @@
 import { useContext, useEffect} from 'react'
 import './Dashboard.css'
 import profilePic from '../Templates/Faslu/images/photo.jpg'
-import { UserContext } from '../Context/UserContext'
+// import { UserContext } from '../Context/UserContext'
 import { useState } from 'react';
-import postData from '../services/postdata';
+// import postData from '../services/postdata';
 import {isPassword} from '../utility/validate';
 import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
@@ -48,6 +48,7 @@ const Dashboard = () => {
         formValidate()
         !userData.isLoggedIn && navigate("/")
     },[userData.isLoggedIn])
+
     const changeImage = (key,value)=>{
         setImage(prev=>({
             ...prev,
@@ -111,11 +112,6 @@ const Dashboard = () => {
             }
         } 
     }
-
-    // const submitOtp = async ()=>{
-    //     const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
-     
-    // }
 
     const changePassword = async()=>{
         // e.preventDefault();
