@@ -66,11 +66,10 @@ const Admin = () => {
    
     const getOtp = async ()=>{        
         const response = await api.post('/get-admin-otp',{email})
-
-        if(!response.status){
+        if(!response.data.status){
             alert('Some Error Occured')
         }else {
-            alert(response.message)
+            alert(response.data.message)
         }
     }
     const loginCall = async (e) =>{

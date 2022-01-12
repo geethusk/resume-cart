@@ -47,7 +47,7 @@ const Dashboard = () => {
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
-    },[])
+    },[userData.isLoggedIn])
     const changeImage = (key,value)=>{
         setImage(prev=>({
             ...prev,
