@@ -1,8 +1,7 @@
 import React from 'react'
 import Home from"../Component/home1.svg"
 import {Outlet,useNavigate} from 'react-router-dom'
-import { useState,useContext } from 'react'
-import { UserContext } from '../../Context/UserContext'
+import { useState } from 'react'
 
 import { useStoreState,  useStoreActions  } from 'easy-peasy';
 
@@ -79,25 +78,15 @@ const HomeComponent = () => {
                     {userData.fullname}  
                      
                     <div class="dropdown-content">
-                        <a href="#"
+                        <a
                         onClick={()=>{
                            localStorage.removeItem('token') 
                            changeFullName("")
                            changeEmail("")
                            toggleIsLoggedIn(false)
                            toggleIsAdmin(false)
-
-                            // setUserData({
-                            //     fullname:"",
-                            //     email:"",
-                            //     isLoggedIn:false,
-                            //     isAdmin:false
-                            // })
-                            navigate("/")
-                            
                         }}
                         >Logout</a>
-                        
                     </div>
                 </div>}
 
