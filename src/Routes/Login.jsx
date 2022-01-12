@@ -87,14 +87,14 @@ const Login = () => {
         if (formValidate()){
           try{
                 const response = await api.post('/login',formData)
-                console.log(response)
+                // console.log(response)
 
                 localStorage.setItem('token',response.data.token)
 
                 changeEmail(email)
-                changeFullName(response.data.data.fullname)
+                changeFullName(response.data.fullname)
                 toggleIsLoggedIn(true)
-                
+               
                 navigate('/dashboard');
             }
             catch(error){
