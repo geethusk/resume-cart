@@ -8,6 +8,7 @@ import {isPassword} from '../utility/validate';
 import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api'
+import { useStoreState,useStoreActions } from 'easy-peasy';
 
 
 const Dashboard = () => {
@@ -37,7 +38,11 @@ const Dashboard = () => {
     const navigate=useNavigate()
 
 
-    const { userData} = useContext(UserContext)
+    // const { userData} = useContext(UserContext)
+      const userData = useStoreState((state) => state.userData);
+      const changeFullName = useStoreActions((actions) => actions.changeFullName);
+      const changeEmail = useStoreActions((actions) => actions.changeEmail);
+      const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
 
     useEffect(()=>{
         formValidate()
@@ -107,12 +112,12 @@ const Dashboard = () => {
         } 
     }
 
-    const submitOtp = async ()=>{
-        const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
+    // const submitOtp = async ()=>{
+    //     const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
      
-    }
+    // }
 
-    const changeEmail = async()=>{
+    const changePassword = async()=>{
         // e.preventDefault();
         try{
             const response = await api.post('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
@@ -123,7 +128,7 @@ const Dashboard = () => {
         }
     }
 
-    const changeEmail = async()=>{
+    const updateEmail = async()=>{
         try{
             const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
             console.log(response)
@@ -220,7 +225,7 @@ const Dashboard = () => {
                     />
                     <div className='dashboard-submit-button'
                             onClick={()=>{
-                                submitOtp()
+                                changePassword()
                             }} >
                       SUBMIT
                     </div>
@@ -256,7 +261,7 @@ const Dashboard = () => {
                 <div className="dashboard-section">
                     <button 
                     onClick={()=>{
-                        changeEmail()
+                        updateEmail()
                     }}
                     className='dashboard-button'>SUBMIT</button>
                 </div>
