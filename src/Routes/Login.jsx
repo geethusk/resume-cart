@@ -12,7 +12,7 @@ import { useStoreState,useStoreActions } from 'easy-peasy';
 const Login = () => {
     const navigate=useNavigate();
     
-    const userData = useStoreState((state) => state.userData);
+    // const userData = useStoreState((state) => state.userData);
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
