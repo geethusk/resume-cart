@@ -10,8 +10,7 @@ const FavoriteList = () => {
     const favList=template.filter(value => value.isLiked===true)
     // const [isClosed,setIsClosed]=useState(favList)
 
-    // console.log(favList);
-    // console.log(template);
+    
     return (
         <div className='favor_head'>
             MY WISHLIST...♥

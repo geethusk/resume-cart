@@ -305,7 +305,6 @@ const Faslu = () => {
                                     onChange={(value)=>changeState(["exp",i,"detailList",j,"value"],value)}
                                     addToList={(value)=>addToList(["exp",i,"detailList"],j + 1,value)}
                                     deleteList={value=>
-                                        // console.log(value);
                                         deleteList(["exp",i,"detailList"],j,value)
                                     }
                                     length={detailList.length}

@@ -11,7 +11,13 @@ import api from '../services/api';
 
 const Login = () => {
     const navigate=useNavigate();
-    const { userData, setUserData } = useContext(UserContext);
+    // const { userData, setUserData } = useContext(UserContext);
+    const userData = useStoreState((state) => state.userData);
+    const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+
     const [formData,setFormData] = useState({
         email:"",
         password:"",
@@ -39,11 +45,11 @@ const Login = () => {
     }
     const formValidate = ()=>{
         let isValidForm = true;
-        console.log(isValidForm)
+        
         if(!email){
             onError("emailError","Cannot be Empty")
             isValidForm = false;
-            console.log(isValidForm)
+            
 
         }
         else{
@@ -77,8 +83,30 @@ const Login = () => {
     const loginCall= async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
+        // setUserData({
+        //     fullname: "vishnu",
+        //     email:"raeez123@gmail.com",
+        //     isLoggedIn:true
+        // })
         if (formValidate()){
-            try{
+            const response = await api.post('/login',formData)
+            
+            if(!response.status){
+                alert(response.message);
+                return
+            }
+            localStorage.setItem('token',response.token)
+            
+             setUserData((prev)=>{
+                 return{
+                     ...prev,
+                     fullname: response.fullname,
+                     email,
+                     isLoggedIn:true
+                }
+            })
+            navigate('/dashboard');
+          try{
                 const response = await api.post('/login',formData)
                 console.log(response)
 
@@ -95,7 +123,7 @@ const Login = () => {
             }
             catch(error){
                 alert(error.response.data.message)
-            }    
+            }
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)

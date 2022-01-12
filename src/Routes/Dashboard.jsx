@@ -9,6 +9,7 @@ import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api'
 
+
 const Dashboard = () => {
     const[image,setImage]=useState({
         profileImage:profilePic
@@ -35,13 +36,13 @@ const Dashboard = () => {
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
     const navigate=useNavigate()
 
+
     const { userData} = useContext(UserContext)
 
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
     },[])
-    
     const changeImage = (key,value)=>{
         setImage(prev=>({
             ...prev,
@@ -56,7 +57,6 @@ const Dashboard = () => {
         }))
     }
 
-    console.log(password.otp);
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
             ...prev,
@@ -66,7 +66,6 @@ const Dashboard = () => {
 
     const formValidate = ()=>{
         let isValidForm = true;
-        console.log(isValidForm)
         if(!isPassword){
             onError("passwordError","Cannot be Empty")
             isValidForm = false;
@@ -105,11 +104,16 @@ const Dashboard = () => {
             catch(error){
                 console.log(error);
             }
-            
         } 
     }
 
     const submitOtp = async ()=>{
+        const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
+     
+    }
+
+    const changeEmail = async()=>{
+        // e.preventDefault();
         try{
             const response = await api.post('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
             console.log(response);

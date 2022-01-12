@@ -29,7 +29,7 @@ const SignUp = () => {
 
     const[isFormSubmitted, setIsFormSubmitted] = useState(false);
     
-    useEffect(()=>{console.log(formData);
+    useEffect(()=>{
         formValidate()},[formData])
     
       
@@ -57,7 +57,7 @@ const SignUp = () => {
 
 
     const formValidate = ()=>{
-        console.log(isValidEmail(email));
+        
         let isValidForm = true;
         if(!isValidEmail(email)){
             onError("emailError","Enter valid email")
@@ -65,7 +65,7 @@ const SignUp = () => {
         }else{
             onError("emailError","")
         }
-        // console.log(isPassword(password));
+       
         if(!isPassword(password)){
             onError("passwordError","Enter valid password")
             isValidForm = false
@@ -94,7 +94,7 @@ const SignUp = () => {
         if(formValidate()){
             try{
             const response = await api.post('/signup',formData)
-                console.log(response);
+                
                 navigate("/login")
             }
             catch(error){

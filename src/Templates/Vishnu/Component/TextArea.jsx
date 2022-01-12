@@ -19,7 +19,6 @@ const TextArea = ({onChange,value,className,addToList=null,length,deleteList=()=
             value={value}
             onChange={e=>onChange(e.target.value)}
             onKeyDown={e=>{
-                // console.log(e,e.target.selectionStart);
                 if(e.code === "Backspace" && e.target.selectionStart === 0){
                     deleteList(value)
                 }

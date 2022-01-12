@@ -31,6 +31,7 @@ import Vishnu from "../Templates/Vishnu";
 
 import { TemplateContext } from '../Context/TemplateList'
 import { UserContext } from '../Context/UserContext'
+import { useStoreState,useStoreActions } from 'easy-peasy';
 import Admin from './Admin'
 
 
@@ -106,49 +107,69 @@ const totalTemplateList=[
 
 const Index = () => {
     const[template,setTemplate]=useState(totalTemplateList);
-    const[userData,setUserData]=useState({
-        fullname:"",
-        email:"",
-        isLoggedIn: false,
-        isAdmin: true
-    })
+    // const[userData,setUserData]=useState({
+    //     fullname:"",
+    //     email:"",
+    //     isLoggedIn: false,
+    //     isAdmin: true
+    // })
+    const userData = useStoreState((state) => state.userData);
+    const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+
+
+    
     const navigate = useNavigate();
     useEffect(()=>{
         const getuser = async ()=>{
             try {
                 const response = await api.get('/user/')
-                console.log(response);
+               
                 if(response.data.data.fullname === 'ADMIN'){
-                    setUserData(prev =>{
-                        return{
-                            fullname:response.data.data.fullname,
-                            email:response.data.data.email,
-                            isAdmin:true,
-                            isLoggedIn:false,
-                        }
-                    })
+                    changeFullName(response.data.data.fullname)
+                    changeEmail(response.data.data.email)
+                    toggleIsAdmin(true)
+                    toggleIsLoggedIn(false)
+                    // setUserData(prev =>{
+                    //     return{
+                    //         fullname:response.data.data.fullname,
+                    //         email:response.data.data.email,
+                    //         isAdmin:true,
+                    //         isLoggedIn:false,
+                    //     }
+                    // })
                 }
                 else {
-                    setUserData(prev => {
-                        return {
-                            fullname: response.data.data.fullname,
-                            email: response.data.data.email,
-                            isLoggedIn: true,
-                            isAdmin: false
-                        }
-                    })
+                    changeFullName(response.data.data.fullname)
+                    changeEmail(response.data.data.email)
+                    toggleIsAdmin(false)
+                    toggleIsLoggedIn(true)
+                    // setUserData(prev => {
+                    //     return {
+                    //         fullname: response.data.data.fullname,
+                    //         email: response.data.data.email,
+                    //         isLoggedIn: true,
+                    //         isAdmin: false
+                    //     }
+                    // })
                 }
             } catch (error) {
-                console.log(error);
+                
                 localStorage.removeItem('token')
-                setUserData(prev => {
-                    return {
-                        fullname: "",
-                        email: "",
-                        isAdmin: false,
-                        isLoggedIn: false,
-                    }
-                })
+                changeFullName("")
+                changeEmail("")
+                toggleIsAdmin(false)
+                toggleIsLoggedIn(false)
+                // setUserData(prev => {
+                //     return {
+                //         fullname: "",
+                //         email: "",
+                //         isAdmin: false,
+                //         isLoggedIn: false,
+                //     }
+                // })
             }
         }
         getuser();
@@ -159,7 +180,7 @@ const Index = () => {
 
     return (
             <TemplateContext.Provider value={{template,setTemplate}}>
-            <UserContext.Provider value={{userData,setUserData}}>
+            {/* <UserContext.Provider value={{userData,setUserData}}> */}
             <Routes>
                 <Route path="" element={<HomeComponent/>}>
                     <Route path="/" element={<Home/>}/>
@@ -183,7 +204,7 @@ const Index = () => {
                     <Route path="network-error" element={<Network/>}/>
                     <Route path="/*" element={<Error/>}/>
             </Routes>
-            </UserContext.Provider>
+            {/* </UserContext.Provider> */}
             </TemplateContext.Provider>
     )
 }
