@@ -34,7 +34,7 @@ const Form = ({setFormVisibility}) => {
         //       body: data
         // })
         // .then(response => response.json())
-        // .then(data => console.log(data))
+        // .then(data => )
         // }
         try {
             const response = await axios.post('http://192.168.1.66:5000/api/v1/template-upload', data, {
@@ -42,7 +42,7 @@ const Form = ({setFormVisibility}) => {
                     'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
                 },
             })
-            console.log(response);
+            
         } catch (error) {
             console.log(error);
         }

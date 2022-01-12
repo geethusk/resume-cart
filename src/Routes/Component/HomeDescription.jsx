@@ -7,6 +7,7 @@ import solid from "../../assets/icons/star-solid.svg"
 import { TemplateContext } from '../../Context/TemplateList'
 import { UserContext } from '../../Context/UserContext'
 import Form from './Form'
+import { useStoreState } from 'easy-peasy';
 
 
 
@@ -15,7 +16,8 @@ import Form from './Form'
 const HomeDescription = () => {
     const [formVisibility, setFormVisibility ] = useState(false);
     const {template,setTemplate}=useContext(TemplateContext) 
-    const {userData, setUserData } = useContext(UserContext)
+    // const {userData, setUserData } = useContext(UserContext)
+    const userData = useStoreState((state) => state.userData);
     
     const navigate=useNavigate();
     // const [isLiked,setIsLiked]=useState(false);
@@ -25,7 +27,7 @@ const HomeDescription = () => {
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
-    console.log(template);
+    
 
     return (
 

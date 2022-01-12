@@ -7,6 +7,7 @@ import postData from '../services/postdata';
 import {isPassword} from '../utility/validate';
 import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
+import { useStoreState,useStoreActions } from 'easy-peasy';
 
 
 const Dashboard = () => {
@@ -35,12 +36,14 @@ const Dashboard = () => {
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)
     const navigate=useNavigate()
 
-    const { userData} = useContext(UserContext)
+    // const { userData} = useContext(UserContext)
+    const userData = useStoreState((state) => state.userData);
+    
+    const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
     },[])
-    
     const changeImage = (key,value)=>{
         setImage(prev=>({
             ...prev,
@@ -53,7 +56,6 @@ const Dashboard = () => {
             [key]:value
         }))
     }
-    console.log(password.otp);
     const onError = (key,value)=>{
         setFormErrorData(prev=>({
             ...prev,
@@ -63,7 +65,6 @@ const Dashboard = () => {
 
     const formValidate = ()=>{
         let isValidForm = true;
-        console.log(isValidForm)
         if(!isPassword){
             onError("passwordError","Cannot be Empty")
             isValidForm = false;
@@ -96,19 +97,18 @@ const Dashboard = () => {
         setIsFormSubmitted(true)
         if (formValidate()){
             const response = await postData('/get-otp',{email:userData.email})
-            console.log(response);
         } 
     }
 
     const submitOtp = async ()=>{
         const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
-        console.log(response);
+     
     }
 
     const changeEmail = async()=>{
         // e.preventDefault();
         const response = await postData('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
-        console.log(response)
+        
     }
 
     return (

@@ -66,7 +66,6 @@ const Admin = () => {
     const getOtp = async ()=>{
         const response = await postData('/get-admin-otp',{email})
        
-        console.log(response);
         if(!response.status){
             alert('Some Error Occured')
         }else {
@@ -76,7 +75,6 @@ const Admin = () => {
     const loginCall = async (e) =>{
         e.preventDefault();
         const response = await postData('/admin-login', {otp})
-        console.log(response);
         if(!response.status){
             alert(response.message)
         }else{

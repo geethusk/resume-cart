@@ -274,7 +274,7 @@ const FirstPage = () => {
 
 
                              onClick={()=>{
-                            console.log();
+                            
                         addToList(["education"],education.length,{
                             ...education[0],
                             
@@ -327,7 +327,7 @@ const FirstPage = () => {
 
                                   deleteList={
                                     (value)=>{
-                                        console.log(value);
+                                        
                                         deleteList(["skills"],
                                         i,
                                         value
@@ -345,7 +345,7 @@ const FirstPage = () => {
                     <h3>Professional Experience</h3>
                     <button  
                        onClick={()=>{
-                            console.log();
+                           
                         addToList(["professionalexp"],professionalexp.length,{
                             ...professionalexp[0],
                             roleDetails:[{...professionalexp[0].roleDetails[0]}]
@@ -404,14 +404,14 @@ const FirstPage = () => {
                                      {roleDetails.map(({value,id},j)=><li key={id}>
                                           <TextArea value={value}
                                             onChange={(value)=>{
-                                                console.log(value);
+                                                
                                             changeState(["professionalexp",i,"roleDetails",j,"value"],value)
                                            }}
                                             addToList={(value)=>addToList(["professionalexp",i,"roleDetails"],j+1,value)}
                                             
                                             deleteList={
                                                 (value)=>{
-                                                    console.log(value);
+                                                    
                                                     deleteList(["professionalexp",i,"roleDetails"],
                                                     j,
                                                     value

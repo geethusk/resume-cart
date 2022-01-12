@@ -18,10 +18,8 @@ const GetPassword = () => {
 
         }))
     }
-    // console.log(password.email)
     const getOtp=async()=>{
         const response = await postData('/forgot-password',{email:password.email})
-        console.log(response);
     }
     const resetPassword=async()=>{
         const response = await postData('/reset-password',{otp:password.otp,email:password.email,password:password.newPassword})
