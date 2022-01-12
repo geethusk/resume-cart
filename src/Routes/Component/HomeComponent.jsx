@@ -3,7 +3,8 @@ import Home from"../Component/home1.svg"
 import {Outlet,useNavigate} from 'react-router-dom'
 import { useState,useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
-import { useStoreState } from 'easy-peasy';
+
+import { useStoreState,  useStoreActions  } from 'easy-peasy';
 
 
 import burger from "../../assets/icons/bars-solid.svg"
@@ -11,6 +12,11 @@ const HomeComponent = () => {
     const navigate=useNavigate();
     const[isHeader,setIsHeader]=useState(false);
     const userData = useStoreState((state) => state.userData);
+    const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+
     
     //const{userData,setUserData}=useContext(UserContext)
     
@@ -76,6 +82,11 @@ const HomeComponent = () => {
                         <a href="#"
                         onClick={()=>{
                            localStorage.removeItem('token') 
+                           changeFullName("")
+                           changeEmail("")
+                           toggleIsLoggedIn(false)
+                           toggleIsAdmin(false)
+
                             // setUserData({
                             //     fullname:"",
                             //     email:"",
