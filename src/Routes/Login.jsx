@@ -6,7 +6,6 @@ import './Login.css'
 import postData from '../services/postdata';
 import { UserContext } from '../Context/UserContext';
 import GetPassword from '../Components/GetPassword';
-import { useStoreState,useStoreActions } from 'easy-peasy';
 import api from '../services/api';
 
 
@@ -80,6 +79,7 @@ const Login = () => {
     useEffect(()=>{
         formValidate();
     },[formData])
+
     const loginCall= async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true)
@@ -97,19 +97,33 @@ const Login = () => {
             }
             localStorage.setItem('token',response.token)
             
-            changeFullName(response.data.fullname)
-            changeEmail(email)
-            toggleIsLoggedIn(true)
-            
-            // setUserData((prev)=>{
-            //     return{
-            //         ...prev,
-            //         fullname: response.fullname,
-            //         email,
-            //         isLoggedIn:true
-            //     }
-            // })
+             setUserData((prev)=>{
+                 return{
+                     ...prev,
+                     fullname: response.fullname,
+                     email,
+                     isLoggedIn:true
+                }
+            })
             navigate('/dashboard');
+          try{
+                const response = await api.post('/login',formData)
+                console.log(response)
+
+                localStorage.setItem('token',response.data.token)
+                setUserData((prev)=>{
+                        return{
+                            ...prev,
+                            fullname: response.data.fullname,
+                            email,
+                            isLoggedIn:true
+                        }
+                    })
+                navigate('/dashboard');
+            }
+            catch(error){
+                alert(error.response.data.message)
+            }
         }
     }
     const [isFormSubmitted,setIsFormSubmitted ]=useState(false)

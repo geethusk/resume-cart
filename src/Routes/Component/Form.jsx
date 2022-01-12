@@ -1,9 +1,11 @@
-import { type } from '@testing-library/user-event/dist/type'
 import React, { useState } from 'react'
 import axios from "axios"
-import postData from '../../services/postdata'
 import "../Component/form.css"
+import ErrorHandler from './ErrorHandler'
+
 const Form = ({setFormVisibility}) => {
+    const [errorVisibility,setErrorVisibility]=useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
     const [adminForm,setAdminForm]=useState(
         {
             type:"",
@@ -42,13 +44,26 @@ const Form = ({setFormVisibility}) => {
                     'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
                 },
             })
+
+            console.log(response);
+            if(response.data.status==true){
+                setFormVisibility(false)
+            }
+
             
         } catch (error) {
-            console.log(error);
+            console.log(error.response);
+            let data = error.response.data
+            if(data.status==false){
+            setErrorVisibility(true)
+            setErrorMessage(data.message)
+                // <div>already exists</div>
+            }
         }
         
 
     }
+
         const formSubmit =(e) =>{
             e.preventDefault();
             uploadTemplate();
@@ -94,6 +109,7 @@ const Form = ({setFormVisibility}) => {
                 />
                 </div>
                 <div className='admin-formsubmit'>
+                    {errorVisibility && <ErrorHandler error={errorMessage} />}
                 <button className='admin-submitbutton' onClick={()=>{}}>OK</button></div>
             </form>
             <div className='form-close-button' onClick={()=>setFormVisibility(false)}>X</div>
