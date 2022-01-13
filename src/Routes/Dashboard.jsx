@@ -40,12 +40,9 @@ const Dashboard = () => {
 
 
     // const { userData} = useContext(UserContext)
-      const userData = useStoreState((state) => state.userData);
+    const userData = useStoreState((state) => state.userData);
     //   const changeFullName = useStoreActions((actions) => actions.changeFullName);
-    //   const changeEmail = useStoreActions((actions) => actions.changeEmail);
-    //   const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
-
-
+   
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
@@ -127,11 +124,10 @@ const Dashboard = () => {
     }
 
     const uploadProfile = async(imageData)=>{
-        console.log('called');
         const data= new FormData();
         data.append('file',imageData)
         try{
-            const response = await axios.post('/url',data,{
+            const response = await axios.post('http://192.168.1.66:5000/api/v1/upload-profile-image',data,{
                 headers:{
                     'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
                 },
