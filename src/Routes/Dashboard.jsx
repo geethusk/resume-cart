@@ -1,6 +1,6 @@
 import { useContext, useEffect} from 'react'
 import './Dashboard.css'
-import profilePic from '../Templates/Faslu/images/photo.jpg'
+import profilePic from '../Templates/Faslu/images/icon-profile.png'
 // import { UserContext } from '../Context/UserContext'
 import { useState } from 'react';
 // import postData from '../services/postdata';
@@ -9,6 +9,7 @@ import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api'
 import { useStoreState,useStoreActions } from 'easy-peasy';
+import axios from 'axios';
 
 
 const Dashboard = () => {
@@ -43,6 +44,7 @@ const Dashboard = () => {
       const changeFullName = useStoreActions((actions) => actions.changeFullName);
       const changeEmail = useStoreActions((actions) => actions.changeEmail);
       const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+
 
     useEffect(()=>{
         formValidate()
@@ -124,6 +126,24 @@ const Dashboard = () => {
         }
     }
 
+    const uploadProfile = async(imageData)=>{
+        console.log('called');
+        const data= new FormData();
+        data.append('file',imageData)
+        try{
+            const response = await axios.post('/url',data,{
+                headers:{
+                    'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+                },
+                
+            })
+            console.log(response)
+        }
+        catch(error){
+            console.log(error.response)
+        }
+    }
+
     const updateEmail = async()=>{
         try{
             const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
@@ -139,9 +159,12 @@ const Dashboard = () => {
         <div className="dashboard-left-section">
             <FileUpload
                 image={image.profileImage}
+
                 onChange={(value)=>{
                     changeImage("profileImage",value)
                 }}
+
+                uploadProfile={uploadProfile}
                 dashboard={true}
             />
             <div className='dashboard-name'>{userData.fullname}</div>
