@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import "../HomeStyle.css"
 import {useNavigate} from 'react-router-dom'
 import { useState,useContext } from 'react'
@@ -7,7 +7,8 @@ import solid from "../../assets/icons/star-solid.svg"
 import { TemplateContext } from '../../Context/TemplateList'
 import { UserContext } from '../../Context/UserContext'
 import Form from './Form'
-import { useStoreState } from 'easy-peasy';
+import { useStoreState } from 'easy-peasy'
+import api from '../../services/api';
 
 
 
@@ -15,7 +16,7 @@ import { useStoreState } from 'easy-peasy';
 
 const HomeDescription = () => {
     const [formVisibility, setFormVisibility ] = useState(false);
-    const {template,setTemplate}=useContext(TemplateContext) 
+    const [template, setTemplate] = useState([])
     // const {userData, setUserData } = useContext(UserContext)
     const userData = useStoreState((state) => state.userData);
     
@@ -27,6 +28,17 @@ const HomeDescription = () => {
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
+    useEffect(()=>{
+        const getTemplate = async() => {
+            try {
+                const response = await api.get("/get-template")
+                setTemplate(response.data.data)
+            } catch (error) {
+                console.log(error.response);
+            }
+        }
+        getTemplate()
+    }, [])
     
 
     return (
@@ -63,9 +75,9 @@ const HomeDescription = () => {
                {template.filter((value)=>{
                     return (type==="all"|| value.type===type)&&(status==="all"||value.status===status)
                 })
-                .map(({id,image,url,isLiked},i)=>
+                .map(({image,url},i)=>
                     <div className="demo_images">
-                        {!userData.isAdmin && 
+                        {/* {!userData.isAdmin && 
                         <img className="like_button"src={ isLiked?solid:star}
                         onClick={
                             ()=>
@@ -84,12 +96,12 @@ const HomeDescription = () => {
                             }}
                         }
                            
-                        />}
+                        />} */}
                     <img className='demos'
                     onClick={()=>{
                         navigate(url)
                     }}
-                src={image} key={id} alt="" />
+                src={image} key={i} alt="" />
                 </div>
                 
                 
