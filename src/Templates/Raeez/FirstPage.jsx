@@ -3,6 +3,7 @@ import { useState } from "react"
 import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
+import { useStoreState} from 'easy-peasy';
 const Raeez = () => {
     const colorThemeList= [ "violet",
         "indigo",
@@ -81,6 +82,7 @@ const Raeez = () => {
             },
         ]
     })
+    const userData = useStoreState((state) => state.userData);
 
     const getLogo=(name)=>{
         let nameList=name.split(" ");
@@ -200,7 +202,7 @@ const Raeez = () => {
                 <div className=" name-3" >
                 <TextField
                       onChange={value=>changeState(["name"],value)}
-                      value={name}
+                      value={userData.fullname}
                 />
                     {/* <input type="text"
                     value={name}
@@ -247,7 +249,7 @@ const Raeez = () => {
                    
                 <TextField
                       onChange={value=>changeState(["address","gmail"],value)}
-                      value={gmail}
+                      value={userData.gmail}
                 />
                    {/* <input type="text"
                    value={gmail}

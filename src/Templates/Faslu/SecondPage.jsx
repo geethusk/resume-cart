@@ -10,6 +10,8 @@ import produce from 'immer'
 import FileUpload from './Components/FileUpload'
 import TextField from './Components/TextField'
 import TextArea from "./Components/TextArea"
+import { useStoreState} from 'easy-peasy';
+
 
 const SecondPage = () => {
     const [template,setTemplate]=useState({
@@ -97,13 +99,14 @@ const SecondPage = () => {
             })
         )
     }
+    const userData = useStoreState((state) => state.userData);
     return (
         <div className="second_page_container">
             <div className="header-section2">
                 <div className="header-left-sec2">
                     <div className="name2">
                         <TextField
-                            value={name}
+                            value={userData.fullname}
                         />
                     </div>
                     <div className="profession2">
@@ -112,7 +115,7 @@ const SecondPage = () => {
                         />
                     </div>
                     <p>
-                        <TextArea
+                        <TextArea 
                             value={bio}
                         />
                     </p>
@@ -123,7 +126,8 @@ const SecondPage = () => {
                 />
             </div>
             <div className="nav-section2">
-                <div><img src={gmail}/>john.doe@gmail.com</div>
+                {/* <div><img src={gmail}/>john.doe@gmail.com</div> */}
+                <div>{userData.email}</div>
                 <div><img src={mobileImage}/>202-555-0166</div>
                 <div><img src={location}/>New York,USA</div>
                 <div><img src={linkedin}/>linkedin.com/in/john.doe</div>

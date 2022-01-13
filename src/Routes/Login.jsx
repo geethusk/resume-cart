@@ -3,7 +3,6 @@ import InputField from '../Components/InputField';
 import { isPassword, isValidEmail } from '../utility/validate';
 import {Link, useNavigate} from 'react-router-dom'
 import './Login.css'
-
 import GetPassword from '../Components/GetPassword';
 import api from '../services/api';
 import { useStoreState,useStoreActions } from 'easy-peasy';
@@ -12,16 +11,17 @@ import { useStoreState,useStoreActions } from 'easy-peasy';
 const Login = () => {
     const navigate=useNavigate();
     
-    const userData = useStoreState((state) => state.userData);
+    // const userData = useStoreState((state) => state.userData);
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
-    // const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+    const changeProfilePic =useStoreActions((actions) => actions.changeProfilePic);
 
     const [formData,setFormData] = useState({
         email:"",
         password:"",
     });
+
     const{email,password}=formData;
 
     const onChange = (key,value)=>{
@@ -87,12 +87,13 @@ const Login = () => {
         if (formValidate()){
           try{
                 const response = await api.post('/login',formData)
-                // console.log(response)
+                console.log(response)
 
                 localStorage.setItem('token',response.data.token)
 
                 changeEmail(email)
                 changeFullName(response.data.fullname)
+                changeProfilePic(response.data.profilePic)
                 toggleIsLoggedIn(true)
                
                 navigate('/dashboard');

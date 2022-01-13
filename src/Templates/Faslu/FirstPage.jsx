@@ -3,6 +3,7 @@ import './style.css'
 import produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
+import { useStoreState} from 'easy-peasy';
 
 const Faslu = () => {
     const colorThemeList = [ "blue",
@@ -86,6 +87,7 @@ const Faslu = () => {
     });
     const{theme,logo,name,designation,address,bio,skill,exp,education}=template;
     const{street,city,pin,email,phone}=address;
+    const userData = useStoreState((state) => state.userData);
 
     const getLogo = (name)=>{
         let nameList =name.split(" ")
@@ -177,6 +179,7 @@ const Faslu = () => {
 
     }
 
+
     return (
         <div>
             <div className="theme-selector-2">
@@ -203,7 +206,7 @@ const Faslu = () => {
                     value={name}
                     onChange={(e)=>changeState(["name"],e.target.value)}></input> */}
                     <TextField
-                        value={name}
+                        value={userData.fullname}
                         onChange={value=>changeState(["name"],value)}    
                     />
                 </div>
@@ -232,7 +235,7 @@ const Faslu = () => {
                         onChange={value=>changeState(["address","pin"],value)}
                     /><br/>
                     <TextField
-                        value={email}
+                        value={userData.email}
                         onChange={value=>changeState(["address","email"],value)}
                     /><br/>
                     <TextField
