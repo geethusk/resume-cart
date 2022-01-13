@@ -41,9 +41,9 @@ const Dashboard = () => {
 
     // const { userData} = useContext(UserContext)
       const userData = useStoreState((state) => state.userData);
-      const changeFullName = useStoreActions((actions) => actions.changeFullName);
-      const changeEmail = useStoreActions((actions) => actions.changeEmail);
-      const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    //   const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    //   const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    //   const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
 
 
     useEffect(()=>{

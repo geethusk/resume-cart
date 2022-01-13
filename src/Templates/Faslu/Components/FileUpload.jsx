@@ -17,8 +17,7 @@ const FileUpload = ({onChange,image, dashboard=false, uploadProfile }) => {
                 onChange={(e)=>{
                 onChange(URL.createObjectURL(e.target.files[0]))
                 uploadProfile(e.target.files[0])
-            }}
-            
+            }}   
         />
         </div>
     )
