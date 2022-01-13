@@ -10,8 +10,6 @@ import api from '../services/api';
 const SignUp = () => {
 
     const navigate=useNavigate();
-    
-    
     const[formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -26,21 +24,13 @@ const SignUp = () => {
         confirmPasswordError: ""
     });
 
-
     const[isFormSubmitted, setIsFormSubmitted] = useState(false);
     
     useEffect(()=>{
         formValidate()},[formData])
     
-      
-
     const{fullName,email,password,confirmPassword}=formData
     const{fullNameError,emailError,passwordError,confirmPasswordError}=formDataError
-
-
-    
-    
-
     const   onChange=(key,value)=>{
         setFormData({...formData,
            [key]:value
@@ -54,7 +44,6 @@ const SignUp = () => {
         }))
 
     }
-
 
     const formValidate = ()=>{
         
@@ -87,7 +76,6 @@ const SignUp = () => {
          return isValidForm;
     }
     
-
     const signUpCall = async (e)=>{
         e.preventDefault();
         setIsFormSubmitted(true);
@@ -104,7 +92,6 @@ const SignUp = () => {
         }
 
     }
-
 
     return (
         <div className='sign-up-container'>
