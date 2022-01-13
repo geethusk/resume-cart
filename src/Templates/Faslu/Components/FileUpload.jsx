@@ -1,7 +1,7 @@
 import { useRef} from 'react'
 import camera from '../icons/camera-solid.svg'
 
-const FileUpload = ({onChange,image, dashboard=false}) => {
+const FileUpload = ({onChange,image, dashboard=false, uploadProfile }) => {
     const inputRef = useRef(null); 
     return (
         <div className="header-right-sec2">
@@ -15,8 +15,9 @@ const FileUpload = ({onChange,image, dashboard=false}) => {
                 type="file"
                 style={{display:"none"}}
                 onChange={(e)=>{
-                onChange(URL.createObjectURL(e.target.files[0])) 
-            }}
+                onChange(URL.createObjectURL(e.target.files[0]))
+                uploadProfile(e.target.files[0])
+            }}   
         />
         </div>
     )

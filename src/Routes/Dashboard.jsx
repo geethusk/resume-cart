@@ -1,14 +1,15 @@
 import { useContext, useEffect} from 'react'
 import './Dashboard.css'
-import profilePic from '../Templates/Faslu/images/photo.jpg'
-import { UserContext } from '../Context/UserContext'
+import profilePic from '../Templates/Faslu/images/icon-profile.png'
+// import { UserContext } from '../Context/UserContext'
 import { useState } from 'react';
-import postData from '../services/postdata';
+// import postData from '../services/postdata';
 import {isPassword} from '../utility/validate';
 import FileUpload from '../Templates/Faslu/Components/FileUpload'
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api'
 import { useStoreState,useStoreActions } from 'easy-peasy';
+import axios from 'axios';
 
 
 const Dashboard = () => {
@@ -40,14 +41,16 @@ const Dashboard = () => {
 
     // const { userData} = useContext(UserContext)
       const userData = useStoreState((state) => state.userData);
-      const changeFullName = useStoreActions((actions) => actions.changeFullName);
-      const changeEmail = useStoreActions((actions) => actions.changeEmail);
-      const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    //   const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    //   const changeEmail = useStoreActions((actions) => actions.changeEmail);
+    //   const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+
 
     useEffect(()=>{
         formValidate()
         !userData.isLoggedIn && navigate("/")
     },[userData.isLoggedIn])
+
     const changeImage = (key,value)=>{
         setImage(prev=>({
             ...prev,
@@ -112,11 +115,6 @@ const Dashboard = () => {
         } 
     }
 
-    // const submitOtp = async ()=>{
-    //     const response = await postData('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
-     
-    // }
-
     const changePassword = async()=>{
         // e.preventDefault();
         try{
@@ -125,6 +123,24 @@ const Dashboard = () => {
         }
         catch(error){
             console.log(error);
+        }
+    }
+
+    const uploadProfile = async(imageData)=>{
+        console.log('called');
+        const data= new FormData();
+        data.append('file',imageData)
+        try{
+            const response = await axios.post('/url',data,{
+                headers:{
+                    'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
+                },
+                
+            })
+            console.log(response)
+        }
+        catch(error){
+            console.log(error.response)
         }
     }
 
@@ -143,9 +159,12 @@ const Dashboard = () => {
         <div className="dashboard-left-section">
             <FileUpload
                 image={image.profileImage}
+
                 onChange={(value)=>{
                     changeImage("profileImage",value)
                 }}
+
+                uploadProfile={uploadProfile}
                 dashboard={true}
             />
             <div className='dashboard-name'>{userData.fullname}</div>
