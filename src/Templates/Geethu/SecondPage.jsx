@@ -8,6 +8,7 @@ import work from "./assets/icons/laptop-house-solid.svg"
 import phone from "./assets/icons/map-marker-alt-solid.svg"
 import key from "./assets/icons/thumbtack-solid.svg"
 import produce from "immer"
+import { useStoreState} from 'easy-peasy';
 
 const SecondPage = () => {
     const colorThemeList=[
@@ -17,6 +18,7 @@ const SecondPage = () => {
         "brown",
         "green"
     ]
+    const userData = useStoreState((state) => state.userData);
 
     const [templateState,setTemplateState]=useState({
         theme:["#000","#fff"],
@@ -334,7 +336,7 @@ const SecondPage = () => {
            
             <div className="container-1-right-box">
                 <div className='name-sec'>
-                   <TextField className="name-folder" value={name} onChange={value=>changeState(["name"],value)}/>
+                   <TextField className="name-folder" value={userData.fullname} onChange={value=>changeState(["name"],value)}/>
                    <TextField  value={designation} className='sub-1' onChange={value=>changeState(['designation'],value)}/>
                 </div>
                 <div className="heading-1">
@@ -347,7 +349,7 @@ const SecondPage = () => {
                     value={address.city} onChange={value=>changeState(["address","city"],value)}
                     /><br/>
                 <TextField className="email1"
-                    value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                    value={userData.email} onChange={value=>changeState(["address","email"],value)}/><br/>
                 <TextField className="address1"
                     value={address.phone}  onChange={value=>changeState(["address","phone"],value)}
                     /><br/>
