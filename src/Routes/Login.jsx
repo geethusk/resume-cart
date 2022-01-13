@@ -15,6 +15,7 @@ const Login = () => {
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
+    const changeProfilePic =useStoreActions((actions) => actions.changeProfilePic);
 
     const [formData,setFormData] = useState({
         email:"",
@@ -92,6 +93,7 @@ const Login = () => {
 
                 changeEmail(email)
                 changeFullName(response.data.fullname)
+                changeProfilePic(response.data.profilePic)
                 toggleIsLoggedIn(true)
                
                 navigate('/dashboard');

@@ -10,7 +10,7 @@ import produce from 'immer'
 import FileUpload from './Components/FileUpload'
 import TextField from './Components/TextField'
 import TextArea from "./Components/TextArea"
-import { useStoreState,useStoreActions } from 'easy-peasy';
+import { useStoreState} from 'easy-peasy';
 
 
 const SecondPage = () => {
@@ -115,7 +115,7 @@ const SecondPage = () => {
                         />
                     </div>
                     <p>
-                        <TextArea
+                        <TextArea 
                             value={bio}
                         />
                     </p>

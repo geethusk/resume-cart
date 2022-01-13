@@ -9,6 +9,7 @@ const store = createStore({
   userData:{
    fullname:"",
    email:"",
+   profilePic:"",
    isLoggedIn: false,
    isAdmin: false
   },
@@ -24,8 +25,10 @@ const store = createStore({
   ),
   toggleIsAdmin : action((state,payload)=>{
    state.userData.isAdmin = payload
-  }
-  )
+  }),
+  changeProfilePic :action((state,payload)=>{
+    state.userData.profilePic = payload
+  })
 })
 
 ReactDOM.render(
