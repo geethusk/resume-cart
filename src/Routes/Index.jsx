@@ -118,6 +118,8 @@ const Index = () => {
     const changeEmail = useStoreActions((actions) => actions.changeEmail);
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
     const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
+    const changeProfilePic = useStoreActions((actions) => actions.changeProfilePic);
+
 
 
     
@@ -146,6 +148,8 @@ const Index = () => {
                     changeEmail(response.data.data.email)
                     toggleIsAdmin(false)
                     toggleIsLoggedIn(true)
+                    changeProfilePic(response.data.data.profilePic)
+
                     // setUserData(prev => {
                     //     return {
                     //         fullname: response.data.data.fullname,
@@ -162,6 +166,8 @@ const Index = () => {
                 changeEmail("")
                 toggleIsAdmin(false)
                 toggleIsLoggedIn(false)
+                // changeProfilePic(null)
+
                 // setUserData(prev => {
                 //     return {
                 //         fullname: "",
