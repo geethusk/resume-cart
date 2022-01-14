@@ -169,13 +169,13 @@ const Dashboard = () => {
             <div className="dashboard-contents">{userData.email}
             <button 
                 onClick={()=>{
-                    setChangeButton(true)
+                    setChangeButton(prev=>!prev)
                 }}className='dashboard-reset-button'>CHANGE</button>
             </div>
             <div className="dashboard-contents">Password
             <button 
                 onClick={()=>{
-                    setResetButton(true)
+                    setResetButton(prev=>!prev)
                 }
                 }
             className='dashboard-reset-button'>RESET</button></div>
