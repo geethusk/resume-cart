@@ -19,6 +19,7 @@ const SecondPage = () => {
         designation:"Business Development Manager",
         bio:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aspernatur minus praesentium repellat! Tenetur dolor iusto, eos consectetur dolorem libero molestiae velit optio quibusdam adipisci explicabo ipsum odit omnis fuga!",
         profileImage:profilePic,
+        address:{phone:"202-555-0166",place:"New York,USA",linkedinId:"linkedin.com/in/john.doe",skypeId:"john.doe"},
         exp:[
             {
                 role:"Business Development Manager",
@@ -73,7 +74,8 @@ const SecondPage = () => {
             }
         ],
     });
-    const{name,designation,bio, profileImage,exp, skill}=template;
+    const{name,designation,bio, profileImage,address,exp, skill}=template;
+    const{phone,place,linkedinId,skypeId}=address;
     const changeState =(keys,value) =>{
         setTemplate(
             (prev)=>produce(prev,(draft)=>{
@@ -124,17 +126,36 @@ const SecondPage = () => {
                     </p>
                 </div>
                 <FileUpload
-                image={userData.profilePic} 
-                onChange={value=>changeState (["profileImage"],value)}
+                    image={userData.profilePic} 
+                    onChange={value=>changeState (["profileImage"],value)}
                 />
             </div>
             <div className="nav-section2">
-                {/* <div><img src={gmail}/>john.doe@gmail.com</div> */}
-                <div>{userData.email}</div>
-                <div><img src={mobileImage}/>202-555-0166</div>
-                <div><img src={location}/>New York,USA</div>
-                <div><img src={linkedin}/>linkedin.com/in/john.doe</div>
-                <div><img src={skype}/>john.doe</div>
+                <div><img src={gmail}/>
+                <TextField 
+                    value={userData.email}
+                /></div>
+                <div><img src={mobileImage}/>
+                <TextField 
+                    value={phone}
+                    onChange={value=>changeState(["address","phone"],value)}
+                /></div>
+                <div><img src={location}/>
+                <TextField 
+                    value={place}
+                    onChange={value=>changeState(["address","place"],value)}
+                />
+                </div>
+                <div><img src={linkedin}/>
+                <TextField 
+                    value={linkedinId}
+                    onChange={value=>changeState(["address","linkedinId"],value)}
+                /></div>
+                <div><img src={skype}/>
+                <TextField 
+                    value={skypeId}
+                    onChange={value=>changeState(["address","skypeId"],value)}
+                /></div>
             </div>
             <div className="content-section2">
                 <div className="left-section-sec-2">
@@ -145,7 +166,9 @@ const SecondPage = () => {
                         return(
                             <div>
                                 <div className="sub-section-2">
+
                                     <TextField
+                                        className="role-section"
                                         value={role}
                                         onChange={(value)=>changeState(["exp",i,"role"],value)}
                                         
