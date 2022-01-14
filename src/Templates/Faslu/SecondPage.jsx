@@ -107,16 +107,19 @@ const SecondPage = () => {
                     <div className="name2">
                         <TextField
                             value={userData.fullname}
+                            onChange={value=>changeState(["name"],value)}    
                         />
                     </div>
                     <div className="profession2">
                         <TextField
                             value={designation}
+                            onChange={value=>changeState(["designation"],value)}    
                         />
                     </div>
                     <p>
                         <TextArea 
                             value={bio}
+                            onChange={value=>changeState(["bio"],value)}  
                         />
                     </p>
                 </div>
@@ -142,15 +145,34 @@ const SecondPage = () => {
                         return(
                             <div>
                                 <div className="sub-section-2">
-                                    <h4>{role}</h4>
+                                    <TextField
+                                        value={role}
+                                        onChange={(value)=>changeState(["exp",i,"role"],value)}
+                                        
+                                    />
                                     <div className="sub-heading-section">
-                                    {companyName}
+                                        <TextField
+                                            value={companyName}
+                                            onChange={(value)=>changeState(["exp",i,"companyName"],value)}
+                                        />
                                     </div>
-                                    <i>{startingDate}-{endingDate}</i>
+                                    <i>
+                                        <TextField
+                                            value={startingDate}
+                                            onChange={(value)=>changeState(["exp",i,"startingDate"],value)}
+                                        />
+                                    </i>
+                                    -<i>
+                                        <TextField
+                                            value={endingDate}
+                                            onChange={(value)=>changeState(["exp",i,"startingDate"],value)}
+                                        />
+                                    </i>
                                     <ul>
-                                    {detailList.map(({value},i)=><li key={i}>
+                                    {detailList.map(({value},j)=><li key={j}>
                                         <TextArea
                                             value={value}
+                                            onChange={(value)=>changeState(["exp",i,"detailList",j,"value"],value)}
                                         />
                                     </li> 
                                     )}
@@ -329,9 +351,6 @@ const SecondPage = () => {
 
 
                         </div>
-
-                        
-                
                     <div className="heading-section-2">
                         <h4>ORGANIZATIONS</h4>
                     </div>

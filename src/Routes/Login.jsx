@@ -87,8 +87,7 @@ const Login = () => {
         if (formValidate()){
           try{
                 const response = await api.post('/login',formData)
-                console.log(response)
-
+                
                 localStorage.setItem('token',response.data.token)
 
                 changeEmail(email)

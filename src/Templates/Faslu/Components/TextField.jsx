@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const TextField = ({onChange,value}) => {
+const TextField = ({onChange,value,className}) => {
     const ref = useRef(null);
     useEffect(() => {
         ref.current.style.width = 15 +"px";
@@ -15,7 +15,9 @@ const TextField = ({onChange,value}) => {
             ref= {ref}
             type="text"
             value={value}
-            onChange={(e)=>onChange(e.target.value)}>
+            onChange={(e)=>onChange(e.target.value)}
+            className={className}
+            > 
         </input>
     )
 }
