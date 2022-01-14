@@ -138,6 +138,8 @@ body,html,#root,.home-container,.home-description-image-section,.mainContainer_h
     background-color: #ffffff5c;
     font-size: 50px;
     border: solid 5px black;
+    width: 370px;
+    height: 450px;
 }
 @media screen and (max-width:630px){
     .demo_home{

@@ -24,7 +24,7 @@ const HomeDescription = () => {
     // const [isLiked,setIsLiked]=useState(false);
     const[type,setType]=useState("all");
     const[status,setStatus]=useState("all");
-    
+    const[likedTemplate,setLikedTemplate]=useState([])
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
@@ -39,8 +39,26 @@ const HomeDescription = () => {
         }
         getTemplate()
     }, [])
+    const postTemplate = async(url) =>{
+        try {
+            const response = await api.post("/add-favorite-template",{templates:[url]})
+            console.log(response);
+        } catch (error) {
+            console.log(error.response);
+        }
+    }
     
-
+    const favTemplate = async() => {
+            try {
+                const response = await api.get("/get-favorite-template")
+                console.log(response);
+                setLikedTemplate(response.data.data)
+                console.log(likedTemplate);
+            } catch (error) {
+                console.log(error.response);
+            }
+        }
+    
     return (
 
         <div className="home-description-image-section">
@@ -66,18 +84,24 @@ const HomeDescription = () => {
                         }}
                 className="select-sort">
                      <option className="home-option" value="all">I need...</option>
-                    <option className="home-option" value="premium">Premium</option>
-                    <option className="home-option" value="free">Free</option>
+                    <option className="home-option" value="Premium">Premium</option>
+                    <option className="home-option" value="Free">Free</option>
                 </select>
             </div>}
 
             <div className="demo_home">
                {template.filter((value)=>{
+                   
                     return (type==="all"|| value.type===type)&&(status==="all"||value.status===status)
-                })
-                .map(({image,url},i)=>
+                    
+                }
+                
+                )
+                
+                .map(({image,url,isLiked},i)=>
+                
                     <div className="demo_images">
-                        {/* {!userData.isAdmin && 
+                        {!userData.isAdmin && 
                         <img className="like_button"src={ isLiked?solid:star}
                         onClick={
                             ()=>
@@ -93,10 +117,14 @@ const HomeDescription = () => {
                                     newList[i]=newLike;
                                     return newList;
                                 })
-                            }}
+                            }
+                            postTemplate(url)
+                            favTemplate()
                         }
+                        }
+                        
                            
-                        />} */}
+                        />}
                     <img className='demos'
                     onClick={()=>{
                         navigate(url)
@@ -105,7 +133,11 @@ const HomeDescription = () => {
                 </div>
                 
                 
-                )}
+                )
+                
+            }
+            
+            
                 {userData.isAdmin &&
                 <button className='admin_add'
                 onClick={()=>{
