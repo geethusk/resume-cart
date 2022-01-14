@@ -16,11 +16,7 @@ import api from '../../services/api';
 
 const HomeDescription = () => {
     const [formVisibility, setFormVisibility ] = useState(false);
-    const [template, setTemplate] = useState([
-        {
-            type
-        }
-    ])
+    const [template, setTemplate] = useState([])
     // const {userData, setUserData } = useContext(UserContext)
     const userData = useStoreState((state) => state.userData);
     
