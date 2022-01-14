@@ -139,6 +139,8 @@ const Dashboard = () => {
             console.log(error.response)
         }
     }
+    
+    
 
     const updateEmail = async()=>{
         try{
