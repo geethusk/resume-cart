@@ -156,7 +156,7 @@ const Dashboard = () => {
     <div className='dashboard-container'>
         <div className="dashboard-left-section">
             <FileUpload
-                image={image.profileImage}
+                image={userData.profilePic}
 
                 onChange={(value)=>{
                     changeImage("profileImage",value)

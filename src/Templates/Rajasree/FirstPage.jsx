@@ -1,5 +1,6 @@
 import "./raju.css"
 import { useState } from "react"
+import { useStoreState} from 'easy-peasy';
 
 import produce from "immer"
 import TextField from "./Components/TextField"
@@ -107,6 +108,8 @@ const Rajasree = () => {
                         ] 
 
     })
+    const userData = useStoreState((state) => state.userData);
+
     const getLogo=(name)=>{
         let nameList = name.split(" ");
         if(nameList.length<2 || !nameList[1]){
@@ -214,7 +217,7 @@ const Rajasree = () => {
                 <div className="logo4">{getLogo(name)}</div>
 
                 <div className="namesection">
-                <TextField value={name} className="name4"
+                <TextField value={userData.fullname} className="name4"
                 onChange={(value)=>changeState(["name"],value)}/><br/>
                     {/* <input type="text" value={name} className="name4"
                     onChange={(e)=>changeState(["name"],e.target.value)}/> */}
@@ -236,7 +239,7 @@ const Rajasree = () => {
                 {/* <input type="text" value={address.city}
                 onChange={(e)=>changeState(["address","city"],e.target.value)}/> */}
                 
-                <TextField value={address.email}className="headerdescription4"
+                <TextField value={userData.email}className="headerdescription4"
                 onChange={(value)=>changeState(["address","email"],value)}/>
                 {/* <input type="text" value={address.email}
                 onChange={(e)=>changeState(["address","email"],e.target.value)}/> */}

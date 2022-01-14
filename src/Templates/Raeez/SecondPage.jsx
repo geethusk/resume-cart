@@ -9,6 +9,7 @@ import Location from "./icons/location.png"
 import Phone from "./icons/phone.png"
 import Gmail from "./icons/gmail.png"
 import FileUpload from './Components/FileUpload'
+import { useStoreState} from 'easy-peasy';
 
 
 
@@ -145,6 +146,8 @@ const SecondPage = () => {
                 })
         )
     }
+    const userData = useStoreState((state) => state.userData);
+
     const{theme,name,profilebio,profileImage,jobdesignation,workexp,contact,Education,skills}=template;
     const{place,phone,gmail}=contact;
     return (
@@ -168,7 +171,7 @@ const SecondPage = () => {
                 <div className='left-section-name-3'>
                 <TextField
                       onChange={value=>changeState(["name"],value)}
-                      value={name}
+                      value={userData.fullname}
                 />
                     {/* {/* JESSICA<br/> 
                    COOPER */}
@@ -281,7 +284,7 @@ const SecondPage = () => {
                     <div><img src={Gmail}/>
                     <TextField
                       onChange={value=>changeState(["contact","gmail"],value)}
-                      value={gmail}
+                      value={userData.email}
                      /> 
                    </div>
                 </div>

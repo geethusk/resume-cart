@@ -3,7 +3,10 @@ import "./vishnu.css"
 import produce from "immer"
 import TextField from "./Component/TextField"
 import TextArea from "./Component/TextArea"
+import { useStoreState} from 'easy-peasy';
+
 const FirstPage = () => {
+    const userData = useStoreState((state) => state.userData);
 
     const colorThemeList = ["red",
                             "blue",
@@ -206,7 +209,7 @@ const FirstPage = () => {
                         /> */}
                         <TextField
                             onChange={value=>changeState(["name"],value)}
-                            value={name}
+                            value={userData.fullname}
                         />
                     </div>
                     <div>
@@ -245,7 +248,7 @@ const FirstPage = () => {
                                 changeState(["address","pincode"],value)
                             }}
                           /><br/>
-                         <TextField value={email}
+                         <TextField value={userData.email}
                             onChange={(value)=>{
                                 changeState(["address","email"],value)
                             }}

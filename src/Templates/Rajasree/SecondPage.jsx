@@ -7,6 +7,8 @@ import produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import FileUpload from './Components/FileUpload';
+import { useStoreState} from 'easy-peasy';
+
 const SecondPage = () => {
     const colorThemeList4_1=[
         "indigo4",
@@ -102,6 +104,8 @@ const SecondPage = () => {
             })
         })
     }
+    const userData = useStoreState((state) => state.userData);
+
     const addToList =(keys,i,value)=>{
         setState((prev)=>{
             return produce(prev,(draft)=>{
@@ -172,18 +176,18 @@ const SecondPage = () => {
             <div className="main_container4_1">
                 <div className="head4_1">
                     <div className='firstname_4_1'>
-                        <TextField value={name1} className='firstname_4_1'
+                        <TextField value={userData.fullname} className='firstname_4_1'
                         onChange={(value)=>changeState(["name1"],value)}/>
                         <br/>
-                        <TextField value={name2} className='firstname_4_1'
-                        onChange={(value)=>changeState(["name2"],value)}/>
+                        {/* <TextField value={name2} className='firstname_4_1'
+                        onChange={(value)=>changeState(["name2"],value)}/> */}
                         <TextField value={designation} className="job4_1"
                         onChange={(value)=>changeState(["designation"],value)}/>
                     </div>
                     <div className="contacts4_1">
                         ✆<TextField value={details.call}
                         onChange={(value)=>changeState(["details","call"],value)}/><br/>
-                        ✉<TextField value={details.email}
+                        ✉<TextField value={userData.email}
                         onChange={(value)=>changeState(["details","email"],value)}/><br/>
                         📍<TextField value={details.location}
                         onChange={(value)=>changeState(["details","location"],value)}/><br/>

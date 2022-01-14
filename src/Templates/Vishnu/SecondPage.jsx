@@ -2,9 +2,11 @@ import React from 'react'
 import FileUpload from './FileUpload'
 import profilepic from "./images/s.webp"
 import "./Second.css"
+import { useStoreState } from 'easy-peasy'
 
 
 const SecondPage = () => {
+    const userData=useStoreState((state)=>state.userData)
     return (
         <div className='main-container-51'>
             <div className="left-section-51">

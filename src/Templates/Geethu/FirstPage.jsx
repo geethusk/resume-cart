@@ -3,6 +3,7 @@ import produce from "immer"
 import "./Geethu.css"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
+import { useStoreState} from 'easy-peasy';
 
 
 const FirstPage = () => {
@@ -14,6 +15,8 @@ const FirstPage = () => {
         "green"
     ]
     
+    const userData = useStoreState((state) => state.userData);
+
     const[tempState,tempSetState]=useState({
         theme:['#58585b','black'],
         name:"Chris Candidate",
@@ -198,7 +201,7 @@ const FirstPage = () => {
         </div>
             <div className={`body-wrapper body-wrapper-${theme[0]}`}>
                 <div className="left-page-inner">
-                    <div className="name1"><TextField className="title-name" value={name} onChange={value=>changeState(["name"],value)}
+                    <div className="name1"><TextField className="title-name" value={userData.fullname} onChange={value=>changeState(["name"],value)}
                        /><br/>  
                         <div  className="job1">
                             <TextField className="title-name" value={designation} onChange={value=>changeState(["designation"],value)}/>
@@ -217,7 +220,7 @@ const FirstPage = () => {
                        value={address.phone}
                        onChange={value=>changeState(["address","phone"],value)}
                        />
-                        <TextArea  className="textarea" type="text" value={address.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                        <TextArea  className="textarea" type="text" value={userData.email} onChange={value=>changeState(["address","email"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
                         <TextArea  className="bio1"
