@@ -260,7 +260,7 @@ const SecondPage = () => {
                         } >+</button></div>
             </div>
             <div className="right-section-3">
-                <FileUpload image={profileImage}
+                <FileUpload image={userData.profilePic} 
                 onChange={value=>changeState(["profileImage"],value)}/>
               
           

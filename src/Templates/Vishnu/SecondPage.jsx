@@ -11,7 +11,7 @@ const SecondPage = () => {
         <div className='main-container-51'>
             <div className="left-section-51">
                 <div className="basic-info51">
-                    <FileUpload profilepic={profilepic}/>
+                    <FileUpload profilepic={userData.profilePic} />
                     <div className="basic-profile">
                         <div className='intro'>
                             H E L LO I 'M                          
