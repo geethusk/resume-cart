@@ -2,12 +2,13 @@ import 'react-circular-progressbar/dist/styles.css';
 import "./second.css"
 import Profile4 from "./assets/icons/become_an_illustrator.jpg"
 import { CircularProgressbar} from 'react-circular-progressbar';
-import { useState } from "react"
+import { useState,useEffect} from "react"
 import produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import FileUpload from './Components/FileUpload';
 import { useStoreState} from 'easy-peasy';
+
 
 const SecondPage = () => {
     const colorThemeList4_1=[
@@ -24,8 +25,8 @@ const SecondPage = () => {
     const[state,setState]=useState({
         theme:['black4'],
         profileImage:Profile4,
-        name1:"Patrick",
-        name2:"Marz",
+        name:"Patrick",
+        // name2:"Marz",
         designation:"Illustrator",
         details:{call:" 1234567890",
         email:"email@youremail.com",
@@ -105,6 +106,18 @@ const SecondPage = () => {
         })
     }
     const userData = useStoreState((state) => state.userData);
+   
+    
+    useEffect(()=>{
+        userData.fullname && setState(prev=>{
+            return{
+                ...prev,
+                name:userData.fullname,
+               
+              
+            }
+        })
+    },[userData.fullname])
 
     const addToList =(keys,i,value)=>{
         setState((prev)=>{
@@ -157,7 +170,9 @@ const SecondPage = () => {
             })
         })
     }
-    const{theme,profileImage,name1,name2,designation,details,profile,experience,education}=state;
+   
+    const{theme,profileImage,name,designation,details,profile,experience,education}=state;
+    const percentage=100;
     return (
         <>
         <div className="theme_selector_list4">
@@ -176,11 +191,11 @@ const SecondPage = () => {
             <div className="main_container4_1">
                 <div className="head4_1">
                     <div className='firstname_4_1'>
-                        <TextField value={userData.fullname} className='firstname_4_1'
-                        onChange={(value)=>changeState(["name1"],value)}/>
+                        <TextField value={name} className='firstname_4_1'
+                        onChange={(value)=>changeState(["name"],value)}/>
                         <br/>
-                        {/* <TextField value={name2} className='firstname_4_1'
-                        onChange={(value)=>changeState(["name2"],value)}/> */}
+                         {/* <TextField value={name2} className='firstname_4_1'
+                        onChange={(value)=>changeState(["name2"],value)}/>  */}
                         <TextField value={designation} className="job4_1"
                         onChange={(value)=>changeState(["designation"],value)}/>
                     </div>
@@ -206,7 +221,7 @@ const SecondPage = () => {
                     <div className="profile4_1">Skills</div>
                     <div className="circlesection4_1">
                         <div className="uppercircle4_1">
-                            <div className="circle4_1"><CircularProgressbar value={30} text="PS"/></div>
+                            <div className="circle4_1"><CircularProgressbar value={percentage}   text={`${percentage}%`}/></div>
                             <div className="circlename4_1">Photo Shop</div>
                             <div className="circle4_1"><CircularProgressbar value={30}text="PS"/></div>
                             <div className="circlename4_1">Photo Shop</div>

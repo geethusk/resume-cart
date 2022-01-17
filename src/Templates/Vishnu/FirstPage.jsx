@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./vishnu.css"
 import produce from "immer"
 import TextField from "./Component/TextField"
@@ -6,8 +6,7 @@ import TextArea from "./Component/TextArea"
 import { useStoreState} from 'easy-peasy';
 
 const FirstPage = () => {
-    const userData = useStoreState((state) => state.userData);
-
+    
     const colorThemeList = ["red",
                             "blue",
                             "green",
@@ -74,6 +73,15 @@ const FirstPage = () => {
 
     const{theme,name,designation,address,bio,education,skills,professionalexp}=templateState;
     const{street,city,pincode,email,phone} = address;
+    const userData = useStoreState((state) => state.userData);
+    useEffect(()=>{
+        userData.fullname && settemplateState(prev=>{
+            return{
+                ...prev,
+                name:userData.fullname
+            }
+        })
+    },[userData.fullname])
     
 
     // const onChange = (action)=>{
@@ -209,7 +217,7 @@ const FirstPage = () => {
                         /> */}
                         <TextField
                             onChange={value=>changeState(["name"],value)}
-                            value={userData.fullname}
+                            value={name}
                         />
                     </div>
                     <div>

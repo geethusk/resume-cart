@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Second.css"
 import { useState } from 'react'
 import TextArea from "./Components/TextArea"
@@ -18,7 +18,7 @@ const SecondPage = () => {
         "brown",
         "green"
     ]
-    const userData = useStoreState((state) => state.userData);
+   
 
     const [templateState,setTemplateState]=useState({
         theme:["#000","#fff"],
@@ -108,6 +108,15 @@ const SecondPage = () => {
      ] 
 
     })
+    const userData = useStoreState((state) => state.userData);
+    useEffect(()=>{
+        userData.fullname && setTemplateState(prev=>{
+            return{
+                ...prev,
+                name:userData.fullname,
+            }
+        })
+    },[userData.fullname])
 
     const changeState=(keys,value)=>{
         setTemplateState(
@@ -336,7 +345,7 @@ const SecondPage = () => {
            
             <div className="container-1-right-box">
                 <div className='name-sec'>
-                   <TextField className="name-folder" value={userData.fullname} onChange={value=>changeState(["name"],value)}/>
+                   <TextField className="name-folder" value={name} onChange={value=>changeState(["name"],value)}/>
                    <TextField  value={designation} className='sub-1' onChange={value=>changeState(['designation'],value)}/>
                 </div>
                 <div className="heading-1">

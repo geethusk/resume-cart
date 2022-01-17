@@ -1,6 +1,6 @@
 import "./raju.css"
-import { useState } from "react"
-import { useStoreState} from 'easy-peasy';
+import { useState,useEffect } from "react"
+import { useStoreState,useStoreActions} from 'easy-peasy';
 
 import produce from "immer"
 import TextField from "./Components/TextField"
@@ -109,6 +109,18 @@ const Rajasree = () => {
 
     })
     const userData = useStoreState((state) => state.userData);
+    const changeFullName=useStoreActions((action)=>action.changeFullName)
+    
+    useEffect(()=>{
+        userData.fullname && setState(prev=>{
+          return{
+              ...prev,
+              name:userData.fullname,
+          }  
+        })
+
+    },[userData.fullname])
+
 
     const getLogo=(name)=>{
         let nameList = name.split(" ");
@@ -217,7 +229,7 @@ const Rajasree = () => {
                 <div className="logo4">{getLogo(name)}</div>
 
                 <div className="namesection">
-                <TextField value={userData.fullname} className="name4"
+                <TextField value={name} className="name4"
                 onChange={(value)=>changeState(["name"],value)}/><br/>
                     {/* <input type="text" value={name} className="name4"
                     onChange={(e)=>changeState(["name"],e.target.value)}/> */}
