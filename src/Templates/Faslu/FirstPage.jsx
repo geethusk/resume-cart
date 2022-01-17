@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './style.css'
 import produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
-import { useStoreState} from 'easy-peasy';
+import { useStoreActions, useStoreState} from 'easy-peasy';
+import api from '../../services/api'
 
 const Faslu = () => {
     const colorThemeList = [ "blue",
@@ -88,6 +89,17 @@ const Faslu = () => {
     const{theme,logo,name,designation,address,bio,skill,exp,education}=template;
     const{street,city,pin,email,phone}=address;
     const userData = useStoreState((state) => state.userData);
+    const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    
+    useEffect(()=>{
+        userData.fullname && setTemplate(prev => {
+            return{
+                ...prev,
+                name: userData.fullname,
+                
+            }
+        })
+    },[userData.fullname])
 
     const getLogo = (name)=>{
         let nameList =name.split(" ")
@@ -206,7 +218,7 @@ const Faslu = () => {
                     value={name}
                     onChange={(e)=>changeState(["name"],e.target.value)}></input> */}
                     <TextField
-                        value={userData.fullname}
+                        value={name}
                         onChange={value=>changeState(["name"],value)}    
                     />
                 </div>
