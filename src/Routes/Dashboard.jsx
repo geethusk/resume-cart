@@ -140,8 +140,6 @@ const Dashboard = () => {
         }
     }
     
-    
-
     const updateEmail = async()=>{
         try{
             const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
@@ -167,18 +165,18 @@ const Dashboard = () => {
             />
             <div className='dashboard-name'>{userData.fullname}</div>
             <div className="dashboard-contents">{userData.email}
-            <button 
+                <button 
                 onClick={()=>{
                     setChangeButton(prev=>!prev)
-                }}className='dashboard-reset-button'>CHANGE</button>
+                    }}className='dashboard-reset-button'>CHANGE</button>
             </div>
             <div className="dashboard-contents">Password
-            <button 
+                <button 
                 onClick={()=>{
                     setResetButton(prev=>!prev)
                 }
                 }
-            className='dashboard-reset-button'>RESET</button></div>
+                className='dashboard-reset-button'>RESET</button></div>
         </div>
         <div className="dashboard-right-section">
             {isResetButton &&
