@@ -112,6 +112,7 @@ const Faslu = () => {
         return nameList[0][0]+nameList[nameList.length -1 ][0];
 
     }
+    
     const changeState =(keys,value) =>{
         setTemplate(
             (prev)=>produce(prev,(draft)=>{
