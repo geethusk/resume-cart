@@ -4,7 +4,7 @@
     display: grid;
     place-items: center;
      background-image: linear-gradient(to right, #f4f2f200, rgb(115 113 176 / 33%)); 
-    /* background-color: #d8deec; */
+
 }
 .error-page-sub-container{
     /* max-width: 800px; */
@@ -30,6 +30,7 @@
     font-size: 40px;
     font-weight: bold;
     font-family: system-ui;
+
 }
 .error-description{
     font-size: 20px;

@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import produce from "immer"
 import "./Geethu.css"
 import TextField from "./Components/TextField"
@@ -15,7 +15,7 @@ const FirstPage = () => {
         "green"
     ]
     
-    const userData = useStoreState((state) => state.userData);
+ 
 
     const[tempState,tempSetState]=useState({
         theme:['#58585b','black'],
@@ -103,6 +103,17 @@ const FirstPage = () => {
          ] 
 
     })
+    const userData = useStoreState((state) => state.userData);
+    useEffect(()=>{
+        userData.fullname && tempSetState(prev=>{
+            return{
+                ...prev,
+                name:userData.fullname,
+            }
+        })
+
+    },[userData.fullname])
+       
     const addToList=(keys,i,value)=>{
         tempSetState(
             (prev)=>produce(prev,(draft)=>{
@@ -201,7 +212,7 @@ const FirstPage = () => {
         </div>
             <div className={`body-wrapper body-wrapper-${theme[0]}`}>
                 <div className="left-page-inner">
-                    <div className="name1"><TextField className="title-name" value={userData.fullname} onChange={value=>changeState(["name"],value)}
+                    <div className="name1"><TextField className="title-name" value={name} onChange={value=>changeState(["name"],value)}
                        /><br/>  
                         <div  className="job1">
                             <TextField className="title-name" value={designation} onChange={value=>changeState(["designation"],value)}/>

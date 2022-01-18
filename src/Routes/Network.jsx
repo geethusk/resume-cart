@@ -13,7 +13,7 @@ const Network = () => {
                 <img className='networkerror-image' src={networkerror}/>
                 <div className='network-head'>Connection Lost!</div>
                 <div className='network-head2'>Looks likes the page you are trying to visit does not exist.</div>
-                <div className='network-error-description'>Please Check the URL and try again..</div>
+                <div className='network-error-description'>Please Check the URL and try again....</div>
                 <button className='error-button' onClick={()=>{
                     navigate("/")
                 }}>Back

@@ -71,7 +71,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-   
+  
   }
     /* border: 1px solid black; */
 
@@ -86,7 +86,7 @@ Link{
     font-size: 20px;
     padding: 10px;
     font-weight: bold;
-  
+ 
 }
 .link-3:hover{
 color: red;
