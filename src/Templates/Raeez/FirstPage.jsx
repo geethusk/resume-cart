@@ -3,7 +3,6 @@ import { useState,useEffect } from "react"
 import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
-import Download from "../../Routes/Download"
 import { useStoreState,useStoreActions} from 'easy-peasy';
 const Raeez = () => {
     const colorThemeList= [ "violet",
@@ -457,7 +456,7 @@ const Raeez = () => {
            
         </div>
         <div>
-        <Download/>
+       
         </div>
         </>
     )
