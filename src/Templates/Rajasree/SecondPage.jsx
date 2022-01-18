@@ -8,8 +8,46 @@ import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import FileUpload from './Components/FileUpload';
 import { useStoreState} from 'easy-peasy';
-
+import ProgressBar from './Components/ProgressBar';
 const SecondPage = () => {
+    const [progress,setProgress]=useState(0);
+    const [skills, setSkills] = useState({
+        photoshop: 0,
+        afterEffects: 0,
+        lightRoom: 0
+    })
+    // const  progressivevalue=()=>{
+    //     const progressValue = Math.floor(Math.random()*101);
+    //     setProgress(progressValue)
+    // }
+    // const onChange = e =>{
+    //     if(e.target.value){
+    //         let progress = parseInt(e.target.value, 10);
+    //         if(progress >100){
+    //             progress=100;
+    //         }
+    //         setProgress(progress)
+    //     }else{
+    //         setProgress(0);
+    //     }
+
+    // }
+    // const states={
+    //     size :100,
+    //     progress,
+    //     strokeWidth:10,
+    //     circleOneStroke: 'gray',
+    //     circleTwoStroke: 'white'
+    // }
+
+    const onChange = (key, value) => {
+        setSkills(prev => {
+            return{
+                ...prev,
+                [key]: value
+            }
+        })
+    }
     const colorThemeList4_1=[
         "indigo4",
         "darkviolet4",
@@ -31,6 +69,18 @@ const SecondPage = () => {
         email:"email@youremail.com",
         location:"America"},
         profile:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusantium dicta ducimus deserunt labore ad officia explicabo impedit. Repellendus mollitia quidem suscipit deserunt nostrum odit deleniti id aliquid neque dicta?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos illum ullam eaque porro sapiente architecto voluptatum repellat odit natus quibusdam, non blanditiis dicta, hic animi quia et cupiditate temporibus.",
+        skillset:{
+            photoshop:"PhotoShop",
+            afterEffects:"AfterEffects",
+            lightRoom:"LightRoom",
+            
+        },
+        skillname:{
+            ps:"PS",
+            ae:"AE",
+            lr:"LR",
+            
+        },
         education:[
             {
                 
@@ -157,7 +207,7 @@ const SecondPage = () => {
             })
         })
     }
-    const{theme,profileImage,name1,name2,designation,details,profile,experience,education}=state;
+    const{theme,profileImage,name1,name2,designation,details,profile,experience,education,skillset,skillname}=state;
     return (
         <>
         <div className="theme_selector_list4">
@@ -206,25 +256,37 @@ const SecondPage = () => {
                     <div className="profile4_1">Skills</div>
                     <div className="circlesection4_1">
                         <div className="uppercircle4_1">
-                            <div className="circle4_1"><CircularProgressbar value={30} text="PS"/></div>
-                            <div className="circlename4_1">Photo Shop</div>
-                            <div className="circle4_1"><CircularProgressbar value={30}text="PS"/></div>
-                            <div className="circlename4_1">Photo Shop</div>
+                            <div className="circle4_1"><ProgressBar progress={skills.photoshop} 
+                             text="PS" />
+                            </div>
+                            <input type="text" name='percent' placeholder='progress value add'
+                            onChange={(e)=>onChange('photoshop', e.target.value)}/>
+                            <div className="circlename4_1">
+                            <TextField value={skillset.photoshop} 
+                            onChange={(value)=>changeState(["skillset","photoshop"],value)}/>
+                            </div>
                         </div>
                         <div className="lowercircle4_1">
-                            <div className="circle4_1" ><CircularProgressbar value={75} text="AE"/></div>
-                            <div className="circlename4_1">After Effects</div>
-                            <div className="circle4_1"><CircularProgressbar value={75}text="AE"/></div>
-                            <div className="circlename4_1">After Effects</div>
+                            <div className="circle4_1" ><ProgressBar progress={skills.afterEffects} text="AE"/></div>
+                            <input type="text" name='percent' placeholder='progress value add'
+                            onChange={(e)=>onChange('afterEffects', e.target.value)}/>
+                            <div className="circlename4_1">
+                            <TextField value={skillset.afterEffects} 
+                            onChange={(value)=>changeState(["skillset","afterEffects"],value)}/>
+                            </div>
                 
                         </div>
                     <div className="middle4_1">
-                        <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
-                        <div className="circlename4_1">LightRoom</div>
-                        <div className="circle4_1"><CircularProgressbar value={75}text="LR"/></div>
-                        <div className="circlename4_1">LightRoom</div>
+                        <div className="circle4_1"><ProgressBar progress={skills.lightRoom} text="LR"/></div>
+                        <input type="text" name='percent' placeholder='progress value add'
+                            onChange={(e)=>onChange('lightRoom', e.target.value)}/>
+                        <div className="circlename4_1">
+                        <TextField value={skillset.lightRoom} 
+                            onChange={(value)=>changeState(["skillset","lightRoom"],value)}/>
+                        </div>
                     
                     </div>
+                    {/* <button onClick={progressivevalue}>random</button> */}
                 </div> 
         </div>
                 <div className="bottomright4_1">
