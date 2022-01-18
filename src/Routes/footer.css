@@ -1,0 +1,13 @@
+.button-segment{
+    display: flex;
+   justify-content:flex-end;
+   gap:15px;
+   margin-right:20%;
+   margin-top: 5px;
+   margin-bottom: 5px;
+
+
+}
+.save-button{
+    width:20px;
+}

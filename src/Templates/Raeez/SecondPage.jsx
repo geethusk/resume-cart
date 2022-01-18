@@ -1,6 +1,6 @@
 import React from 'react'
 import "./secondpage.css"
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
@@ -9,7 +9,7 @@ import Location from "./icons/location.png"
 import Phone from "./icons/phone.png"
 import Gmail from "./icons/gmail.png"
 import FileUpload from './Components/FileUpload'
-import { useStoreState} from 'easy-peasy';
+import { useStoreState,useStoreActions, action} from 'easy-peasy';
 
 
 
@@ -147,6 +147,19 @@ const SecondPage = () => {
         )
     }
     const userData = useStoreState((state) => state.userData);
+    // const changeFullName = useStoreActions((actions) => actions.changeFullName);
+    const changeFullName=useStoreActions((actions)=>action.changeFullName);
+    useEffect(()=>{
+        userData.fullname && setTemplate(prev => {
+            return{
+                ...prev,
+                name: userData.fullname,
+                
+            }
+        })
+    },[userData.fullname])
+
+
 
     const{theme,name,profilebio,profileImage,jobdesignation,workexp,contact,Education,skills}=template;
     const{place,phone,gmail}=contact;
@@ -171,7 +184,7 @@ const SecondPage = () => {
                 <div className='left-section-name-3'>
                 <TextField
                       onChange={value=>changeState(["name"],value)}
-                      value={userData.fullname}
+                      value={name}
                 />
                     {/* {/* JESSICA<br/> 
                    COOPER */}
