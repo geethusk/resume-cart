@@ -36,7 +36,7 @@ const ProgressBar = ({size=100, strokeWidth=10, circleOneStroke="gray", circleTw
                     x={center}
                     y={center}
                 >
-                    
+                    {progress}%
                           
                 </text>
             </svg>

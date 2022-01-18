@@ -41,12 +41,22 @@ const SecondPage = () => {
     // }
 
     const onChange = (key, value) => {
-        setSkills(prev => {
-            return{
-                ...prev,
-                [key]: value
-            }
-        })
+        if(value>100){
+            setSkills(prev => {
+                return{
+                    ...prev,
+                    [key]: 100
+                }
+            })
+        }else {
+            setSkills(prev => {
+                return{
+                    ...prev,
+                    [key]: value
+                }
+            })
+        }
+        
     }
     const colorThemeList4_1=[
         "indigo4",
@@ -219,10 +229,8 @@ const SecondPage = () => {
             })
         })
     }
-    const{theme,profileImage,name1,name2,designation,details,profile,experience,education,skillset,skillname}=state;
-
    
-    const{theme,profileImage,name,designation,details,profile,experience,education}=state;
+    const{theme,profileImage,name,designation,details,profile,experience,education, skillset}=state;
     return (
         <>
         <div className="theme_selector_list4">
@@ -280,10 +288,7 @@ const SecondPage = () => {
                             <TextField value={skillset.photoshop} 
                             onChange={(value)=>changeState(["skillset","photoshop"],value)}/>
                             </div>
-                            <div className="circle4_1"><CircularProgressbar value={percentage}   text={`${percentage}%`}/></div>
-                            <div className="circlename4_1">Photo Shop</div>
-                            <div className="circle4_1"><CircularProgressbar value={30}text="PS"/></div>
-                            <div className="circlename4_1">Photo Shop</div>
+                           
                         </div>
                         <div className="lowercircle4_1">
                             <div className="circle4_1" ><ProgressBar progress={skills.afterEffects} text="AE"/></div>
