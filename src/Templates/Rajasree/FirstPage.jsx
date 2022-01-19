@@ -24,7 +24,7 @@ const Rajasree = () => {
         designation:"Sales Associate",
         address:{street:"4759 Sunnydale Lane",
         city:" Plano, TX, 75071",
-        email:"email@youremail.com",
+        gmail:"email@youremail.com",
         phone:"(469) 385-2948"},
         bio:`Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed.`,
         experience:[
@@ -112,15 +112,17 @@ const Rajasree = () => {
     const changeFullName=useStoreActions((action)=>action.changeFullName)
     
     useEffect(()=>{
-        userData.fullname && setState(prev=>{
+        userData.fullname || userData.email && setState(prev=>{
           return{
               ...prev,
               name:userData.fullname,
+              gmail:userData.email,
           }  
         })
 
-    },[userData.fullname])
+    },[userData.fullname,userData.email])
 
+    
 
     const getLogo=(name)=>{
         let nameList = name.split(" ");
@@ -251,8 +253,8 @@ const Rajasree = () => {
                 {/* <input type="text" value={address.city}
                 onChange={(e)=>changeState(["address","city"],e.target.value)}/> */}
                 
-                <TextField value={userData.email}className="headerdescription4"
-                onChange={(value)=>changeState(["address","email"],value)}/>
+                <TextField value={address.gmail}className="headerdescription4"
+                onChange={(value)=>changeState(["address","gmail"],value)}/>
                 {/* <input type="text" value={address.email}
                 onChange={(e)=>changeState(["address","email"],e.target.value)}/> */}
                 
