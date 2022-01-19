@@ -105,7 +105,7 @@ const Rajasree = () => {
                 value: "Develops positive workplace relationships"
             }
                     
-                        ] 
+            ] 
 
     })
     const userData = useStoreState((state) => state.userData);
