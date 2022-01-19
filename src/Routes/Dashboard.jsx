@@ -10,9 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import api from '../services/api'
 import { useStoreState,useStoreActions } from 'easy-peasy';
 import axios from 'axios';
+import ErrorHandler from './Component/ErrorHandler';
 
 
 const Dashboard = () => {
+    const[errorFormVisibility,setErrorFormVisibility]=useState(false)
+    const[error,setError]=useState("")
+
     const[image,setImage]=useState({
         profileImage:profilePic
     })
@@ -104,10 +108,15 @@ const Dashboard = () => {
         if (formValidate()){
             try{
                 const response = await api.post('/get-otp',{email:userData.email})
-                console.log(response);
+                // console.log(response);
+                setErrorFormVisibility(true)
+                setError(response.data.message)
             }
             catch(error){
-                console.log(error);
+                // console.log(error.response);
+                    setErrorFormVisibility(true)
+                    setError(error.response.data.message)
+                
             }
         } 
     }
@@ -116,10 +125,15 @@ const Dashboard = () => {
         // e.preventDefault();
         try{
             const response = await api.post('/change-password',{otp:otp,email:userData.email,oldPassword:oldPassword,newPassword:newPassword})
-            console.log(response);
+            // console.log(response);
+            setErrorFormVisibility(true)
+            setError(response.data.data.message)
+
         }
         catch(error){
-            alert(error.response.data.message)
+                setErrorFormVisibility(true)
+                setError(error.response.data.message)
+            
         }
     }
 
@@ -133,20 +147,29 @@ const Dashboard = () => {
                 },
                 
             })
-            console.log(response)
+            setErrorFormVisibility(true)
+            setError(response.data.data.message)
         }
         catch(error){
-            console.log(error.response)
-        }
+            // console.log(error.response)
+            setErrorFormVisibility(true)
+            setError(error.response.data.message)
+            
     }
+}
     
     const updateEmail = async()=>{
         try{
             const response = await api.post('/change-email',{email:userData.email,newemail:password.newEmail,password:password.password})
             console.log(response)
+            setErrorFormVisibility(true)
+            setError(response.data.message)
         }
         catch(error){
-            console.log(error)
+            // console.log(error)
+            setErrorFormVisibility(true)
+            setError(error.response.data.message)
+
         }  
     }
 
@@ -281,7 +304,10 @@ const Dashboard = () => {
                     className='dashboard-button'>SUBMIT</button>
                 </div>
             </div>}
+
         </div>
+        {errorFormVisibility && <ErrorHandler error={error} setErrorFormVisibility={setErrorFormVisibility} />}
+
     </div>
       
     )

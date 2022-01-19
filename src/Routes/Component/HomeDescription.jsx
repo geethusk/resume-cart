@@ -10,7 +10,6 @@ import { UserContext } from '../../Context/UserContext'
 import Form from './Form'
 import { useStoreState } from 'easy-peasy'
 import api from '../../services/api';
-import ErrorHandler from './ErrorHandler'
 
 
 
@@ -30,10 +29,8 @@ const HomeDescription = () => {
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
-    const [errorVisibility,setErrorVisibility]=useState(false)
-    const [errorMessage, setErrorMessage] = useState(null)
-
-
+    const[errorFormVisibility,setErrorFormVisibility]=useState(false)
+    const[error,setError]=useState("")
     
     
     useEffect(()=>{
@@ -56,8 +53,8 @@ const HomeDescription = () => {
         } catch (error) {
             let data = error.response.data
             if(data.status==false){
-                setErrorVisibility(true)
-                setErrorMessage(data.message)
+                setErrorFormVisibility(true)
+                setError(data)
             }
         }
 
@@ -73,8 +70,8 @@ const HomeDescription = () => {
             } catch (error) {
                 let data = error.response.data
                 if(data.status==false){
-                    setErrorVisibility(true)
-                    setErrorMessage(data.message)
+                    navigate("/loading")
+                   
                 }
             }
         }
@@ -169,7 +166,7 @@ const HomeDescription = () => {
                 }}
                 >+</button>}
             </div>
-            {errorVisibility && <ErrorHandler error={errorMessage} />}
+            
 
             {formVisibility && <Form setFormVisibility={setFormVisibility} />}
         </div>

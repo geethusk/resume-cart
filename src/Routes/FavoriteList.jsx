@@ -4,7 +4,6 @@ import { TemplateContext } from '../Context/TemplateList'
 import "./favorite.css"
 import "./HomeStyle.css"
 import api from '../services/api';
-import ErrorHandler from './Component/ErrorHandler'
 
 
 const FavoriteList = () => {
@@ -15,7 +14,6 @@ const FavoriteList = () => {
     const [templateRemoved,setTemplateRemoved]=useState(false)
    
     const [errorVisibility,setErrorVisibility]=useState(false)
-    const [errorMessage, setErrorMessage] = useState(null)
     // const [isClosed,setIsClosed]=useState(favList)
 
     useEffect(()=>{
@@ -31,8 +29,7 @@ const FavoriteList = () => {
                 let data=error.response.data
                 if(data.status==false){
                     setErrorVisibility(true)
-                    setErrorMessage(data.message)
-    
+                    navigate("/*")    
                 }
             }
         }
@@ -49,7 +46,7 @@ const FavoriteList = () => {
             let data=error.response.data
             if(data.status==false){
                 setErrorVisibility(true)
-                setErrorMessage(data.message)
+                navigate("/*")
     
             }
         }
@@ -89,7 +86,6 @@ const FavoriteList = () => {
                 )
             })}
             </div>
-            {errorVisibility && <ErrorHandler error={errorMessage} />}
 
         </div>
     )

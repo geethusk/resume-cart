@@ -15,8 +15,8 @@ const Admin = () => {
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
     const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
 
-    const [errorVisibility,setErrorVisibility]=useState(false)
-    const [errorMessage, setErrorMessage] = useState(null)
+    const [errorFormVisibility,setErrorFormVisibility]=useState(false)
+    const [error, setError] = useState(null)
 
     const navigate=useNavigate();
     const[isOtpButton,setOtpButton]=useState(false)
@@ -70,12 +70,13 @@ const Admin = () => {
    
     const getOtp = async ()=>{        
         const response = await api.post('/get-admin-otp',{email})
-        if(!response.data.status){
-            setErrorVisibility(true)
-            setErrorMessage(response.data.message)
-        }else {
-            setErrorVisibility(false)
-            setErrorMessage(response.data.message)
+        // console.log(response);
+        try{
+            setErrorFormVisibility(true)
+            setError(response.data.message)
+        }catch{
+            setErrorFormVisibility(false)
+            setError(response.data.message)
         }
     }
     const loginCall = async (e) =>{
@@ -83,14 +84,26 @@ const Admin = () => {
         try{
             const response = await api.post('/admin-login', {otp})
             localStorage.setItem('token',response.data.token)
-            changeEmail("geethukallada1@gmail.com")
-            changeFullName("ADMIN")
-            toggleIsAdmin(true)
-            toggleIsLoggedIn(false)
-            navigate('/')
+            // console.log(response);
+            if(response.data.status){
+                // console.log(response.data.status);
+                setErrorFormVisibility(true)
+                setError(response.data.message)
+                changeEmail("geethukallada1@gmail.com")
+                changeFullName("ADMIN")
+                toggleIsAdmin(true)
+                toggleIsLoggedIn(false)
+                navigate('/')
+                
+            }
+            else{
+                navigate("/login")
+            }
         }
         catch(error){
-            setErrorMessage(error.response.data.message)
+            setErrorFormVisibility(true)
+            setError(error.response.data.message)
+
         }
     }
     return (
@@ -131,7 +144,7 @@ const Admin = () => {
                      type="submit" className='login-button'>Login</button>
                 </form>
             </div>
-            {errorVisibility && <ErrorHandler error={errorMessage} />}
+            {errorFormVisibility && <ErrorHandler error={error} setErrorFormVisibility={setErrorFormVisibility} />}
 
         </div>
     )
