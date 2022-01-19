@@ -150,14 +150,16 @@ const SecondPage = () => {
     // const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeFullName=useStoreActions((actions)=>action.changeFullName);
     useEffect(()=>{
-        userData.fullname && setTemplate(prev => {
+        userData.fullname || userData.profilePic || userData.email && setTemplate(prev => {
             return{
                 ...prev,
                 name: userData.fullname,
+                profilepic:userData.profilePic,
+                gmail:userData.email,
                 
             }
         })
-    },[userData.fullname])
+    },[userData.fullname,userData.profilePic,userData.email])
 
 
 
@@ -273,7 +275,7 @@ const SecondPage = () => {
                         } >+</button></div>
             </div>
             <div className="right-section-3">
-                <FileUpload image={userData.profilePic} 
+                <FileUpload image={profileImage} 
                 onChange={value=>changeState(["profileImage"],value)}/>
               
           
@@ -297,7 +299,7 @@ const SecondPage = () => {
                     <div><img src={Gmail}/>
                     <TextField
                       onChange={value=>changeState(["contact","gmail"],value)}
-                      value={userData.email}
+                      value={gmail}
                      /> 
                    </div>
                 </div>

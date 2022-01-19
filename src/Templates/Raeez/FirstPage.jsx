@@ -85,14 +85,17 @@ const Raeez = () => {
     const userData = useStoreState((state) => state.userData);
     const changeFullName = useStoreActions((actions) => actions.changeFullName);
     useEffect(()=>{
-        userData.fullname && setTemplate(prev => {
+        userData.fullname || userData.email && setTemplate(prev => {
             return{
                 ...prev,
                 name: userData.fullname,
+                gmail:userData.email,
+                
+            
                 
             }
         })
-    },[userData.fullname])
+    },[userData.fullname,userData.email])
 
     const getLogo=(name)=>{
         let nameList=name.split(" ");
@@ -261,7 +264,7 @@ const Raeez = () => {
                    
                 <TextField
                       onChange={value=>changeState(["address","gmail"],value)}
-                      value={userData.gmail}
+                      value={gmail}
                 />
                    {/* <input type="text"
                    value={gmail}
