@@ -15,49 +15,9 @@ const SecondPage = () => {
         photoshop: 0,
         afterEffects: 0,
         lightRoom: 0
-    })
-    // const  progressivevalue=()=>{
-    //     const progressValue = Math.floor(Math.random()*101);
-    //     setProgress(progressValue)
-    // }
-    // const onChange = e =>{
-    //     if(e.target.value){
-    //         let progress = parseInt(e.target.value, 10);
-    //         if(progress >100){
-    //             progress=100;
-    //         }
-    //         setProgress(progress)
-    //     }else{
-    //         setProgress(0);
-    //     }
+    }) 
 
-    // }
-    // const states={
-    //     size :100,
-    //     progress,
-    //     strokeWidth:10,
-    //     circleOneStroke: 'gray',
-    //     circleTwoStroke: 'white'
-    // }
-
-    const onChange = (key, value) => {
-        if(value>100){
-            setSkills(prev => {
-                return{
-                    ...prev,
-                    [key]: 100
-                }
-            })
-        }else {
-            setSkills(prev => {
-                return{
-                    ...prev,
-                    [key]: value
-                }
-            })
-        }
-        
-    }
+    
     const colorThemeList4_1=[
         "indigo4",
         "darkviolet4",
@@ -79,18 +39,29 @@ const SecondPage = () => {
         email:"email@youremail.com",
         location:"America"},
         profile:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusantium dicta ducimus deserunt labore ad officia explicabo impedit. Repellendus mollitia quidem suscipit deserunt nostrum odit deleniti id aliquid neque dicta?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos illum ullam eaque porro sapiente architecto voluptatum repellat odit natus quibusdam, non blanditiis dicta, hic animi quia et cupiditate temporibus.",
-        skillset:{
-            photoshop:"PhotoShop",
-            afterEffects:"AfterEffects",
-            lightRoom:"LightRoom",
+        // skillset:{
+        //     photoshop:"PhotoShop",
+        //     afterEffects:"AfterEffects",
+        //     lightRoom:"LightRoom",
             
-        },
-        skillname:{
-            ps:"PS",
-            ae:"AE",
-            lr:"LR",
-            
-        },
+        // },
+        skillset:[
+            {
+                id:1,
+                value: "PhotoShop",
+                percentage: 0
+            },
+            {
+                id:2,
+                value:"AfterEffects",
+                percentage: 0
+            },
+            {
+                id:3,
+                value:"LightRoom",
+                percentage: 0
+            }     
+            ],
         education:[
             {
                 
@@ -164,6 +135,13 @@ const SecondPage = () => {
             })
         })
     }
+    const onChange = (key,value) => {
+        if(value>100){
+            changeState(key, 100)
+        }else {
+            changeState(key, value)
+        }
+    }
     const userData = useStoreState((state) => state.userData);
    
     
@@ -207,21 +185,20 @@ const SecondPage = () => {
                 switch(keys.length){
                     case 1:
                         draft[keys[0]].splice(i,1);
-                        draft[keys[0]][i-1].value += value;
+                        if(value) draft[keys[0]][i-1].value += value;
                         break;
                     case 2:
                         draft[keys[0]][keys[1]].splice(i,1);
-                        draft[keys[0]][keys[1]][i-1].value += value;
+                        if(value) draft[keys[0]][keys[1]][i-1].value += value;
                         break;
                     case 3:
                         draft[keys[0]][keys[1]][keys[2]].splice(i,1);
-                        draft[keys[0]][keys[1]][keys[2]][i-1].value += value;
+                        if(value) draft[keys[0]][keys[1]][keys[2]][i-1].value += value;
 
                         break;
                     case 4:
                         draft[keys[0]][keys[1]][keys[2]][keys[3]].splice(i,1);
-                        draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value += value;
-
+                        if(value) draft[keys[0]][keys[1]][keys[2]][keys[3]][i-1].value += value;
                         break;
                         default:
                             break;
@@ -252,8 +229,6 @@ const SecondPage = () => {
                         <TextField value={name} className='firstname_4_1'
                         onChange={(value)=>changeState(["name"],value)}/>
                         <br/>
-                         {/* <TextField value={name2} className='firstname_4_1'
-                        onChange={(value)=>changeState(["name2"],value)}/>  */}
                         <TextField value={designation} className="job4_1"
                         onChange={(value)=>changeState(["designation"],value)}/>
                     </div>
@@ -276,43 +251,42 @@ const SecondPage = () => {
                             <TextArea value ={profile}
                             onChange={value=>changeState(["profile"],value)}/>
                         </div>
+            
                     <div className="profile4_1">Skills</div>
-                    <div className="circlesection4_1">
-                        <div className="uppercircle4_1">
-                            <div className="circle4_1"><ProgressBar progress={skills.photoshop} 
-                             text="PS" />
-                            </div>
-                            <input type="text" name='percent' placeholder='progress value add'
-                            onChange={(e)=>onChange('photoshop', e.target.value)}/>
-                            <div className="circlename4_1">
-                            <TextField value={skillset.photoshop} 
-                            onChange={(value)=>changeState(["skillset","photoshop"],value)}/>
-                            </div>
-                           
-                        </div>
-                        <div className="lowercircle4_1">
-                            <div className="circle4_1" ><ProgressBar progress={skills.afterEffects} text="AE"/></div>
-                            <input type="text" name='percent' placeholder='progress value add'
-                            onChange={(e)=>onChange('afterEffects', e.target.value)}/>
-                            <div className="circlename4_1">
-                            <TextField value={skillset.afterEffects} 
-                            onChange={(value)=>changeState(["skillset","afterEffects"],value)}/>
-                            </div>
-                
-                        </div>
-                    <div className="middle4_1">
-                        <div className="circle4_1"><ProgressBar progress={skills.lightRoom} text="LR"/></div>
-                        <input type="text" name='percent' placeholder='progress value add'
-                            onChange={(e)=>onChange('lightRoom', e.target.value)}/>
-                        <div className="circlename4_1">
-                        <TextField value={skillset.lightRoom} 
-                            onChange={(value)=>changeState(["skillset","lightRoom"],value)}/>
-                        </div>
                     
+                    <div className="circlesection4_1">
+                        {skillset.map(({value, percentage},i)=>
+                            <div className="uppercircle4_1">
+                                
+                                <div className="circle4_1"><ProgressBar progress={percentage}
+                                text="PS" />
+                                </div>
+                               
+                                <input type="text" name='percent' placeholder='progress value add'
+                                onChange={(e)=>{onChange(["skillset",i,"percentage"], e.target.value)}}/>
+                                
+                                <div className="circlename4_1">
+                                <button onClick={()=>{deleteList(["skillset"], i, undefined)}}
+                                    className="close4">X</button>
+                                <TextField value={value}
+                                onChange={(value)=>changeState(["skillset",i,"value"],value)}
+                                length={skillset.length}/>
+                                </div>
+                                
+                                 </div>              
+                            )   
+                        }
+                    </div> 
+                    <div className="new4">
+                        <button onClick={()=>{addToList(['skillset'], skillset.length, {
+                            id: skillset.length+1,
+                            value:"Photoshop",
+                            percentage: 0
+                            })}}>Add new</button>
                     </div>
-                    {/* <button onClick={progressivevalue}>random</button> */}
-                </div> 
+                    
         </div>
+        
                 <div className="bottomright4_1">
                 <div className="profile4_1">Education</div>
                 {education.map(({college,startingdate,endingdate,collegedetails},i)=>{
