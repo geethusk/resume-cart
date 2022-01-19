@@ -5,7 +5,8 @@ import { isValidEmail } from '../utility/validate';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import api from "../services/api"
-import { useStoreState,useStoreActions } from 'easy-peasy';
+import { useStoreActions } from 'easy-peasy';
+import ErrorHandler from './Component/ErrorHandler';
 
 const Admin = () => {
 
@@ -14,7 +15,10 @@ const Admin = () => {
     const toggleIsLoggedIn = useStoreActions((actions) => actions.toggleIsLoggedIn);
     const toggleIsAdmin = useStoreActions((actions) => actions.toggleIsAdmin);
 
-     const navigate=useNavigate();
+    const [errorVisibility,setErrorVisibility]=useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
+
+    const navigate=useNavigate();
     const[isOtpButton,setOtpButton]=useState(false)
     const [formData,setFormData] = useState({
         email:"",
@@ -67,9 +71,11 @@ const Admin = () => {
     const getOtp = async ()=>{        
         const response = await api.post('/get-admin-otp',{email})
         if(!response.data.status){
-            alert('Some Error Occured')
+            setErrorVisibility(true)
+            setErrorMessage(response.data.message)
         }else {
-            alert(response.data.message)
+            setErrorVisibility(false)
+            setErrorMessage(response.data.message)
         }
     }
     const loginCall = async (e) =>{
@@ -84,7 +90,7 @@ const Admin = () => {
             navigate('/')
         }
         catch(error){
-            alert(error.response.data.message)
+            setErrorMessage(error.response.data.message)
         }
     }
     return (
@@ -125,6 +131,8 @@ const Admin = () => {
                      type="submit" className='login-button'>Login</button>
                 </form>
             </div>
+            {errorVisibility && <ErrorHandler error={errorMessage} />}
+
         </div>
     )
 }

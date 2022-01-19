@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import "../HomeStyle.css"
 import {useNavigate} from 'react-router-dom'
+import {useQuery} from 'react-query'
 import { useState,useContext } from 'react'
 import star from "../../assets/icons/star-regular.svg"
 import solid from "../../assets/icons/star-solid.svg"
@@ -9,6 +10,7 @@ import { UserContext } from '../../Context/UserContext'
 import Form from './Form'
 import { useStoreState } from 'easy-peasy'
 import api from '../../services/api';
+import ErrorHandler from './ErrorHandler'
 
 
 
@@ -28,13 +30,19 @@ const HomeDescription = () => {
     // const sort=(value)=>{
     //         setTemplate(totalTemplateList.filter(({type})=>type===value))
     //     }
+    const [errorVisibility,setErrorVisibility]=useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
+
+
+    
+    
     useEffect(()=>{
         const getTemplate = async() => {
             try {
                 const response = await api.get("/get-template")
                 setTemplate(response.data.data)
             } catch (error) {
-                console.log(error.response);
+                navigate('/network-error')
             }
         }
         getTemplate()
@@ -42,23 +50,38 @@ const HomeDescription = () => {
     const postTemplate = async(url) =>{
         try {
             const response = await api.post("/add-favorite-template",{templates:[url]})
-            console.log(response);
+            if(response.data.status==true){
+                setFormVisibility(false)
+            }
         } catch (error) {
-            console.log(error.response);
+            let data = error.response.data
+            if(data.status==false){
+                setErrorVisibility(true)
+                setErrorMessage(data.message)
+            }
         }
+
     }
     
     const favTemplate = async() => {
             try {
                 const response = await api.get("/get-favorite-template")
-                console.log(response);
                 setLikedTemplate(response.data.data)
-                console.log(likedTemplate);
+                if(response.data.status==true){
+                    setFormVisibility(false)
+                }            
             } catch (error) {
-                console.log(error.response);
+                let data = error.response.data
+                if(data.status==false){
+                    setErrorVisibility(true)
+                    setErrorMessage(data.message)
+                }
             }
         }
-    
+        // const{data,error,isloading,isError}=useQuery(['templates'], ()=> api.get("/get-template"))
+        // if(isloading) return <div>Loading...</div>
+        // if(isError) return <div>Error</div>
+
     return (
 
         <div className="home-description-image-section">
@@ -121,6 +144,7 @@ const HomeDescription = () => {
                             postTemplate(url)
                             favTemplate()
                         }
+                        
                         }
                         
                            
@@ -145,7 +169,8 @@ const HomeDescription = () => {
                 }}
                 >+</button>}
             </div>
-            
+            {errorVisibility && <ErrorHandler error={errorMessage} />}
+
             {formVisibility && <Form setFormVisibility={setFormVisibility} />}
         </div>
     )

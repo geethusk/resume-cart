@@ -4,6 +4,8 @@ import { TemplateContext } from '../Context/TemplateList'
 import "./favorite.css"
 import "./HomeStyle.css"
 import api from '../services/api';
+import ErrorHandler from './Component/ErrorHandler'
+
 
 const FavoriteList = () => {
     const navigate=useNavigate();
@@ -11,15 +13,27 @@ const FavoriteList = () => {
     const [favorite,setFavorite]=useState([])
     const favList=template.filter(value => value.isLiked===true)
     const [templateRemoved,setTemplateRemoved]=useState(false)
+   
+    const [errorVisibility,setErrorVisibility]=useState(false)
+    const [errorMessage, setErrorMessage] = useState(null)
     // const [isClosed,setIsClosed]=useState(favList)
+
     useEffect(()=>{
+    
         const favoriteLiked = async() => {
             try {
                 const response = await api.get("/get-favorite-template")
-                console.log(response);
                 setFavorite(response.data.data)
+                if(response.data.status==true){
+                    setErrorVisibility(false)
+                }
             } catch (error) {
-                console.log(error.response);
+                let data=error.response.data
+                if(data.status==false){
+                    setErrorVisibility(true)
+                    setErrorMessage(data.message)
+    
+                }
             }
         }
         favoriteLiked()
@@ -28,12 +42,16 @@ const FavoriteList = () => {
     const favoriteRemove = async(url) => {
         try {
             const response = await api.post("/remove-favorite-template",{url:url})
-            console.log(response);
             if(response.data.status){
-                    setTemplateRemoved(prev => !prev)
+                setTemplateRemoved(prev => !prev)
             }
         } catch (error) {
-            console.log(error.response);
+            let data=error.response.data
+            if(data.status==false){
+                setErrorVisibility(true)
+                setErrorMessage(data.message)
+    
+            }
         }
     
     
@@ -71,7 +89,8 @@ const FavoriteList = () => {
                 )
             })}
             </div>
-            
+            {errorVisibility && <ErrorHandler error={errorMessage} />}
+
         </div>
     )
 }

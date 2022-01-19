@@ -28,16 +28,7 @@ const Form = ({setFormVisibility}) => {
         const data = new FormData();
         data.append('file', image)
         data.append('body', JSON.stringify(adminForm))
-            // fetch('http://192.168.1.66:5000/api/v1/template-upload', 
-        //     method: 'POST',
-        //     headers: {
-        //         'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
-        //       },
-        //       body: data
-        // })
-        // .then(response => response.json())
-        // .then(data => )
-        // }
+        
         try {
             const response = await axios.post('http://192.168.1.66:5000/api/v1/template-upload', data, {
                 headers:{
@@ -45,14 +36,12 @@ const Form = ({setFormVisibility}) => {
                 },
             })
 
-            console.log(response);
             if(response.data.status==true){
                 setFormVisibility(false)
             }
 
             
         } catch (error) {
-            console.log(error.response);
             let data = error.response.data
             if(data.status==false){
             setErrorVisibility(true)
