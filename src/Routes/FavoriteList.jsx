@@ -4,7 +4,7 @@ import { TemplateContext } from '../Context/TemplateList'
 import "./favorite.css"
 import "./HomeStyle.css"
 import api from '../services/api';
-
+import ErrorHandler from './Component/ErrorHandler'
 
 const FavoriteList = () => {
     const navigate=useNavigate();
@@ -13,7 +13,8 @@ const FavoriteList = () => {
     const favList=template.filter(value => value.isLiked===true)
     const [templateRemoved,setTemplateRemoved]=useState(false)
    
-    const [errorVisibility,setErrorVisibility]=useState(false)
+    const [errorFormVisibility,setErrorFormVisibility]=useState(false)
+    const[error,setError]=useState("")
     // const [isClosed,setIsClosed]=useState(favList)
 
     useEffect(()=>{
@@ -22,15 +23,10 @@ const FavoriteList = () => {
             try {
                 const response = await api.get("/get-favorite-template")
                 setFavorite(response.data.data)
-                if(response.data.status==true){
-                    setErrorVisibility(false)
-                }
+                
             } catch (error) {
-                let data=error.response.data
-                if(data.status==false){
-                    setErrorVisibility(true)
                     navigate("/*")    
-                }
+                
             }
         }
         favoriteLiked()
@@ -41,14 +37,16 @@ const FavoriteList = () => {
             const response = await api.post("/remove-favorite-template",{url:url})
             if(response.data.status){
                 setTemplateRemoved(prev => !prev)
+                setErrorFormVisibility(true)
+                setError(response.data.message)
+
             }
         } catch (error) {
-            let data=error.response.data
-            if(data.status==false){
-                setErrorVisibility(true)
-                navigate("/*")
+            // let data=error.response.data
+                setErrorFormVisibility(true)
+                setError(error.response.data.message)
     
-            }
+            
         }
     
     
