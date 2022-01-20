@@ -36,7 +36,7 @@ const SecondPage = () => {
         // name2:"Marz",
         designation:"Illustrator",
         details:{call:" 1234567890",
-        email:"email@youremail.com",
+        gmail:"email@youremail.com",
         location:"America"},
         profile:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa accusantium dicta ducimus deserunt labore ad officia explicabo impedit. Repellendus mollitia quidem suscipit deserunt nostrum odit deleniti id aliquid neque dicta?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quos illum ullam eaque porro sapiente architecto voluptatum repellat odit natus quibusdam, non blanditiis dicta, hic animi quia et cupiditate temporibus.",
         // skillset:{
@@ -150,11 +150,13 @@ const SecondPage = () => {
             return{
                 ...prev,
                 name:userData.fullname,
+                gmail:userData.email,
+                Profile4:userData.profilePic,
                
               
             }
         })
-    },[userData.fullname])
+    },[userData.fullname,userData.email,userData.profilePic])
 
     const addToList =(keys,i,value)=>{
         setState((prev)=>{
@@ -235,15 +237,15 @@ const SecondPage = () => {
                     <div className="contacts4_1">
                         ✆<TextField value={details.call}
                         onChange={(value)=>changeState(["details","call"],value)}/><br/>
-                        ✉<TextField value={userData.email}
-                        onChange={(value)=>changeState(["details","email"],value)}/><br/>
+                        ✉<TextField value={details.gmail}
+                        onChange={(value)=>changeState(["details","gmail"],value)}/><br/>
                         📍<TextField value={details.location}
                         onChange={(value)=>changeState(["details","location"],value)}/><br/>
                     </div>
                 </div>
                 <div className="bottom4_1">
                     <div className="bottomleft4_1">   
-                        <FileUpload image={userData.profilePic} 
+                        <FileUpload image={profileImage} 
                         onChange={value=>changeState(["profileImage"],value)}/>
                         
                         <div className="profile4_1">Profile</div>
