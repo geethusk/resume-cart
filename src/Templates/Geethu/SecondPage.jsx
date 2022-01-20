@@ -85,7 +85,7 @@ const SecondPage = () => {
         address:{
             street:"4759 Sunnydale Lane",
             city:" Plano, TX, 75071",
-            email:"email@youremail.com",
+            gmail:"email@youremail.com",
             phone:"(469) 385-2948"
         },
         skills:[
@@ -110,13 +110,14 @@ const SecondPage = () => {
     })
     const userData = useStoreState((state) => state.userData);
     useEffect(()=>{
-        userData.fullname && setTemplateState(prev=>{
+        userData.fullname || userData.email && setTemplateState(prev=>{
             return{
                 ...prev,
                 name:userData.fullname,
+                gmail:userData.email
             }
         })
-    },[userData.fullname])
+    },[userData.fullname,userData.email])
 
     const changeState=(keys,value)=>{
         setTemplateState(
@@ -358,7 +359,7 @@ const SecondPage = () => {
                     value={address.city} onChange={value=>changeState(["address","city"],value)}
                     /><br/>
                 <TextField className="email1"
-                    value={userData.email} onChange={value=>changeState(["address","email"],value)}/><br/>
+                    value={address.gmail} onChange={value=>changeState(["address","gmail"],value)}/><br/>
                 <TextField className="address1"
                     value={address.phone}  onChange={value=>changeState(["address","phone"],value)}
                     /><br/>
