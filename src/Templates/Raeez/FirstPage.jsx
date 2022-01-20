@@ -4,6 +4,7 @@ import  produce from "immer"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import { useStoreState,useStoreActions} from 'easy-peasy';
+import downloadTemplate from "../../Routes/templateDownload"
 const Raeez = () => {
     const colorThemeList= [ "violet",
         "indigo",
@@ -17,7 +18,7 @@ const Raeez = () => {
         logo:"CC",
         name:"Raeez Mohammed",
         designation:"Full Stack developer",
-        address:{street:"4759 Sunnydale Lane",city:"Plano ,TX ",pincode:"75071",gmail:"email@youremail.com",phonenumber:"(469) 385-2948"},
+        address:{street:"4759 Sunnydale Lane",city:"Plano ,TX ",pincode:"75071",gmail:"raeezmohammed97@email.com",phonenumber:"(469) 385-2948"},
         bio:"Human resources generalist with 8 years of experience in HR, including hiring and terminating, disciplining employees and helping department managers improve employee performance. Worked with labor unions to negotiate compensation packages for workers. Organized new hire training initiatives as well as ongoing training to adhere to workplace safety standards. Worked with OSHA to ensure that all safety regulations are followed..",
         profexp:[
             {
@@ -461,6 +462,7 @@ const Raeez = () => {
         <div>
        
         </div>
+        <button onClick={()=>{downloadTemplate(template)}}>Download</button>
         </>
     )
 }
