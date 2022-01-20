@@ -151,7 +151,7 @@ const Dashboard = () => {
             setError(response.data.data.message)
         }
         catch(error){
-            // console.log(error.response)
+            console.log(error.response)
             setErrorFormVisibility(true)
             setError(error.response.data.message)
             

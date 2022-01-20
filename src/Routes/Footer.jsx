@@ -1,11 +1,28 @@
-import {Outlet} from 'react-router-dom'
+import {Navigate, Outlet} from 'react-router-dom'
+import { useState } from 'react'
 import "./footer.css"
 import save from "../../src/assets/icons/save-regular.svg"
 import download from "../../src/assets/icons/download-solid.svg"
+import api from '../services/api'
 // import takescreenshot from "../Routes/Takescreenshot"
 
 
 const Footer = () => {
+const downloadTemplate=async()=>{
+
+    try{
+        const response = await api.post('/download-template',)
+       
+        console.log(response);
+        window.open('http://192.168.1.66:5000/api/v1/template/?template=' + response.data.url)
+    }
+    catch(error){
+        console.log(error.response);
+        Navigate("/network")
+    }
+
+       
+}
 
 
     return (
@@ -18,7 +35,7 @@ const Footer = () => {
                 />
                 <img className='save-button' 
                  onClick={()=>{
-                    //  takeScreenshot();
+                     downloadTemplate();
      
                 }}
                 src={download}/>

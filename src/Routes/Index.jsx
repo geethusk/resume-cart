@@ -197,8 +197,7 @@ const Index = () => {
                     <Route path="about" element={<About/>}/>
                     <Route path="feedback" element={<Feedback/>}/>
                     <Route path="dashboard" element={<Dashboard/>}/>
-                    <Route path="favorite" element={<FavoriteList/>}/>
-                </Route> 
+                    <Route path="favorite" element={<FavoriteList/>}/> 
                     <Route path="" element={<Footer/>}>
                         <Route path="faslu/*" element={<Faslu/>}/>
                         <Route path="geethu/*" element={<Geethu/>}/>
@@ -206,7 +205,7 @@ const Index = () => {
                         <Route path="rajasree/*" element={<Rajasree/>}/>
                         <Route path="vishnu/*" element={<Vishnu/>}/>
                     </Route>
-                
+                </Route>
                     <Route path="/form" element={<Form/>}/>
                     <Route path="loading" element={<LoadingError/>}/>
                     <Route path="network-error" element={<Network/>}/>
