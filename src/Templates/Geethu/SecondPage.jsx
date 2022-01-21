@@ -9,6 +9,9 @@ import phone from "./assets/icons/map-marker-alt-solid.svg"
 import key from "./assets/icons/thumbtack-solid.svg"
 import produce from "immer"
 import { useStoreState} from 'easy-peasy';
+import downloadTemplate from '../../Routes/templateDownload'
+import download from "../../assets/icons/download-solid.svg"
+import "../../Routes/footer.css"
 
 const SecondPage = () => {
     const colorThemeList=[
@@ -110,14 +113,13 @@ const SecondPage = () => {
     })
     const userData = useStoreState((state) => state.userData);
     useEffect(()=>{
-        userData.fullname || userData.email && setTemplateState(prev=>{
+        userData.fullname && setTemplateState(prev=>{
             return{
                 ...prev,
                 name:userData.fullname,
-                gmail:userData.email
             }
         })
-    },[userData.fullname,userData.email])
+    },[userData.fullname])
 
     const changeState=(keys,value)=>{
         setTemplateState(
@@ -359,7 +361,7 @@ const SecondPage = () => {
                     value={address.city} onChange={value=>changeState(["address","city"],value)}
                     /><br/>
                 <TextField className="email1"
-                    value={address.gmail} onChange={value=>changeState(["address","gmail"],value)}/><br/>
+                    value={userData.email} onChange={value=>changeState(["address","gmail"],value)}/><br/>
                 <TextField className="address1"
                     value={address.phone}  onChange={value=>changeState(["address","phone"],value)}
                     /><br/>
@@ -381,6 +383,8 @@ const SecondPage = () => {
             </div>
 
         </div>
+        <button onClick={()=>{downloadTemplate(templateState)}}><img className="save-button" src={download} /></button>
+
         </>
     )
 }

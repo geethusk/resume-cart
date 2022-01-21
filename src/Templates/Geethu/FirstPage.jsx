@@ -4,7 +4,9 @@ import "./Geethu.css"
 import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import { useStoreState} from 'easy-peasy';
-
+import downloadTemplate from "../../Routes/templateDownload"
+import download from "../../assets/icons/download-solid.svg"
+import "../../Routes/footer.css"
 
 const FirstPage = () => {
     const colorThemeList=[
@@ -105,15 +107,14 @@ const FirstPage = () => {
     })
     const userData = useStoreState((state) => state.userData);
     useEffect(()=>{
-        userData.fullname || userData.email && tempSetState(prev=>{
+        userData.fullname && tempSetState(prev=>{
             return{
                 ...prev,
                 name:userData.fullname,
-                gmail:userData.email,
             }
         })
 
-    },[userData.fullname,userData.email])
+    },[userData.fullname])
    
        
     const addToList=(keys,i,value)=>{
@@ -233,7 +234,7 @@ const FirstPage = () => {
                        value={address.phone}
                        onChange={value=>changeState(["address","phone"],value)}
                        />
-                        <TextArea  className="textarea" type="text" value={address.gmail} onChange={value=>changeState(["address","gmail"],value)}/><br/>
+                        <TextArea  className="textarea" type="text" value={userData.email} onChange={value=>changeState(["address","gmail"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
                         <TextArea  className="bio1"
@@ -374,7 +375,9 @@ const FirstPage = () => {
                 </div>
 
             </div>
-        </div>            
+        </div> 
+        <button onClick={()=>{downloadTemplate(tempState)}}><img className="save-button" src={download} /></button>
+           
     </>
     )
 }
