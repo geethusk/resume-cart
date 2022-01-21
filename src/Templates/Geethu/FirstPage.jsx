@@ -373,7 +373,7 @@ const FirstPage = () => {
 
             </div>
         </div> 
-        <button onClick={()=>{downloadTemplate(tempState)}}><img className="save-button" src={download} /></button>
+        <div><button onClick={()=>{downloadTemplate(tempState)}}><img className="save-button" src={download} /></button></div>
            
     </>
     )
