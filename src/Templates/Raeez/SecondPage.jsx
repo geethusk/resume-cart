@@ -46,7 +46,7 @@ const SecondPage = () => {
             }
         ],
         profileImage:profilepic,
-        contact:{place:"LONDON,UNITED KINGDOM",phone:" 123-456-789-00",gmail:"raeezmohammed97@gmail.com"},
+        contact:{place:"LONDON,UNITED KINGDOM",phone:" 123-456-789-00",gmail:"email@gmail.com"},
         skills:[
                            
                             {id:1,value: "Communication"},
@@ -154,12 +154,12 @@ const SecondPage = () => {
             return{
                 ...prev,
                 name: userData.fullname,
-                profilepic:userData.profilePic,
+                // profilepic:userData.profilePic,
                 gmail:userData.email,
                 
             }
         })
-    },[userData.fullname,userData.profilePic,userData.email])
+    },[userData.fullname,userData.email])
 
 
 
@@ -275,7 +275,7 @@ const SecondPage = () => {
                         } >+</button></div>
             </div>
             <div className="right-section-3">
-                <FileUpload image={profileImage} 
+                <FileUpload image={userData.profilePic} 
                 onChange={value=>changeState(["profileImage"],value)}/>
               
           
@@ -299,7 +299,7 @@ const SecondPage = () => {
                     <div><img src={Gmail}/>
                     <TextField
                       onChange={value=>changeState(["contact","gmail"],value)}
-                      value={gmail}
+                      value={userData.email}
                      /> 
                    </div>
                 </div>
