@@ -9,6 +9,8 @@ import Location from "./icons/location.png"
 import Phone from "./icons/phone.png"
 import Gmail from "./icons/gmail.png"
 import FileUpload from './Components/FileUpload'
+import downloadTemplate from "../../Routes/templateDownload"
+import download from "../../assets/icons/download-solid.svg"
 import { useStoreState,useStoreActions, action} from 'easy-peasy';
 
 
@@ -349,6 +351,10 @@ const SecondPage = () => {
 
             
             </div>
+        </div>
+        <div className='download-button'>
+            <button>onClick={()=>{downloadTemplate(template)}}<img className="save-button" src={download}/></button>
+
         </div>
         </>
     )
