@@ -150,16 +150,16 @@ const SecondPage = () => {
     // const changeFullName = useStoreActions((actions) => actions.changeFullName);
     const changeFullName=useStoreActions((actions)=>action.changeFullName);
     useEffect(()=>{
-        userData.fullname || userData.profilePic || userData.email && setTemplate(prev => {
+        userData.fullname && setTemplate(prev => {
             return{
                 ...prev,
                 name: userData.fullname,
-                // profilepic:userData.profilePic,
-                gmail:userData.email,
+              
+               
                 
             }
         })
-    },[userData.fullname,userData.email])
+    },[userData.fullname])
 
 
 
