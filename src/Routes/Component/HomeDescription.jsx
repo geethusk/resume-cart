@@ -148,12 +148,12 @@ const HomeDescription = () => {
                         />}
                     <img className='demos'
                     onClick={()=>{
-                        if(userData.isLoggedIn===false){
-                            navigate("/login")
-                        }
-                        else{
+                        // if(userData.isLoggedIn===false){
+                        //     navigate("/login")
+                        // }
+                        
                         navigate(url)
-                    }}}
+                    }}
                 src={image} key={i} alt="" />
                 </div>
                 
