@@ -112,15 +112,15 @@ const Rajasree = () => {
     const changeFullName=useStoreActions((action)=>action.changeFullName)
     
     useEffect(()=>{
-        userData.fullname || userData.email && setState(prev=>{
+        userData.fullname && setState(prev=>{
           return{
               ...prev,
               name:userData.fullname,
-              gmail:userData.email,
+         
           }  
         })
 
-    },[userData.fullname,userData.email])
+    },[userData.fullname])
 
     
 
@@ -253,7 +253,7 @@ const Rajasree = () => {
                 {/* <input type="text" value={address.city}
                 onChange={(e)=>changeState(["address","city"],e.target.value)}/> */}
                 
-                <TextField value={address.gmail}className="headerdescription4"
+                <TextField value={userData.email}className="headerdescription4"
                 onChange={(value)=>changeState(["address","gmail"],value)}/>
                 {/* <input type="text" value={address.email}
                 onChange={(e)=>changeState(["address","email"],e.target.value)}/> */}

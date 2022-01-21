@@ -146,17 +146,16 @@ const SecondPage = () => {
    
     
     useEffect(()=>{
-        userData.fullname || userData.email || userData.profilePic && setState(prev=>{
+        userData.fullname && setState(prev=>{
             return{
                 ...prev,
                 name:userData.fullname,
-                gmail:userData.email,
-                Profile4:userData.profilePic,
+                
                
               
             }
         })
-    },[userData.fullname,userData.email,userData.profilePic])
+    },[userData.fullname])
 
     const addToList =(keys,i,value)=>{
         setState((prev)=>{
@@ -237,7 +236,7 @@ const SecondPage = () => {
                     <div className="contacts4_1">
                         ✆<TextField value={details.call}
                         onChange={(value)=>changeState(["details","call"],value)}/><br/>
-                        ✉<TextField value={details.gmail}
+                        ✉<TextField value={userData.email}
                         onChange={(value)=>changeState(["details","gmail"],value)}/><br/>
                         📍<TextField value={details.location}
                         onChange={(value)=>changeState(["details","location"],value)}/><br/>
