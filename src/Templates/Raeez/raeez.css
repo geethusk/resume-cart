@@ -249,3 +249,7 @@ li{
     height: 20px;
    
 }
+.download-button{
+display: flex;
+justify-content: center;
+}
