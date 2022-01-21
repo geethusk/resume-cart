@@ -107,14 +107,11 @@ const FirstPage = () => {
     })
     const userData = useStoreState((state) => state.userData);
     useEffect(()=>{
-        userData.fullname && tempSetState(prev=>{
-            return{
-                ...prev,
-                name:userData.fullname,
-            }
-        })
-
-    },[userData.fullname])
+       if(userData.fullname || userData.email){
+            changeState(["name"], userData.fullname);
+            changeState(["address", "gmail"], userData.email)
+       }
+    },[userData.fullname, userData.email])
    
        
     const addToList=(keys,i,value)=>{
@@ -234,7 +231,7 @@ const FirstPage = () => {
                        value={address.phone}
                        onChange={value=>changeState(["address","phone"],value)}
                        />
-                        <TextArea  className="textarea" type="text" value={userData.email} onChange={value=>changeState(["address","gmail"],value)}/><br/>
+                        <TextArea  className="textarea" type="text" value={address.gmail} onChange={value=>changeState(["address","gmail"],value)}/><br/>
                     </div>
                     <div className="bio-wrap1">
                         <TextArea  className="bio1"
