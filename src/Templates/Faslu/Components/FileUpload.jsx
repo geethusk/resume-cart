@@ -5,7 +5,7 @@ const FileUpload = ({onChange,image, dashboard=false, uploadProfile }) => {
     const inputRef = useRef(null); 
     return (
         <div className="header-right-sec2">
-            <img className={dashboard ? 'profile-dashboard' : 'profile-image'}src={image}/>
+            <img className={dashboard ? 'profile-dashboard' : 'profile-image'}src={'http:localhost:5000'+image}/>
             <img className='change-image-button-2'src={camera} alt="camera icon"
             onClick={()=>{
                 inputRef.current.click()
