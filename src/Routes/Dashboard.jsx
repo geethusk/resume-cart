@@ -12,6 +12,8 @@ import { useStoreState,useStoreActions } from 'easy-peasy';
 import axios from 'axios';
 import ErrorHandler from './Component/ErrorHandler';
 
+import apiurl from '../services/apiurl';
+
 
 const Dashboard = () => {
     const[errorFormVisibility,setErrorFormVisibility]=useState(false)
@@ -141,7 +143,7 @@ const Dashboard = () => {
         const data= new FormData();
         data.append('file',imageData)
         try{
-            const response = await axios.post('http://localhost:5000/api/v1/upload-profile-image',data,{
+            const response = await axios.post(apiurl + '/api/v1/upload-profile-image',data,{
                 headers:{
                     'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
                 },

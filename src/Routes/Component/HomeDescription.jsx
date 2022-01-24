@@ -10,7 +10,7 @@ import { UserContext } from '../../Context/UserContext'
 import Form from './Form'
 import { useStoreState } from 'easy-peasy'
 import api from '../../services/api';
-
+import apiurl from '../../services/apiurl'
 
 
 
@@ -155,7 +155,7 @@ const HomeDescription = () => {
                         navigate(url)
                     }}
 
-                 src={'http://192.168.1.66:5000' + image} key={i} alt="" />
+                 src={apiurl + image} key={i} alt="" />
 
               
 
