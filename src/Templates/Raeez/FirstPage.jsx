@@ -5,6 +5,7 @@ import TextField from "./Components/TextField"
 import TextArea from "./Components/TextArea"
 import { useStoreState,useStoreActions} from 'easy-peasy';
 import downloadTemplate from "../../Routes/templateDownload"
+import download from "../../assets/icons/download-solid.svg"
 const Raeez = () => {
     const colorThemeList= [ "violet",
         "indigo",
@@ -457,7 +458,7 @@ const Raeez = () => {
        
         </div>
            <div className="download-button">
-              <button onClick={()=>{downloadTemplate(template)}}>Download</button>
+              <button onClick={()=>{downloadTemplate(template)}}><img className="save-button" src={download}/></button>
             </div>
         </>
     )
