@@ -154,7 +154,11 @@ const HomeDescription = () => {
                         
                         navigate(url)
                     }}
-                src={'http://192.168.1.66:5000'+ image} key={i} alt="" />
+
+                 src={'http://192.168.1.66:5000' + image} key={i} alt="" />
+
+              
+
                 </div>
                 
                 

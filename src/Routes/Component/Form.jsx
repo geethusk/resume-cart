@@ -30,7 +30,7 @@ const Form = ({setFormVisibility}) => {
         data.append('body', JSON.stringify(adminForm))
         
         try {
-            const response = await axios.post('http://192.168.1.66:5000/api/v1/template-upload', data, {
+            const response = await axios.post('http://localhost:5000/api/v1/template-upload', data, {
                 headers:{
                     'authorization': localStorage.getItem('token') ? localStorage.getItem('token'): ""
                 },
